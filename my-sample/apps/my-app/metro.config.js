@@ -20,15 +20,23 @@ const customConfig = {
     assetExts: assetExts.filter((ext) => ext !== 'svg'),
     sourceExts: [...sourceExts, 'svg'],
     blockList: exclusionList([/^(?!.*node_modules).*\/dist\/.*/]),
-    // unstable_enableSymlinks: true,
-    // unstable_enablePackageExports: true,
+    unstable_enableSymlinks: true,
+    unstable_enablePackageExports: true,
+  },
+  transformer: {
+    getTransformOptions: async () => ({
+      transform: {
+        experimentalImportSupport: true,
+        inlineRequires: true,
+      },
+    }),
   },
 };
 
 module.exports = withNxMetro(mergeConfig(defaultConfig, customConfig), {
   // Change this to true to see debugging info.
   // Useful if you have issues resolving modules
-  debug: false,
+  debug: true,
   // all the file extensions used for imports other than 'ts', 'tsx', 'js', 'jsx', 'json'
   extensions: [],
   // Specify folders to watch, in addition to Nx defaults (workspace libraries and node_modules)

@@ -9,9 +9,10 @@ import {
   StatusBar,
   TouchableOpacity,
   Linking,
+  Pressable,
 } from 'react-native';
 import Svg, { G, Path } from 'react-native-svg';
-import { MyComponent } from '@my-sample/my-lib'
+import { MyComponent } from '@my-sample/my-lib';
 
 export const App = () => {
   const [whatsNextYCoord, setWhatsNextYCoord] = useState<number>(0);
