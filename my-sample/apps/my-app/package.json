@@ -14,9 +14,7 @@
     "@expo/metro-config": "*",
     "react-native-svg-transformer": "*",
     "react": "*",
-    "aws-amplify": "*",
-    "@aws-amplify/ui-react": "*",
-    "@aws-amplify/core": "*"
+    "aws-amplify": "*"
   },
   "scripts": {
     "eas-build-pre-install": "cd ../../ && node tools/scripts/eas-build-pre-install.mjs . apps/my-app && cp package-lock.json apps/my-app",

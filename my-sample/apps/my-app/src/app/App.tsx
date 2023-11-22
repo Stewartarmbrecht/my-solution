@@ -13,6 +13,9 @@ import {
 } from 'react-native';
 import Svg, { G, Path } from 'react-native-svg';
 import { MyComponent } from '@my-sample/my-lib';
+import { Amplify } from 'aws-amplify';
+import amplifyconfig from '../amplifyconfiguration.json';
+Amplify.configure(amplifyconfig);
 
 export const App = () => {
   const [whatsNextYCoord, setWhatsNextYCoord] = useState<number>(0);

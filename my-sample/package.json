@@ -5,10 +5,8 @@
   "scripts": {},
   "private": true,
   "dependencies": {
-    "@aws-amplify/core": "^6.0.4",
     "@aws-amplify/react-native": "^1.0.4",
-    "@aws-amplify/ui-react": "^6.0.3",
-    "@aws-amplify/ui-react-native": "^2.0.3",
+    "@aws-amplify/rtn-web-browser": "^1.0.4",
     "@expo/metro-config": "~0.10.7",
     "@react-native-async-storage/async-storage": "1.18.2",
     "@react-native-community/netinfo": "9.3.10",
