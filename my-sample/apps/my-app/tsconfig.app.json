@@ -5,7 +5,7 @@
     "types": ["node"],
     "composite": true,
   },
-  "files": ["../../node_modules/@nx/expo/typings/svg.d.ts", "./src/aws-exports.js"],
+  "files": ["../../node_modules/@nx/expo/typings/svg.d.ts", "src/aws-exports.ts"],
   "exclude": [
     "jest.config.ts",
     "**/*.spec.ts",
