@@ -15,10 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@my-sample/my-auth": ["packages/my-auth/src/index.ts"],
-      "@my-sample/my-backend": ["packages/my-backend/src/index.ts"],
       "@my-sample/my-lib": ["packages/my-lib/src/index.ts"],
-      "@my-sample/my-test": ["packages/my-test/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
