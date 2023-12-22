@@ -2,15 +2,20 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
-    "types": ["node"],
-    "composite": true,
+    "types": ["node"]
   },
-  "files": ["../../node_modules/@nx/expo/typings/svg.d.ts", "src/aws-exports.ts"],
+  "files": ["../../node_modules/@nx/expo/typings/svg.d.ts"],
   "exclude": [
     "jest.config.ts",
-    "**/*.spec.ts",
-    "**/*.spec.tsx",
+    "**/*.test.ts",
+    "**/*.test.tsx",
     "test-setup.ts"
   ],
-  "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"]
+  "include": [
+    "**/*.ts", 
+    "**/*.tsx", 
+    "**/*.js", 
+    "**/*.jsx",
+    "../../packages/my-lib/src/**/*.ts",
+  ]
 }

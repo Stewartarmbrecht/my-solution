@@ -16,7 +16,20 @@
     "react": "*",
     "aws-amplify": "*",
     "@aws-amplify/core": "*",
-    "expo-updates": "*"
+    "expo-updates": "*",
+    "core-js": "*",
+    "react-native-safe-area-context": "*",
+    "react-test-renderer": "*",
+    "react-dom": "*",
+    "tslib": "*",
+    "react-native-url-polyfill": "*",
+    "react-native-get-random-values": "*",
+    "@aws-amplify/ui-react-native": "*"
+  },
+  "devDependencies": {
+    "@testing-library/jest-native": "*",
+    "@testing-library/react-native": "*",
+    "@nx/expo": "*"
   },
   "scripts": {
     "eas-build-pre-install": "cd ../../ && node tools/scripts/eas-build-pre-install.mjs . apps/my-app && cp package-lock.json apps/my-app",

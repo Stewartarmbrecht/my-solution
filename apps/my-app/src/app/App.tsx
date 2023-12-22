@@ -9,12 +9,12 @@ import {
   StatusBar,
   TouchableOpacity,
   Linking,
-  Pressable,
 } from 'react-native';
 import Svg, { G, Path } from 'react-native-svg';
 import { MyComponent } from '@my-sample/my-lib';
 import { Amplify } from 'aws-amplify';
-const aws_exports = require('../aws-exports').default;
+import { Authenticator } from '@aws-amplify/ui-react-native';
+import aws_exports from '../aws-exports';
 Amplify.configure(aws_exports);
 
 export const App = () => {
@@ -22,7 +22,8 @@ export const App = () => {
   const scrollViewRef = useRef<null | ScrollView>(null);
 
   return (
-    <>
+    <Authenticator.Provider>
+      <Authenticator>
       <StatusBar barStyle="dark-content" />
       <SafeAreaView>
         <ScrollView
@@ -592,7 +593,8 @@ export const App = () => {
           </View>
         </ScrollView>
       </SafeAreaView>
-    </>
+      </Authenticator>
+    </Authenticator.Provider>
   );
 };
 const styles = StyleSheet.create({

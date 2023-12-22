@@ -3,29 +3,18 @@
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
     "module": "commonjs",
-    "types": ["jest", "node", "react-native"]
+    "types": ["jest", "node"]
   },
   "include": [
     "jest.config.ts",
-    "test-setup.ts",
-    
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.js",
+    "src/**/*.jsx",
     "src/**/*.test.ts",
     "src/**/*.test.tsx",
     "src/**/*.test.js",
     "src/**/*.test.jsx",
-
-    "src/**/*.spec.ts",
-    "src/**/*.spec.tsx",
-    "src/**/*.spec.js",
-    "src/**/*.spec.jsx",
-
-    "src/**/*.test-helper.tsx",
-
-    "src/**/*.d.ts",
-
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.js",
-    "src/**/*.jsx"
+    "src/**/*.d.ts"
   ]
 }

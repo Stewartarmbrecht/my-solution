@@ -40,6 +40,11 @@ Cntrl+Shift+P
 ```
 npm install
 ```
+5. Setup AWS amplify
+```
+amplify init
+amplify push
+```
 
 ## Running the App
 To run the app you need to export the ip address of your machine then start the app.  This command will start the app in web mode:
