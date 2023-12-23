@@ -40,7 +40,7 @@ Cntrl+Shift+P
 ```
 npm install
 ```
-5. Setup AWS amplify
+5. Setup AWS amplify. You might need to delete (/amplify/team-provider-info.json) to get amplify init to work.
 ```
 amplify init
 amplify push
