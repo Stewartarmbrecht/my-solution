@@ -16,6 +16,5 @@
     "**/*.tsx", 
     "**/*.js", 
     "**/*.jsx",
-    "../../packages/my-lib/src/**/*.ts",
   ]
 }

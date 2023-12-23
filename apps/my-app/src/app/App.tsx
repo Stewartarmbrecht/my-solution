@@ -11,7 +11,7 @@ import {
   Linking,
 } from 'react-native';
 import Svg, { G, Path } from 'react-native-svg';
-import { MyComponent } from '@my-sample/my-lib';
+import { MyComponent } from '@my-sample/my-ui';
 import { Amplify } from 'aws-amplify';
 import { Authenticator } from '@aws-amplify/ui-react-native';
 import aws_exports from '../aws-exports';
