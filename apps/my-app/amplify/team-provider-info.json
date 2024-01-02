@@ -14,6 +14,9 @@
     "categories": {
       "auth": {
         "mysamplebackendfc3d43bf": {}
+      },
+      "api": {
+        "mysamplebackend": {}
       }
     }
   }

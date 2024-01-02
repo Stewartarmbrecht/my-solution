@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/accessible-emoji */
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -10,33 +10,67 @@ import {
   TouchableOpacity,
   Linking,
   Pressable,
+  TextInput,
 } from 'react-native';
 import Svg, { G, Path } from 'react-native-svg';
 import { MyComponent } from '@my-sample/my-ui';
-import { Amplify } from '@aws-amplify/core';
+
+import { Amplify } from 'aws-amplify';
+import amplifyconfig from '../amplifyconfiguration.json';
+import { signOut, getCurrentUser, AuthUser } from 'aws-amplify/auth';
+
 import { Authenticator } from '@aws-amplify/ui-react-native';
-import aws_exports from '../aws-exports';
-import { DataStore } from '@aws-amplify/datastore';
-import { ExpoSQLiteAdapter } from '@aws-amplify/datastore-storage-adapter/ExpoSQLiteAdapter';
+import { DataStore, SortDirection } from '@aws-amplify/datastore';
+//import { ExpoSQLiteAdapter } from '@aws-amplify/datastore-storage-adapter/ExpoSQLiteAdapter';
 import { Post, PostStatus } from '../models';
-Amplify.configure(aws_exports);
+Amplify.configure(amplifyconfig);
 DataStore.configure({
-  storageAdapter: ExpoSQLiteAdapter
+  //storageAdapter: ExpoSQLiteAdapter
 });
 
 export const App = () => {
   const [whatsNextYCoord, setWhatsNextYCoord] = useState<number>(0);
   const scrollViewRef = useRef<null | ScrollView>(null);
-  const writePost = async () => {
+  const [user, setUser] = useState<AuthUser | null>(null);
+  const [posts, setPosts] = useState<Post[] | null>(null);
+  const [newPostName, setNewPostName] = useState('');
+  const createPost = async () => {
     const post = await DataStore.save(
       new Post({
-        title: 'Hello World',
+        title: newPostName,
         rating: 5,
         status: PostStatus.ACTIVE,
       })
     );
     console.log('Post saved successfully!', post);
   }
+
+  async function handleSignOut() {
+    try {
+      await signOut();
+    } catch (error) {
+      console.log('error signing out: ', error);
+    }
+  }
+  useEffect(() => {
+    async function fetchData() {
+      setUser(await getCurrentUser());
+    }
+    fetchData();
+    const subscription = DataStore.observeQuery(
+      Post,
+      p => p, {
+        sort: s => s.rating(SortDirection.ASCENDING)
+      }
+    ).subscribe(snapshot => {
+      const { items, isSynced } = snapshot;
+      console.log(`[Snapshot] item count: ${items.length}, isSynced: ${isSynced}`);
+      setPosts(items);
+    });
+    return () => {
+      subscription.unsubscribe()
+    };
+  }, []); // Or [] if effect doesn't need props or state  
 
   return (
     <Authenticator.Provider>
@@ -52,10 +86,35 @@ export const App = () => {
         >
           <View style={styles.section}>
             <MyComponent />
-            <Pressable onPress={writePost}>
-              <Text>Press me</Text>
+            <Pressable 
+              onPress={handleSignOut}
+              style={styles.testButton}
+            >
+              <Text style={[styles.textMd, styles.textCenter]}>Sign Out</Text>
             </Pressable>
-            <Text style={styles.textLg}>Hello there,</Text>
+            <View>
+              <Text>Username: {user?.username}</Text>
+              <Text>New Post:</Text>
+              <TextInput
+                style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+                onChangeText={text => setNewPostName(text)}
+                value={newPostName}
+                accessibilityLabel='New Post Name'
+              />
+              <Pressable 
+                onPress={createPost}
+                style={styles.testButton}
+              >
+                <Text style={[styles.textMd, styles.textCenter]}>Add</Text>
+              </Pressable>
+              <Text>Posts:</Text>
+            </View>
+            {posts && posts.map((post, index) => (
+              <View key={index}>
+                <Text>{post.title}</Text>
+              </View>
+            ))}
+            <Text style={styles.textLg}>Hello there {user?.username},</Text>
             <Text style={[styles.textXL, styles.appTitleText]} testID="heading">
               Welcome MyApp 👋
             </Text>
@@ -727,6 +786,13 @@ const styles = StyleSheet.create({
   },
   whatsNextButton: {
     backgroundColor: '#ffffff',
+    paddingVertical: 16,
+    borderRadius: 8,
+    width: '50%',
+    marginTop: 24,
+  },
+  testButton: {
+    backgroundColor: '#cccccc',
     paddingVertical: 16,
     borderRadius: 8,
     width: '50%',

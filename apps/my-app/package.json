@@ -4,14 +4,14 @@
   "private": true,
   "dependencies": {
     "@aws-amplify/core": "*",
-    "@aws-amplify/datastore-storage-adapter": "*",
     "@aws-amplify/datastore": "*",
+    "@aws-amplify/datastore-storage-adapter": "*",
     "@aws-amplify/ui-react-native": "*",
     "@expo/metro-config": "*",
     "@nx/expo": "*",
     "@testing-library/jest-native": "*",
     "@testing-library/react-native": "*",
-    "aws-amplify": "*",
+    "aws-amplify": "^6.0.9",
     "core-js": "*",
     "expo": "*",
     "expo-updates": "*",
@@ -20,18 +20,18 @@
     "react-dom": "*",
     "react-native": "*",
     "react-native-get-random-values": "*",
+    "react-native-safe-area-context": "*",
     "react-native-svg": "*",
     "react-native-svg-transformer": "*",
-    "react-native-web": "*",
-    "react-native-safe-area-context": "*",
     "react-native-url-polyfill": "*",
+    "react-native-web": "*",
     "react-test-renderer": "*",
     "tslib": "*"
   },
   "devDependencies": {
+    "@nx/expo": "*",
     "@testing-library/jest-native": "*",
-    "@testing-library/react-native": "*",
-    "@nx/expo": "*"
+    "@testing-library/react-native": "*"
   },
   "scripts": {
     "eas-build-pre-install": "cd ../../ && node tools/scripts/eas-build-pre-install.mjs . apps/my-app && cp package-lock.json apps/my-app",
