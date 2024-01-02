@@ -1,5 +1,6 @@
 import 'react-native-url-polyfill/auto';
 import 'react-native-get-random-values';
+import 'core-js/full/symbol/async-iterator';
 
 import { registerRootComponent } from 'expo';
 

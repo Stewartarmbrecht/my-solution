@@ -9,17 +9,34 @@ import {
   StatusBar,
   TouchableOpacity,
   Linking,
+  Pressable,
 } from 'react-native';
 import Svg, { G, Path } from 'react-native-svg';
 import { MyComponent } from '@my-sample/my-ui';
-import { Amplify } from 'aws-amplify';
+import { Amplify } from '@aws-amplify/core';
 import { Authenticator } from '@aws-amplify/ui-react-native';
 import aws_exports from '../aws-exports';
+import { DataStore } from '@aws-amplify/datastore';
+import { ExpoSQLiteAdapter } from '@aws-amplify/datastore-storage-adapter/ExpoSQLiteAdapter';
+import { Post, PostStatus } from '../models';
 Amplify.configure(aws_exports);
+DataStore.configure({
+  storageAdapter: ExpoSQLiteAdapter
+});
 
 export const App = () => {
   const [whatsNextYCoord, setWhatsNextYCoord] = useState<number>(0);
   const scrollViewRef = useRef<null | ScrollView>(null);
+  const writePost = async () => {
+    const post = await DataStore.save(
+      new Post({
+        title: 'Hello World',
+        rating: 5,
+        status: PostStatus.ACTIVE,
+      })
+    );
+    console.log('Post saved successfully!', post);
+  }
 
   return (
     <Authenticator.Provider>
@@ -35,6 +52,9 @@ export const App = () => {
         >
           <View style={styles.section}>
             <MyComponent />
+            <Pressable onPress={writePost}>
+              <Text>Press me</Text>
+            </Pressable>
             <Text style={styles.textLg}>Hello there,</Text>
             <Text style={[styles.textXL, styles.appTitleText]} testID="heading">
               Welcome MyApp 👋

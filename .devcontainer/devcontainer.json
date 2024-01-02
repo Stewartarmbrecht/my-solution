@@ -12,7 +12,7 @@
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "npm install -g sharp-cli; npm install -g n; sudo -E env \"PATH=$PATH\" n lts; n prune; npm install -g npm@latest; npm install -g @aws-amplify/cli; npm install -g eas-cli",
+	"postCreateCommand": "npm install -g sharp-cli@^2.1.0; npm install -g sharp-cli; npm install -g n; sudo -E env \"PATH=$PATH\" n lts; n prune; npm install -g npm@latest; npm install -g @aws-amplify/cli; npm install -g eas-cli",
 
 	// Configure tool-specific properties.
 	// "customizations": {},
@@ -27,5 +27,18 @@
 		"10.24.1.57:19301:19301",
 		"10.24.1.57:19302:19302",
 		"10.24.1.57:19306:19306"
-	  ]
+	],
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"GraphQL.vscode-graphql",
+				"dbaeumer.vscode-eslint",
+				"expo.vscode-expo-tools",
+				"GitHub.copilot",
+				"GitHub.copilot-chat",
+				"nrwl.angular-console",
+				"donjayamanne.githistory"
+			]
+		}
+	}
 	}
