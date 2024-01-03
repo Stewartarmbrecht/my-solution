@@ -16,13 +16,12 @@ import Svg, { G, Path } from 'react-native-svg';
 import { MyComponent } from '@my-sample/my-ui';
 
 import { Amplify } from 'aws-amplify';
-import amplifyconfig from '../amplifyconfiguration.json';
 import { signOut, getCurrentUser, AuthUser } from 'aws-amplify/auth';
 
 import { Authenticator } from '@aws-amplify/ui-react-native';
 import { DataStore, SortDirection } from '@aws-amplify/datastore';
 //import { ExpoSQLiteAdapter } from '@aws-amplify/datastore-storage-adapter/ExpoSQLiteAdapter';
-import { Post, PostStatus } from '../models';
+import { Post, PostStatus, amplifyconfig } from '@my-sample/my-backend';
 Amplify.configure(amplifyconfig);
 DataStore.configure({
   //storageAdapter: ExpoSQLiteAdapter
@@ -85,6 +84,10 @@ export const App = () => {
           style={styles.scrollView}
         >
           <View style={styles.section}>
+            <Text style={styles.textLg}>Hello there {user?.username},</Text>
+            <Text style={[styles.textXL, styles.appTitleText]} testID="heading">
+              Welcome MyApp 👋
+            </Text>
             <MyComponent />
             <Pressable 
               onPress={handleSignOut}
@@ -114,10 +117,6 @@ export const App = () => {
                 <Text>{post.title}</Text>
               </View>
             ))}
-            <Text style={styles.textLg}>Hello there {user?.username},</Text>
-            <Text style={[styles.textXL, styles.appTitleText]} testID="heading">
-              Welcome MyApp 👋
-            </Text>
           </View>
           <View style={styles.section}>
             <View style={styles.hero}>

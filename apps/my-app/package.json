@@ -11,7 +11,7 @@
     "@nx/expo": "*",
     "@testing-library/jest-native": "*",
     "@testing-library/react-native": "*",
-    "aws-amplify": "^6.0.9",
+    "aws-amplify": "*",
     "core-js": "*",
     "expo": "*",
     "expo-updates": "*",
