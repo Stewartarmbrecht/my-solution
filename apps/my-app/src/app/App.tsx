@@ -10,18 +10,17 @@ import {
   TouchableOpacity,
   Linking,
   Pressable,
-  TextInput,
 } from 'react-native';
 import Svg, { G, Path } from 'react-native-svg';
-import { MyComponent } from '@my-sample/my-ui';
+import { MyComponent, MyPosts } from '@my-sample/my-ui';
 
 import { Amplify } from 'aws-amplify';
 import { signOut, getCurrentUser, AuthUser } from 'aws-amplify/auth';
 
 import { Authenticator } from '@aws-amplify/ui-react-native';
-import { DataStore, SortDirection } from '@aws-amplify/datastore';
+import { DataStore } from '@aws-amplify/datastore';
 //import { ExpoSQLiteAdapter } from '@aws-amplify/datastore-storage-adapter/ExpoSQLiteAdapter';
-import { Post, PostStatus, amplifyconfig } from '@my-sample/my-backend';
+import { amplifyconfig } from '@my-sample/my-backend';
 Amplify.configure(amplifyconfig);
 DataStore.configure({
   //storageAdapter: ExpoSQLiteAdapter
@@ -31,19 +30,6 @@ export const App = () => {
   const [whatsNextYCoord, setWhatsNextYCoord] = useState<number>(0);
   const scrollViewRef = useRef<null | ScrollView>(null);
   const [user, setUser] = useState<AuthUser | null>(null);
-  const [posts, setPosts] = useState<Post[] | null>(null);
-  const [newPostName, setNewPostName] = useState('');
-  const createPost = async () => {
-    const post = await DataStore.save(
-      new Post({
-        title: newPostName,
-        rating: 5,
-        status: PostStatus.ACTIVE,
-      })
-    );
-    console.log('Post saved successfully!', post);
-  }
-
   async function handleSignOut() {
     try {
       await signOut();
@@ -56,19 +42,6 @@ export const App = () => {
       setUser(await getCurrentUser());
     }
     fetchData();
-    const subscription = DataStore.observeQuery(
-      Post,
-      p => p, {
-        sort: s => s.rating(SortDirection.ASCENDING)
-      }
-    ).subscribe(snapshot => {
-      const { items, isSynced } = snapshot;
-      console.log(`[Snapshot] item count: ${items.length}, isSynced: ${isSynced}`);
-      setPosts(items);
-    });
-    return () => {
-      subscription.unsubscribe()
-    };
   }, []); // Or [] if effect doesn't need props or state  
 
   return (
@@ -97,26 +70,8 @@ export const App = () => {
             </Pressable>
             <View>
               <Text>Username: {user?.username}</Text>
-              <Text>New Post:</Text>
-              <TextInput
-                style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
-                onChangeText={text => setNewPostName(text)}
-                value={newPostName}
-                accessibilityLabel='New Post Name'
-              />
-              <Pressable 
-                onPress={createPost}
-                style={styles.testButton}
-              >
-                <Text style={[styles.textMd, styles.textCenter]}>Add</Text>
-              </Pressable>
-              <Text>Posts:</Text>
             </View>
-            {posts && posts.map((post, index) => (
-              <View key={index}>
-                <Text>{post.title}</Text>
-              </View>
-            ))}
+            <MyPosts />
           </View>
           <View style={styles.section}>
             <View style={styles.hero}>
