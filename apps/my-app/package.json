@@ -3,9 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
-    "@aws-amplify/core": "*",
     "@aws-amplify/datastore": "*",
-    "@aws-amplify/datastore-storage-adapter": "*",
     "@aws-amplify/ui-react-native": "*",
     "@expo/metro-config": "*",
     "@nx/expo": "*",
