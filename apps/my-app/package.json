@@ -5,7 +5,6 @@
   "dependencies": {
     "@aws-amplify/datastore": "*",
     "@aws-amplify/ui-react-native": "*",
-    "@expo/metro-config": "*",
     "@nx/expo": "*",
     "@testing-library/jest-native": "*",
     "@testing-library/react-native": "*",
@@ -13,7 +12,6 @@
     "core-js": "*",
     "expo": "*",
     "expo-updates": "*",
-    "metro-config": "*",
     "react": "*",
     "react-dom": "*",
     "react-native": "*",
@@ -24,7 +22,9 @@
     "react-native-url-polyfill": "*",
     "react-native-web": "*",
     "react-test-renderer": "*",
-    "tslib": "*"
+    "tslib": "*",
+    "@expo/metro-config": "*",
+    "metro-config": "*"
   },
   "devDependencies": {
     "@nx/expo": "*",
