@@ -15,6 +15,7 @@ export const onCreatePost = /* GraphQL */ `subscription OnCreatePost($filter: Mo
     status
     rating
     content
+    author
     createdAt
     updatedAt
     _version
@@ -34,6 +35,7 @@ export const onUpdatePost = /* GraphQL */ `subscription OnUpdatePost($filter: Mo
     status
     rating
     content
+    author
     createdAt
     updatedAt
     _version
@@ -53,6 +55,7 @@ export const onDeletePost = /* GraphQL */ `subscription OnDeletePost($filter: Mo
     status
     rating
     content
+    author
     createdAt
     updatedAt
     _version

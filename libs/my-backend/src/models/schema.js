@@ -40,6 +40,13 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
+                "author": {
+                    "name": "author",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -78,5 +85,5 @@ export const schema = {
     },
     "nonModels": {},
     "codegenVersion": "3.4.4",
-    "version": "c8f7b72ad6040a2f04d1500f59aa83e0"
+    "version": "d16a6d495775b96a9d6bfe1d87feff07"
 };

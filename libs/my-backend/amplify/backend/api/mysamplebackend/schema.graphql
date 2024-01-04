@@ -8,6 +8,7 @@ type Post @model {
   status: PostStatus!
   rating: Int
   content: String
+  author: String
 }
 
 enum PostStatus {

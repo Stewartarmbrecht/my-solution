@@ -112,7 +112,7 @@
           ]
         },
         "Description": "my-sample-api-key",
-        "Expires": 1735734641
+        "Expires": 1735909415
       }
     },
     "GraphQLAPINONEDS95A13CF0": {
@@ -482,6 +482,5 @@
         }
       }
     }
-  },
-  "Description": "{\"createdOn\":\"Linux\",\"createdBy\":\"Amplify\",\"createdWith\":\"12.10.0\",\"stackType\":\"api-AppSync\",\"metadata\":{}}"
+  }
 }

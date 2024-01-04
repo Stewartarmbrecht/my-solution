@@ -18,6 +18,7 @@ export const createPost = /* GraphQL */ `mutation CreatePost(
     status
     rating
     content
+    author
     createdAt
     updatedAt
     _version
@@ -40,6 +41,7 @@ export const updatePost = /* GraphQL */ `mutation UpdatePost(
     status
     rating
     content
+    author
     createdAt
     updatedAt
     _version
@@ -62,6 +64,7 @@ export const deletePost = /* GraphQL */ `mutation DeletePost(
     status
     rating
     content
+    author
     createdAt
     updatedAt
     _version

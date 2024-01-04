@@ -1,5 +1,4 @@
 import { ModelInit, MutableModel } from "@aws-amplify/datastore";
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import { LazyLoading, LazyLoadingDisabled } from "@aws-amplify/datastore";
 
@@ -18,6 +17,7 @@ type EagerPost = {
   readonly status: PostStatus | keyof typeof PostStatus;
   readonly rating?: number | null;
   readonly content?: string | null;
+  readonly author?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -28,6 +28,7 @@ type LazyPost = {
   readonly status: PostStatus | keyof typeof PostStatus;
   readonly rating?: number | null;
   readonly content?: string | null;
+  readonly author?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }

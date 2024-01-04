@@ -15,6 +15,7 @@ export const getPost = /* GraphQL */ `query GetPost($id: ID!) {
     status
     rating
     content
+    author
     createdAt
     updatedAt
     _version
@@ -36,6 +37,7 @@ export const listPosts = /* GraphQL */ `query ListPosts(
       status
       rating
       content
+      author
       createdAt
       updatedAt
       _version
@@ -67,6 +69,7 @@ export const syncPosts = /* GraphQL */ `query SyncPosts(
       status
       rating
       content
+      author
       createdAt
       updatedAt
       _version

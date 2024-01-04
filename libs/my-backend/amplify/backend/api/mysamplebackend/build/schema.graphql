@@ -4,6 +4,7 @@ type Post {
   status: PostStatus!
   rating: Int
   content: String
+  author: String
   createdAt: AWSDateTime!
   updatedAt: AWSDateTime!
   _version: Int!
@@ -183,6 +184,7 @@ input ModelPostFilterInput {
   status: ModelPostStatusInput
   rating: ModelIntInput
   content: ModelStringInput
+  author: ModelStringInput
   and: [ModelPostFilterInput]
   or: [ModelPostFilterInput]
   not: ModelPostFilterInput
@@ -200,6 +202,7 @@ input ModelPostConditionInput {
   status: ModelPostStatusInput
   rating: ModelIntInput
   content: ModelStringInput
+  author: ModelStringInput
   and: [ModelPostConditionInput]
   or: [ModelPostConditionInput]
   not: ModelPostConditionInput
@@ -212,6 +215,7 @@ input CreatePostInput {
   status: PostStatus!
   rating: Int
   content: String
+  author: String
   _version: Int
 }
 
@@ -221,6 +225,7 @@ input UpdatePostInput {
   status: PostStatus
   rating: Int
   content: String
+  author: String
   _version: Int
 }
 
@@ -241,6 +246,7 @@ input ModelSubscriptionPostFilterInput {
   status: ModelSubscriptionStringInput
   rating: ModelSubscriptionIntInput
   content: ModelSubscriptionStringInput
+  author: ModelSubscriptionStringInput
   and: [ModelSubscriptionPostFilterInput]
   or: [ModelSubscriptionPostFilterInput]
   _deleted: ModelBooleanInput
