@@ -15,6 +15,6 @@
     "src/**/*.tsx",
     "src/**/*.js",
     "src/**/*.jsx",
-    "**/*.json",
+    "**/*.json", "app.config.js",
   ]
 }
