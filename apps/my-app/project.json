@@ -11,10 +11,11 @@
         "port": 19300
       }
     },
-    "serve": {
+    "serve-web": {
       "executor": "nx:run-commands",
+      "dependsOn": ["ensure-symlink", "sync-deps"],
       "options": {
-        "command": "nx start my-app"
+        "command": "npx serve -s dist/apps/my-app -l 5000"
       }
     },
     "run-ios": {
@@ -74,8 +75,11 @@
     },
     "export-web": {
       "executor": "@nx/expo:export",
+      "dependsOn": ["ensure-symlink", "sync-deps"],
       "options": {
-        "bundler": "metro"
+        "platform": "web",
+        "bundler": "metro",
+        "outputDir": "../../dist/apps/my-app"
       }
     },
     "lint": {
