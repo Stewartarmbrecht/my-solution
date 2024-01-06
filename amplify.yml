@@ -6,6 +6,7 @@ applications:
         preBuild:
           commands:
             - nvm use 20
+            - npm install
             - npm install --quiet --global expo-cli
             - npm ci
         build:
