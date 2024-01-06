@@ -20,3 +20,4 @@ applications:
             - node_modules/**/*
             - $(npm root --global)/**/*
       appRoot: apps/my-app
+      
