@@ -6,20 +6,23 @@
       },
       "env": {
         "APP_VARIANT": "prod"
-      }
+      },
+      "channel": "development"
     },
     "development": {
       "developmentClient": true,
       "distribution": "internal",
       "env": {
         "APP_VARIANT": "development"
-      }
+      },
+      "channel": "development"
     },
     "preview": {
       "distribution": "internal",
       "env": {
         "APP_VARIANT": "preview"
-      }
+      },
+      "channel": "preview"
     }
   },
   "submit": {

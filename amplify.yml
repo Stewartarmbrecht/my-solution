@@ -6,10 +6,12 @@ frontend:
         - nvm use 20
         - npm install
         - npm install --quiet --global expo-cli
+        - npm install --quiet --global eas-cli
         - npm ci
     build:
       commands:
         - npx nx export-web my-app
+        - npx nx build my-app --profile preview --platform ios --non-interactive --no-wait
   artifacts:
     baseDirectory: dist/apps/my-app
     files:
