@@ -3,15 +3,9 @@ frontend:
   phases:
     preBuild:
       commands:
+        - nvm use 20
         - npm install --quiet --global expo-cli
-        - >
-          if [ -f yarn.lock ]; then
-            yarn
-          elif [ -f package-lock.json ] || [ -f npm-shrinkwrap.json ]; then
-            npm ci
-          else
-            npm install
-          fi
+        - npm ci
     build:
       commands:
         - npx nx export-web my-app
