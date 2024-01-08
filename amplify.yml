@@ -11,7 +11,7 @@ frontend:
     build:
       commands:
         - npx nx export-web my-app
-        - npx nx build my-app --profile preview --platform ios --non-interactive --no-wait
+        - npx nx update my-app --platform ios --branch preview --auto --interactive false
   artifacts:
     baseDirectory: dist/apps/my-app
     files:

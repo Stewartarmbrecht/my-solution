@@ -59,7 +59,7 @@ export const App = () => {
           <View style={styles.section}>
             <Text style={styles.textLg}>Hello there {user?.username},</Text>
             <Text style={[styles.textXL, styles.appTitleText]} testID="heading">
-              Welcome to MyApp 👋
+              Welcome to MyApp v1.0.1 👋
             </Text>
             <MyComponent />
             <Pressable 
