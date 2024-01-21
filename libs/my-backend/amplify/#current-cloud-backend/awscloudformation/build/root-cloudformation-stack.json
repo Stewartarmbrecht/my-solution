@@ -215,7 +215,7 @@
           "DynamoDBBillingMode": "PAY_PER_REQUEST",
           "DynamoDBEnableServerSideEncryption": false,
           "S3DeploymentBucket": "amplify-mysamplebackend-dev-222614-deployment",
-          "S3DeploymentRootKey": "amplify-appsync-files/9d72cbac3cbf5f97d5b4b5a87255d78c5cac7932",
+          "S3DeploymentRootKey": "amplify-appsync-files/2fe7fb40df9524d2c82fc480190a96d0b041188d",
           "env": "dev"
         }
       }
@@ -272,6 +272,8 @@
                 "            try {",
                 "                delete authParamsJson.Statement[0].Condition;",
                 "                delete unauthParamsJson.Statement[0].Condition;",
+                "                authParamsJson.Statement[0].Effect = 'Deny'",
+                "                unauthParamsJson.Statement[0].Effect = 'Deny'",
                 "                let authParams = {PolicyDocument: JSON.stringify(authParamsJson), RoleName: authRoleName};",
                 "                let unauthParams = {PolicyDocument: JSON.stringify(unauthParamsJson), RoleName: unauthRoleName};",
                 "                const iam = new IAMClient({region: event.ResourceProperties.region});",

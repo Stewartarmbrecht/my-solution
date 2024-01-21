@@ -8,16 +8,17 @@ type GeneratedMutation<InputType, OutputType> = string & {
   __generatedMutationOutput: OutputType;
 };
 
-export const createPost = /* GraphQL */ `mutation CreatePost(
-  $input: CreatePostInput!
-  $condition: ModelPostConditionInput
+export const createPostData = /* GraphQL */ `mutation CreatePostData(
+  $input: CreatePostDataInput!
+  $condition: ModelPostDataConditionInput
 ) {
-  createPost(input: $input, condition: $condition) {
+  createPostData(input: $input, condition: $condition) {
     id
     title
     status
     rating
     content
+    notes
     author
     createdAt
     updatedAt
@@ -28,19 +29,20 @@ export const createPost = /* GraphQL */ `mutation CreatePost(
   }
 }
 ` as GeneratedMutation<
-  APITypes.CreatePostMutationVariables,
-  APITypes.CreatePostMutation
+  APITypes.CreatePostDataMutationVariables,
+  APITypes.CreatePostDataMutation
 >;
-export const updatePost = /* GraphQL */ `mutation UpdatePost(
-  $input: UpdatePostInput!
-  $condition: ModelPostConditionInput
+export const updatePostData = /* GraphQL */ `mutation UpdatePostData(
+  $input: UpdatePostDataInput!
+  $condition: ModelPostDataConditionInput
 ) {
-  updatePost(input: $input, condition: $condition) {
+  updatePostData(input: $input, condition: $condition) {
     id
     title
     status
     rating
     content
+    notes
     author
     createdAt
     updatedAt
@@ -51,19 +53,20 @@ export const updatePost = /* GraphQL */ `mutation UpdatePost(
   }
 }
 ` as GeneratedMutation<
-  APITypes.UpdatePostMutationVariables,
-  APITypes.UpdatePostMutation
+  APITypes.UpdatePostDataMutationVariables,
+  APITypes.UpdatePostDataMutation
 >;
-export const deletePost = /* GraphQL */ `mutation DeletePost(
-  $input: DeletePostInput!
-  $condition: ModelPostConditionInput
+export const deletePostData = /* GraphQL */ `mutation DeletePostData(
+  $input: DeletePostDataInput!
+  $condition: ModelPostDataConditionInput
 ) {
-  deletePost(input: $input, condition: $condition) {
+  deletePostData(input: $input, condition: $condition) {
     id
     title
     status
     rating
     content
+    notes
     author
     createdAt
     updatedAt
@@ -74,6 +77,6 @@ export const deletePost = /* GraphQL */ `mutation DeletePost(
   }
 }
 ` as GeneratedMutation<
-  APITypes.DeletePostMutationVariables,
-  APITypes.DeletePostMutation
+  APITypes.DeletePostDataMutationVariables,
+  APITypes.DeletePostDataMutation
 >;

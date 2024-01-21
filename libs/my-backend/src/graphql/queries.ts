@@ -8,13 +8,14 @@ type GeneratedQuery<InputType, OutputType> = string & {
   __generatedQueryOutput: OutputType;
 };
 
-export const getPost = /* GraphQL */ `query GetPost($id: ID!) {
-  getPost(id: $id) {
+export const getPostData = /* GraphQL */ `query GetPostData($id: String!) {
+  getPostData(id: $id) {
     id
     title
     status
     rating
     content
+    notes
     author
     createdAt
     updatedAt
@@ -24,19 +25,31 @@ export const getPost = /* GraphQL */ `query GetPost($id: ID!) {
     __typename
   }
 }
-` as GeneratedQuery<APITypes.GetPostQueryVariables, APITypes.GetPostQuery>;
-export const listPosts = /* GraphQL */ `query ListPosts(
-  $filter: ModelPostFilterInput
+` as GeneratedQuery<
+  APITypes.GetPostDataQueryVariables,
+  APITypes.GetPostDataQuery
+>;
+export const listPostData = /* GraphQL */ `query ListPostData(
+  $id: String
+  $filter: ModelPostDataFilterInput
   $limit: Int
   $nextToken: String
+  $sortDirection: ModelSortDirection
 ) {
-  listPosts(filter: $filter, limit: $limit, nextToken: $nextToken) {
+  listPostData(
+    id: $id
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    sortDirection: $sortDirection
+  ) {
     items {
       id
       title
       status
       rating
       content
+      notes
       author
       createdAt
       updatedAt
@@ -50,14 +63,17 @@ export const listPosts = /* GraphQL */ `query ListPosts(
     __typename
   }
 }
-` as GeneratedQuery<APITypes.ListPostsQueryVariables, APITypes.ListPostsQuery>;
-export const syncPosts = /* GraphQL */ `query SyncPosts(
-  $filter: ModelPostFilterInput
+` as GeneratedQuery<
+  APITypes.ListPostDataQueryVariables,
+  APITypes.ListPostDataQuery
+>;
+export const syncPostData = /* GraphQL */ `query SyncPostData(
+  $filter: ModelPostDataFilterInput
   $limit: Int
   $nextToken: String
   $lastSync: AWSTimestamp
 ) {
-  syncPosts(
+  syncPostData(
     filter: $filter
     limit: $limit
     nextToken: $nextToken
@@ -69,6 +85,7 @@ export const syncPosts = /* GraphQL */ `query SyncPosts(
       status
       rating
       content
+      notes
       author
       createdAt
       updatedAt
@@ -82,4 +99,7 @@ export const syncPosts = /* GraphQL */ `query SyncPosts(
     __typename
   }
 }
-` as GeneratedQuery<APITypes.SyncPostsQueryVariables, APITypes.SyncPostsQuery>;
+` as GeneratedQuery<
+  APITypes.SyncPostDataQueryVariables,
+  APITypes.SyncPostDataQuery
+>;

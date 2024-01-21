@@ -112,7 +112,7 @@
           ]
         },
         "Description": "my-sample-api-key",
-        "Expires": 1735909415
+        "Expires": 1737405530
       }
     },
     "GraphQLAPINONEDS95A13CF0": {
@@ -298,7 +298,7 @@
         ]
       }
     },
-    "Post": {
+    "PostData": {
       "Type": "AWS::CloudFormation::Stack",
       "Properties": {
         "TemplateURL": {
@@ -321,7 +321,7 @@
               {
                 "Ref": "S3DeploymentRootKey"
               },
-              "/stacks/Post.json"
+              "/stacks/PostData.json"
             ]
           ]
         },
@@ -411,7 +411,7 @@
       "DependsOn": [
         "GraphQLAPI",
         "GraphQLAPITransformerSchema3CB2AE18",
-        "Post"
+        "PostData"
       ]
     }
   },

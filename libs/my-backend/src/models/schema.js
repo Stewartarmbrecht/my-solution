@@ -1,12 +1,12 @@
 export const schema = {
     "models": {
-        "Post": {
-            "name": "Post",
+        "PostData": {
+            "name": "PostData",
             "fields": {
                 "id": {
                     "name": "id",
                     "isArray": false,
-                    "type": "ID",
+                    "type": "String",
                     "isRequired": true,
                     "attributes": []
                 },
@@ -40,6 +40,13 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
+                "notes": {
+                    "name": "notes",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "author": {
                     "name": "author",
                     "isArray": false,
@@ -65,11 +72,19 @@ export const schema = {
                 }
             },
             "syncable": true,
-            "pluralName": "Posts",
+            "pluralName": "PostData",
             "attributes": [
                 {
                     "type": "model",
                     "properties": {}
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "fields": [
+                            "id"
+                        ]
+                    }
                 }
             ]
         }
@@ -85,5 +100,5 @@ export const schema = {
     },
     "nonModels": {},
     "codegenVersion": "3.4.4",
-    "version": "d16a6d495775b96a9d6bfe1d87feff07"
+    "version": "ee3d5bce3c8617be647f5f99287b2f54"
 };

@@ -1,3 +1,3 @@
-import amplifyconfig from './aws-exports';
-export { Post, PostStatus } from './models';
-export { amplifyconfig };
+export { PostData, PostStatus } from './models';
+export { MyBackend as Backend } from './MyBackend';
+export { DataStore } from '@aws-amplify/datastore';

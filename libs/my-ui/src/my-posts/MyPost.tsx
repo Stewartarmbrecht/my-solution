@@ -1,6 +1,5 @@
-import { Post } from '@my-sample/my-backend';
+import { useAppDispatch, deletePost, Post } from '@my-sample/my-state';
 import { View, Text, StyleSheet, Pressable } from 'react-native';
-import { DataStore } from '@aws-amplify/datastore';
 
 /* eslint-disable-next-line */
 export interface MyPostProps {
@@ -9,15 +8,17 @@ export interface MyPostProps {
 
 
 export function MyPost(props: MyPostProps) {
-  const deletePost = async () => {
-    const post = await DataStore.delete(props.post);
-    console.log('Post deleted successfully!', post);
+  const dispatch = useAppDispatch();
+  const deletePostHandler = async () => {
+    dispatch(deletePost(props.post));
+    // const post = await DataStore.delete(props.post);
+    console.log('Post deleted successfully!', props.post);
   }
 
   return (
     <View key={props.post.id} style={styles.container}>
       <Pressable 
-        onPress={deletePost}
+        onPress={deletePostHandler}
         style={styles.deleteButton}
       >
         <Text style={styles.deleteText}>X</Text>

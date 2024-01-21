@@ -24,10 +24,14 @@
     "react-test-renderer": "*",
     "tslib": "*",
     "@expo/metro-config": "*",
-    "metro-config": "*"
+    "metro-config": "*",
+    "@react-native-async-storage/async-storage": "*",
+    "react-redux": "*",
+    "@reduxjs/toolkit": "*"
   },
   "devDependencies": {
     "@nx/expo": "*",
+    "@react-native-async-storage/async-storage": "*",
     "@testing-library/jest-native": "*",
     "@testing-library/react-native": "*"
   },

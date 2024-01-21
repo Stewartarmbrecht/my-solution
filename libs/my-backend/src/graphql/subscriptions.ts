@@ -8,13 +8,14 @@ type GeneratedSubscription<InputType, OutputType> = string & {
   __generatedSubscriptionOutput: OutputType;
 };
 
-export const onCreatePost = /* GraphQL */ `subscription OnCreatePost($filter: ModelSubscriptionPostFilterInput) {
-  onCreatePost(filter: $filter) {
+export const onCreatePostData = /* GraphQL */ `subscription OnCreatePostData($filter: ModelSubscriptionPostDataFilterInput) {
+  onCreatePostData(filter: $filter) {
     id
     title
     status
     rating
     content
+    notes
     author
     createdAt
     updatedAt
@@ -25,16 +26,17 @@ export const onCreatePost = /* GraphQL */ `subscription OnCreatePost($filter: Mo
   }
 }
 ` as GeneratedSubscription<
-  APITypes.OnCreatePostSubscriptionVariables,
-  APITypes.OnCreatePostSubscription
+  APITypes.OnCreatePostDataSubscriptionVariables,
+  APITypes.OnCreatePostDataSubscription
 >;
-export const onUpdatePost = /* GraphQL */ `subscription OnUpdatePost($filter: ModelSubscriptionPostFilterInput) {
-  onUpdatePost(filter: $filter) {
+export const onUpdatePostData = /* GraphQL */ `subscription OnUpdatePostData($filter: ModelSubscriptionPostDataFilterInput) {
+  onUpdatePostData(filter: $filter) {
     id
     title
     status
     rating
     content
+    notes
     author
     createdAt
     updatedAt
@@ -45,16 +47,17 @@ export const onUpdatePost = /* GraphQL */ `subscription OnUpdatePost($filter: Mo
   }
 }
 ` as GeneratedSubscription<
-  APITypes.OnUpdatePostSubscriptionVariables,
-  APITypes.OnUpdatePostSubscription
+  APITypes.OnUpdatePostDataSubscriptionVariables,
+  APITypes.OnUpdatePostDataSubscription
 >;
-export const onDeletePost = /* GraphQL */ `subscription OnDeletePost($filter: ModelSubscriptionPostFilterInput) {
-  onDeletePost(filter: $filter) {
+export const onDeletePostData = /* GraphQL */ `subscription OnDeletePostData($filter: ModelSubscriptionPostDataFilterInput) {
+  onDeletePostData(filter: $filter) {
     id
     title
     status
     rating
     content
+    notes
     author
     createdAt
     updatedAt
@@ -65,6 +68,6 @@ export const onDeletePost = /* GraphQL */ `subscription OnDeletePost($filter: Mo
   }
 }
 ` as GeneratedSubscription<
-  APITypes.OnDeletePostSubscriptionVariables,
-  APITypes.OnDeletePostSubscription
+  APITypes.OnDeletePostDataSubscriptionVariables,
+  APITypes.OnDeletePostDataSubscription
 >;

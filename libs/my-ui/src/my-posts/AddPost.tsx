@@ -1,7 +1,8 @@
-import { Post, PostStatus } from '@my-sample/my-backend';
+import { PostStatus } from '@my-sample/my-backend';
 import { View, Text, TextInput, Pressable, StyleSheet } from 'react-native';
 import { useState } from 'react';
-import { DataStore } from '@aws-amplify/datastore';
+import { addPost, useAppDispatch, Post } from '@my-sample/my-state';
+import { nanoid } from '@reduxjs/toolkit';
 
 /* eslint-disable-next-line */
 export interface AddPostProps {
@@ -10,14 +11,22 @@ export interface AddPostProps {
 
 export function AddPost(props: AddPostProps) {
   const [newPostName, setNewPostName] = useState('');
+  const dispatch = useAppDispatch();
   const createPost = async () => {
-    const post = await DataStore.save(
-      new Post({
-        title: newPostName,
-        rating: 5,
-        status: PostStatus.ACTIVE,
-      })
-    );
+    const post: Post = {
+      id: nanoid(),
+      title: newPostName,
+      rating: 5,
+      status: PostStatus.ACTIVE,
+    };
+    dispatch(addPost(post));
+    // const post = await DataStore.save(
+    //   new Post({
+    //     title: newPostName,
+    //     rating: 5,
+    //     status: PostStatus.ACTIVE,
+    //   })
+    // );
     console.log('Post saved successfully!', post);
   }
 
