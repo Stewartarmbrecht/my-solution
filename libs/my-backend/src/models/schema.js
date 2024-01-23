@@ -6,6 +6,13 @@ export const schema = {
                 "id": {
                     "name": "id",
                     "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "clientId": {
+                    "name": "clientId",
+                    "isArray": false,
                     "type": "String",
                     "isRequired": true,
                     "attributes": []
@@ -79,10 +86,21 @@ export const schema = {
                     "properties": {}
                 },
                 {
-                    "type": "key",
+                    "type": "auth",
                     "properties": {
-                        "fields": [
-                            "id"
+                        "rules": [
+                            {
+                                "provider": "userPools",
+                                "ownerField": "owner",
+                                "allow": "owner",
+                                "identityClaim": "cognito:username",
+                                "operations": [
+                                    "create",
+                                    "update",
+                                    "delete",
+                                    "read"
+                                ]
+                            }
                         ]
                     }
                 }
@@ -100,5 +118,5 @@ export const schema = {
     },
     "nonModels": {},
     "codegenVersion": "3.4.4",
-    "version": "ee3d5bce3c8617be647f5f99287b2f54"
+    "version": "e6663dbce8e6930da4463706554c3b6e"
 };

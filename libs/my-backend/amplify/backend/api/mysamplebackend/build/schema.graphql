@@ -1,5 +1,6 @@
 type PostData {
-  id: String!
+  id: ID!
+  clientId: String!
   title: String!
   status: PostStatus!
   rating: Int
@@ -11,6 +12,7 @@ type PostData {
   _version: Int!
   _deleted: Boolean
   _lastChangedAt: AWSTimestamp!
+  owner: String
 }
 
 enum PostStatus {
@@ -180,7 +182,8 @@ input ModelPostStatusInput {
 }
 
 input ModelPostDataFilterInput {
-  id: ModelStringInput
+  id: ModelIDInput
+  clientId: ModelStringInput
   title: ModelStringInput
   status: ModelPostStatusInput
   rating: ModelIntInput
@@ -194,12 +197,13 @@ input ModelPostDataFilterInput {
 }
 
 type Query {
-  getPostData(id: String!): PostData
-  listPostData(id: String, filter: ModelPostDataFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelPostDataConnection
+  getPostData(id: ID!): PostData
+  listPostData(filter: ModelPostDataFilterInput, limit: Int, nextToken: String): ModelPostDataConnection
   syncPostData(filter: ModelPostDataFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelPostDataConnection
 }
 
 input ModelPostDataConditionInput {
+  clientId: ModelStringInput
   title: ModelStringInput
   status: ModelPostStatusInput
   rating: ModelIntInput
@@ -213,7 +217,8 @@ input ModelPostDataConditionInput {
 }
 
 input CreatePostDataInput {
-  id: String
+  id: ID
+  clientId: String!
   title: String!
   status: PostStatus!
   rating: Int
@@ -224,7 +229,8 @@ input CreatePostDataInput {
 }
 
 input UpdatePostDataInput {
-  id: String!
+  id: ID!
+  clientId: String
   title: String
   status: PostStatus
   rating: Int
@@ -235,7 +241,7 @@ input UpdatePostDataInput {
 }
 
 input DeletePostDataInput {
-  id: String!
+  id: ID!
   _version: Int
 }
 
@@ -246,7 +252,8 @@ type Mutation {
 }
 
 input ModelSubscriptionPostDataFilterInput {
-  id: ModelSubscriptionStringInput
+  id: ModelSubscriptionIDInput
+  clientId: ModelSubscriptionStringInput
   title: ModelSubscriptionStringInput
   status: ModelSubscriptionStringInput
   rating: ModelSubscriptionIntInput
@@ -259,7 +266,7 @@ input ModelSubscriptionPostDataFilterInput {
 }
 
 type Subscription {
-  onCreatePostData(filter: ModelSubscriptionPostDataFilterInput): PostData @aws_subscribe(mutations: ["createPostData"])
-  onUpdatePostData(filter: ModelSubscriptionPostDataFilterInput): PostData @aws_subscribe(mutations: ["updatePostData"])
-  onDeletePostData(filter: ModelSubscriptionPostDataFilterInput): PostData @aws_subscribe(mutations: ["deletePostData"])
+  onCreatePostData(filter: ModelSubscriptionPostDataFilterInput, owner: String): PostData @aws_subscribe(mutations: ["createPostData"])
+  onUpdatePostData(filter: ModelSubscriptionPostDataFilterInput, owner: String): PostData @aws_subscribe(mutations: ["updatePostData"])
+  onDeletePostData(filter: ModelSubscriptionPostDataFilterInput, owner: String): PostData @aws_subscribe(mutations: ["deletePostData"])
 }

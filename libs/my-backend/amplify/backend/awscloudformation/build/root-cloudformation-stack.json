@@ -1,5 +1,5 @@
 {
-  "Description": "Root Stack for AWS Amplify CLI",
+  "Description": "Root Stack for AWS Amplify Console",
   "AWSTemplateFormatVersion": "2010-09-09",
   "Parameters": {
     "DeploymentBucketName": {
@@ -214,8 +214,14 @@
           "AppSyncApiName": "mysamplebackend",
           "DynamoDBBillingMode": "PAY_PER_REQUEST",
           "DynamoDBEnableServerSideEncryption": false,
+          "AuthCognitoUserPoolId": {
+            "Fn::GetAtt": [
+              "authmysamplebackendfc3d43bf",
+              "Outputs.UserPoolId"
+            ]
+          },
           "S3DeploymentBucket": "amplify-mysamplebackend-dev-222614-deployment",
-          "S3DeploymentRootKey": "amplify-appsync-files/2fe7fb40df9524d2c82fc480190a96d0b041188d",
+          "S3DeploymentRootKey": "amplify-appsync-files/e7e8dbbab39ce490432c77a02e7c204c497f5ca4",
           "env": "dev"
         }
       }

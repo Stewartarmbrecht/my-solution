@@ -7,6 +7,7 @@ export enum PostStatus {
 
 export interface Post {
   id: string;
+  serverId?: string;
   title: string;
   status: PostStatus | keyof typeof PostStatus;
   rating?: number | null;

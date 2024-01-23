@@ -8,9 +8,13 @@ type GeneratedSubscription<InputType, OutputType> = string & {
   __generatedSubscriptionOutput: OutputType;
 };
 
-export const onCreatePostData = /* GraphQL */ `subscription OnCreatePostData($filter: ModelSubscriptionPostDataFilterInput) {
-  onCreatePostData(filter: $filter) {
+export const onCreatePostData = /* GraphQL */ `subscription OnCreatePostData(
+  $filter: ModelSubscriptionPostDataFilterInput
+  $owner: String
+) {
+  onCreatePostData(filter: $filter, owner: $owner) {
     id
+    clientId
     title
     status
     rating
@@ -22,6 +26,7 @@ export const onCreatePostData = /* GraphQL */ `subscription OnCreatePostData($fi
     _version
     _deleted
     _lastChangedAt
+    owner
     __typename
   }
 }
@@ -29,9 +34,13 @@ export const onCreatePostData = /* GraphQL */ `subscription OnCreatePostData($fi
   APITypes.OnCreatePostDataSubscriptionVariables,
   APITypes.OnCreatePostDataSubscription
 >;
-export const onUpdatePostData = /* GraphQL */ `subscription OnUpdatePostData($filter: ModelSubscriptionPostDataFilterInput) {
-  onUpdatePostData(filter: $filter) {
+export const onUpdatePostData = /* GraphQL */ `subscription OnUpdatePostData(
+  $filter: ModelSubscriptionPostDataFilterInput
+  $owner: String
+) {
+  onUpdatePostData(filter: $filter, owner: $owner) {
     id
+    clientId
     title
     status
     rating
@@ -43,6 +52,7 @@ export const onUpdatePostData = /* GraphQL */ `subscription OnUpdatePostData($fi
     _version
     _deleted
     _lastChangedAt
+    owner
     __typename
   }
 }
@@ -50,9 +60,13 @@ export const onUpdatePostData = /* GraphQL */ `subscription OnUpdatePostData($fi
   APITypes.OnUpdatePostDataSubscriptionVariables,
   APITypes.OnUpdatePostDataSubscription
 >;
-export const onDeletePostData = /* GraphQL */ `subscription OnDeletePostData($filter: ModelSubscriptionPostDataFilterInput) {
-  onDeletePostData(filter: $filter) {
+export const onDeletePostData = /* GraphQL */ `subscription OnDeletePostData(
+  $filter: ModelSubscriptionPostDataFilterInput
+  $owner: String
+) {
+  onDeletePostData(filter: $filter, owner: $owner) {
     id
+    clientId
     title
     status
     rating
@@ -64,6 +78,7 @@ export const onDeletePostData = /* GraphQL */ `subscription OnDeletePostData($fi
     _version
     _deleted
     _lastChangedAt
+    owner
     __typename
   }
 }

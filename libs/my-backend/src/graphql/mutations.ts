@@ -14,6 +14,7 @@ export const createPostData = /* GraphQL */ `mutation CreatePostData(
 ) {
   createPostData(input: $input, condition: $condition) {
     id
+    clientId
     title
     status
     rating
@@ -25,6 +26,7 @@ export const createPostData = /* GraphQL */ `mutation CreatePostData(
     _version
     _deleted
     _lastChangedAt
+    owner
     __typename
   }
 }
@@ -38,6 +40,7 @@ export const updatePostData = /* GraphQL */ `mutation UpdatePostData(
 ) {
   updatePostData(input: $input, condition: $condition) {
     id
+    clientId
     title
     status
     rating
@@ -49,6 +52,7 @@ export const updatePostData = /* GraphQL */ `mutation UpdatePostData(
     _version
     _deleted
     _lastChangedAt
+    owner
     __typename
   }
 }
@@ -62,6 +66,7 @@ export const deletePostData = /* GraphQL */ `mutation DeletePostData(
 ) {
   deletePostData(input: $input, condition: $condition) {
     id
+    clientId
     title
     status
     rating
@@ -73,6 +78,7 @@ export const deletePostData = /* GraphQL */ `mutation DeletePostData(
     _version
     _deleted
     _lastChangedAt
+    owner
     __typename
   }
 }

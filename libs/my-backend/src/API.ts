@@ -4,6 +4,7 @@
 
 export type CreatePostDataInput = {
   id?: string | null,
+  clientId: string,
   title: string,
   status: PostStatus,
   rating?: number | null,
@@ -20,6 +21,7 @@ export enum PostStatus {
 
 
 export type ModelPostDataConditionInput = {
+  clientId?: ModelStringInput | null,
   title?: ModelStringInput | null,
   status?: ModelPostStatusInput | null,
   rating?: ModelIntInput | null,
@@ -99,6 +101,7 @@ export type ModelBooleanInput = {
 export type PostData = {
   __typename: "PostData",
   id: string,
+  clientId: string,
   title: string,
   status: PostStatus,
   rating?: number | null,
@@ -110,10 +113,12 @@ export type PostData = {
   _version: number,
   _deleted?: boolean | null,
   _lastChangedAt: number,
+  owner?: string | null,
 };
 
 export type UpdatePostDataInput = {
   id: string,
+  clientId?: string | null,
   title?: string | null,
   status?: PostStatus | null,
   rating?: number | null,
@@ -129,7 +134,8 @@ export type DeletePostDataInput = {
 };
 
 export type ModelPostDataFilterInput = {
-  id?: ModelStringInput | null,
+  id?: ModelIDInput | null,
+  clientId?: ModelStringInput | null,
   title?: ModelStringInput | null,
   status?: ModelPostStatusInput | null,
   rating?: ModelIntInput | null,
@@ -142,11 +148,21 @@ export type ModelPostDataFilterInput = {
   _deleted?: ModelBooleanInput | null,
 };
 
-export enum ModelSortDirection {
-  ASC = "ASC",
-  DESC = "DESC",
-}
-
+export type ModelIDInput = {
+  ne?: string | null,
+  eq?: string | null,
+  le?: string | null,
+  lt?: string | null,
+  ge?: string | null,
+  gt?: string | null,
+  contains?: string | null,
+  notContains?: string | null,
+  between?: Array< string | null > | null,
+  beginsWith?: string | null,
+  attributeExists?: boolean | null,
+  attributeType?: ModelAttributeTypes | null,
+  size?: ModelSizeInput | null,
+};
 
 export type ModelPostDataConnection = {
   __typename: "ModelPostDataConnection",
@@ -156,7 +172,8 @@ export type ModelPostDataConnection = {
 };
 
 export type ModelSubscriptionPostDataFilterInput = {
-  id?: ModelSubscriptionStringInput | null,
+  id?: ModelSubscriptionIDInput | null,
+  clientId?: ModelSubscriptionStringInput | null,
   title?: ModelSubscriptionStringInput | null,
   status?: ModelSubscriptionStringInput | null,
   rating?: ModelSubscriptionIntInput | null,
@@ -166,6 +183,21 @@ export type ModelSubscriptionPostDataFilterInput = {
   and?: Array< ModelSubscriptionPostDataFilterInput | null > | null,
   or?: Array< ModelSubscriptionPostDataFilterInput | null > | null,
   _deleted?: ModelBooleanInput | null,
+};
+
+export type ModelSubscriptionIDInput = {
+  ne?: string | null,
+  eq?: string | null,
+  le?: string | null,
+  lt?: string | null,
+  ge?: string | null,
+  gt?: string | null,
+  contains?: string | null,
+  notContains?: string | null,
+  between?: Array< string | null > | null,
+  beginsWith?: string | null,
+  in?: Array< string | null > | null,
+  notIn?: Array< string | null > | null,
 };
 
 export type ModelSubscriptionStringInput = {
@@ -204,6 +236,7 @@ export type CreatePostDataMutation = {
   createPostData?:  {
     __typename: "PostData",
     id: string,
+    clientId: string,
     title: string,
     status: PostStatus,
     rating?: number | null,
@@ -215,6 +248,7 @@ export type CreatePostDataMutation = {
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
+    owner?: string | null,
   } | null,
 };
 
@@ -227,6 +261,7 @@ export type UpdatePostDataMutation = {
   updatePostData?:  {
     __typename: "PostData",
     id: string,
+    clientId: string,
     title: string,
     status: PostStatus,
     rating?: number | null,
@@ -238,6 +273,7 @@ export type UpdatePostDataMutation = {
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
+    owner?: string | null,
   } | null,
 };
 
@@ -250,6 +286,7 @@ export type DeletePostDataMutation = {
   deletePostData?:  {
     __typename: "PostData",
     id: string,
+    clientId: string,
     title: string,
     status: PostStatus,
     rating?: number | null,
@@ -261,6 +298,7 @@ export type DeletePostDataMutation = {
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
+    owner?: string | null,
   } | null,
 };
 
@@ -272,6 +310,7 @@ export type GetPostDataQuery = {
   getPostData?:  {
     __typename: "PostData",
     id: string,
+    clientId: string,
     title: string,
     status: PostStatus,
     rating?: number | null,
@@ -283,15 +322,14 @@ export type GetPostDataQuery = {
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
+    owner?: string | null,
   } | null,
 };
 
 export type ListPostDataQueryVariables = {
-  id?: string | null,
   filter?: ModelPostDataFilterInput | null,
   limit?: number | null,
   nextToken?: string | null,
-  sortDirection?: ModelSortDirection | null,
 };
 
 export type ListPostDataQuery = {
@@ -300,6 +338,7 @@ export type ListPostDataQuery = {
     items:  Array< {
       __typename: "PostData",
       id: string,
+      clientId: string,
       title: string,
       status: PostStatus,
       rating?: number | null,
@@ -311,6 +350,7 @@ export type ListPostDataQuery = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
+      owner?: string | null,
     } | null >,
     nextToken?: string | null,
     startedAt?: number | null,
@@ -330,6 +370,7 @@ export type SyncPostDataQuery = {
     items:  Array< {
       __typename: "PostData",
       id: string,
+      clientId: string,
       title: string,
       status: PostStatus,
       rating?: number | null,
@@ -341,6 +382,7 @@ export type SyncPostDataQuery = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
+      owner?: string | null,
     } | null >,
     nextToken?: string | null,
     startedAt?: number | null,
@@ -349,12 +391,14 @@ export type SyncPostDataQuery = {
 
 export type OnCreatePostDataSubscriptionVariables = {
   filter?: ModelSubscriptionPostDataFilterInput | null,
+  owner?: string | null,
 };
 
 export type OnCreatePostDataSubscription = {
   onCreatePostData?:  {
     __typename: "PostData",
     id: string,
+    clientId: string,
     title: string,
     status: PostStatus,
     rating?: number | null,
@@ -366,17 +410,20 @@ export type OnCreatePostDataSubscription = {
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
+    owner?: string | null,
   } | null,
 };
 
 export type OnUpdatePostDataSubscriptionVariables = {
   filter?: ModelSubscriptionPostDataFilterInput | null,
+  owner?: string | null,
 };
 
 export type OnUpdatePostDataSubscription = {
   onUpdatePostData?:  {
     __typename: "PostData",
     id: string,
+    clientId: string,
     title: string,
     status: PostStatus,
     rating?: number | null,
@@ -388,17 +435,20 @@ export type OnUpdatePostDataSubscription = {
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
+    owner?: string | null,
   } | null,
 };
 
 export type OnDeletePostDataSubscriptionVariables = {
   filter?: ModelSubscriptionPostDataFilterInput | null,
+  owner?: string | null,
 };
 
 export type OnDeletePostDataSubscription = {
   onDeletePostData?:  {
     __typename: "PostData",
     id: string,
+    clientId: string,
     title: string,
     status: PostStatus,
     rating?: number | null,
@@ -410,5 +460,6 @@ export type OnDeletePostDataSubscription = {
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
+    owner?: string | null,
   } | null,
 };

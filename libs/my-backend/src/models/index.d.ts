@@ -13,6 +13,7 @@ type PostDataMetaData = {
 
 type EagerPostData = {
   readonly id: string;
+  readonly clientId: string;
   readonly title: string;
   readonly status: PostStatus | keyof typeof PostStatus;
   readonly rating?: number | null;
@@ -25,6 +26,7 @@ type EagerPostData = {
 
 type LazyPostData = {
   readonly id: string;
+  readonly clientId: string;
   readonly title: string;
   readonly status: PostStatus | keyof typeof PostStatus;
   readonly rating?: number | null;

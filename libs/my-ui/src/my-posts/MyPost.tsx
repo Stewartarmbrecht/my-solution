@@ -12,7 +12,7 @@ export function MyPost(props: MyPostProps) {
   const deletePostHandler = async () => {
     dispatch(deletePost(props.post));
     // const post = await DataStore.delete(props.post);
-    console.log('Post deleted successfully!', props.post);
+    //console.log('Post deleted successfully!', props.post);
   }
 
   return (

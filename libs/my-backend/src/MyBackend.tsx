@@ -7,48 +7,66 @@ import { DataStore } from '@aws-amplify/datastore';
 import amplifyconfig from './aws-exports';
 import { useEffect, useState } from 'react';
 import { Pressable, SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { logCall, logSetup } from '@my-sample/my-logger';
 Amplify.configure(amplifyconfig);
-DataStore.configure({
-  //storageAdapter: ExpoSQLiteAdapter
-});
+DataStore.configure();
 
 
 export interface MyBackendProps {
   children?: React.ReactNode;
 }
 export function MyBackend(props: MyBackendProps) {
+  logSetup('MyBackend');
   const [user, setUser] = useState<AuthUser | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
   async function handleSignOut() {
     try {
+      // logCall('MyBackend.handleSignOut.DataStore.start');
+      // await DataStore.start();
+      logCall('MyBackend.handleSignOut.DataStore.stop');
+      await DataStore.stop();
+      logCall('MyBackend.handleSignOut.DataStore.clear');
       await DataStore.clear();
+      // logCall('MyBackend.handleSignOut.DataStore.start');
+      // await DataStore.start();      
+      logCall('MyBackend.handleSignOut.signOut');
       await signOut();
     } catch (error) {
       console.log('error signing out: ', error);
     }
   }
   useEffect(() => {
-    async function fetchData() {
+    async function loadBackend() {
+      // logCall('MyBackend.start');
+      // await DataStore.start();
+      // logCall('MyBackend.clear');
+      // await DataStore.clear();
       setUser(await getCurrentUser());
+      setLoading(false);
     }
-    fetchData();
+    loadBackend();
   }, []); // Or [] if effect doesn't need props or state  
 
   return (
     <Authenticator.Provider>
       <Authenticator>
-        <SafeAreaView>
-          <Text style={styles.textLg}>Hello there {user?.username},</Text>
-          <Pressable 
-            onPress={handleSignOut}
-            style={styles.testButton}
-          >
-            <Text style={[styles.textMd, styles.textCenter]}>Sign Out</Text>
-          </Pressable>
-          <View>
-            <Text>Username: {user?.username}</Text>
-          </View>
-          {props.children}
-        </SafeAreaView>
+        {loading ? 
+          <Text>Loading...</Text> 
+          : 
+          <SafeAreaView>
+            <Text style={styles.textLg}>Hello there {user?.username},</Text>
+            <Pressable 
+              onPress={handleSignOut}
+              style={styles.testButton}
+            >
+              <Text style={[styles.textMd, styles.textCenter]}>Sign Out</Text>
+            </Pressable>
+            <View>
+              <Text>Username: {user?.username}</Text>
+            </View>
+            {props.children}
+          </SafeAreaView>
+        }
       </Authenticator>
     </Authenticator.Provider>
   );

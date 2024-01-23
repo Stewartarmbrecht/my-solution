@@ -20,15 +20,13 @@ export function Synchronizer({
 
   useEffect(() => {
     logCall('Synchronizer.useEffect');
-    getDataStorePosts().then(posts => {
-      dispatch(postsLoadedViaSync(posts));
-    });
     const subscription = DataStore.observe(PostData).subscribe(msg => {
       logCall('Synchronizer.useEffect.DataStore.observe', 'msg:', msg);
       switch (msg.opType) {
         case 'DELETE':
           dispatch(postDeletedViaSync({
-            id: msg.element.id,
+            id: msg.element.clientId,
+            serverId: msg.element.id,
             title: msg.element.title,
             content: msg.element.content,
             rating: msg.element.rating,
@@ -40,7 +38,8 @@ export function Synchronizer({
           break;
         case 'INSERT':
           dispatch(postAddedOrUpdatedViaSync({
-            id: msg.element.id,
+            id: msg.element.clientId,
+            serverId: msg.element.id,
             title: msg.element.title,
             content: msg.element.content,
             rating: msg.element.rating,
@@ -52,7 +51,8 @@ export function Synchronizer({
           break;
         case 'UPDATE':
           dispatch(postAddedOrUpdatedViaSync({
-            id: msg.element.id,
+            id: msg.element.clientId,
+            serverId: msg.element.id,
             title: msg.element.title,
             content: msg.element.content,
             rating: msg.element.rating,
@@ -64,6 +64,30 @@ export function Synchronizer({
           break;
       }
     });
+    const loadDataStorePosts = async () => {
+      logCall('getDataStorePosts');
+      try {
+        const postsData: PostData[] = await DataStore.query(PostData);
+        logCall('getDataStorePosts.DataStore.query');
+        const posts: Post[] = postsData.map((postData) => ({
+            id: postData.clientId,
+            serverId: postData.id,
+            title: postData.title,
+            content: postData.content,
+            rating: postData.rating,
+            status: postData.status,
+            author: postData.author,
+            createdAt: postData.createdAt,
+            updatedAt: postData.updatedAt,
+        }));
+        logCall('getDataStorePosts', 'count:', posts.length);
+        dispatch(postsLoadedViaSync(posts));
+      } catch (error) {
+        logRaw('getDataStorePosts', 'error:', error);
+        throw error;
+      }
+    }    
+    loadDataStorePosts();
     return () => {
       subscription.unsubscribe()
     };
@@ -73,25 +97,3 @@ export function Synchronizer({
 
 }
 
-const getDataStorePosts = async (): Promise<Post[]> => {
-  logCall('getDataStorePosts');
-  try {
-    const postsData: PostData[] = await DataStore.query(PostData);
-    logCall('getDataStorePosts.DataStore.query');
-    const posts: Post[] = postsData.map((postData) => ({
-        id: postData.id,
-        title: postData.title,
-        content: postData.content,
-        rating: postData.rating,
-        status: postData.status,
-        author: postData.author,
-        createdAt: postData.createdAt,
-        updatedAt: postData.updatedAt,
-    }));
-    logCall('getDataStorePosts', 'count:', posts.length);
-    return posts;      
-  } catch (error) {
-    logRaw('getDataStorePosts', 'error:', error);
-    throw error;
-  }
-}

@@ -8,9 +8,10 @@ type GeneratedQuery<InputType, OutputType> = string & {
   __generatedQueryOutput: OutputType;
 };
 
-export const getPostData = /* GraphQL */ `query GetPostData($id: String!) {
+export const getPostData = /* GraphQL */ `query GetPostData($id: ID!) {
   getPostData(id: $id) {
     id
+    clientId
     title
     status
     rating
@@ -22,6 +23,7 @@ export const getPostData = /* GraphQL */ `query GetPostData($id: String!) {
     _version
     _deleted
     _lastChangedAt
+    owner
     __typename
   }
 }
@@ -30,21 +32,14 @@ export const getPostData = /* GraphQL */ `query GetPostData($id: String!) {
   APITypes.GetPostDataQuery
 >;
 export const listPostData = /* GraphQL */ `query ListPostData(
-  $id: String
   $filter: ModelPostDataFilterInput
   $limit: Int
   $nextToken: String
-  $sortDirection: ModelSortDirection
 ) {
-  listPostData(
-    id: $id
-    filter: $filter
-    limit: $limit
-    nextToken: $nextToken
-    sortDirection: $sortDirection
-  ) {
+  listPostData(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
       id
+      clientId
       title
       status
       rating
@@ -56,6 +51,7 @@ export const listPostData = /* GraphQL */ `query ListPostData(
       _version
       _deleted
       _lastChangedAt
+      owner
       __typename
     }
     nextToken
@@ -81,6 +77,7 @@ export const syncPostData = /* GraphQL */ `query SyncPostData(
   ) {
     items {
       id
+      clientId
       title
       status
       rating
@@ -92,6 +89,7 @@ export const syncPostData = /* GraphQL */ `query SyncPostData(
       _version
       _deleted
       _lastChangedAt
+      owner
       __typename
     }
     nextToken

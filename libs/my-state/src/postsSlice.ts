@@ -18,13 +18,23 @@ const initialState: Posts = postsAdapter.getInitialState({
 
 function addPostData(post: Post) {
   logCall('postsSlice.addPostData', post);
-  const postData = new PostData({ ...post });
+  const postData = new PostData({ 
+    clientId: post.id, 
+    title: post.title, 
+    status: post.status, 
+    rating: post.rating, 
+    content: post.content,
+    author: post.author,
+   });
   DataStore.save(postData);
 }
 
 async function deletePostData(post: Post): Promise<void> {
   logCall('postsSlice.deletePostData', post);
-  const postData = await DataStore.query(PostData, post.id);
+  if (post.serverId === undefined) {
+    return;
+  }
+  const postData = await DataStore.query(PostData, post.serverId);
   if (postData !== undefined) {
     DataStore.delete(postData);
   }

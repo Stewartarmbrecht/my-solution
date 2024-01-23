@@ -420,7 +420,7 @@
         "PostDataIAMRole2171CF47"
       ]
     },
-    "QuerygetPostDatapreAuth0FunctionQuerygetPostDatapreAuth0FunctionAppSyncFunction16C95863": {
+    "QuerygetPostDataauth0FunctionQuerygetPostDataauth0FunctionAppSyncFunctionB5EE3265": {
       "Type": "AWS::AppSync::FunctionConfiguration",
       "Properties": {
         "ApiId": {
@@ -429,7 +429,7 @@
         "DataSourceName": {
           "Ref": "referencetotransformerrootstackGraphQLAPINONEDS2BA9D1C8Name"
         },
-        "Name": "QuerygetPostDatapreAuth0Function",
+        "Name": "QuerygetPostDataauth0Function",
         "FunctionVersion": "2018-05-29",
         "RequestMappingTemplateS3Location": {
           "Fn::Join": [
@@ -443,7 +443,7 @@
               {
                 "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
               },
-              "/resolvers/Query.getPostData.preAuth.1.req.vtl"
+              "/resolvers/Query.getPostData.auth.1.req.vtl"
             ]
           ]
         },
@@ -548,7 +548,7 @@
           "Functions": [
             {
               "Fn::GetAtt": [
-                "QuerygetPostDatapreAuth0FunctionQuerygetPostDatapreAuth0FunctionAppSyncFunction16C95863",
+                "QuerygetPostDataauth0FunctionQuerygetPostDataauth0FunctionAppSyncFunctionB5EE3265",
                 "FunctionId"
               ]
             },
@@ -578,41 +578,11 @@
               {
                 "Ref": "PostDataTable"
               },
-              "\"))\n$util.qr($ctx.stash.put(\"deltaSyncTableTtl\", 30))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"us-east-1:72e4b71b-0e2a-4998-9b4f-1c7822758b28\"))\n$util.qr($ctx.stash.put(\"adminRoles\", []))\n$util.toJson({})"
+              "\"))\n$util.qr($ctx.stash.put(\"deltaSyncTableTtl\", 30))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"us-east-1:72e4b71b-0e2a-4998-9b4f-1c7822758b28\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"us-east-1_dfoMyBbJ4_Full-access/CognitoIdentityCredentials\",\"us-east-1_dfoMyBbJ4_Manage-only/CognitoIdentityCredentials\"]))\n$util.toJson({})"
             ]
           ]
         },
         "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)"
-      }
-    },
-    "QuerylistPostDatapreAuth0FunctionQuerylistPostDatapreAuth0FunctionAppSyncFunction74435B9E": {
-      "Type": "AWS::AppSync::FunctionConfiguration",
-      "Properties": {
-        "ApiId": {
-          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
-        },
-        "DataSourceName": {
-          "Ref": "referencetotransformerrootstackGraphQLAPINONEDS2BA9D1C8Name"
-        },
-        "Name": "QuerylistPostDatapreAuth0Function",
-        "FunctionVersion": "2018-05-29",
-        "RequestMappingTemplateS3Location": {
-          "Fn::Join": [
-            "",
-            [
-              "s3://",
-              {
-                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
-              },
-              "/",
-              {
-                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
-              },
-              "/resolvers/Query.listPostData.preAuth.1.req.vtl"
-            ]
-          ]
-        },
-        "ResponseMappingTemplate": "$util.toJson({})"
       }
     },
     "QueryListPostDataDataResolverFnQueryListPostDataDataResolverFnAppSyncFunction785C88BE": {
@@ -683,7 +653,7 @@
           "Functions": [
             {
               "Fn::GetAtt": [
-                "QuerylistPostDatapreAuth0FunctionQuerylistPostDatapreAuth0FunctionAppSyncFunction74435B9E",
+                "QuerygetPostDataauth0FunctionQuerygetPostDataauth0FunctionAppSyncFunctionB5EE3265",
                 "FunctionId"
               ]
             },
@@ -713,41 +683,11 @@
               {
                 "Ref": "PostDataTable"
               },
-              "\"))\n$util.qr($ctx.stash.put(\"deltaSyncTableTtl\", 30))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"us-east-1:72e4b71b-0e2a-4998-9b4f-1c7822758b28\"))\n$util.qr($ctx.stash.put(\"adminRoles\", []))\n$util.toJson({})"
+              "\"))\n$util.qr($ctx.stash.put(\"deltaSyncTableTtl\", 30))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"us-east-1:72e4b71b-0e2a-4998-9b4f-1c7822758b28\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"us-east-1_dfoMyBbJ4_Full-access/CognitoIdentityCredentials\",\"us-east-1_dfoMyBbJ4_Manage-only/CognitoIdentityCredentials\"]))\n$util.toJson({})"
             ]
           ]
         },
         "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)"
-      }
-    },
-    "QuerysyncPostDatapreAuth0FunctionQuerysyncPostDatapreAuth0FunctionAppSyncFunctionF3BD6040": {
-      "Type": "AWS::AppSync::FunctionConfiguration",
-      "Properties": {
-        "ApiId": {
-          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
-        },
-        "DataSourceName": {
-          "Ref": "referencetotransformerrootstackGraphQLAPINONEDS2BA9D1C8Name"
-        },
-        "Name": "QuerysyncPostDatapreAuth0Function",
-        "FunctionVersion": "2018-05-29",
-        "RequestMappingTemplateS3Location": {
-          "Fn::Join": [
-            "",
-            [
-              "s3://",
-              {
-                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
-              },
-              "/",
-              {
-                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
-              },
-              "/resolvers/Query.syncPostData.preAuth.1.req.vtl"
-            ]
-          ]
-        },
-        "ResponseMappingTemplate": "$util.toJson({})"
       }
     },
     "QuerySyncPostDataDataResolverFnQuerySyncPostDataDataResolverFnAppSyncFunction7D4D6396": {
@@ -818,7 +758,7 @@
           "Functions": [
             {
               "Fn::GetAtt": [
-                "QuerysyncPostDatapreAuth0FunctionQuerysyncPostDatapreAuth0FunctionAppSyncFunctionF3BD6040",
+                "QuerygetPostDataauth0FunctionQuerygetPostDataauth0FunctionAppSyncFunctionB5EE3265",
                 "FunctionId"
               ]
             },
@@ -848,7 +788,7 @@
               {
                 "Ref": "PostDataTable"
               },
-              "\"))\n$util.qr($ctx.stash.put(\"deltaSyncTableTtl\", 30))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"us-east-1:72e4b71b-0e2a-4998-9b4f-1c7822758b28\"))\n$util.qr($ctx.stash.put(\"adminRoles\", []))\n$util.toJson({})"
+              "\"))\n$util.qr($ctx.stash.put(\"deltaSyncTableTtl\", 30))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"us-east-1:72e4b71b-0e2a-4998-9b4f-1c7822758b28\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"us-east-1_dfoMyBbJ4_Full-access/CognitoIdentityCredentials\",\"us-east-1_dfoMyBbJ4_Manage-only/CognitoIdentityCredentials\"]))\n$util.toJson({})"
             ]
           ]
         },
@@ -885,7 +825,7 @@
         "ResponseMappingTemplate": "$util.toJson({})"
       }
     },
-    "MutationcreatePostDatapreAuth0FunctionMutationcreatePostDatapreAuth0FunctionAppSyncFunctionB36AF8B8": {
+    "MutationcreatePostDataauth0FunctionMutationcreatePostDataauth0FunctionAppSyncFunction0A07DFD0": {
       "Type": "AWS::AppSync::FunctionConfiguration",
       "Properties": {
         "ApiId": {
@@ -894,7 +834,7 @@
         "DataSourceName": {
           "Ref": "referencetotransformerrootstackGraphQLAPINONEDS2BA9D1C8Name"
         },
-        "Name": "MutationcreatePostDatapreAuth0Function",
+        "Name": "MutationcreatePostDataauth0Function",
         "FunctionVersion": "2018-05-29",
         "RequestMappingTemplateS3Location": {
           "Fn::Join": [
@@ -908,7 +848,7 @@
               {
                 "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
               },
-              "/resolvers/Mutation.createPostData.preAuth.1.req.vtl"
+              "/resolvers/Mutation.createPostData.auth.1.req.vtl"
             ]
           ]
         },
@@ -989,7 +929,7 @@
             },
             {
               "Fn::GetAtt": [
-                "MutationcreatePostDatapreAuth0FunctionMutationcreatePostDatapreAuth0FunctionAppSyncFunctionB36AF8B8",
+                "MutationcreatePostDataauth0FunctionMutationcreatePostDataauth0FunctionAppSyncFunction0A07DFD0",
                 "FunctionId"
               ]
             },
@@ -1019,7 +959,7 @@
               {
                 "Ref": "PostDataTable"
               },
-              "\"))\n$util.qr($ctx.stash.put(\"deltaSyncTableTtl\", 30))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"us-east-1:72e4b71b-0e2a-4998-9b4f-1c7822758b28\"))\n$util.qr($ctx.stash.put(\"adminRoles\", []))\n$util.toJson({})"
+              "\"))\n$util.qr($ctx.stash.put(\"deltaSyncTableTtl\", 30))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"us-east-1:72e4b71b-0e2a-4998-9b4f-1c7822758b28\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"us-east-1_dfoMyBbJ4_Full-access/CognitoIdentityCredentials\",\"us-east-1_dfoMyBbJ4_Manage-only/CognitoIdentityCredentials\"]))\n$util.toJson({})"
             ]
           ]
         },
@@ -1055,6 +995,57 @@
         },
         "ResponseMappingTemplate": "$util.toJson({})"
       }
+    },
+    "MutationupdatePostDataauth0FunctionMutationupdatePostDataauth0FunctionAppSyncFunction26DB94E2": {
+      "Type": "AWS::AppSync::FunctionConfiguration",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "DataSourceName": {
+          "Fn::GetAtt": [
+            "PostDataDataSource",
+            "Name"
+          ]
+        },
+        "Name": "MutationupdatePostDataauth0Function",
+        "FunctionVersion": "2018-05-29",
+        "RequestMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/Mutation.updatePostData.auth.1.req.vtl"
+            ]
+          ]
+        },
+        "ResponseMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/Mutation.updatePostData.auth.1.res.vtl"
+            ]
+          ]
+        }
+      },
+      "DependsOn": [
+        "PostDataDataSource"
+      ]
     },
     "MutationUpdatePostDataDataResolverFnMutationUpdatePostDataDataResolverFnAppSyncFunction67827504": {
       "Type": "AWS::AppSync::FunctionConfiguration",
@@ -1130,7 +1121,7 @@
             },
             {
               "Fn::GetAtt": [
-                "MutationcreatePostDatapreAuth0FunctionMutationcreatePostDatapreAuth0FunctionAppSyncFunctionB36AF8B8",
+                "MutationupdatePostDataauth0FunctionMutationupdatePostDataauth0FunctionAppSyncFunction26DB94E2",
                 "FunctionId"
               ]
             },
@@ -1160,23 +1151,26 @@
               {
                 "Ref": "PostDataTable"
               },
-              "\"))\n$util.qr($ctx.stash.put(\"deltaSyncTableTtl\", 30))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"us-east-1:72e4b71b-0e2a-4998-9b4f-1c7822758b28\"))\n$util.qr($ctx.stash.put(\"adminRoles\", []))\n$util.toJson({})"
+              "\"))\n$util.qr($ctx.stash.put(\"deltaSyncTableTtl\", 30))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"us-east-1:72e4b71b-0e2a-4998-9b4f-1c7822758b28\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"us-east-1_dfoMyBbJ4_Full-access/CognitoIdentityCredentials\",\"us-east-1_dfoMyBbJ4_Manage-only/CognitoIdentityCredentials\"]))\n$util.toJson({})"
             ]
           ]
         },
         "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)"
       }
     },
-    "MutationdeletePostDatapreAuth0FunctionMutationdeletePostDatapreAuth0FunctionAppSyncFunctionBECD0F76": {
+    "MutationdeletePostDataauth0FunctionMutationdeletePostDataauth0FunctionAppSyncFunctionA75BA209": {
       "Type": "AWS::AppSync::FunctionConfiguration",
       "Properties": {
         "ApiId": {
           "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
         },
         "DataSourceName": {
-          "Ref": "referencetotransformerrootstackGraphQLAPINONEDS2BA9D1C8Name"
+          "Fn::GetAtt": [
+            "PostDataDataSource",
+            "Name"
+          ]
         },
-        "Name": "MutationdeletePostDatapreAuth0Function",
+        "Name": "MutationdeletePostDataauth0Function",
         "FunctionVersion": "2018-05-29",
         "RequestMappingTemplateS3Location": {
           "Fn::Join": [
@@ -1190,12 +1184,30 @@
               {
                 "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
               },
-              "/resolvers/Mutation.deletePostData.preAuth.1.req.vtl"
+              "/resolvers/Mutation.deletePostData.auth.1.req.vtl"
             ]
           ]
         },
-        "ResponseMappingTemplate": "$util.toJson({})"
-      }
+        "ResponseMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/Mutation.deletePostData.auth.1.res.vtl"
+            ]
+          ]
+        }
+      },
+      "DependsOn": [
+        "PostDataDataSource"
+      ]
     },
     "MutationDeletePostDataDataResolverFnMutationDeletePostDataDataResolverFnAppSyncFunctionA5FB0D16": {
       "Type": "AWS::AppSync::FunctionConfiguration",
@@ -1265,7 +1277,7 @@
           "Functions": [
             {
               "Fn::GetAtt": [
-                "MutationdeletePostDatapreAuth0FunctionMutationdeletePostDatapreAuth0FunctionAppSyncFunctionBECD0F76",
+                "MutationdeletePostDataauth0FunctionMutationdeletePostDataauth0FunctionAppSyncFunctionA75BA209",
                 "FunctionId"
               ]
             },
@@ -1295,11 +1307,41 @@
               {
                 "Ref": "PostDataTable"
               },
-              "\"))\n$util.qr($ctx.stash.put(\"deltaSyncTableTtl\", 30))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"us-east-1:72e4b71b-0e2a-4998-9b4f-1c7822758b28\"))\n$util.qr($ctx.stash.put(\"adminRoles\", []))\n$util.toJson({})"
+              "\"))\n$util.qr($ctx.stash.put(\"deltaSyncTableTtl\", 30))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"us-east-1:72e4b71b-0e2a-4998-9b4f-1c7822758b28\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"us-east-1_dfoMyBbJ4_Full-access/CognitoIdentityCredentials\",\"us-east-1_dfoMyBbJ4_Manage-only/CognitoIdentityCredentials\"]))\n$util.toJson({})"
             ]
           ]
         },
         "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)"
+      }
+    },
+    "SubscriptiononCreatePostDataauth0FunctionSubscriptiononCreatePostDataauth0FunctionAppSyncFunction5A0DB070": {
+      "Type": "AWS::AppSync::FunctionConfiguration",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "DataSourceName": {
+          "Ref": "referencetotransformerrootstackGraphQLAPINONEDS2BA9D1C8Name"
+        },
+        "Name": "SubscriptiononCreatePostDataauth0Function",
+        "FunctionVersion": "2018-05-29",
+        "RequestMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/Subscription.onCreatePostData.auth.1.req.vtl"
+            ]
+          ]
+        },
+        "ResponseMappingTemplate": "$util.toJson({})"
       }
     },
     "SubscriptionOnCreatePostDataDataResolverFnSubscriptionOnCreatePostDataDataResolverFnAppSyncFunction1F79A0E1": {
@@ -1360,6 +1402,12 @@
           "Functions": [
             {
               "Fn::GetAtt": [
+                "SubscriptiononCreatePostDataauth0FunctionSubscriptiononCreatePostDataauth0FunctionAppSyncFunction5A0DB070",
+                "FunctionId"
+              ]
+            },
+            {
+              "Fn::GetAtt": [
                 "QuerygetPostDatapostAuth0FunctionQuerygetPostDatapostAuth0FunctionAppSyncFunction61773C88",
                 "FunctionId"
               ]
@@ -1380,7 +1428,7 @@
               {
                 "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
               },
-              "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n\n$util.qr($ctx.stash.put(\"identityPoolId\", \"us-east-1:72e4b71b-0e2a-4998-9b4f-1c7822758b28\"))\n$util.qr($ctx.stash.put(\"adminRoles\", []))\n$util.toJson({})"
+              "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n\n$util.qr($ctx.stash.put(\"identityPoolId\", \"us-east-1:72e4b71b-0e2a-4998-9b4f-1c7822758b28\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"us-east-1_dfoMyBbJ4_Full-access/CognitoIdentityCredentials\",\"us-east-1_dfoMyBbJ4_Manage-only/CognitoIdentityCredentials\"]))\n$util.toJson({})"
             ]
           ]
         },
@@ -1398,6 +1446,12 @@
         "Kind": "PIPELINE",
         "PipelineConfig": {
           "Functions": [
+            {
+              "Fn::GetAtt": [
+                "SubscriptiononCreatePostDataauth0FunctionSubscriptiononCreatePostDataauth0FunctionAppSyncFunction5A0DB070",
+                "FunctionId"
+              ]
+            },
             {
               "Fn::GetAtt": [
                 "QuerygetPostDatapostAuth0FunctionQuerygetPostDatapostAuth0FunctionAppSyncFunction61773C88",
@@ -1420,7 +1474,7 @@
               {
                 "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
               },
-              "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n\n$util.qr($ctx.stash.put(\"identityPoolId\", \"us-east-1:72e4b71b-0e2a-4998-9b4f-1c7822758b28\"))\n$util.qr($ctx.stash.put(\"adminRoles\", []))\n$util.toJson({})"
+              "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n\n$util.qr($ctx.stash.put(\"identityPoolId\", \"us-east-1:72e4b71b-0e2a-4998-9b4f-1c7822758b28\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"us-east-1_dfoMyBbJ4_Full-access/CognitoIdentityCredentials\",\"us-east-1_dfoMyBbJ4_Manage-only/CognitoIdentityCredentials\"]))\n$util.toJson({})"
             ]
           ]
         },
@@ -1438,6 +1492,12 @@
         "Kind": "PIPELINE",
         "PipelineConfig": {
           "Functions": [
+            {
+              "Fn::GetAtt": [
+                "SubscriptiononCreatePostDataauth0FunctionSubscriptiononCreatePostDataauth0FunctionAppSyncFunction5A0DB070",
+                "FunctionId"
+              ]
+            },
             {
               "Fn::GetAtt": [
                 "QuerygetPostDatapostAuth0FunctionQuerygetPostDatapostAuth0FunctionAppSyncFunction61773C88",
@@ -1460,7 +1520,86 @@
               {
                 "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
               },
-              "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n\n$util.qr($ctx.stash.put(\"identityPoolId\", \"us-east-1:72e4b71b-0e2a-4998-9b4f-1c7822758b28\"))\n$util.qr($ctx.stash.put(\"adminRoles\", []))\n$util.toJson({})"
+              "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n\n$util.qr($ctx.stash.put(\"identityPoolId\", \"us-east-1:72e4b71b-0e2a-4998-9b4f-1c7822758b28\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"us-east-1_dfoMyBbJ4_Full-access/CognitoIdentityCredentials\",\"us-east-1_dfoMyBbJ4_Manage-only/CognitoIdentityCredentials\"]))\n$util.toJson({})"
+            ]
+          ]
+        },
+        "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)"
+      }
+    },
+    "PostDataOwnerDataResolverFnPostDataOwnerDataResolverFnAppSyncFunctionB9256F71": {
+      "Type": "AWS::AppSync::FunctionConfiguration",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "DataSourceName": {
+          "Ref": "referencetotransformerrootstackGraphQLAPINONEDS2BA9D1C8Name"
+        },
+        "Name": "PostDataOwnerDataResolverFn",
+        "FunctionVersion": "2018-05-29",
+        "RequestMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/PostData.owner.req.vtl"
+            ]
+          ]
+        },
+        "ResponseMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/PostData.owner.res.vtl"
+            ]
+          ]
+        }
+      }
+    },
+    "PostDataownerResolver": {
+      "Type": "AWS::AppSync::Resolver",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "FieldName": "owner",
+        "TypeName": "PostData",
+        "Kind": "PIPELINE",
+        "PipelineConfig": {
+          "Functions": [
+            {
+              "Fn::GetAtt": [
+                "PostDataOwnerDataResolverFnPostDataOwnerDataResolverFnAppSyncFunctionB9256F71",
+                "FunctionId"
+              ]
+            }
+          ]
+        },
+        "RequestMappingTemplate": {
+          "Fn::Join": [
+            "",
+            [
+              "$util.qr($ctx.stash.put(\"typeName\", \"PostData\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"owner\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"NONE\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+              {
+                "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n\n$util.qr($ctx.stash.put(\"identityPoolId\", \"us-east-1:72e4b71b-0e2a-4998-9b4f-1c7822758b28\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"us-east-1_dfoMyBbJ4_Full-access/CognitoIdentityCredentials\",\"us-east-1_dfoMyBbJ4_Manage-only/CognitoIdentityCredentials\"]))\n$util.toJson({})"
             ]
           ]
         },
