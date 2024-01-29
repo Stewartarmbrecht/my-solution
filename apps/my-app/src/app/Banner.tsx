@@ -1,21 +1,18 @@
-import { AuthUser, getCurrentUser, signOut } from "@my-sample/my-backend";
-import React, { useEffect } from "react";
+import { userLoggedOut } from "@my-sample/my-shared";
+import { selectUser, useAppDispatch } from "@my-sample/my-state";
+import React from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
+import { useSelector } from "react-redux";
 
 export function Banner() {
-  const [user, setUser] = React.useState<AuthUser | null>(null);
+  const dispatch = useAppDispatch();
+  const user = useSelector(selectUser);
   async function handleSignOut() {
-    await signOut();
+    dispatch(userLoggedOut());
   }
-  useEffect(() => {
-    async function loadUser() {
-      setUser(await getCurrentUser());
-    }
-    loadUser();
-  });
   return (
     <View style={styles.section}>
-      <Text style={styles.textLg}>Hello there {user?.username},</Text>
+      <Text style={styles.textLg}>Hello there {user?.userName},</Text>
         <Pressable 
           onPress={handleSignOut}
           style={styles.testButton}
@@ -23,7 +20,7 @@ export function Banner() {
           <Text style={[styles.textMd, styles.textCenter]}>Sign Out</Text>
         </Pressable>
         <View>
-          <Text>Username: {user?.username}</Text>
+          <Text>Username: {user?.userName}</Text>
         </View>
     </View>
   );

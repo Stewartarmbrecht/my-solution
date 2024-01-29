@@ -12,6 +12,7 @@ export default logRaw;
 export { logCall, logHighFrequencyCall, logHighFrequencyCheck, globalOptions, logId, logSetup };
 
 export { Post } from './types/Post';
+export { User } from './types/User';
 export { PostStatus } from './types/PostStatus';
 export { compareStringArrays } from './utils/compareStringArrays';
 export { 
@@ -19,5 +20,7 @@ export {
   postDeleted,
   postDeletedViaSync, 
   postAddedOrUpdatedViaSync, 
-  postsLoadedViaSync 
+  postsLoadedViaSync,
+  userLoggedIn,
+  userLoggedOut
 } from './actions';

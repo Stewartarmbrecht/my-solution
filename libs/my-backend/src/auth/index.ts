@@ -1,3 +1,2 @@
-export { getCurrentUser } from './getCurrentUser';
 export { signOut } from './signOut';
-export { AuthUser } from './AuthUser';
+export { authReducer } from './authReducer';

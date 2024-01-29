@@ -10,3 +10,4 @@ export {
   postDeleted
 } from '@my-sample/my-shared';
 export { store } from './store';
+export { selectUser } from './userSlice';
