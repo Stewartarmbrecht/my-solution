@@ -1,5 +1,5 @@
 module.exports = {
-  displayName: 'my-logger',
+  displayName: 'my-shared',
   resolver: '@nx/jest/plugins/resolver',
   preset: 'jest-expo',
   transformIgnorePatterns: [

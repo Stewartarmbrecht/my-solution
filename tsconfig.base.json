@@ -15,7 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@my-sample/my-logger": ["libs/my-logger/src/index.ts"],
+      "@my-sample/my-shared": ["libs/my-shared/src/index.ts"],
       "@my-sample/my-backend": ["libs/my-backend/src/index.ts"],
       "@my-sample/my-state": ["libs/my-state/src/index.ts"],
       "@my-sample/my-ui": ["libs/my-ui/src/index.ts"]

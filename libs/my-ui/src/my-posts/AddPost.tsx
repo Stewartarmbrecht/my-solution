@@ -1,8 +1,8 @@
-import { PostStatus } from '@my-sample/my-backend';
 import { View, Text, TextInput, Pressable, StyleSheet } from 'react-native';
 import { useState } from 'react';
-import { addPost, useAppDispatch, Post } from '@my-sample/my-state';
+import { useAppDispatch } from '@my-sample/my-state';
 import { nanoid } from '@reduxjs/toolkit';
+import { Post, PostStatus, postAdded } from '@my-sample/my-shared';
 
 /* eslint-disable-next-line */
 export interface AddPostProps {
@@ -19,7 +19,7 @@ export function AddPost(props: AddPostProps) {
       rating: 5,
       status: PostStatus.ACTIVE,
     };
-    dispatch(addPost(post));
+    dispatch(postAdded(post));
     // const post = await DataStore.save(
     //   new Post({
     //     title: newPostName,

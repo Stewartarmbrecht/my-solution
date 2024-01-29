@@ -1,10 +1,12 @@
 export { MyData } from './MyData';
 export { useAppDispatch, useAppSelector, useAppStore } from './hooks';
 export { 
-  addPost, 
-  deletePost,
   selectAllPosts,
   selectPostById,
   selectPostIds 
 } from './postsSlice';
-export { Post } from './types';
+export {
+  postAdded,
+  postDeleted
+} from '@my-sample/my-shared';
+export { store } from './store';

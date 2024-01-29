@@ -1,7 +1,9 @@
-import { store } from './store'
-import { Provider } from 'react-redux'
+import { store } from '@my-sample/my-state';
+import { Provider } from 'react-redux';
+
+
 export interface MyDataProps {
-  children: JSX.Element;
+  children?: React.ReactNode;
 }
 export function MyData(props: MyDataProps) {
   return (

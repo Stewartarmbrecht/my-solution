@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { postsReducer } from './postsSlice'
+import { syncReducer } from '@my-sample/my-backend'
 // ...
 
 export const store = configureStore({
   reducer: {
     posts: postsReducer,
+    sync: syncReducer,
   },
 })
 

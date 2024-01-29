@@ -1,4 +1,5 @@
-import { useAppDispatch, deletePost, Post } from '@my-sample/my-state';
+import { Post, postDeleted } from '@my-sample/my-shared';
+import { useAppDispatch } from '@my-sample/my-state';
 import { View, Text, StyleSheet, Pressable } from 'react-native';
 
 /* eslint-disable-next-line */
@@ -10,7 +11,7 @@ export interface MyPostProps {
 export function MyPost(props: MyPostProps) {
   const dispatch = useAppDispatch();
   const deletePostHandler = async () => {
-    dispatch(deletePost(props.post));
+    dispatch(postDeleted(props.post));
     // const post = await DataStore.delete(props.post);
     //console.log('Post deleted successfully!', props.post);
   }

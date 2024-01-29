@@ -5,7 +5,7 @@ import logRaw, {
   logHighFrequencyCheck,
   logId,
   logSetup,
-} from '.';
+} from '..';
 
 describe('logger', () => {
   const originalLOGGING = process.env.LOGGING;

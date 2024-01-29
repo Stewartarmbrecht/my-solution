@@ -1,4 +1,4 @@
-import { Post } from "./types";
+import { Post } from "./types/Posts";
 
 export function comparePosts(a: Post | undefined, b: Post | undefined): boolean {
     let match = true;

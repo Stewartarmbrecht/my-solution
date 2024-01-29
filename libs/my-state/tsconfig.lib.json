@@ -11,5 +11,5 @@
     "**/*.ts", 
     "**/*.tsx",
     "**/*.json"
-  ]
+, "../my-backend/src/sync/Synchronizer.tsx", "../my-shared/src/utils/compareStringArrays.ts"  ]
 }

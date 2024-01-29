@@ -1,9 +1,15 @@
 import { useEffect } from 'react';
-import { PostData, DataStore } from '@my-sample/my-backend'
-import { useAppDispatch } from './hooks';
-import { Post } from './types';
-import { postAddedOrUpdatedViaSync, postDeletedViaSync, postsLoadedViaSync } from './postsSlice';
-import logRaw, { logCall, logSetup } from '@my-sample/my-logger';
+import logRaw, { 
+  Post, 
+  logCall, 
+  logSetup, 
+  postAddedOrUpdatedViaSync, 
+  postDeletedViaSync, 
+  postsLoadedViaSync 
+} from '@my-sample/my-shared';
+import { DataStore } from '@aws-amplify/datastore';
+import { PostData } from '../models';
+import { useDispatch } from 'react-redux';
 
 /**
  * Synchronizes the redux data with the amplify datastore.
@@ -16,7 +22,7 @@ export function Synchronizer({
 }): JSX.Element {
   logSetup('Synchronizer');
 
-  const dispatch = useAppDispatch();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     logCall('Synchronizer.useEffect');

@@ -1,11 +1,18 @@
 import { PayloadAction, createEntityAdapter, createSlice } from "@reduxjs/toolkit";
-import { Post, Posts } from "./types";
+import { Posts } from "./types/Posts";
 import { Selector } from "react-redux";
 import { RootState } from "./store";
-import { compareStringArrays } from "./compareStringArrays";
 import { comparePosts } from "./comparePosts";
-import { logCall } from "@my-sample/my-logger";
-import { DataStore, PostData } from '@my-sample/my-backend';
+import { 
+  Post, 
+  compareStringArrays, 
+  logCall, 
+  postAdded, 
+  postAddedOrUpdatedViaSync, 
+  postDeleted, 
+  postDeletedViaSync, 
+  postsLoadedViaSync 
+} from "@my-sample/my-shared";
 
 const postsAdapter = createEntityAdapter<Post>();
 
@@ -16,57 +23,33 @@ const initialState: Posts = postsAdapter.getInitialState({
   error: null,
 });
 
-function addPostData(post: Post) {
-  logCall('postsSlice.addPostData', post);
-  const postData = new PostData({ 
-    clientId: post.id, 
-    title: post.title, 
-    status: post.status, 
-    rating: post.rating, 
-    content: post.content,
-    author: post.author,
-   });
-  DataStore.save(postData);
-}
-
-async function deletePostData(post: Post): Promise<void> {
-  logCall('postsSlice.deletePostData', post);
-  if (post.serverId === undefined) {
-    return;
-  }
-  const postData = await DataStore.query(PostData, post.serverId);
-  if (postData !== undefined) {
-    DataStore.delete(postData);
-  }
-}
-
 const postsSlice = createSlice({
   name: 'posts',
   initialState,
-  reducers: {
-    addPost: (state, action: PayloadAction<Post>) => {
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+    .addCase(postAdded, (state, action) => {
       logCall('postsSlice.addPost', action.payload);
       postsAdapter.addOne(state, action.payload);
-      addPostData(action.payload);
-    },
-    deletePost: (state, action: PayloadAction<Post>) => {
+    })
+    .addCase(postDeleted, (state, action) => {
       logCall('postsSlice.deletePost', action.payload);
       postsAdapter.removeOne(state, action.payload.id);
-      deletePostData(action.payload);
-    },
-    postDeletedViaSync: (state, action: PayloadAction<Post>) => {
+    })
+    .addCase(postDeletedViaSync, (state, action) => {
       logCall('postsSlice.postDeletedViaSync', action.payload);
       postsAdapter.removeOne(state, action.payload.id);
-    },
-    postAddedOrUpdatedViaSync: (state, action: PayloadAction<Post>) => {
+    })
+    .addCase(postAddedOrUpdatedViaSync, (state, action: PayloadAction<Post>) => {
       logCall('postsSlice.postAddedOrUpdatedViaSync', action.payload);
       const post = state.entities[action.payload.id];
       if (comparePosts(post, action.payload) === false) {
         logCall('postsSlice.postAddedOrUpdatedViaSync.upsertOne');
         postsAdapter.upsertOne(state, action.payload);
       }
-    },
-    postsLoadedViaSync: (state, action: PayloadAction<Post[]>) => {
+    })
+    .addCase(postsLoadedViaSync, (state, action) => {
       logCall('postsSlice.postsLoadedViaSync');
       const posts = action.payload;
       const postIds = posts.map((post) => post.id);
@@ -95,11 +78,9 @@ const postsSlice = createSlice({
           state.entities[id] = newPost;
         }
       });
-    },
+    });
   },
 });
-
-export const { addPost, deletePost, postAddedOrUpdatedViaSync, postDeletedViaSync, postsLoadedViaSync } = postsSlice.actions;
 
 export const postsReducer = postsSlice.reducer;
 

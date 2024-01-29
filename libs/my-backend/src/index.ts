@@ -1,3 +1,3 @@
-export { PostData, PostStatus } from './models';
+export { signOut, getCurrentUser, AuthUser } from './auth';
 export { MyBackend } from './MyBackend';
-export { DataStore } from '@aws-amplify/datastore';
+export { syncReducer } from './sync/syncReducer';

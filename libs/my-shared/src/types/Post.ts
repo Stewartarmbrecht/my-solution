@@ -1,9 +1,4 @@
-import { SerializedError } from "@reduxjs/toolkit";
-
-export enum PostStatus {
-  ACTIVE = "ACTIVE",
-  INACTIVE = "INACTIVE"
-}
+import { PostStatus } from "./PostStatus";
 
 export interface Post {
   id: string;
@@ -17,9 +12,3 @@ export interface Post {
   updatedAt?: string | null;
 }
 
-export interface Posts {
-  ids: string[];
-  entities: Record<string, Post>;
-  status: string;
-  error: SerializedError | null;
-}
