@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 export { MyData } from './MyData';
 export { useAppDispatch, useAppSelector, useAppStore } from './hooks';
 export { 
@@ -10,4 +11,4 @@ export {
   postDeleted
 } from '@my-sample/my-shared';
 export { store } from './store';
-export { selectUser } from './userSlice';
+export { selectUser } from './user/userSlice';

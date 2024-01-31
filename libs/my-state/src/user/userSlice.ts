@@ -1,6 +1,6 @@
 import { User, logCall, userLoggedIn, userLoggedOut } from "@my-sample/my-shared";
 import { createSlice } from "@reduxjs/toolkit";
-import { RootState } from "./store";
+import { RootState } from "../store";
 
 const initialState: User = {
     userName: undefined,

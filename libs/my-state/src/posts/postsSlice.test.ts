@@ -3,7 +3,7 @@ import { postsReducer, selectAllPosts } from "./postsSlice";
 import { postAdded, postDeleted, postDeletedViaSync, postAddedOrUpdatedViaSync, postsLoadedViaSync, PostStatus, Post } from "@my-sample/my-shared";
 import { AppStore } from "../store";
 import { authReducer, syncReducer } from "@my-sample/my-backend";
-import { userReducer } from "../userSlice";
+import { userReducer } from "../user/userSlice";
 
 describe('postsSlice', () => {
   let store: AppStore;

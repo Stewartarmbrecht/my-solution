@@ -4,7 +4,7 @@ import { render } from '@testing-library/react-native';
 import { MyData } from './MyData';
 import { useAppDispatch, useAppSelector } from './hooks';
 import { userLoggedIn } from '@my-sample/my-shared';
-import { selectUser } from './userSlice';
+import { selectUser } from './user/userSlice';
 import { Text } from 'react-native';
 
 describe('MyData', () => {
