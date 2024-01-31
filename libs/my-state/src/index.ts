@@ -4,7 +4,7 @@ export {
   selectAllPosts,
   selectPostById,
   selectPostIds 
-} from './postsSlice';
+} from './posts/postsSlice';
 export {
   postAdded,
   postDeleted

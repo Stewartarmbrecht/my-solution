@@ -1,7 +1,6 @@
 import { PayloadAction, createEntityAdapter, createSlice } from "@reduxjs/toolkit";
-import { Posts } from "./types/Posts";
-import { Selector } from "react-redux";
-import { RootState } from "./store";
+import { Posts } from "./Posts";
+import { RootState } from "../store";
 import { comparePosts } from "./comparePosts";
 import { 
   Post, 
@@ -54,7 +53,6 @@ const postsSlice = createSlice({
       const posts = action.payload;
       const postIds = posts.map((post) => post.id);
       if (!compareStringArrays(state.ids, postIds)) {
-        state.ids = postIds;
         const activityIdsToRemove = state.ids.filter((id) => postIds.includes(id) === false);
         activityIdsToRemove.forEach((id) => {
           logCall('postsSlice.postsLoadedViaSync.delete', id);
@@ -63,11 +61,13 @@ const postsSlice = createSlice({
         const activityIdsToAdd = postIds.filter((id) => state.ids.includes(id) === false);
         activityIdsToAdd.forEach((id) => {
           const newPost = posts.find((post) => post.id === id);
+          /* istanbul ignore else */
           if (newPost !== undefined) {
             logCall('postsSlice.postsLoadedViaSync.add', newPost);
             state.entities[id] = newPost;
           }
         });
+        state.ids = postIds;
       }
       const activityIdsToUpdate = state.ids.filter((id) => postIds.includes(id) === true);
       activityIdsToUpdate.forEach((id) => {
@@ -89,7 +89,3 @@ export const {
   selectById: selectPostById,
   selectIds: selectPostIds,
 } = postsAdapter.getSelectors<RootState>((state) => state.posts);
-
-export const getAllPosts: Selector<RootState, Post[]> = (state) => {
-  return state.posts.ids.map((id) => state.posts.entities[id]);
-}

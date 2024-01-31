@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import { Post } from "@my-sample/my-shared";
 import { SerializedError } from "@reduxjs/toolkit";
 
