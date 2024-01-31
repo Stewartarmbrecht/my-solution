@@ -58,3 +58,4 @@ cache/
 
 apps/undefined-e2e/artifacts
 apps/my-app-e2e/artifacts
+**/coverage/

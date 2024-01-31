@@ -1,4 +1,4 @@
-import { Post } from "./types/Posts";
+import { Post } from "@my-sample/my-shared";
 
 export function comparePosts(a: Post | undefined, b: Post | undefined): boolean {
     let match = true;
@@ -7,6 +7,9 @@ export function comparePosts(a: Post | undefined, b: Post | undefined): boolean 
         return match;
     }
     if (a.id !== b.id) {
+        match = false;
+    }
+    if (a.serverId !== b.serverId) {
         match = false;
     }
     if (a.title !== b.title) {
