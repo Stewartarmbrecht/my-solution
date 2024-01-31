@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import { PostStatus } from "./PostStatus";
 
 export interface Post {
