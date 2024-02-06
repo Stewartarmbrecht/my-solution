@@ -5,14 +5,13 @@ import { DataStore } from '@aws-amplify/datastore';
 //import { ExpoSQLiteAdapter } from '@aws-amplify/datastore-storage-adapter/ExpoSQLiteAdapter';
 import amplifyconfig from './aws-exports';
 import { logSetup, userLoggedIn } from '@my-sample/my-shared';
-import { Synchronizer } from './sync/Synchronizer';
+import { useSynchronizer } from './sync/useSynchronizer';
 import { useEffect } from 'react';
 import { getCurrentUser } from 'aws-amplify/auth';
 import { useDispatch } from 'react-redux';
 
 Amplify.configure(amplifyconfig);
 DataStore.configure();
-
 
 export interface MyBackendProps {
   children: JSX.Element;
@@ -31,12 +30,12 @@ export function MyBackend(props: MyBackendProps) {
     loadUser();
   });
 
+  useSynchronizer();
+
   return (
     <Authenticator.Provider>
       <Authenticator>
-        <Synchronizer>
-          {props.children}
-        </Synchronizer>
+        {props.children}
       </Authenticator>
     </Authenticator.Provider>
   );

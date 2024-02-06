@@ -9,8 +9,8 @@
     "jest.config.ts",
     "src/**/*.test.ts",
     "src/**/*.test.tsx",
-    "src/**/*.test.js",
-    "src/**/*.test.jsx",
-    "src/**/*.d.ts"
+    "src/**/*.d.ts",
+    "src/**/*.ts",
+    "src/**/*.tsx"
   ]
 }

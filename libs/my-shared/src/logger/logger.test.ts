@@ -1,11 +1,13 @@
-import logRaw, {
+import {
+  logRaw,
   globalOptions,
   logCall,
   logHighFrequencyCall,
   logHighFrequencyCheck,
   logId,
   logSetup,
-} from '..';
+  logError,
+} from './logger';
 
 describe('logger', () => {
   const originalLOGGING = process.env.LOGGING;
@@ -99,4 +101,16 @@ describe('logger', () => {
       consoleSpy.mockRestore();
     });
   });
+
+  describe('logError', () => {
+    it('should log the error name, message, and any additional data', () => {
+      const consoleSpy = jest.spyOn(console, 'log').mockImplementation();
+      logError(new Error("Here is my error message"), 'some', 'data');
+      expect(consoleSpy).toHaveBeenCalledWith(1, 'ERROR', 'Error', 'Here is my error message', 'some', 'data');
+      consoleSpy.mockRestore();
+    });
+  });
+
 });
+
+

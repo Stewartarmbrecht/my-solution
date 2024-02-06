@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
-import logRaw, { 
+import { 
+  logRaw,
   Post, 
   logCall, 
   logSetup, 
@@ -15,11 +16,7 @@ import { useDispatch } from 'react-redux';
  * Synchronizes the redux data with the amplify datastore.
  * @returns {JSX.Element} The root component of the app.
  */
-export function Synchronizer({
-  children,
-}: {
-  children: JSX.Element;
-}): JSX.Element {
+export function useSynchronizer() {
   logSetup('Synchronizer');
 
   const dispatch = useDispatch();
@@ -88,8 +85,10 @@ export function Synchronizer({
         }));
         logCall('getDataStorePosts', 'count:', posts.length);
         dispatch(postsLoadedViaSync(posts));
-      } catch (error) {
+      } /* istanbul ignore next */ catch (error) {
+         /* istanbul ignore next */
         logRaw('getDataStorePosts', 'error:', error);
+         /* istanbul ignore next */
         throw error;
       }
     }    
@@ -98,8 +97,4 @@ export function Synchronizer({
       subscription.unsubscribe()
     };
   }, [dispatch]); // Or [] if effect doesn't need props or state  
-
-  return (children)
-
 }
-

@@ -29,7 +29,7 @@ export const globalOptions = {
  * A simple logger that can be turned on and off.
  * @param {unknown[]} data The data to log.
  */
-function logRaw(...data: unknown[]) {
+export function logRaw(...data: unknown[]) {
   'worklet';
   // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
   const currentLogId = getLogId();
@@ -78,4 +78,12 @@ export function logHighFrequencyCall(name: string, ...data: unknown[]) {
   logRaw('hf call', name, ...data);
 }
 
-export default logRaw;
+/**
+ * Call when logging for a setup function.
+ * @param {string} name The name of the setup function.
+ * @param {unknown[]} data The data to log.
+ */
+export function logError(error: Error, ...data: unknown[]) {
+  'worklet';
+  logRaw('ERROR', error.name, error.message, ...data);
+}

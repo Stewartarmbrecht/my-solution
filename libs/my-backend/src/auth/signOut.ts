@@ -1,5 +1,6 @@
-import { logCall } from "@my-sample/my-shared";
+import { logCall, logError } from "@my-sample/my-shared";
 import { DataStore } from '@aws-amplify/datastore';
+import { signOut as authSignOut } from '@aws-amplify/auth';
 
 export async function signOut() {
   try {
@@ -12,8 +13,11 @@ export async function signOut() {
     // logCall('MyBackend.handleSignOut.DataStore.start');
     // await DataStore.start();      
     logCall('MyBackend.handleSignOut.signOut');
-    await signOut();
+    await authSignOut();
   } catch (error) {
-    console.log('error signing out: ', error);
+    /* istanbul ignore next */
+    if (error instanceof Error) {
+      logError(error);
+    }
   }
 }

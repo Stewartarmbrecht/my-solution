@@ -1,16 +1,25 @@
 /* istanbul ignore file */
-import logRaw, {
+import {
+  logRaw,
   logCall,
   logHighFrequencyCall,
   logHighFrequencyCheck,
   globalOptions,
   logId,
   logSetup,
+  logError,
 } from './logger/logger';
 
-export default logRaw;
-
-export { logCall, logHighFrequencyCall, logHighFrequencyCheck, globalOptions, logId, logSetup };
+export { 
+  logRaw, 
+  logCall, 
+  logHighFrequencyCall, 
+  logHighFrequencyCheck, 
+  globalOptions, 
+  logId, 
+  logSetup,
+  logError
+};
 
 export { Post } from './types/Post';
 export { User } from './types/User';

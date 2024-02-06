@@ -4,7 +4,11 @@
     "outDir": "../../dist/out-tsc",
     "types": ["node"]
   },
-  "exclude": ["**/*.spec.ts", "**/*.spec.tsx", "test-setup.ts"],
+  "exclude": [
+    "**/*.test.ts", 
+    "**/*.test.tsx", 
+    "test-setup.ts"
+  ],
   "include": [
     "**/*.js", 
     "**/*.jsx", 
