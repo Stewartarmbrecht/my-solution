@@ -5,7 +5,8 @@ import MyComponent from './MyComponent';
 
 describe('MyComponent', () => {
   it('should render successfully', () => {
-    const { root } = render(< MyComponent />);
-    expect(root).toBeTruthy();
+    const { findByText } = render(< MyComponent />);
+    const welcomeMessage = findByText('Welcome to My Component!');
+    expect(welcomeMessage).toBeDefined();
   });
 });

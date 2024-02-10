@@ -4,12 +4,7 @@ import { useAppDispatch } from '@my-sample/my-state';
 import { nanoid } from '@reduxjs/toolkit';
 import { Post, PostStatus, postAdded } from '@my-sample/my-shared';
 
-/* eslint-disable-next-line */
-export interface AddPostProps {
-}
-
-
-export function AddPost(props: AddPostProps) {
+export function AddPost() {
   const [newPostName, setNewPostName] = useState('');
   const dispatch = useAppDispatch();
   const createPost = async () => {
@@ -20,13 +15,6 @@ export function AddPost(props: AddPostProps) {
       status: PostStatus.ACTIVE,
     };
     dispatch(postAdded(post));
-    // const post = await DataStore.save(
-    //   new Post({
-    //     title: newPostName,
-    //     rating: 5,
-    //     status: PostStatus.ACTIVE,
-    //   })
-    // );
     console.log('Post saved successfully!', post);
   }
 
@@ -37,6 +25,7 @@ export function AddPost(props: AddPostProps) {
         style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
         onChangeText={text => setNewPostName(text)}
         value={newPostName}
+        placeholder='New Post Name'
         accessibilityLabel='New Post Name'
       />
       <Pressable 
@@ -64,7 +53,3 @@ const styles = StyleSheet.create({
     marginTop: 24,
   },
 });
-
-export default AddPost;
-
-

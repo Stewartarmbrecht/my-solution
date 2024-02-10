@@ -1,5 +1,5 @@
 /* istanbul ignore file */
-export { MyData } from './MyData';
+export { MyState } from './MyState';
 export { useAppDispatch, useAppSelector, useAppStore } from './hooks';
 export { 
   selectAllPosts,

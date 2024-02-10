@@ -7,13 +7,10 @@ export interface MyPostProps {
   post: Post;
 }
 
-
 export function MyPost(props: MyPostProps) {
   const dispatch = useAppDispatch();
   const deletePostHandler = async () => {
     dispatch(postDeleted(props.post));
-    // const post = await DataStore.delete(props.post);
-    //console.log('Post deleted successfully!', props.post);
   }
 
   return (
@@ -56,7 +53,3 @@ const styles = StyleSheet.create({
     padding: 2,
   },
 });
-
-export default MyPost;
-
-

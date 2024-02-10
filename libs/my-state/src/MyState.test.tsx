@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react';
 import { render } from '@testing-library/react-native';
 
-import { MyData } from './MyData';
+import { MyState } from './MyState';
 import { useAppDispatch, useAppSelector } from './hooks';
 import { userLoggedIn } from '@my-sample/my-shared';
 import { selectUser } from './user/userSlice';
 import { Text } from 'react-native';
 
-describe('MyData', () => {
+describe('MyState', () => {
   it('should load the store for use by child components', () => {
-    const { findByText } = render(<MyData><MyTest /></MyData>);
+    const { findByText } = render(<MyState><MyTest /></MyState>);
     expect(findByText("Test User")).toBeTruthy();
   });
 });

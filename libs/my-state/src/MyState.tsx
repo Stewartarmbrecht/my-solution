@@ -3,7 +3,7 @@ import { Provider } from 'react-redux'
 export interface MyDataProps {
   children: JSX.Element;
 }
-export function MyData(props: MyDataProps) {
+export function MyState(props: MyDataProps) {
   return (
     <Provider store={store}>
       {props.children}
