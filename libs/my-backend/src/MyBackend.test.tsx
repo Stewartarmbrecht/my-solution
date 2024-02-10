@@ -7,7 +7,6 @@ import { render, waitFor } from '@testing-library/react-native';
 import { useDispatch } from 'react-redux';
 import { DataStore } from '@aws-amplify/datastore';
 import { getCurrentUser } from 'aws-amplify/auth';
-import { get } from 'http';
 
 jest.mock('./aws-exports', () => ({
   default: {},
