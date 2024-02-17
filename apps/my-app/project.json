@@ -6,9 +6,16 @@
   "targets": {
     "start": {
       "executor": "@nx/expo:start",
-      "dependsOn": ["ensure-symlink", "sync-deps"],
+      "dependsOn": ["ensure-symlink", "sync-deps", "export-ip"],
       "options": {
-        "port": 19300
+        "port": 19300,
+        "web": true
+      }
+    },
+    "export-ip": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "export REACT_NATIVE_PACKAGER_HOSTNAME=10.24.1.57;"
       }
     },
     "serve-web": {
@@ -30,6 +37,13 @@
       "dependsOn": ["ensure-symlink", "sync-deps"],
       "options": {
         "platform": "android"
+      }
+    },
+    "build-dev": {
+      "executor": "@nx/expo:build",
+      "options": {
+        "platform": "all",
+        "profile": "development"
       }
     },
     "build": {

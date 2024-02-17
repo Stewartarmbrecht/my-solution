@@ -2,7 +2,7 @@ const IS_PROD = process.env.APP_VARIANT === 'prod';
 const IS_PREVIEW = process.env.APP_VARIANT === 'preview';
 
 export default {
-  name: IS_PROD ? 'MyApp (Dev)' : (IS_PREVIEW ? 'MyApp (Preview)' : 'MyApp'),
+  name: IS_PROD ? 'MyApp' : (IS_PREVIEW ? 'MyApp (Preview)' : 'MyApp (Dev)'),
   slug: 'my-app',
   version: '1.0.0',
   orientation: 'portrait',

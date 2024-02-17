@@ -56,25 +56,27 @@ Our approach for establishing the full development ecosystem for your solution s
 <br>
 <br>
 
-# LOCAL DEVELOPMENT ENVIRONMENT
+# FIRST DEVELOPMENT ENVIRONMENT
 Local
 Offline Development Capable
 Unit Testing
 End to End Testing
 
-## SETUP
+## PREREQUISITES
 1. Install Docker.
 2. Install Visual Studio Code.
-3. Clone the repo.  
+
+## CONTAINER
+1. Clone the repo.  
 ```
 git clone https://github.com/Stewartarmbrecht/my-sample.git
 ```
-4. Open in Visual Studio.
+2. Open in Visual Studio.
 ```
 cd my-sample
 code .
 ```
-5. Edit the forwarding ports for container.  In the .devcontainer/devcontainer.json change the block below so that the IP Address matches the IP address of your machine.
+3. Edit the forwarding ports for container.  In the .devcontainer/devcontainer.json change the block below so that the IP Address matches the IP address of your machine.
 You can also change the port numbers that you want to use.
 
 This is the only way I have found to host your dev environment in a docker container (on a Windows machine) and access it from a physical device.
@@ -87,17 +89,48 @@ This is the only way I have found to host your dev environment in a docker conta
 		"10.24.1.57:19302:19302", // Used by Expo DevTools.
 		"10.24.1.57:19306:19306"
 ```
+4. Edit the my-app nx start target port and ip option in the my-app project:
+In apps/my-app/project.json change the start port ("19700") and the export-ip address ("10.24.1.57") options shown below to the port and ip address that your docker dev container is using:
+```
+{
+  ...
+  "targets": {
+    "start": {
+      "executor": "@nx/expo:start",
+      "dependsOn": ["ensure-symlink", "sync-deps", "export-ip"],
+      "options": {
+        "port": 19700,
+        "web": true
+      }
+    },
+    "export-ip": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "export REACT_NATIVE_PACKAGER_HOSTNAME=10.24.1.57;"
+      }
+    },
+	...
+	},
+  ...
+}
+```
 
-6. Open in Dev Container
+4. Open in Dev Container
 ```
 Cntrl+Shift+P
 "Reopen in Container"
 ```
-7. Run npm Install.  After the container is built and you are in, run npm install.
+
+## APP INSTALL
+
+1. Run npm Install.  After the container is built and you are in, run npm install.
 ```
 npm install
 ```
-8. Initialize Amplify
+
+## AMPLIFY SETUP
+1. Create Amazon account if you don't already have one:  [Sign Up for AWS](https://portal.aws.amazon.com/billing/signup?nc2=h_ct&src=header_signup&redirect_url=https%3A%2F%2Faws.amazon.com%2Fregistration-confirmation#/start/email)
+2. Initialize Amplify
 You need to initialize amplify to create some local files so that you can run the app.
 Note: if amplify is not recognized as a command I have found that rebuilding the container will fix this.  Just press Cntrl+Shift+P and them type Rebuild Container and select the Dev Container command.
 ```
@@ -135,14 +168,77 @@ Using default provider  awscloudformation
 🛑 Could not initialize platform for 'dev': Access Denied
 ```
 
+```
+amplify add env <your env name>
+```
+Replace \<your env name\> with your own name.  Unfortunately "dev" is already taken and will cause an error if you try to use it.  Please use a different name than "dev".
+
+* Are you sure you want to continue? Yes
+* Do you want to update code for your updated GraphQL API? No
+
 ... To be continued.
 
-9. Run the app to verify the setup.
+## RUN WEB APP & AMPLIFY
+
+1. Run the app to verify the setup.
 To run the app you need to export the ip address of your machine and set the port for the javascript bundle to the value you set above then start the app.  This command will start the app in web mode:
 
 ```
-export REACT_NATIVE_PACKAGER_HOSTNAME=10.24.1.57; npx nx start my-app --web --port=19300
+npx nx start my-app
 ```
+
+## RUN TESTS
+1. Run all unit tests and verify success.
+```
+npx nx run-many -t test
+```
+
+## CREATE EXPO DEVELOPMENT BUILD
+
+1. Create an Expo Account:  [Expo Sign Up](https://expo.dev/signup)
+2. Remove eas project id.  In the app.config.js, comment out the eas.projectId so it looks like this:
+```
+  extra: {
+    // This is the project ID from the previous step
+    // eas: {
+    //   projectId: '0b1aa1f3-a7d9-4a39-8bfe-024107fcfbdb',
+    // },
+  },
+
+``` 
+2. Create a build:
+```
+npx nx build my-app
+```
+* Email or username: [from the account you created]
+* Password: [Your password]
+* Select Platform: [Select the one you want]
+* Would you like to automatically create an EAS project for @stewartoutlook/my-app? Y
+
+You will get an error because the project uses dynamic app configuration.  Follow the instructions to update the app.config.js file with your expo.extra.eas.projectId property.
+```
+Warning: Your project uses dynamic app configuration, and the EAS project ID can't automatically be added to it.
+https://docs.expo.dev/workflow/configuration/#dynamic-configuration-with-appconfigjs
+
+To complete the setup process, set "extra.eas.projectId" in your app.config.js:
+
+{
+  "expo": {
+    "extra": {
+      "eas": {
+        "projectId": "[your id]"
+      }
+    }
+  }
+}
+...
+```
+3. Edit app.config.js using the directions above.
+4. Rerun the build:
+```
+npx nx build my-app
+```
+* Select Platform: [Select the one you want]
 
 
 ### Local Hosting
