@@ -7,7 +7,7 @@
       "env": {
         "APP_VARIANT": "prod"
       },
-      "channel": "development"
+      "channel": "production"
     },
     "development": {
       "developmentClient": true,
@@ -29,6 +29,6 @@
     "production": {}
   },
   "cli": {
-    "version": ">= 5.2.0"
+    "version": ">= 5.8.0"
   }
 }

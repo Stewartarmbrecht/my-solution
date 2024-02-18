@@ -11,8 +11,7 @@
         "export-ip"
       ],
       "options": {
-        "port": 19300,
-        "web": true
+        "port": 19300
       }
     },
     "export-ip": {
@@ -52,6 +51,13 @@
       "executor": "@nx/expo:build",
       "options": {
         "platform": "all",
+        "profile": "development"
+      }
+    },
+    "build-dev-ios": {
+      "executor": "@nx/expo:build",
+      "options": {
+        "platform": "ios",
         "profile": "development"
       }
     },

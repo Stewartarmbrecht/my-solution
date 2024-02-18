@@ -37,7 +37,8 @@
     "expo-status-bar": "*",
     "jest": "*",
     "jest-expo": "*",
-    "react-native-sqlite-storage": "*"
+    "react-native-sqlite-storage": "*",
+    "expo-application": "*"
   },
   "devDependencies": {
     "@nx/expo": "*",
