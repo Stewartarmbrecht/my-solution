@@ -10,6 +10,7 @@ export interface MyPostProps {
 export function MyPost(props: MyPostProps) {
   const dispatch = useAppDispatch();
   const deletePostHandler = async () => {
+    debugger;
     dispatch(postDeleted(props.post));
   }
 
@@ -24,7 +25,7 @@ export function MyPost(props: MyPostProps) {
       <Text style={styles.title}>{props.post.title}</Text>
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {

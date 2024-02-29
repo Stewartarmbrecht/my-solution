@@ -8,65 +8,69 @@
 
 
 ## Objectives
+Below are the objectives that drove the design of this solution.
+1. **Universal App (Mobile, Web, and eventually TV)** - This app uses Expo to enable using a single code base to deploy mobile, web, and tv apps.
 
-### Universal App (Mobile and Web)
+2. **Offline First** - This app should be capable of running offline as well as online with realtime updates streaming to the app when updates are made in other apps.
 
-### Offline First
+3. **Container Based Development** - The development environment is setup to run in a Docker container.
+
+4. **Scalable Development Model** - The solution is designed to support the deployment of multiple environments that would be useful for a team based development model.  This includes individual development environments, preview environments that can be used for external user testing, and a production environment.
+
+5. **Concept to Cash** - While not achieved yet, ultimately the goal is to setup this repo as a starting point that provides a complete development pipeline for you.  Designed to handle standard flows for:
+    1. Initial Environment Setup for Local Dev, Preview, and Production
+    2. Local development, testing, and debugging
+    2. Source Control Management <-- Not Added Yet
+    2. Continuous Integration and Continuous Deployment <-- Not Added Yet
+    3. Production Monitoring <-- Not Added Yet
+    4. Collecting Payments <-- Not Added Yet
 
 
 ## Project Technologies
 
-### VS Code
+1. **IDE - VS Code** - The development environment was built assuming the user is using VS Code.  While we have avoided using VS Code specific flows (like using VS Code tasks for development activities), we have not explicitly designed the code base or tested it to see if the flows work outside of VS Code.  Instructions on performing setup activities will assume you are working in VS Code.
 
-### Docker
+2. **Containerization - Docker** - Used to enable setting up development environments across multiple platforms: Windows, Mac, or Linux.
 
-### GitHub
+3. **Source Code - Git** - Used for source control with remotes hosted on GitHub.
 
-### Nx
+4. **Monorepo - Nx** - Used for manage aspects of working in a monorepo. 
 
-### TypeScript
+5. **Type Safety - TypeScript** - Used to provide type saftey.
 
-### Expo
+6. **Development Framework - Expo** - Used to provide the universal app development model.
 
-### React Native
+7. **Mobile Framework - React Native** - Foundation for mobile app development.
 
-### Babel
+8. **Transpilation - Babel** - Used for transpiling typescript.
 
-### ESLint
+9. **Bundling - Metro** - Used for bundling the web and mobile app.
 
-### Prettier
+10. **Static Code Analysis - ESLint & Prettier** - 
 
-### EAS
+11. **Mobile Builds and Deployments - EAS** - Expo's EAS services are used to build and deploy IOS and Andriod mobile apps.
 
-### Amplify
-
-#### Auth
-
-#### Datastore
+12. **Backend, Web Hosting, & Offline Storage - Amplify** - Used for providing backend services for authentication and data sync.  This also includes enabling offline storage on both mobile and web.
 
 <br>
 <br>
 
-# SOURCE CODE REPOSITORY
+# SETUP 
+## SOURCE CODE REPOSITORY
 Our approach for establishing the full development ecosystem for your solution starts first with setting up a repository to store you code.
-## REPO SETUP
 1. Setup GitHub Account.
 2. Fork template repo.
 
 <br>
 <br>
 
-# FIRST DEVELOPMENT ENVIRONMENT
-Local
-Offline Development Capable
-Unit Testing
-End to End Testing
+## FIRST DEVELOPMENT ENVIRONMENT
 
-## PREREQUISITES
+### INSTALL PREREQUISITES
 1. Install Docker.
 2. Install Visual Studio Code.
 
-## CONTAINER
+### PERSONALIZE SOLUTION
 1. Clone the repo.  
 ```
 git clone https://github.com/Stewartarmbrecht/my-sample.git
@@ -76,6 +80,11 @@ git clone https://github.com/Stewartarmbrecht/my-sample.git
 cd my-sample
 code .
 ```
+3. Make the following find and replacements to update the solution to your desired setup:
+    1. **IP Address** - ```10.24.1.57 -> [Your Host IP]``` - To enable connectivity from physical devices to your Metro bundler you need to forward traffic from your host machines IP to your development container.
+    2. **Organization Identifier** - ```stewartarmbrecht -> [Your Company Domain]``` - This updates the app.config.ts to deploy the mobile app using an bundle identifier that will be associated with your company. 
+
+### CREATE DEVELOPMENT CONTAINER
 3. Edit the forwarding ports for container.  In the .devcontainer/devcontainer.json change the block below so that the IP Address matches the IP address of your machine.
 You can also change the port numbers that you want to use.
 
@@ -236,10 +245,11 @@ To complete the setup process, set "extra.eas.projectId" in your app.config.js:
 3. Edit app.config.js using the directions above.
 4. Rerun the build:
 ```
-npx nx build my-app
+npx nx build-dv my-app
 ```
-* Select Platform: [Select the one you want]
+5. Install development build by scanning the QR Code
 
+...build this out further...
 
 ### Local Hosting
 

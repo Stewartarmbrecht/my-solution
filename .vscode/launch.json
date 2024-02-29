@@ -1,0 +1,29 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Attach to Hermes application - Experimental",
+      "request": "attach",
+      "type": "reactnativedirect",
+      "cwd": "${workspaceFolder}/apps/my-app",
+      "address": "10.24.1.57",
+      "port": 9229
+    },
+    {
+      "name": "Debug Expo",
+      "type": "expo",
+      "bundlerHost": "10.24.1.57",
+      "bundlerPort": "19300",
+      "request": "attach",
+      "projectRoot": "${workspaceFolder}/apps/my-app"
+    },
+    {
+      "name": "Attach to packager",
+      "cwd": "${workspaceFolder}/apps/my-app",
+      "type": "reactnative",
+      "request": "attach",
+      "port": 9229,
+      "sourceMaps": true
+    }
+  ]
+}

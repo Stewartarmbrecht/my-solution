@@ -11,7 +11,8 @@
         "export-ip"
       ],
       "options": {
-        "port": 19300
+        "port": 9229,
+        "dev-client": true
       }
     },
     "export-ip": {

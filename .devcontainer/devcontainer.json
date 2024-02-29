@@ -1,7 +1,7 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/typescript-node
 {
-	"name": "better-devcontainer",
+	"name": "my-solution-dev-container",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
 	"image": "mcr.microsoft.com/devcontainers/typescript-node:1-20-bullseye",
 
@@ -23,11 +23,15 @@
 		"10.24.1.57:8381:8381",
 		"10.24.1.57:9388:9388",
 		"10.24.1.57:9389:9389",
+		"10.24.1.57:9229:9229",
 		"10.24.1.57:19300:19300",
 		"10.24.1.57:19301:19301",
 		"10.24.1.57:19302:19302",
 		"10.24.1.57:19306:19306"
 	],
+	"remoteEnv": {
+		"REACT_NATIVE_PACKAGER_HOSTNAME": "10.24.1.57"
+	},
 	"customizations": {
 		"vscode": {
 			"extensions": [
@@ -43,6 +47,8 @@
 				"GraphQL.vscode-graphql-syntax",
 				"nrwl.angular-console",
 				"Orta.vscode-jest",
+				"alfnielsen.vsc-rename-files",
+				"msjsdiag.vscode-react-native"
 			]
 		}
 	}
