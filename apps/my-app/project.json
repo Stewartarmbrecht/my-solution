@@ -7,18 +7,11 @@
     "start": {
       "executor": "@nx/expo:start",
       "dependsOn": [
-        "sync-deps",
-        "export-ip"
+        "sync-deps"
       ],
       "options": {
-        "port": 9229,
+        "port": 19001,
         "dev-client": true
-      }
-    },
-    "export-ip": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "export REACT_NATIVE_PACKAGER_HOSTNAME=10.24.1.57;"
       }
     },
     "serve-web": {
@@ -106,6 +99,18 @@
         "{options.outputDir}"
       ]
     },
+    "export-web": {
+      "executor": "@nx/expo:export",
+      "dependsOn": [
+        "sync-deps"
+      ],
+      "options": {
+        "platform": "web",
+        "bundler": "metro",
+        "outputDir": "dist/apps/my-app"
+      }
+    },
+
     "lint": {
       "executor": "@nx/eslint:lint",
       "outputs": [

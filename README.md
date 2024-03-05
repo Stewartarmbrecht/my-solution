@@ -130,14 +130,14 @@ Cntrl+Shift+P
 "Reopen in Container"
 ```
 
-## APP INSTALL
+### INSTALL DEPENDENCIES
 
 1. Run npm Install.  After the container is built and you are in, run npm install.
 ```
 npm install
 ```
 
-## AMPLIFY SETUP
+### SETUP AMPLIFY
 1. Create Amazon account if you don't already have one:  [Sign Up for AWS](https://portal.aws.amazon.com/billing/signup?nc2=h_ct&src=header_signup&redirect_url=https%3A%2F%2Faws.amazon.com%2Fregistration-confirmation#/start/email)
 2. Initialize Amplify
 You need to initialize amplify to create some local files so that you can run the app.
@@ -187,7 +187,7 @@ Replace \<your env name\> with your own name.  Unfortunately "dev" is already ta
 
 ... To be continued.
 
-## RUN WEB APP & AMPLIFY
+### RUN WEB APP
 
 1. Run the app to verify the setup.
 To run the app you need to export the ip address of your machine and set the port for the javascript bundle to the value you set above then start the app.  This command will start the app in web mode:
@@ -196,13 +196,13 @@ To run the app you need to export the ip address of your machine and set the por
 npx nx start my-app
 ```
 
-## RUN TESTS
+### RUN TESTS
 1. Run all unit tests and verify success.
 ```
 npx nx run-many -t test
 ```
 
-## CREATE EXPO DEVELOPMENT BUILD
+### CREATE EXPO DEVELOPMENT BUILD
 
 1. Create an Expo Account:  [Expo Sign Up](https://expo.dev/signup)
 2. Remove eas project id.  In the app.config.js, comment out the eas.projectId so it looks like this:
@@ -251,12 +251,38 @@ npx nx build-dv my-app
 
 ...build this out further...
 
-### Local Hosting
+### RUN DEVELOPMENT BUILD ON PHYSICAL DEVICE
+After you have installed the development build.  Run the app:
+```
+npx nx start my-app
+```
+Then scan the QR Code with your phone.  The app should be running on your phone.
 
-#### Amplify Local Dev Environment
+### DEBUG WEB APP
+To debug the web app, just open the browser devTools.
+Be sure to install the React Developer Tools and the Redux Developer Tools add ons to help debug the application.
 
+### DEBUG MOBILE APP
 
-### Test (EAS Development Build)
+#### Debugging Code
+1. **Start App:**  Start the app use the instructions for Running the development build on a physical device above.
+2. **Open Browswer:**  Open Edge or Chrome and enter ```edge://inspect``` or ```chrome://inspect```
+3. **Set Network Targets:** Next to Discover network targets click configure and enter your host machines ip address and the port you started the development build on (ex. 19001)
+4. **Inspect Hermes React Native:** Click the 'inspect' link under Hermes React Native shown under remote targets.
+5. **Find Code:** To find the code hit Cntrl-P and type in the name of the code file.  //TODO: find a way to load the code into the workspace.
+6. **Break Points**: Breakpoints did not work for me.  Instead I added ```debugger;``` into my code to break.
+
+#### Inspecting UI and Performance Tracing (React Dev Tools)
+1. **Start App:**  Start the app use the instructions for Running the development build on a physical device above.
+2. **Open React Dev Tools:**  Hit Shift+M in the terminal where you started the app to open more tools options.  Select ```Open React devtools``` and then hit enter.  Enter yes to option to open the browser page.
+3. **Open the App:** Open the app on your phone.  The browser should then connect to your app and allow you to inspect the UI elements and take performance snapshots.
+
+## ENABLE OFFLINE DEVELOPMENT
+TBD...
+### Amplify Local Dev Environment
+TBD...
+
+## TEST ENVIRONMENT SETUP (EAS Development Build)
 
 #### Amplify Test Environment
 

@@ -7,11 +7,15 @@
     "eas-build-pre-install": "cd ../../ && node tools/scripts/eas-build-pre-install.mjs . apps/my-app && cp package-lock.json apps/my-app"
   },
   "dependencies": {
+    "@aws-amplify/datastore": "*",
     "@aws-amplify/react-native": "*",
     "@aws-amplify/ui-react-native": "*",
+    "@nx/expo": "*",
     "@react-native-async-storage/async-storage": "*",
     "@react-native-community/netinfo": "*",
     "@reduxjs/toolkit": "*",
+    "@testing-library/jest-native": "*",
+    "@testing-library/react-native": "*",
     "aws-amplify": "*",
     "core-js": "*",
     "expo": "*",
@@ -31,7 +35,15 @@
     "react-native-url-polyfill": "*",
     "react-native-web": "*",
     "react-redux": "*",
-    "tslib": "*"
+    "tslib": "*",
+    "react-test-renderer": "*",
+    "@expo/metro-config": "*",
+    "metro-config": "*",
+    "@types/react": "*",
+    "babel-preset-expo": "*",
+    "jest": "*",
+    "jest-expo": "*",
+    "react-devtools": "*"
   },
   "devDependencies": {
     "@config-plugins/detox": "*",

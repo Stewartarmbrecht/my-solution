@@ -7,7 +7,7 @@
       "type": "reactnativedirect",
       "cwd": "${workspaceFolder}/apps/my-app",
       "address": "10.24.1.57",
-      "port": 9229
+      "port": 19001
     },
     {
       "name": "Debug Expo",

@@ -2,5 +2,5 @@
   "typescript.referencesCodeLens.enabled": true,
   "typescript.referencesCodeLens.showOnAllFunctions": true,
   "typescript.tsdk": "node_modules/typescript/lib",
-  "react-native.packager.port": 19300,
+  "react-native.packager.port": 19001,
 }

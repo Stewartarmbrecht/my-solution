@@ -9,8 +9,7 @@ export interface MyPostProps {
 
 export function MyPost(props: MyPostProps) {
   const dispatch = useAppDispatch();
-  const deletePostHandler = async () => {
-    debugger;
+  const deletePostHandler = () => {
     dispatch(postDeleted(props.post));
   }
 
