@@ -10,7 +10,7 @@ frontend:
         - npm ci
     build:
       commands:
-        - npx nx export-web my-app
+        - npx nx export-web my-app --verbose
         - npx nx update my-app --platform ios --branch preview --auto --interactive false
   artifacts:
     baseDirectory: dist/apps/my-app
