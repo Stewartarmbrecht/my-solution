@@ -8,6 +8,7 @@ frontend:
         - npm install --quiet --global expo-cli
         - npm install --quiet --global eas-cli
         - npm ci
+        - npx nx pull my-backend
     build:
       commands:
         - npx nx export-web my-app
