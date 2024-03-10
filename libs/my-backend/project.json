@@ -5,8 +5,20 @@
   "projectType": "library",
   "tags": [],
   "targets": {
-    "pull": {
-      "command": "amplify pull --appId $AMPLIFY_BACKEND_APP_ID --envName $USER_BRANCH --yes",
+    "amplify-configure": {
+      "command": "node amplify-configure.js",
+      "options": {
+        "cwd": "libs/my-backend"
+      }
+    },
+    "amplify-pull": {
+      "command": "node amplify-pull.js",
+      "options": {
+        "cwd": "libs/my-backend"
+      }
+    },
+    "amplify-push": {
+      "command": "node amplify-push.js",
       "options": {
         "cwd": "libs/my-backend"
       }

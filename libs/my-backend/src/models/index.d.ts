@@ -20,6 +20,7 @@ type EagerPostData = {
   readonly content?: string | null;
   readonly notes?: string | null;
   readonly author?: string | null;
+  readonly publishDate: string;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -33,6 +34,7 @@ type LazyPostData = {
   readonly content?: string | null;
   readonly notes?: string | null;
   readonly author?: string | null;
+  readonly publishDate: string;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
