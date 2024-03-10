@@ -55,6 +55,20 @@
         "profile": "development"
       }
     },
+    "build-preview": {
+      "executor": "@nx/expo:build",
+      "options": {
+        "platform": "all",
+        "profile": "preview"
+      }
+    },
+    "build-preview-ios": {
+      "executor": "@nx/expo:build",
+      "options": {
+        "platform": "ios",
+        "profile": "preview"
+      }
+    },
     "build": {
       "executor": "@nx/expo:build",
       "options": {}

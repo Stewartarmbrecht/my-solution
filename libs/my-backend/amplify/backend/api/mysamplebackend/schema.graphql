@@ -11,7 +11,6 @@ type PostData @model @auth(rules: [{ allow: owner }]) {
   content: String
   notes: String
   author: String
-  publishDate: AWSDateTime!
 }
 
 enum PostStatus {
