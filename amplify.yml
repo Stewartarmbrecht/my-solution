@@ -3,6 +3,8 @@ backend:
   phases:
     build:
       commands:
+        - nvm use 20
+        - npm install
         - npx nx amplify-init my-backend
         - npx nx amplify-pull my-backend
         - npx nx amplify-push my-backend
