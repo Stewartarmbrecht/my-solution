@@ -3,7 +3,7 @@ backend:
   phases:
     build:
       commands:
-        - npx nx amplify-configure my-backend
+        - npx nx amplify-init my-backend
         - npx nx amplify-pull my-backend
         - npx nx amplify-push my-backend
 frontend:

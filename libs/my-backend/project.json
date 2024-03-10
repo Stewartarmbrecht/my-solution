@@ -5,6 +5,12 @@
   "projectType": "library",
   "tags": [],
   "targets": {
+    "amplify-init": {
+      "command": "node amplify-init.js",
+      "options": {
+        "cwd": "libs/my-backend"
+      }
+    },
     "amplify-configure": {
       "command": "node amplify-configure.js",
       "options": {
