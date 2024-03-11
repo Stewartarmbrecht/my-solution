@@ -21,7 +21,6 @@ export const onCreatePostData = /* GraphQL */ `subscription OnCreatePostData(
     content
     notes
     author
-    publishDate
     createdAt
     updatedAt
     _version
@@ -48,7 +47,6 @@ export const onUpdatePostData = /* GraphQL */ `subscription OnUpdatePostData(
     content
     notes
     author
-    publishDate
     createdAt
     updatedAt
     _version
@@ -75,7 +73,6 @@ export const onDeletePostData = /* GraphQL */ `subscription OnDeletePostData(
     content
     notes
     author
-    publishDate
     createdAt
     updatedAt
     _version

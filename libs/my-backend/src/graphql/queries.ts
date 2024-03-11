@@ -18,7 +18,6 @@ export const getPostData = /* GraphQL */ `query GetPostData($id: ID!) {
     content
     notes
     author
-    publishDate
     createdAt
     updatedAt
     _version
@@ -47,7 +46,6 @@ export const listPostData = /* GraphQL */ `query ListPostData(
       content
       notes
       author
-      publishDate
       createdAt
       updatedAt
       _version
@@ -86,7 +84,6 @@ export const syncPostData = /* GraphQL */ `query SyncPostData(
       content
       notes
       author
-      publishDate
       createdAt
       updatedAt
       _version

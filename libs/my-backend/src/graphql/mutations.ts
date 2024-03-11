@@ -21,7 +21,6 @@ export const createPostData = /* GraphQL */ `mutation CreatePostData(
     content
     notes
     author
-    publishDate
     createdAt
     updatedAt
     _version
@@ -48,7 +47,6 @@ export const updatePostData = /* GraphQL */ `mutation UpdatePostData(
     content
     notes
     author
-    publishDate
     createdAt
     updatedAt
     _version
@@ -75,7 +73,6 @@ export const deletePostData = /* GraphQL */ `mutation DeletePostData(
     content
     notes
     author
-    publishDate
     createdAt
     updatedAt
     _version
