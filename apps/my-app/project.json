@@ -100,6 +100,12 @@
       "executor": "@nx/expo:update",
       "options": {}
     },
+    "update-preview-ios": {
+      "command": "eas update --platform ios --branch preview --auto",
+      "options": {
+        "cwd": "libs/my-backend"
+      }
+    },
     "export": {
       "executor": "@nx/expo:export",
       "dependsOn": [

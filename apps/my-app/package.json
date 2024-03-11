@@ -43,7 +43,8 @@
     "babel-preset-expo": "*",
     "jest": "*",
     "jest-expo": "*",
-    "react-devtools": "*"
+    "react-devtools": "*",
+    "dotenv": "*"
   },
   "devDependencies": {
     "@config-plugins/detox": "*",
@@ -86,6 +87,7 @@
     "react-test-renderer": "*",
     "ts-jest": "*",
     "ts-node": "*",
-    "typescript": "*"
+    "typescript": "*",
+    "shelljs": "*"
   }
 }
