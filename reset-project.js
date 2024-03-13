@@ -1,7 +1,8 @@
 require('dotenv').config();
 const shell = require('shelljs');
 
-const cmdPush = 'npx renamer --dry-run --find my- --replace ' + process.argv[2] + '- **/*';
+//const cmdPush = 'npx renamer --dry-run --find my- --replace ' + process.argv[2] + '- **/*';
+const cmdPush = 'npx renamer --find my- --replace ' + process.argv[2] + '- **/*';
 
 if (shell.exec(cmdPush).code !== 0) {
   shell.echo('Error replacing file and directory names.');
@@ -13,7 +14,7 @@ const options = {
   files: '**/*',
   from: /my\-/g,
   to: process.argv[2] + '-',
-  dry: true,
+  //dry: true,
 };
 
 try {
