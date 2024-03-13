@@ -1,0 +1,13 @@
+version: '3.4'
+
+services:
+  devcontainer:
+    container_name: my-sample
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    volumes:
+      - ../..:/workspaces:cached
+    ports:
+      - "19001:19001"
+    command: sleep infinity

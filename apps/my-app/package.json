@@ -88,6 +88,8 @@
     "ts-jest": "*",
     "ts-node": "*",
     "typescript": "*",
-    "shelljs": "*"
+    "shelljs": "*",
+    "renamer": "*",
+    "replace-in-file": "*"
   }
 }

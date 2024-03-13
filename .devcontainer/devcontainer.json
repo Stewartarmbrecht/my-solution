@@ -3,7 +3,10 @@
 {
 	"name": "my-solution-dev-container",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"build": { "dockerfile": "Dockerfile" },
+	"dockerComposeFile": ["docker-compose.yml"],
+  "service": "devcontainer",
+	"workspaceFolder": "/workspaces/my-sample",
+	//"build": { "dockerfile": "Dockerfile" },
 	//"image": "mcr.microsoft.com/devcontainers/typescript-node:1-20-bullseye",
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
@@ -20,10 +23,10 @@
 
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
 	// "remoteUser": "root"
-	"appPort": [
-		"10.24.1.57:19001:19001",
-		"10.24.1.57:8097:8097"
-	],
+	// "appPort": [
+	// 	"10.24.1.57:19001:19001",
+	// 	"10.24.1.57:8097:8097"
+	// ],
 	"remoteEnv": {
 		"REACT_NATIVE_PACKAGER_HOSTNAME": "10.24.1.57"
 	},
