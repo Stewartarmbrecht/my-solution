@@ -83,6 +83,10 @@ code .
 3. Make the following find and replacements to update the solution to your desired setup:
     1. **IP Address** - ```10.24.1.57 -> [Your Host IP]``` - To enable connectivity from physical devices to your Metro bundler you need to forward traffic from your host machines IP to your development container.
     2. **Organization Identifier** - ```stewartarmbrecht -> [Your Company Domain]``` - This updates the app.config.ts to deploy the mobile app using an bundle identifier that will be associated with your company. 
+    3. **Solution Name** - ```'my-' -> [Your App Name]``` - This updates the code base to use your app name.
+    4. **App Slug** - ```my-app -> [Your App Slug]``` - This updates the code base to use your app slug.
+    4. **App Slug** - ```my-app -> [Your App Slug]``` - This updates the code base to use your app slug.
+
 
 ### CREATE DEVELOPMENT CONTAINER
 3. Edit the forwarding ports for container.  In the .devcontainer/devcontainer.json change the block below so that the IP Address matches the IP address of your machine.
@@ -90,13 +94,8 @@ You can also change the port numbers that you want to use.
 
 This is the only way I have found to host your dev environment in a docker container (on a Windows machine) and access it from a physical device.
 ```
-		"10.24.1.57:8381:8381",
-		"10.24.1.57:9388:9388",
-		"10.24.1.57:9389:9389",
-		"10.24.1.57:19300:19300", // Used for serving the javascript bundler.
-		"10.24.1.57:19301:19301", // Used for Metro Bundler
-		"10.24.1.57:19302:19302", // Used by Expo DevTools.
-		"10.24.1.57:19306:19306"
+		"10.24.1.57:19001:19001",
+		"10.24.1.57:8097:8097"
 ```
 4. Edit the my-app nx start target port and ip option in the my-app project:
 In apps/my-app/project.json change the start port ("19700") and the export-ip address ("10.24.1.57") options shown below to the port and ip address that your docker dev container is using:
@@ -108,14 +107,8 @@ In apps/my-app/project.json change the start port ("19700") and the export-ip ad
       "executor": "@nx/expo:start",
       "dependsOn": ["ensure-symlink", "sync-deps", "export-ip"],
       "options": {
-        "port": 19700,
+        "port": 19001,
         "web": true
-      }
-    },
-    "export-ip": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "export REACT_NATIVE_PACKAGER_HOSTNAME=10.24.1.57;"
       }
     },
 	...
@@ -146,7 +139,7 @@ Note: if amplify is not recognized as a command I have found that rebuilding the
 cd libs/my-backend
 amplify init
 ```
-* **Environment Name:** dev
+* **Environment Name:** prod
 * **Default Editor:** Visual Studio Code
 * **Authentication:** AWS Profile
 * **New User:** Yes
