@@ -7,7 +7,7 @@ const ipAddress = process.argv[4];
 const port = process.argv[5];
 
 //const cmdPush = 'npx renamer --dry-run --find my- --replace ' + process.argv[2] + '- **/*';
-const cmdPush = 'npx renamer --find my- --replace ' + solutionName + '- **/*';
+const cmdPush = './claim-project.sh ' + solutionName;
 
 if (shell.exec(cmdPush).code !== 0) {
   shell.echo('Error replacing file and directory names.');
