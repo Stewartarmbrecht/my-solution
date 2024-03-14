@@ -2,7 +2,7 @@ version: '3.4'
 
 services:
   devcontainer:
-    container_name: my-sample
+    container_name: my-solution
     build:
       context: .
       dockerfile: ./Dockerfile

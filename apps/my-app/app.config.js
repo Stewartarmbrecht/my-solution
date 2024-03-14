@@ -4,7 +4,7 @@ const IS_PREVIEW = process.env.APP_VARIANT === 'preview';
 export default {
   name: IS_PROD ? 'MyApp' : (IS_PREVIEW ? 'MyApp (Preview)' : 'MyApp (Dev)'),
   slug: 'my-app',
-  version: '1.0.3',
+  version: '0.0.1',
   orientation: 'portrait',
   icon: './assets/icon.png',
   splash: {

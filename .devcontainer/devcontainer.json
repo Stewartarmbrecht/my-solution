@@ -4,8 +4,8 @@
 	"name": "my-solution-devcontainer",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
 	"dockerComposeFile": ["docker-compose.yml"],
-  "service": "devcontainer",
-	"workspaceFolder": "/workspaces/my-sample",
+  	"service": "devcontainer",
+	"workspaceFolder": "/workspaces/my-solution",
 	//"build": { "dockerfile": "Dockerfile" },
 	//"image": "mcr.microsoft.com/devcontainers/typescript-node:1-20-bullseye",
 
