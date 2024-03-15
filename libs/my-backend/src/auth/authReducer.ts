@@ -1,4 +1,4 @@
-import { logCall, userLoggedOut } from "@my-sample/my-shared";
+import { logCall, userLoggedOut } from "@my-solution/my-shared";
 import { createReducer } from "@reduxjs/toolkit";
 import { signOut } from "./signOut";
 

@@ -1,4 +1,4 @@
-import { PostStatus } from "@my-sample/my-shared";
+import { PostStatus } from "@my-solution/my-shared";
 import { RootState } from "../store";
 import { selectAllPosts, selectPostById, selectPostIds } from "./postsSlice";
 

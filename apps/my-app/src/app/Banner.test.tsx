@@ -3,8 +3,8 @@ import { fireEvent, render } from '@testing-library/react-native';
 
 import { Banner } from './Banner';
 import { Provider } from 'react-redux';
-import { store } from '@my-sample/my-state';
-import { userLoggedIn } from '@my-sample/my-shared';
+import { store } from '@my-solution/my-state';
+import { userLoggedIn } from '@my-solution/my-shared';
 
 describe('Banner', () => {
   it('should render the users name', () => {

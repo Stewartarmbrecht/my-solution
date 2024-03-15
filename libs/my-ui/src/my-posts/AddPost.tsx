@@ -1,8 +1,8 @@
 import { View, Text, TextInput, Pressable, StyleSheet } from 'react-native';
 import { useState } from 'react';
-import { useAppDispatch } from '@my-sample/my-state';
+import { useAppDispatch } from '@my-solution/my-state';
 import { nanoid } from '@reduxjs/toolkit';
-import { Post, PostStatus, postAdded } from '@my-sample/my-shared';
+import { Post, PostStatus, postAdded } from '@my-solution/my-shared';
 
 export function AddPost() {
   const [newPostName, setNewPostName] = useState('');

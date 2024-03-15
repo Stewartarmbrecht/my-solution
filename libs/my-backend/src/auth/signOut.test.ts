@@ -1,7 +1,7 @@
 import { signOut } from './signOut';
 import { DataStore } from '@aws-amplify/datastore';
 import { signOut as authSignOut } from '@aws-amplify/auth';
-import { logError } from '@my-sample/my-shared';
+import { logError } from '@my-solution/my-shared';
 
 jest.mock('@aws-amplify/datastore', () => ({
   DataStore: {
@@ -14,7 +14,7 @@ jest.mock('@aws-amplify/auth', () => ({
   signOut: jest.fn(),
 }));
 
-jest.mock('@my-sample/my-shared', () => ({
+jest.mock('@my-solution/my-shared', () => ({
   logError: jest.fn(),
   logCall: jest.fn(),
 }));

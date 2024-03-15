@@ -1,4 +1,4 @@
-import { logSetup } from "@my-sample/my-shared";
+import { logSetup } from "@my-solution/my-shared";
 
 export interface HasChildProps {
   children: JSX.Element;

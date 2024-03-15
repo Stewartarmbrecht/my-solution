@@ -1,4 +1,4 @@
-import { Post, PostStatus } from '@my-sample/my-shared';
+import { Post, PostStatus } from '@my-solution/my-shared';
 import { comparePosts } from './comparePosts';
 
 describe('comparePosts', () => {

@@ -1,5 +1,5 @@
 import { authReducer } from './authReducer';
-import { userLoggedOut } from '@my-sample/my-shared';
+import { userLoggedOut } from '@my-solution/my-shared';
 import { signOut } from './signOut';
 jest.mock('./signOut', () => ({
   signOut: jest.fn(),

@@ -3,7 +3,7 @@ import { render } from '@testing-library/react-native';
 
 import { MyState } from './MyState';
 import { useAppDispatch, useAppSelector } from './hooks';
-import { userLoggedIn } from '@my-sample/my-shared';
+import { userLoggedIn } from '@my-solution/my-shared';
 import { selectUser } from './user/userSlice';
 import { Text } from 'react-native';
 

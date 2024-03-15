@@ -1,12 +1,12 @@
 import React from 'react';
 import { render } from '@testing-library/react-native';
 import { MyPosts } from './MyPosts';
-import { useAppSelector } from '@my-sample/my-state';
+import { useAppSelector } from '@my-solution/my-state';
 import { MyPost } from './MyPost';
 import { AddPost } from './AddPost';
 
 //mock useAppSelector
-jest.mock('@my-sample/my-state', () => ({
+jest.mock('@my-solution/my-state', () => ({
   useAppSelector: jest.fn(),
   useAppDispatch: jest.fn(),
 }));

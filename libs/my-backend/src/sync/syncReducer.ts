@@ -1,5 +1,5 @@
 import { PayloadAction, createReducer } from "@reduxjs/toolkit";
-import { logCall, Post, postAdded, postDeleted } from "@my-sample/my-shared";
+import { logCall, Post, postAdded, postDeleted } from "@my-solution/my-shared";
 import { addPostData } from "./addPostData";
 import { deletePostData } from "./deletePostData";
 

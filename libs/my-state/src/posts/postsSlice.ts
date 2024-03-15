@@ -11,7 +11,7 @@ import {
   postDeleted, 
   postDeletedViaSync, 
   postsLoadedViaSync 
-} from "@my-sample/my-shared";
+} from "@my-solution/my-shared";
 
 const postsAdapter = createEntityAdapter<Post>();
 

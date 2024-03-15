@@ -1,4 +1,4 @@
-import { Post } from "@my-sample/my-shared";
+import { Post } from "@my-solution/my-shared";
 
 export function comparePosts(a: Post | undefined, b: Post | undefined): boolean {
     let match = true;

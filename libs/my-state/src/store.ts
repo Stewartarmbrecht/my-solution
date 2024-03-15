@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { postsReducer } from './posts/postsSlice'
-import { authReducer, syncReducer } from '@my-sample/my-backend'
+import { authReducer, syncReducer } from '@my-solution/my-backend'
 import { userReducer } from './user/userSlice'
 // ...
 

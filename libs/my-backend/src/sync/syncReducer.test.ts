@@ -11,7 +11,7 @@ jest.mock('@aws-amplify/datastore', () => ({
   initSchema: jest.fn().mockReturnValue({ PostData:{} }),
 }));
 
-import { Post, postAdded, postDeleted } from '@my-sample/my-shared';
+import { Post, postAdded, postDeleted } from '@my-solution/my-shared';
 import { syncReducer } from './syncReducer';
 import { PostStatus } from '../models';
 import { addPostData } from './addPostData';

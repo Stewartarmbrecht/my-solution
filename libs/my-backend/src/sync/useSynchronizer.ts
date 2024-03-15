@@ -7,7 +7,7 @@ import {
   postAddedOrUpdatedViaSync, 
   postDeletedViaSync, 
   postsLoadedViaSync 
-} from '@my-sample/my-shared';
+} from '@my-solution/my-shared';
 import { DataStore } from '@aws-amplify/datastore';
 import { PostData } from '../models';
 import { useDispatch } from 'react-redux';

@@ -4,7 +4,7 @@ import { Authenticator } from '@aws-amplify/ui-react-native';
 import { DataStore } from '@aws-amplify/datastore';
 //import { ExpoSQLiteAdapter } from '@aws-amplify/datastore-storage-adapter/ExpoSQLiteAdapter';
 import amplifyconfig from './aws-exports';
-import { logSetup, userLoggedIn } from '@my-sample/my-shared';
+import { logSetup, userLoggedIn } from '@my-solution/my-shared';
 import { useSynchronizer } from './sync/useSynchronizer';
 import { useEffect } from 'react';
 import { getCurrentUser } from 'aws-amplify/auth';

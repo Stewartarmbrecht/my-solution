@@ -1,4 +1,4 @@
-import { MyComponent, MyPosts } from "@my-sample/my-ui";
+import { MyComponent, MyPosts } from "@my-solution/my-ui";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 
 export function Main() {

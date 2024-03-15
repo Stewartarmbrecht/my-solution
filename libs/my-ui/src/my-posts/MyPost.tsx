@@ -1,5 +1,5 @@
-import { Post, postDeleted } from '@my-sample/my-shared';
-import { useAppDispatch } from '@my-sample/my-state';
+import { Post, postDeleted } from '@my-solution/my-shared';
+import { useAppDispatch } from '@my-solution/my-state';
 import { View, Text, StyleSheet, Pressable } from 'react-native';
 
 /* eslint-disable-next-line */

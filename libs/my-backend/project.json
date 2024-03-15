@@ -6,24 +6,42 @@
   "tags": [],
   "targets": {
     "amplify-init": {
-      "command": "node amplify-init.js",
+      "command": "amplify init",
       "options": {
         "cwd": "libs/my-backend"
       }
     },
-    "amplify-configure": {
-      "command": "node amplify-configure.js",
-      "options": {
-        "cwd": "libs/my-backend"
-      }
-    },
-    "amplify-pull": {
-      "command": "node amplify-pull.js",
+    "amplify-status": {
+      "command": "amplify status",
       "options": {
         "cwd": "libs/my-backend"
       }
     },
     "amplify-push": {
+      "command": "amplify push",
+      "options": {
+        "cwd": "libs/my-backend"
+      }
+    },
+    "amplify-init-headless": {
+      "command": "node amplify-init.js",
+      "options": {
+        "cwd": "libs/my-backend"
+      }
+    },
+    "amplify-configure-headless": {
+      "command": "node amplify-configure.js",
+      "options": {
+        "cwd": "libs/my-backend"
+      }
+    },
+    "amplify-pull-headless": {
+      "command": "node amplify-pull.js",
+      "options": {
+        "cwd": "libs/my-backend"
+      }
+    },
+    "amplify-push-headless": {
       "command": "node amplify-push.js",
       "options": {
         "cwd": "libs/my-backend"

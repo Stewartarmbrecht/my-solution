@@ -106,49 +106,22 @@ Cntrl+Shift+P
 You need to initialize amplify to create some local files so that you can run the app.
 Note: if amplify is not recognized as a command I have found that rebuilding the container will fix this.  Just press Cntrl+Shift+P and them type Rebuild Container and select the Dev Container command.
 ```
-cd libs/my-backend
-amplify init
+npx nx amplify-init <solutionName>-backend
 ```
 * **Environment Name:** prod
 * **Default Editor:** Visual Studio Code
 * **Authentication:** AWS Profile
 * **New User:** Yes
-If you get this error then just click the link to manually open the console.  Hit enter after you log in.
-```
-Sign in to your AWS administrator account:
-https://console.aws.amazon.com/
-Press Enter to continue
-Unable to open https://console.aws.amazon.com/: spawn xdg-open ENOENT
-Have you installed `xdg-utils` on your machine?
-```
 * **Region:** Your choice.
 * **Amplify CLI User:** Click the link and follow the instructions to set a user that your Amplify CLI will use to connect to AWS.  Set a name that will help you identify the cli running in your dev container.  If you are connecting to a shared AWS account consider adding a name like:  mySolutionBackend-<userName>
 * **accessKeyId:** Copied from access key created in instructions provided.
 * **secretAccessKey:** Copied from access key created in instructions provided.
 * **Profile Name:** (default)
 * **Profile to Use:** default
-
-GETTING ERROR:
+3. Create amplify backend resources.
 ```
-node ➜ /workspaces/my-sample/libs/my-backend (master) $ amplify init
-Note: It is recommended to run this command from the root of your app directory
-? Do you want to use an existing environment? Yes
-? Choose the environment you would like to use: dev
-Using default provider  awscloudformation
-✖ Initializing your environment: dev
-✖ There was an error initializing your environment.
-🛑 Could not initialize platform for 'dev': Access Denied
+npx nx amplify-push <solutionName>-backend
 ```
-
-```
-amplify add env <your env name>
-```
-Replace \<your env name\> with your own name.  Unfortunately "dev" is already taken and will cause an error if you try to use it.  Please use a different name than "dev".
-
-* Are you sure you want to continue? Yes
-* Do you want to update code for your updated GraphQL API? No
-
-... To be continued.
 
 ### RUN WEB APP
 

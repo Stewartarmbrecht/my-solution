@@ -1,5 +1,5 @@
-import { userLoggedOut } from "@my-sample/my-shared";
-import { selectUser, useAppDispatch } from "@my-sample/my-state";
+import { userLoggedOut } from "@my-solution/my-shared";
+import { selectUser, useAppDispatch } from "@my-solution/my-state";
 import React from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { useSelector } from "react-redux";

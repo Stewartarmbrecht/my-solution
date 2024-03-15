@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { postsReducer, selectAllPosts } from "./postsSlice";
-import { postAdded, postDeleted, postDeletedViaSync, postAddedOrUpdatedViaSync, postsLoadedViaSync, PostStatus, Post } from "@my-sample/my-shared";
+import { postAdded, postDeleted, postDeletedViaSync, postAddedOrUpdatedViaSync, postsLoadedViaSync, PostStatus, Post } from "@my-solution/my-shared";
 import { AppStore } from "../store";
-import { authReducer, syncReducer } from "@my-sample/my-backend";
+import { authReducer, syncReducer } from "@my-solution/my-backend";
 import { userReducer } from "../user/userSlice";
 
 describe('postsSlice', () => {

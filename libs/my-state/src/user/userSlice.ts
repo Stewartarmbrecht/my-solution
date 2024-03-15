@@ -1,4 +1,4 @@
-import { User, logCall, userLoggedIn, userLoggedOut } from "@my-sample/my-shared";
+import { User, logCall, userLoggedIn, userLoggedOut } from "@my-solution/my-shared";
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 

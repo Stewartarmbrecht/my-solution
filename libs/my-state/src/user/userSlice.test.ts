@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { postsReducer } from "../posts/postsSlice";
-import { userLoggedIn, userLoggedOut } from "@my-sample/my-shared";
+import { userLoggedIn, userLoggedOut } from "@my-solution/my-shared";
 import { AppStore } from "../store";
-import { authReducer, syncReducer } from "@my-sample/my-backend";
+import { authReducer, syncReducer } from "@my-solution/my-backend";
 import { userReducer } from "./userSlice";
 
 describe('userSlice', () => {

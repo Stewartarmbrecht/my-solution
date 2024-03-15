@@ -1,8 +1,8 @@
 /* eslint-disable jsx-a11y/accessible-emoji */
 import React from 'react';
-import { MyState } from '@my-sample/my-state';
+import { MyState } from '@my-solution/my-state';
 import { Shell } from './Shell';
-import { MyBackend } from '@my-sample/my-backend';
+import { MyBackend } from '@my-solution/my-backend';
 
 export const App = () => {
   return (

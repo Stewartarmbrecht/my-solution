@@ -1,4 +1,4 @@
-import { Post, logCall } from "@my-sample/my-shared";
+import { Post, logCall } from "@my-solution/my-shared";
 import { DataStore } from "@aws-amplify/datastore";
 import { PostData } from "../models";
 

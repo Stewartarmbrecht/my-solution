@@ -9,6 +9,6 @@ export {
 export {
   postAdded,
   postDeleted
-} from '@my-sample/my-shared';
+} from '@my-solution/my-shared';
 export { store } from './store';
 export { selectUser } from './user/userSlice';

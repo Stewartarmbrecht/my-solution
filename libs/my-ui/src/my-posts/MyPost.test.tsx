@@ -1,10 +1,10 @@
 import React from 'react';
 import { fireEvent, render } from '@testing-library/react-native';
 import { MyPost } from './MyPost';
-import { PostStatus } from '@my-sample/my-shared';
-import { useAppDispatch } from '@my-sample/my-state';
+import { PostStatus } from '@my-solution/my-shared';
+import { useAppDispatch } from '@my-solution/my-state';
 
-jest.mock('@my-sample/my-state', () => ({
+jest.mock('@my-solution/my-state', () => ({
   useAppDispatch: jest.fn(),
 }));
 

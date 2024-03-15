@@ -10,7 +10,7 @@ jest.mock('@aws-amplify/datastore', () => ({
 import { deletePostData } from './deletePostData';
 import { PostData } from '../models';
 import { DataStore } from '@aws-amplify/datastore';
-import { Post, PostStatus } from '@my-sample/my-shared';
+import { Post, PostStatus } from '@my-solution/my-shared';
 
 
 describe('deletePostData', () => {

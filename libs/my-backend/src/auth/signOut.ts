@@ -1,4 +1,4 @@
-import { logCall, logError } from "@my-sample/my-shared";
+import { logCall, logError } from "@my-solution/my-shared";
 import { DataStore } from '@aws-amplify/datastore';
 import { signOut as authSignOut } from '@aws-amplify/auth';
 
