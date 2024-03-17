@@ -23,6 +23,12 @@
         "cwd": "libs/my-backend"
       }
     },
+    "amplify-add-hosting": {
+      "command": "amplify add hosting",
+      "options": {
+        "cwd": "libs/my-backend"
+      }
+    },
     "amplify-init-headless": {
       "command": "node amplify-init.js",
       "options": {

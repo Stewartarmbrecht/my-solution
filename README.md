@@ -153,10 +153,10 @@ npx nx run-many -t test
 ``` 
 2. Create a build:
 ```
-npx nx build my-app
+npx nx build-dev my-app
 ```
-* Email or username: [from the account you created]
-* Password: [Your password]
+* Email or username: [from the EAS account you created]
+* Password: [Your EAS password]
 * Select Platform: [Select the one you want]
 * Would you like to automatically create an EAS project for @stewartoutlook/my-app? Y
 
@@ -181,7 +181,7 @@ To complete the setup process, set "extra.eas.projectId" in your app.config.js:
 3. Edit app.config.js using the directions above.
 4. Rerun the build:
 ```
-npx nx build-dv my-app
+npx nx build-dev my-app
 ```
 5. Install development build by scanning the QR Code
 
@@ -205,128 +205,56 @@ Be sure to install the React Developer Tools and the Redux Developer Tools add o
 2. **Open Browswer:**  Open Edge or Chrome and enter ```edge://inspect``` or ```chrome://inspect```
 3. **Set Network Targets:** Next to Discover network targets click configure and enter your host machines ip address and the port you started the development build on (ex. 19001)
 4. **Inspect Hermes React Native:** Click the 'inspect' link under Hermes React Native shown under remote targets.
-5. **Find Code:** To find the code hit Cntrl-P and type in the name of the code file.  //TODO: find a way to load the code into the workspace.
+5. **Find Code:** To find the code hit Cntrl-P and type in the name of the code file.  
+//TODO: Load the code into the workspace.
 6. **Break Points**: Breakpoints did not work for me.  Instead I added ```debugger;``` into my code to break.
+//TODO: Fix code mapping to breakpoints line up to code.
+//TODO: Enable code debugging in VS Code.
 
 #### Inspecting UI and Performance Tracing (React Dev Tools)
-1. **Start App:**  Start the app use the instructions for Running the development build on a physical device above.
+1. **Start App Server:**  Start the app using ```npx nx start my-app```.
+2. **Open App on Phone:**  Start the app on your phone.
 2. **Open React Dev Tools:**  Hit Shift+M in the terminal where you started the app to open more tools options.  Select ```Open React devtools``` and then hit enter.  Enter yes to option to open the browser page.
-3. **Open the App:** Open the app on your phone.  The browser should then connect to your app and allow you to inspect the UI elements and take performance snapshots.
+3. **Reload the App:** Open the app on your phone.  The browser should then connect to your app and allow you to inspect the UI elements and take performance snapshots.
 
 ## ENABLE OFFLINE DEVELOPMENT
 TBD...
 ### Amplify Local Dev Environment
 TBD...
 
-## TEST ENVIRONMENT SETUP (EAS Development Build)
+## PRODUCTION HOSTING
 
-#### Amplify Test Environment
+### EAS Build Token
+You need to create an EAS Robot token so that Amplify can trigger a build and deployment of your app.  For more information see this:  [Robot users and access tokens](https://docs.expo.dev/accounts/programmatic-access/#personal-access-tokens) 
+**Add Robot:** Create a new robot on the ```https://expo.dev/accounts/**your account**/settings/access-tokens``` page.
+  * **Name:** Your app name+ "-delpoyment".
+  * **Role:** "Developer".
+**Create Token:** Click the create token under the new robot you just created.
+  * **Token name:** Your app name+"-deployment-token".
+**SAVE TOKEN:** Make sure to save your token somewhere safe where you can access it later.
 
-##### Amplify Test Backend
-
-##### Amplify Test Web Hosting
-
-#### EAS Build Test Channel
-
-##### Test Build Installation
-
-
-### Preview (EAS Build Preview Channel, Amplify Dev)
-
-#### Amplify Preview Environment
-
-##### Amplify Preview Backend
-
-##### Amplify Preview Web Hosting
-
-#### EAS Preview Channel
-
-##### Preview Build Installation
-
-
-### Production
-
-#### Amplify Production Environment
-
-##### Amplify Prodution Backend
-
-##### Amplify Production Web Hosting
-
-#### EAS Production Build
-
-##### iOS App Store
-
-##### Android App Store
-
-
-# Setup
-
-## Local Environment
-
-
-## Amplify Backend
-
-1. Initialize AWS amplify. You might need to delete (/amplify/team-provider-info.json) to get amplify init to work.
+### Setup Amplify Hosting
+[AWS Amplify Hosting Guide](https://docs.amplify.aws/javascript/tools/cli/hosting/#using-aws-amplify-console)
 ```
-amplify init
+npx nx amplify-add-hosting my-backend
 ```
-2. Push amplify configuration to your aws environment.
-```
-amplify push
-```
-
-## Amplify Hosting
-
-## Additional Developer Environments
-
-
-
-# Workflows
-
-## Building
-
-## Running
-
-
-## Coding
-
-### Generating Libraries
-
-### Generating Components
-
-### Copilot
+**Select the plugin module to execute …** ❯ Hosting with Amplify Console (Managed hosting with custom domains, Continuous deployment)
+**Choose a type** > Continuous deployment (Git-based deployments)
+**Select Repo:** The last selection should launch a browser and take you to your app console.  Select Hosting Environment and then select your repo.  
+**Select Branch:** Select your main or master branch.  Do NOT select the option that designated your repo as a monorepo.
+**App Build and Test Settings:** Our setup uses an amplify.yaml file in the root of the report to handle the deployment.
+  * **App Name:**  Select the backed we deployed earlier.
+  * **Environment:** Select "production".
+  * **Service Role:** Select the one you created earlier.  //TODO: Update with when this was created.
+  * **Advanced Settings:** Expand this section:
+    * **Environment Variables:** Click add under the Environment Variables section and add the following variables:
+      * **EXPO_TOKEN:**  Use the EAS robot token you created earlier.
+      * **USER_KEY:** Use the user key you created when initializing Amplify.  The solution uses custom nx actions to deploy the backend of the solution.  These nx actions use node to call Javascript scripts that use the process.env arguments to run headless init and push commands.  These headless commands use User Keys and Tokens to authenticate.
+      * **USER_SECRET:** Use the user secret you created when initiatlizing Amplify.  See above for explanation on why we have this variable.
+      * **PROJECT_NAME:** Enter the name of the amplify backend project.  This variable is used in the headless init and push commands. 
+      * **AMPLIFY_BACKEND_APP_ID:** The id of your Amplify backed you deployed.  The value can be found at the end of the App ARN setting on the General page of the Amplify project.  arn:aws:amplify:us-east-1:145666470493:apps/**d2ge5llzsago00**
 
 
-## Static Code Analysis (Linting)
-
-### ESLint
-
-### Prettier
-
-
-## Testing
-
-### Unit Testing
-
-### End to End Testing
-
-
-## Debugging
-
-### Unit Tests
-
-### Local
-
-
-## Deploying
-
-
-
-## Monitoring
-
-## Development Logging
-
-## Production Logging
 
 <br>
 <br>
