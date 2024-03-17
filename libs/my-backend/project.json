@@ -30,7 +30,7 @@
       }
     },
     "amplify-init-headless": {
-      "command": "node amplify-init.js",
+      "command": "node ./amplify-headless/amplify-init.js",
       "options": {
         "cwd": "libs/my-backend"
       }
