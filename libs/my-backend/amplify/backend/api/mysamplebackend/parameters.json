@@ -1,10 +1,10 @@
 {
-  "AppSyncApiName": "mysamplebackend",
+  "AppSyncApiName": "mysolutionbackend",
   "DynamoDBBillingMode": "PAY_PER_REQUEST",
   "DynamoDBEnableServerSideEncryption": false,
   "AuthCognitoUserPoolId": {
     "Fn::GetAtt": [
-      "authmysamplebackendfc3d43bf",
+      "authmysolutionbackendfc3d43bf",
       "Outputs.UserPoolId"
     ]
   },

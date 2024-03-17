@@ -1,13 +1,13 @@
 {
   "api": {
-    "mysamplebackend": {
+    "mysolutionbackend": {
       "dependsOn": [
         {
           "attributes": [
             "UserPoolId"
           ],
           "category": "auth",
-          "resourceName": "mysamplebackendfc3d43bf"
+          "resourceName": "mysolutionbackendfc3d43bf"
         }
       ],
       "output": {
@@ -16,7 +16,7 @@
           "defaultAuthentication": {
             "authenticationType": "AMAZON_COGNITO_USER_POOLS",
             "userPoolConfig": {
-              "userPoolId": "authmysamplebackendfc3d43bf"
+              "userPoolId": "authmysolutionbackendfc3d43bf"
             }
           }
         }
@@ -26,7 +26,7 @@
     }
   },
   "auth": {
-    "mysamplebackendfc3d43bf": {
+    "mysolutionbackendfc3d43bf": {
       "customAuth": false,
       "dependsOn": [],
       "frontendAuthConfig": {
