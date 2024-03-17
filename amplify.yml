@@ -5,8 +5,8 @@ backend:
       commands:
         - nvm use 20
         - npm install
-        - npx nx amplify-init my-backend
-        - npx nx amplify-push my-backend
+        - npx nx amplify-init-headless my-backend
+        - npx nx amplify-push-headless my-backend
 frontend:
   phases:
     preBuild:
