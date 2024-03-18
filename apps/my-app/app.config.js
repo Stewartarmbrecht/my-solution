@@ -12,8 +12,10 @@ export default {
     resizeMode: 'contain',
     backgroundColor: '#ffffff',
   }, 
-  "updates": {
-    "url": "https://u.expo.dev/6acee1bd-6d1e-43d9-8d31-e2bb31408361"
+  updates: {
+    enabled: true,
+    checkAutomatically: 'ON_LOAD',
+    url: "https://u.expo.dev/6acee1bd-6d1e-43d9-8d31-e2bb31408361"
   },
   assetBundlePatterns: ['**/*'],
   ios: {

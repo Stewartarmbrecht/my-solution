@@ -101,7 +101,7 @@
       "options": {}
     },
     "update-preview": {
-      "command": "eas update --platform all --branch preview --auto",
+      "command": "eas update --branch preview --platform all --auto",
       "options": {
         "cwd": "apps/my-app"
       }
