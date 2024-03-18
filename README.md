@@ -141,15 +141,21 @@ npx nx run-many -t test
 ### CREATE EXPO DEVELOPMENT BUILD
 
 1. Create an Expo Account:  [Expo Sign Up](https://expo.dev/signup)
-2. Remove eas project id.  In the app.config.js, comment out the eas.projectId so it looks like this:
+2. Remove eas project id and updates URL.  In the app.config.js, comment out 'updates' and the 'extra.eas' sections so it looks like this:
 ```
+  ...
+  // updates: {
+  //   fallbackToCacheTimeout: 0,
+  //   url: 'https://u.expo.dev/0b1aa1f3-a7d9-4a39-8bfe-024107fcfbdb',
+  // },
+  ...
   extra: {
     // This is the project ID from the previous step
     // eas: {
     //   projectId: '0b1aa1f3-a7d9-4a39-8bfe-024107fcfbdb',
     // },
   },
-
+  ...
 ``` 
 2. Create a build:
 ```

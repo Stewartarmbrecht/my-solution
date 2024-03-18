@@ -12,10 +12,10 @@ export default {
     resizeMode: 'contain',
     backgroundColor: '#ffffff',
   },
-  updates: {
-    fallbackToCacheTimeout: 0,
-    url: 'https://u.expo.dev/0b1aa1f3-a7d9-4a39-8bfe-024107fcfbdb',
-  },
+  // updates: {
+  //   fallbackToCacheTimeout: 0,
+  //   url: 'https://u.expo.dev/0b1aa1f3-a7d9-4a39-8bfe-024107fcfbdb',
+  // },
   assetBundlePatterns: ['**/*'],
   ios: {
     supportsTablet: true,
@@ -45,9 +45,9 @@ export default {
   ],
   extra: {
     // This is the project ID from the previous step
-    eas: {
-      projectId: '0b1aa1f3-a7d9-4a39-8bfe-024107fcfbdb',
-    },
+    // eas: {
+    //   projectId: '0b1aa1f3-a7d9-4a39-8bfe-024107fcfbdb',
+    // },
   },
   runtimeVersion: {
     policy: 'appVersion',
