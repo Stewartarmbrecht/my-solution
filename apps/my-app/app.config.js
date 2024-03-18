@@ -11,11 +11,10 @@ export default {
     image: './assets/splash.png',
     resizeMode: 'contain',
     backgroundColor: '#ffffff',
+  }, 
+  "updates": {
+    "url": "https://u.expo.dev/6acee1bd-6d1e-43d9-8d31-e2bb31408361"
   },
-  // updates: {
-  //   fallbackToCacheTimeout: 0,
-  //   url: 'https://u.expo.dev/0b1aa1f3-a7d9-4a39-8bfe-024107fcfbdb',
-  // },
   assetBundlePatterns: ['**/*'],
   ios: {
     supportsTablet: true,
@@ -45,9 +44,9 @@ export default {
   ],
   extra: {
     // This is the project ID from the previous step
-    // eas: {
-    //   projectId: '0b1aa1f3-a7d9-4a39-8bfe-024107fcfbdb',
-    // },
+    eas: {
+      projectId: '6acee1bd-6d1e-43d9-8d31-e2bb31408361',
+    },
   },
   runtimeVersion: {
     policy: 'appVersion',

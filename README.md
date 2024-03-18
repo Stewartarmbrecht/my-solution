@@ -58,7 +58,7 @@ Our approach for establishing the full development ecosystem for your solution s
 2. Create a new repo using [this repo](https://github.com/Stewartarmbrecht/my-solution) as the template.  At the top right of the repo in GitHub click the green 'Use this template' button and selec 'Create a new repository'.
 
 
-## FIRST DEVELOPMENT ENVIRONMENT
+## DEVELOPMENT ENVIRONMENT SETUP
 
 ### INSTALL PREREQUISITES
 1. [Install Docker](https://www.docker.com/get-started/)
@@ -75,7 +75,7 @@ cd my-solution
 code .
 ```
 3. **Open In Container** - Open the workspace in a development container.  
-NOTE:  The docker-compose.yml is set to forward port 19001 to your container.
+NOTE:  The devcontainer.json file is set to forward port 19001 to your container.
 This port is used by Expo to connect your dev build on a physical device to the metro server hosted in your container.
 
 You can change this if you like.  Just make sure to find all other references to 19001 in the solution files and update them as well.
@@ -100,8 +100,10 @@ Cntrl+Shift+P
 "Rebuild Container"
 ```
 
-### SETUP AMPLIFY
+## SETUP PROD BACKEND (AMPLIFY)
+
 1. Create Amazon account if you don't already have one:  [Sign Up for AWS](https://portal.aws.amazon.com/billing/signup?nc2=h_ct&src=header_signup&redirect_url=https%3A%2F%2Faws.amazon.com%2Fregistration-confirmation#/start/email)
+
 2. Initialize Amplify
 You need to initialize amplify to create some local files so that you can run the app.
 Note: if amplify is not recognized as a command I have found that rebuilding the container will fix this.  Just press Cntrl+Shift+P and them type Rebuild Container and select the Dev Container command.
@@ -118,27 +120,35 @@ npx nx amplify-init <solutionName>-backend
 * **secretAccessKey:** Copied from access key created in instructions provided.
 * **Profile Name:** (default)
 * **Profile to Use:** default
+
 3. Create amplify backend resources.
 ```
 npx nx amplify-push <solutionName>-backend
 ```
+  * **✔ Are you sure you want to continue? (Y/n):** Yes
+  * **? Do you want to update code for your updated GraphQL API (Y/n):** No
 
-### RUN WEB APP
+## RUN LOCAL WEB APP
 
 1. Run the app to verify the setup.
 To run the app you need to export the ip address of your machine and set the port for the javascript bundle to the value you set above then start the app.  This command will start the app in web mode:
 
 ```
 npx nx start my-app
+after the app starts press 'w'
 ```
 
-### RUN TESTS
+## DEBUG LOCAL WEB APP
+To debug the web app, just open the browser devTools.
+Be sure to install the React Developer Tools and the Redux Developer Tools add ons to help debug the application.
+
+## RUN UNIT TESTS
 1. Run all unit tests and verify success.
 ```
 npx nx run-many -t test
 ```
 
-### CREATE EXPO DEVELOPMENT BUILD
+## DEPLOY MOBILE DEVELOPMENT BUILD
 
 1. Create an Expo Account:  [Expo Sign Up](https://expo.dev/signup)
 2. Remove eas project id and updates URL.  In the app.config.js, comment out 'updates' and the 'extra.eas' sections so it looks like this:
@@ -193,20 +203,16 @@ npx nx build-dev my-app
 
 ...build this out further...
 
-### RUN DEVELOPMENT BUILD ON PHYSICAL DEVICE
+## RUN MOBILE DEVELOPMENT BUILD ON PHYSICAL DEVICE
 After you have installed the development build.  Run the app:
 ```
 npx nx start my-app
 ```
 Then scan the QR Code with your phone.  The app should be running on your phone.
 
-### DEBUG WEB APP
-To debug the web app, just open the browser devTools.
-Be sure to install the React Developer Tools and the Redux Developer Tools add ons to help debug the application.
+## DEBUG MOBILE APP
 
-### DEBUG MOBILE APP
-
-#### Debugging Code
+### Debugging Code
 1. **Start App:**  Start the app use the instructions for Running the development build on a physical device above.
 2. **Open Browswer:**  Open Edge or Chrome and enter ```edge://inspect``` or ```chrome://inspect```
 3. **Set Network Targets:** Next to Discover network targets click configure and enter your host machines ip address and the port you started the development build on (ex. 19001)
@@ -217,18 +223,42 @@ Be sure to install the React Developer Tools and the Redux Developer Tools add o
 //TODO: Fix code mapping to breakpoints line up to code.
 //TODO: Enable code debugging in VS Code.
 
-#### Inspecting UI and Performance Tracing (React Dev Tools)
+### Inspecting UI and Performance Tracing (React Dev Tools)
 1. **Start App Server:**  Start the app using ```npx nx start my-app```.
 2. **Open App on Phone:**  Start the app on your phone.
 2. **Open React Dev Tools:**  Hit Shift+M in the terminal where you started the app to open more tools options.  Select ```Open React devtools``` and then hit enter.  Enter yes to option to open the browser page.
 3. **Reload the App:** Open the app on your phone.  The browser should then connect to your app and allow you to inspect the UI elements and take performance snapshots.
 
-## ENABLE OFFLINE DEVELOPMENT
-TBD...
-### Amplify Local Dev Environment
-TBD...
+## DEPLOY MOBILE PREVIEW BUILD
+The mobile preview build gives you an instance of the application that will run without the metro server running.  This instance will also accept updates via the preview channel.
+1. Create a preview build:
+```
+npx nx build-preview my-app
+```
+2. Install Preview.  Scan the QR Code from running the last command and install the app on your phone.
 
-## PRODUCTION HOSTING
+## DEPLOY MOBILE PREVIEW UPDATE
+The mobile preview update allows you to push changes to your preview users without having to re-install the app on the phone.
+1. Deploy update.
+```
+npx nx 
+```
+You will get this error. When you do, follow the instructions and the rerun the command above:
+```
+It looks like you are using a dynamic configuration! Learn more
+Add the following EAS Update key-values to the project app.config.js:
+Learn more
+
+{
+  "updates": {
+    "url": "https://u.expo.dev/6acee1bd-6d1e-43d9-8d31-e2bb31408361"
+  }
+}
+
+Cannot automatically write to dynamic config at: app.config.js
+```
+
+## SETUP CI/CD - PRODUCTION WEB HOSTING AND MOBILE UPDATE DEPLOYMENT
 
 ### EAS Build Token
 You need to create an EAS Robot token so that Amplify can trigger a build and deployment of your app.  For more information see this:  [Robot users and access tokens](https://docs.expo.dev/accounts/programmatic-access/#personal-access-tokens) 
@@ -260,6 +290,11 @@ npx nx amplify-add-hosting my-backend
       * **PROJECT_NAME:** Enter the name of the amplify backend project.  This variable is used in the headless init and push commands. 
       * **AMPLIFY_BACKEND_APP_ID:** The id of your Amplify backed you deployed.  The value can be found at the end of the App ARN setting on the General page of the Amplify project.  arn:aws:amplify:us-east-1:145666470493:apps/**d2ge5llzsago00**
 
+
+## ENABLE OFFLINE DEVELOPMENT
+TBD...
+### Amplify Local Dev Environment
+TBD...
 
 
 <br>

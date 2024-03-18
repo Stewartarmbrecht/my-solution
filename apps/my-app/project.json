@@ -100,10 +100,16 @@
       "executor": "@nx/expo:update",
       "options": {}
     },
+    "update-preview": {
+      "command": "eas update --platform all --branch preview --auto",
+      "options": {
+        "cwd": "apps/my-app"
+      }
+    },
     "update-preview-ios": {
       "command": "eas update --platform ios --branch preview --auto",
       "options": {
-        "cwd": "libs/my-backend"
+        "cwd": "apps/my-app"
       }
     },
     "export": {
