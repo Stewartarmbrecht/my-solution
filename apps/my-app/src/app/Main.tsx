@@ -9,7 +9,10 @@ export function Main() {
     >
       <View style={styles.section}>
         <Text style={[styles.textXL, styles.appTitleText]} testID="heading">
-          Welcome to MyApp v0.0.1 👋
+          Welcome to MyApp 👋
+        </Text>
+        <Text>
+          v0.0.1 Update 001
         </Text>
         <MyComponent />
         <MyPosts />

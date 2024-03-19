@@ -231,7 +231,11 @@ Then scan the QR Code with your phone.  The app should be running on your phone.
 
 ## DEPLOY MOBILE PREVIEW BUILD
 The mobile preview build gives you an instance of the application that will run without the metro server running.  This instance will also accept updates via the preview channel.
-1. Create a preview build:
+1. Configure the preview update channel.  This makes it possible to deploy updates to the preview app using expo-updates (that means deploying an update without having to run a full app install).  You want to run this before your deploy the build and install it on your phone so the app knows where to connect to pull updates.
+```
+npx nx update-init my-app
+```
+2. Create a preview build:
 ```
 npx nx build-preview my-app
 ```
