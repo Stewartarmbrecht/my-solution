@@ -9,7 +9,9 @@ const configCmd =
   '" --providers "' +
   JSON.stringify(initPL.providers).replaceAll('"', '\\"') +
   '" --yes';
-  
+
+shell.echo(configCmd);
+
 if (shell.exec(configCmd).code !== 0) {
   shell.echo('Error amplify init failed.');
   shell.exit(1);

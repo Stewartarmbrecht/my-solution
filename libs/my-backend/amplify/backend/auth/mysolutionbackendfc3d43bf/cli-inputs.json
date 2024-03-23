@@ -3,7 +3,7 @@
   "cognitoConfig": {
     "identityPoolName": "mysolutionbackendfc3d43bf_identitypool_fc3d43bf",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "mysampfc3d43bf",
+    "resourceNameTruncated": "mysolufc3d43bf",
     "userPoolName": "mysolutionbackendfc3d43bf_userpool_fc3d43bf",
     "autoVerifiedAttributes": [
       "email"
@@ -31,7 +31,7 @@
     "userpoolClientReadAttributes": [
       "email"
     ],
-    "userpoolClientLambdaRole": "mysampfc3d43bf_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "mysolufc3d43bf_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
     "sharedId": "fc3d43bf",
     "resourceName": "mysolutionbackendfc3d43bf",
