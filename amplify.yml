@@ -10,7 +10,7 @@ applications:
     #         - npx nx amplify-init-headless my-backend
     #         - npx nx amplify-push-headless my-backend
     frontend:
-      buildPath: ../../
+      buildPath: /
       phases:
         preBuild:
           commands:
