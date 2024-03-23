@@ -13,9 +13,7 @@ export default {
     backgroundColor: '#ffffff',
   }, 
   updates: {
-    enabled: true,
-    checkAutomatically: 'ON_LOAD',
-    url: "https://u.expo.dev/6acee1bd-6d1e-43d9-8d31-e2bb31408361"
+    url: "https://u.expo.dev/cc02779d-4ef7-4612-bb43-d496fe061316"
   },
   assetBundlePatterns: ['**/*'],
   ios: {
@@ -47,7 +45,7 @@ export default {
   extra: {
     // This is the project ID from the previous step
     eas: {
-      projectId: '6acee1bd-6d1e-43d9-8d31-e2bb31408361',
+      projectId: 'cc02779d-4ef7-4612-bb43-d496fe061316',
     },
   },
   runtimeVersion: {

@@ -201,7 +201,6 @@ npx nx build-dev my-app
 ```
 5. Install development build by scanning the QR Code
 
-...build this out further...
 
 ## RUN MOBILE DEVELOPMENT BUILD ON PHYSICAL DEVICE
 After you have installed the development build.  Run the app:
@@ -209,6 +208,7 @@ After you have installed the development build.  Run the app:
 npx nx start my-app
 ```
 Then scan the QR Code with your phone.  The app should be running on your phone.
+If you have a problem with the preview app being loaded from the dev server QR code, then just enter the URL manually in the dev instance of the app.  The URL should be http://<your IP Address>:<The port you selected>
 
 ## DEBUG MOBILE APP
 
@@ -235,6 +235,8 @@ The mobile preview build gives you an instance of the application that will run 
 ```
 npx nx update-init my-app
 ```
+You will get an error that will ask you to update the app.config.json.  Just uncomment the updates section you commented out earlier and replace the product id at the end of the URL.  Run the command above a second time to confirm the setup.
+
 2. Create a preview build:
 ```
 npx nx build-preview my-app
