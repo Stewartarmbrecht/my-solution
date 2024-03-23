@@ -10,6 +10,7 @@ type PostData @model @auth(rules: [{ allow: owner }]) {
   rating: Int
   content: String
   notes: String
+  internalNotes: String
   author: String
 }
 

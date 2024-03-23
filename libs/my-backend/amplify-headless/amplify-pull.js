@@ -10,7 +10,9 @@ const cmdPull =
   JSON.stringify(pullPL.providers).replaceAll('"', '\\"') +
   '" --yes';
 
-if (shell.exec(cmdPull).code !== 0) {
+  shell.echo(cmdPull);
+  
+  if (shell.exec(cmdPull).code !== 0) {
   shell.echo('Error amplify pull failed.');
   shell.exit(1);
 }

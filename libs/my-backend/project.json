@@ -17,6 +17,12 @@
         "cwd": "libs/my-backend"
       }
     },
+    "amplify-codegen": {
+      "command": "amplify codegen",
+      "options": {
+        "cwd": "libs/my-backend"
+      }
+    },
     "amplify-push": {
       "command": "amplify push",
       "options": {

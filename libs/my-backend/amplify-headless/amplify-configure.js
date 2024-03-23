@@ -9,6 +9,8 @@ const configCmd =
   '" --providers "' +
   JSON.stringify(configPL.providers).replaceAll('"', '\\"') +
   '" --yes';
+
+shell.echo(configCmd);
   
 if (shell.exec(configCmd).code !== 0) {
   shell.echo('Error amplify configure failed.');

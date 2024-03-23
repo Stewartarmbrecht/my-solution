@@ -18,8 +18,10 @@ const config = {
   "providers": {
     "awscloudformation": {
       "configLevel": "project",
-      "useProfile": true,
-      "profileName": "default"
+      "useProfile": false,
+      "accessKeyId": process.env.USER_KEY,
+      "secretAccessKey": process.env.USER_SECRET,
+      "region": "us-east-1"
     }
   }
 }

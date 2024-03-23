@@ -1,6 +1,7 @@
 amplify-backup
 .env
 amplify/team-provider-info.json
+
 #amplify-do-not-edit-begin
 amplify/\#current-cloud-backend
 amplify/.config/local-*
