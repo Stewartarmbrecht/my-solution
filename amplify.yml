@@ -1,31 +1,33 @@
 version: 1.0
-# backend:
-#   phases:
-#     build:
-#       commands:
-#         - nvm use 20
-#         - npm install
-#         - npx nx amplify-init-headless my-backend
-#         - npx nx amplify-push-headless my-backend
-frontend:
-  phases:
-    preBuild:
-      commands:
-        - nvm use 20
-        - npm install
-        - npm install --quiet --global expo-cli
-        - npm install --quiet --global eas-cli
-        - npm ci
-    build:
-      commands:
-        - npx nx export-web my-app
-        - npx nx update my-app --platform ios --branch preview --auto --interactive false
-  artifacts:
-    baseDirectory: dist/apps/my-app
-    files:
-      - '**/*'
-  cache:
-    paths:
-      - node_modules/**/*
-      - $(npm root --global)/**/*
-    
+applications:
+  - appRoot: libs/my-backend
+    # backend:
+    #   phases:
+    #     build:
+    #       commands:
+    #         - nvm use 20
+    #         - npm install
+    #         - npx nx amplify-init-headless my-backend
+    #         - npx nx amplify-push-headless my-backend
+    frontend:
+      buildPath: ../../
+      phases:
+        preBuild:
+          commands:
+            - nvm use 20
+            - npm install
+            - npm install --quiet --global expo-cli
+            - npm install --quiet --global eas-cli
+            - npm ci
+        build:
+          commands:
+            - npx nx export-web my-app
+            - npx nx update my-app --platform ios --branch preview --auto --interactive false
+      artifacts:
+        baseDirectory: dist/apps/my-app
+        files:
+          - '**/*'
+      cache:
+        paths:
+          - node_modules/**/*
+          - $(npm root --global)/**/*
