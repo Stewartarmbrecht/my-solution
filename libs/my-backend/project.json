@@ -36,19 +36,19 @@
       }
     },
     "amplify-configure-headless": {
-      "command": "node amplify-configure.js",
+      "command": "node ./amplify-headless/amplify-configure.js",
       "options": {
         "cwd": "libs/my-backend"
       }
     },
     "amplify-pull-headless": {
-      "command": "node amplify-pull.js",
+      "command": "node ./amplify-headless/amplify-pull.js",
       "options": {
         "cwd": "libs/my-backend"
       }
     },
     "amplify-push-headless": {
-      "command": "node amplify-push.js",
+      "command": "node ./amplify-headless/amplify-push.js",
       "options": {
         "cwd": "libs/my-backend"
       }
