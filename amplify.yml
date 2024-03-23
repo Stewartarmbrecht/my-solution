@@ -1,12 +1,12 @@
 version: 1.0
-backend:
-  phases:
-    build:
-      commands:
-        - nvm use 20
-        - npm install
-        - npx nx amplify-init-headless my-backend
-        - npx nx amplify-push-headless my-backend
+# backend:
+#   phases:
+#     build:
+#       commands:
+#         - nvm use 20
+#         - npm install
+#         - npx nx amplify-init-headless my-backend
+#         - npx nx amplify-push-headless my-backend
 frontend:
   phases:
     preBuild:
