@@ -100,12 +100,6 @@
       "executor": "@nx/expo:update",
       "options": {}
     },
-    "update-init": {
-      "command": "eas update:configure",
-      "options": {
-        "cwd": "apps/my-app"
-      }
-    },
     "update-preview": {
       "command": "eas update --branch preview --platform all --auto",
       "options": {
@@ -114,6 +108,12 @@
     },
     "update-preview-ios": {
       "command": "eas update --platform ios --branch preview --auto",
+      "options": {
+        "cwd": "apps/my-app"
+      }
+    },
+    "update-preview-ci": {
+      "command": "eas update --branch preview --platform all --auto --non-interactive",
       "options": {
         "cwd": "apps/my-app"
       }

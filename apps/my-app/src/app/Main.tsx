@@ -12,7 +12,7 @@ export function Main() {
           Welcome to MyApp 👋
         </Text>
         <Text>
-          v0.0.1 Update 001
+          v0.0.1 Update 002
         </Text>
         <MyComponent />
         <MyPosts />
