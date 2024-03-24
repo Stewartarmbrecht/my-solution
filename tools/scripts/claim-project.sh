@@ -1,8 +1,8 @@
 #!/bin/bash
 lowercase=$(echo $1 | tr '[:upper:]' '[:lower:]')
 noCaseChange=$(echo $1)
-lowercaseSedCommand="s/my/$lowercase/"
-noCaseChangeSedCommand="s/My/$noCaseChange/"
+lowercaseSedCommand="s/my/$lowercase/g"
+noCaseChangeSedCommand="s/My/$noCaseChange/g"
 for file in $(git ls-files | grep my | uniq); 
 do 
   newFile=$(echo $file | sed -e $lowercaseSedCommand)
