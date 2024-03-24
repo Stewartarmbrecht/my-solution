@@ -201,7 +201,10 @@ Change the guid in the url to match the value you set for your projectId above.
     url: "https://u.expo.dev/fbd799b8-ac94-42ee-83ff-194ce23b9a59"
   },
 ```
-
+You should also update the owner to match your account:
+```
+owner: "stewartarmbrecht"
+```
 4. Rerun the build:
 ```
 npx nx build-dev my-app
@@ -271,7 +274,7 @@ You need to create an EAS Robot token so that Amplify can trigger a build and de
   * **Token name:** Your app name+"-deployment-token".
 **SAVE TOKEN:** Make sure to save your token somewhere safe where you can access it later.
 
-### Setup Amplify Hosting
+### Setup Prod Amplify Hosting
 [AWS Amplify Hosting Guide](https://docs.amplify.aws/javascript/tools/cli/hosting/#using-aws-amplify-console)
 ```
 npx nx amplify-add-hosting my-backend
@@ -284,11 +287,44 @@ npx nx amplify-add-hosting my-backend
   * **Repo:** Select your repo.
   * **Branch:** Select master.
   * **App Name:**  Select the backend we deployed earlier.
-  * **Environment:** Select "prod".
+  * **Environment:** Select 'prod'.
   * **Service Role:** Select the one you created earlier.  //TODO: Update with when this was created.
   * **Advanced Settings:** Expand this section:
     * **Environment Variables:** Click add under the Environment Variables section and add the following variables:
       * **EXPO_TOKEN:**  Use the EAS robot token you created earlier.
+
+Save and run the deployment.
+
+### Setup Dev Amplify Hosting
+1. In the amplify console, go to the 'Backend environments' tab.  
+2. On the 'prod' environment click 'Actions' and the choose 'Clone'.
+3. Enter 'dev' and click 'Clone'.
+4. After the deployment of the new 'dev' environment is complete, go to the 'Hosting environments' tab.
+5. Click 'Connect a branch' button.
+    * **Branch:** dev
+    * **App name:** Select the app we have been working with.
+    * **Environment:** Select the branch we just created: 'dev'.  
+6. To Develop using the dev environment run the following command:
+```
+npx nx amplify-pull-dev my-backend
+
+? Select the authentication method you want to use: AWS profile
+? Please choose the profile you want to use: default
+? Which app are you working on? <your app id>
+✔ Choose the type of app that you're building: javascript
+? What javascript framework are you using: react-native
+? Source Directory Path:  src
+? Distribution Directory Path: /
+? Build Command:  npm run-script build
+? Start Command: npm run-script start
+? Do you plan on modifying this backend? Yes
+```
+Then switch to using that environment for development:
+```
+npx nx amplify-checkout-dev my-backend
+```
+
+Save and run the deployment.
 
 
   

@@ -23,6 +23,18 @@
         "cwd": "libs/my-backend"
       }
     },
+    "amplify-checkout-dev": {
+      "command": "amplify env checkout dev",
+      "options": {
+        "cwd": "libs/my-backend"
+      }
+    },
+    "amplify-pull-dev": {
+      "command": "amplify pull --envName dev",
+      "options": {
+        "cwd": "libs/my-backend"
+      }
+    },
     "amplify-push": {
       "command": "amplify push",
       "options": {
