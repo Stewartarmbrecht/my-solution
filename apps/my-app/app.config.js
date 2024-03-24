@@ -12,6 +12,7 @@ export default {
     resizeMode: 'contain',
     backgroundColor: '#ffffff',
   }, 
+  owner: 'stewartarmbrecht',
   updates: {
     url: "https://u.expo.dev/fbd799b8-ac94-42ee-83ff-194ce23b9a59"
   },
