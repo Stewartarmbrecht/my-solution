@@ -155,7 +155,6 @@ npx nx run-many -t test
 ```
   ...
   // updates: {
-  //   fallbackToCacheTimeout: 0,
   //   url: 'https://u.expo.dev/0b1aa1f3-a7d9-4a39-8bfe-024107fcfbdb',
   // },
   ...
@@ -195,6 +194,14 @@ To complete the setup process, set "extra.eas.projectId" in your app.config.js:
 ...
 ```
 3. Edit app.config.js using the directions above.
+While you are updating this file from the directions above.  You should also set the updates.url in the file.  
+Change the guid in the url to match the value you set for your projectId above.
+```
+  updates: {
+    url: "https://u.expo.dev/fbd799b8-ac94-42ee-83ff-194ce23b9a59"
+  },
+```
+
 4. Rerun the build:
 ```
 npx nx build-dev my-app
@@ -229,15 +236,10 @@ If you have a problem with the preview app being loaded from the dev server QR c
 2. **Open React Dev Tools:**  Hit Shift+M in the terminal where you started the app to open more tools options.  Select ```Open React devtools``` and then hit enter.  Enter yes to option to open the browser page.
 3. **Reload the App:** Open the app on your phone.  The browser should then connect to your app and allow you to inspect the UI elements and take performance snapshots.
 
+
 ## DEPLOY MOBILE PREVIEW BUILD
 The mobile preview build gives you an instance of the application that will run without the metro server running.  This instance will also accept updates via the preview channel.
-1. Configure the preview update channel.  This makes it possible to deploy updates to the preview app using expo-updates (that means deploying an update without having to run a full app install).  You want to run this before your deploy the build and install it on your phone so the app knows where to connect to pull updates.
-```
-npx nx update-init my-app
-```
-You will get an error that will ask you to update the app.config.json.  Just uncomment the updates section you commented out earlier and replace the product id at the end of the URL.  Run the command above a second time to confirm the setup.
-
-2. Create a preview build:
+1. Create a preview build:
 ```
 npx nx build-preview my-app
 ```
@@ -245,24 +247,18 @@ npx nx build-preview my-app
 
 ## DEPLOY MOBILE PREVIEW UPDATE
 The mobile preview update allows you to push changes to your preview users without having to re-install the app on the phone.
+1. Update Main.tsx.  Update the Update number:
+```
+        <Text>
+          v0.0.1 Update 002
+        </Text>
+```
 1. Deploy update.
 ```
-npx nx 
+npx nx update-preview my-app
 ```
-You will get this error. When you do, follow the instructions and the rerun the command above:
-```
-It looks like you are using a dynamic configuration! Learn more
-Add the following EAS Update key-values to the project app.config.js:
-Learn more
-
-{
-  "updates": {
-    "url": "https://u.expo.dev/6acee1bd-6d1e-43d9-8d31-e2bb31408361"
-  }
-}
-
-Cannot automatically write to dynamic config at: app.config.js
-```
+2. Test update.
+Open and close the app on your phone 2 or more times and you should see the update.
 
 ## SETUP CI/CD - PRODUCTION WEB HOSTING AND MOBILE UPDATE DEPLOYMENT
 
@@ -285,17 +281,15 @@ npx nx amplify-add-hosting my-backend
 **Select Repo:** The last selection should launch a browser and take you to your app console.  Select Hosting Environment and then select your repo.  
 **Select Branch:** Select your main or master branch.  Do NOT select the option that designated your repo as a monorepo.
 **App Build and Test Settings:** Our setup uses an amplify.yaml file in the root of the report to handle the deployment.
-  * **App Name:**  Select the backed we deployed earlier.
-  * **Environment:** Select "production".
+  * **Repo:** Select your repo.
+  * **Branch:** Select master.
+  * **App Name:**  Select the backend we deployed earlier.
+  * **Environment:** Select "prod".
   * **Service Role:** Select the one you created earlier.  //TODO: Update with when this was created.
   * **Advanced Settings:** Expand this section:
     * **Environment Variables:** Click add under the Environment Variables section and add the following variables:
       * **EXPO_TOKEN:**  Use the EAS robot token you created earlier.
-      * **USER_KEY:** Use the user key you created when initializing Amplify.  The solution uses custom nx actions to deploy the backend of the solution.  These nx actions use node to call Javascript scripts that use the process.env arguments to run headless init and push commands.  These headless commands use User Keys and Tokens to authenticate.
-      * **USER_SECRET:** Use the user secret you created when initiatlizing Amplify.  See above for explanation on why we have this variable.
-      * **PROJECT_NAME:** Enter the name of the amplify backend project.  This variable is used in the headless init and push commands. 
-      * **AMPLIFY_BACKEND_APP_ID:** The id of your Amplify backed you deployed.  The value can be found at the end of the App ARN setting on the General page of the Amplify project.  arn:aws:amplify:us-east-1:145666470493:apps/**d2ge5llzsago00**
-
+  
 
 ## ENABLE OFFLINE DEVELOPMENT
 TBD...
