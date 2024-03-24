@@ -26,4 +26,4 @@ echo "Files with 'My' in the name have been renamed to $1"
 # Remove all empty directories
 find . -type d -empty -delete
 
-echo "Removed all empty folders.
+echo "Removed all empty folders."
