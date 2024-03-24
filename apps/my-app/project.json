@@ -113,7 +113,7 @@
       }
     },
     "update-preview-ci": {
-      "command": "eas update --branch preview --platform all --auto --interactive false",
+      "command": "eas update --branch preview --platform all --auto --non-interactive",
       "options": {
         "cwd": "apps/my-app"
       }
