@@ -92,7 +92,7 @@ npm install
     * **Argument 2: Company Slug** - This value will be cast to lower case and inserted into the app identifiers.  Ex. com.stewartarmbrecht.myapp.com.
     * **Argument 3: IP Address** - Sets your host maching IP address in the .env file in the root of the project.  This enables the expo dev build to connect to your metro server hosted in the container.
 ```
-node claim-project Better BoundByBetter 10.24.1.57 19001
+node ./tools/scripts/claim-project Better BoundByBetter 10.24.1.57 19001
 ```
 6. **Rebuild Dev Container** - After you have 'claimed' the project rebuild the container.
 ```
