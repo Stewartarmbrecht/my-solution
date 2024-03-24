@@ -112,6 +112,12 @@
         "cwd": "apps/my-app"
       }
     },
+    "update-preview-ci": {
+      "command": "eas update --branch preview --platform all --auto --interactive false",
+      "options": {
+        "cwd": "apps/my-app"
+      }
+    },
     "export": {
       "executor": "@nx/expo:export",
       "dependsOn": [
