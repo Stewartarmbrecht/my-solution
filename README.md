@@ -289,6 +289,8 @@ npx nx amplify-add-hosting my-backend
   * **Advanced Settings:** Expand this section:
     * **Environment Variables:** Click add under the Environment Variables section and add the following variables:
       * **EXPO_TOKEN:**  Use the EAS robot token you created earlier.
+
+
   
 
 ## ENABLE OFFLINE DEVELOPMENT
