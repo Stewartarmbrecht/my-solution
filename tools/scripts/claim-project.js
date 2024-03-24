@@ -27,16 +27,17 @@ let options = {
     '**/.config/project-config.json',
   ],
   from: /my/g,
-  to: process.argv[2].toLowerCase(),
+  to: solutionName.toLowerCase(),
   ignore: '**/package-lock.json',
   //dry: true,
 };
 
 try {
   const results = replace.sync(options);
-  console.log('Replacement results:', results
-  .filter(result => result.hasChanged)
-  .map(result => result.file));
+  console.log(`Replacment solutionName results "my" to "${solutionName.toLowerCase()}":`, results
+    .filter(result => result.hasChanged)
+    .map(result => result.file)
+  );
 }
 catch (error) {
   console.error('Error occurred:', error);
@@ -52,16 +53,17 @@ options = {
     '**/.config/project-config.json',
   ],
   from: /My/g,
-  to: process.argv[2],
+  to: solutionName,
   ignore: '**/package-lock.json',
   //dry: true,
 };
 
 try {
   const results = replace.sync(options);
-  console.log('Replacement results:', results
-  .filter(result => result.hasChanged)
-  .map(result => result.file));
+  console.log(`Replacement solutionName results "My" to "${solutionName}":`, results
+    .filter(result => result.hasChanged)
+    .map(result => result.file)
+  );
 }
 catch (error) {
   console.error('Error occurred:', error);
@@ -83,9 +85,10 @@ options = {
 
 try {
   const results = replace.sync(options);
-  console.log('Replacement results:', results
-  .filter(result => result.hasChanged)
-  .map(result => result.file));
+  console.log(`Replacement companySlug results "stewartarmbrecht" to "${companySlug}":`, results
+    .filter(result => result.hasChanged)
+    .map(result => result.file)
+  );
 }
 catch (error) {
   console.error('Error occurred:', error);
@@ -107,9 +110,10 @@ options = {
 
 try {
   const results = replace.sync(options);
-  console.log('Replacement results:', results
-  .filter(result => result.hasChanged)
-  .map(result => result.file));
+  console.log(`Replacement port ipAddress "10.24.1.57" to "${ipAddress.toLowerCase()}":`, results
+    .filter(result => result.hasChanged)
+    .map(result => result.file)
+  );
 }
 catch (error) {
   console.error('Error occurred:', error);
@@ -131,9 +135,10 @@ options = {
 
 try {
   const results = replace.sync(options);
-  console.log('Replacement results:', results
-  .filter(result => result.hasChanged)
-  .map(result => result.file));
+  console.log(`Replacement port results "19001" to "${port}":`, results
+    .filter(result => result.hasChanged)
+    .map(result => result.file)
+  );
 }
 catch (error) {
   console.error('Error occurred:', error);
