@@ -18,7 +18,14 @@ if (shell.exec(cmdPush).code !== 0) {
 
 const replace = require('replace-in-file');
 let options = {
-  files: '**/*',
+  files: [
+    '**/*',
+    '.gitignore',
+    '.easignore',
+    '.devcontainer/devcontainer.json',
+    '.vscode/launch.json',
+    '**/.config/project-config.json',
+  ],
   from: /my/g,
   to: process.argv[2].toLowerCase(),
   ignore: '**/package-lock.json',
@@ -27,14 +34,23 @@ let options = {
 
 try {
   const results = replace.sync(options);
-  console.log('Replacement results:', results);
+  console.log('Replacement results:', results
+  .filter(result => result.hasChanged)
+  .map(result => result.file));
 }
 catch (error) {
   console.error('Error occurred:', error);
 }
 
 options = {
-  files: '**/*',
+  files: [
+    '**/*',
+    '.gitignore',
+    '.easignore',
+    '.devcontainer/devcontainer.json',
+    '.vscode/launch.json',
+    '**/.config/project-config.json',
+  ],
   from: /My/g,
   to: process.argv[2],
   ignore: '**/package-lock.json',
@@ -43,14 +59,23 @@ options = {
 
 try {
   const results = replace.sync(options);
-  console.log('Replacement results:', results);
+  console.log('Replacement results:', results
+  .filter(result => result.hasChanged)
+  .map(result => result.file));
 }
 catch (error) {
   console.error('Error occurred:', error);
 }
 
 options = {
-  files: '**/*',
+  files: [
+    '**/*',
+    '.gitignore',
+    '.easignore',
+    '.devcontainer/devcontainer.json',
+    '.vscode/launch.json',
+    '**/.config/project-config.json',
+  ],
   from: /stewartarmbrecht/g,
   to: companySlug.toLowerCase(),
   //dry: true,
@@ -58,14 +83,23 @@ options = {
 
 try {
   const results = replace.sync(options);
-  console.log('Replacement results:', results);
+  console.log('Replacement results:', results
+  .filter(result => result.hasChanged)
+  .map(result => result.file));
 }
 catch (error) {
   console.error('Error occurred:', error);
 }
 
 options = {
-  files: '**/*',
+  files: [
+    '**/*',
+    '.gitignore',
+    '.easignore',
+    '.devcontainer/devcontainer.json',
+    '.vscode/launch.json',
+    '**/.config/project-config.json',
+  ],
   from: /10\.24\.1\.57/g,
   to: ipAddress.toLowerCase(),
   //dry: true,
@@ -73,14 +107,23 @@ options = {
 
 try {
   const results = replace.sync(options);
-  console.log('Replacement results:', results);
+  console.log('Replacement results:', results
+  .filter(result => result.hasChanged)
+  .map(result => result.file));
 }
 catch (error) {
   console.error('Error occurred:', error);
 }
 
 options = {
-  files: '**/*',
+  files: [
+    '**/*',
+    '.gitignore',
+    '.easignore',
+    '.devcontainer/devcontainer.json',
+    '.vscode/launch.json',
+    '**/.config/project-config.json',
+  ],
   from: /19001/g,
   to: port.toLowerCase(),
   //dry: true,
@@ -88,7 +131,9 @@ options = {
 
 try {
   const results = replace.sync(options);
-  console.log('Replacement results:', results);
+  console.log('Replacement results:', results
+  .filter(result => result.hasChanged)
+  .map(result => result.file));
 }
 catch (error) {
   console.error('Error occurred:', error);
