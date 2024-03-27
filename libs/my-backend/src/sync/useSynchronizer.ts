@@ -16,15 +16,18 @@ import { useDispatch } from 'react-redux';
  * Synchronizes the redux data with the amplify datastore.
  * @returns {JSX.Element} The root component of the app.
  */
-export function useSynchronizer() {
-  logSetup('Synchronizer');
+export function useSynchronizer(isUserLoggedIn: boolean) {
+  logSetup('useSynchronizer');
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    logCall('Synchronizer.useEffect');
+    logCall('useSynchronizer.useEffect');
+    if (!isUserLoggedIn) {
+      return;
+    }
     const subscription = DataStore.observe(PostData).subscribe(msg => {
-      logCall('Synchronizer.useEffect.DataStore.observe', 'msg:', msg);
+      logCall('useSynchronizer.useEffect.DataStore.observe', 'msg:', msg);
       switch (msg.opType) {
         case 'DELETE':
           dispatch(postDeletedViaSync({
@@ -68,10 +71,10 @@ export function useSynchronizer() {
       }
     });
     const loadDataStorePosts = async () => {
-      logCall('getDataStorePosts');
+      logCall('useSynchronizer.useEffect.loadDataStorePosts');
       try {
         const postsData: PostData[] = await DataStore.query(PostData);
-        logCall('getDataStorePosts.DataStore.query');
+        logCall('useSynchronizer.useEffect.loadDataStorePosts.DataStore.query');
         const posts: Post[] = postsData.map((postData) => ({
             id: postData.clientId,
             serverId: postData.id,
@@ -83,11 +86,11 @@ export function useSynchronizer() {
             createdAt: postData.createdAt,
             updatedAt: postData.updatedAt,
         }));
-        logCall('getDataStorePosts', 'count:', posts.length);
+        logCall('useSynchronizer.useEffect.loadDataStorePosts.DataStore.query', 'count:', posts.length);
         dispatch(postsLoadedViaSync(posts));
       } /* istanbul ignore next */ catch (error) {
          /* istanbul ignore next */
-        logRaw('getDataStorePosts', 'error:', error);
+        logRaw('useSynchronizer.useEffect.loadDataStorePosts.DataStore.query', 'error:', error);
          /* istanbul ignore next */
         throw error;
       }
@@ -96,5 +99,5 @@ export function useSynchronizer() {
     return () => {
       subscription.unsubscribe()
     };
-  }, [dispatch]); // Or [] if effect doesn't need props or state  
+  }, [dispatch, isUserLoggedIn]); // Or [] if effect doesn't need props or state  
 }

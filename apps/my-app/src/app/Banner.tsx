@@ -1,5 +1,6 @@
 import { userLoggedOut } from "@my-solution/my-shared";
 import { selectUser, useAppDispatch } from "@my-solution/my-state";
+import { signOut } from "@my-solution/my-backend";
 import React from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { useSelector } from "react-redux";
@@ -8,6 +9,7 @@ export function Banner() {
   const dispatch = useAppDispatch();
   const user = useSelector(selectUser);
   async function handleSignOut() {
+    await signOut();
     dispatch(userLoggedOut());
   }
   return (
