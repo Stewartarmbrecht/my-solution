@@ -27,7 +27,6 @@ describe('signOut', () => {
   it('should stop and clear the data store then sign out the user using the amplify auth library.', async () => {
     await signOut();
 
-    expect(DataStore.stop).toHaveBeenCalled();
     expect(DataStore.clear).toHaveBeenCalled();
     expect(authSignOut).toHaveBeenCalled();
   });

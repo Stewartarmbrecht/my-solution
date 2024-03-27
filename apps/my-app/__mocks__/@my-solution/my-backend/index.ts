@@ -12,13 +12,6 @@ export const syncReducer = createReducer(
     });
   },
 );
-export const authReducer = createReducer(
-  {},
-  (builder) => {
-    builder
-    .addCase(userLoggedOut, (state, action) => {
-        logCall('authReducer.MOCK.userLoggedOut', action.payload);
-      });
-  }
-);
 export { MyBackend } from './MyBackend';
+const signOut = jest.fn();
+export { signOut };

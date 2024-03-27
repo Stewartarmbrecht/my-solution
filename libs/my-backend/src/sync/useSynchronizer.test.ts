@@ -41,7 +41,7 @@ describe('useSynchronizer', () => {
     const useDispatchMock = useDispatch as unknown as jest.Mock;
     useDispatchMock.mockReturnValue(dispatch);
 
-    renderHook(() => useSynchronizer());
+    renderHook(() => useSynchronizer(true));
 
     // Fast-forward until all timers have been executed
     jest.runAllTimers();
@@ -83,7 +83,7 @@ describe('useSynchronizer', () => {
     const useDispatchMock = useDispatch as unknown as jest.Mock;
     useDispatchMock.mockReturnValue(dispatch);
 
-    renderHook(() => useSynchronizer());
+    renderHook(() => useSynchronizer(true));
 
     const deleteMsg = {
       opType: 'DELETE',
@@ -135,7 +135,7 @@ describe('useSynchronizer', () => {
     const useDispatchMock = useDispatch as unknown as jest.Mock;
     useDispatchMock.mockReturnValue(dispatch);
 
-    renderHook(() => useSynchronizer());
+    renderHook(() => useSynchronizer(true));
 
     const deleteMsg = {
       opType: 'INSERT',
@@ -187,7 +187,7 @@ describe('useSynchronizer', () => {
     const useDispatchMock = useDispatch as unknown as jest.Mock;
     useDispatchMock.mockReturnValue(dispatch);
 
-    renderHook(() => useSynchronizer());
+    renderHook(() => useSynchronizer(true));
 
     const deleteMsg = {
       opType: 'UPDATE',
