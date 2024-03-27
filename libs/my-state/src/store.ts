@@ -1,6 +1,6 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { Action, ThunkAction, configureStore } from '@reduxjs/toolkit'
 import { postsReducer } from './posts/postsSlice'
-import { authReducer, syncReducer } from '@my-solution/my-backend'
+import { syncReducer } from '@my-solution/my-backend'
 import { userReducer } from './user/userSlice'
 // ...
 
@@ -9,7 +9,6 @@ export const store = configureStore({
     posts: postsReducer,
     sync: syncReducer,
     user: userReducer,
-    auth: authReducer,
   },
 })
 
@@ -19,3 +18,10 @@ export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch
 
 export type AppStore = typeof store;
+
+export type AppThunk<ReturnType = void> = ThunkAction<
+  ReturnType,
+  RootState,
+  unknown,
+  Action<string>
+>;

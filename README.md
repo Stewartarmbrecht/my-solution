@@ -323,6 +323,11 @@ Then switch to using that environment for development:
 ```
 npx nx amplify-checkout-dev my-backend
 ```
+Then switch to the dev branch in the repo and merge master into dev:
+```
+git checkout dev
+git merge master
+```
 
 Save and run the deployment.
 

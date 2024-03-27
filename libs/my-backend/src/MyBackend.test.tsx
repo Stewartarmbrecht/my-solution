@@ -7,7 +7,13 @@ import { render, waitFor } from '@testing-library/react-native';
 import { useDispatch } from 'react-redux';
 import { DataStore } from '@aws-amplify/datastore';
 import { getCurrentUser } from 'aws-amplify/auth';
+import { Hub } from 'aws-amplify/utils';
 
+jest.mock('aws-amplify/utils', () => ({
+  Hub: {
+    listen: jest.fn(),
+  },
+}));
 jest.mock('./aws-exports', () => ({
   default: {},
 }));
@@ -37,8 +43,20 @@ describe('MyBackend', () => {
   const defaultProps: MyBackendProps = {
     children: <Text>MyBackend</Text>,
   };
+  
+  beforeEach(() => {
+    (Hub.listen as jest.Mock).mockImplementation((channel, callback) => {
+      callback({
+        payload: {
+          event: 'signedIn',
+          // other properties...
+        },
+      });
+      return jest.fn();
+    });
+  });
 
-  it('should configure Amplify', () => {
+  it('should configure Amplify', async () => {
     const mockDispatch = jest.fn();
     (useDispatch as unknown as jest.Mock).mockReturnValue(mockDispatch);
     render(<MyBackend {...defaultProps} />);

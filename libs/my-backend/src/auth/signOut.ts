@@ -6,13 +6,11 @@ export async function signOut() {
   try {
     // logCall('MyBackend.handleSignOut.DataStore.start');
     // await DataStore.start();
-    logCall('MyBackend.handleSignOut.DataStore.stop');
-    await DataStore.stop();
-    logCall('MyBackend.handleSignOut.DataStore.clear');
+    logCall('signOut.DataStore.clear');
     await DataStore.clear();
-    // logCall('MyBackend.handleSignOut.DataStore.start');
-    // await DataStore.start();      
-    logCall('MyBackend.handleSignOut.signOut');
+    // logCall('signOut.DataStore.stop');
+    // await DataStore.stop();
+    logCall('signOut.authSignOut');
     await authSignOut();
   } catch (error) {
     /* istanbul ignore next */
