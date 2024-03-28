@@ -87,3 +87,13 @@ export function logError(error: Error, ...data: unknown[]) {
   'worklet';
   logRaw('ERROR', error.name, error.message, ...data);
 }
+
+/**
+ * Call when logging for a setup function.
+ * @param {string} name The name of the setup function.
+ * @param {unknown[]} data The data to log.
+ */
+export function logMessage(...data: unknown[]) {
+  'worklet';
+  logRaw('MESSAGE', ...data);
+}

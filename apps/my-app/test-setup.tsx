@@ -19,3 +19,5 @@ jest.mock('@my-solution/my-state', () => {
     }
   }   
 })
+
+process.env.LOGGING = 'false';

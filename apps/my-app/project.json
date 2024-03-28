@@ -157,6 +157,14 @@
       "options": {
         "jestConfig": "apps/my-app/jest.config.ts"
       }
+    },
+    "test-coverage": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/my-app/jest.config.ts",
+        "coverage": true
+      }
     }
   },
   "tags": []

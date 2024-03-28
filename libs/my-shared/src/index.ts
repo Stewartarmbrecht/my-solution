@@ -8,6 +8,7 @@ import {
   logId,
   logSetup,
   logError,
+  logMessage,
 } from './logger/logger';
 
 export { 
@@ -18,7 +19,8 @@ export {
   globalOptions, 
   logId, 
   logSetup,
-  logError
+  logError,
+  logMessage,
 };
 
 export { Post } from './types/Post';

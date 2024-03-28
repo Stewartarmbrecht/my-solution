@@ -7,6 +7,7 @@ import {
   logId,
   logSetup,
   logError,
+  logMessage,
 } from './logger';
 
 describe('logger', () => {
@@ -35,6 +36,15 @@ describe('logger', () => {
       const consoleSpy = jest.spyOn(console, 'log').mockImplementation();
       logCall('myCallFunction', 'some', 'data');
       expect(consoleSpy).toHaveBeenCalledWith(1, 'call', 'myCallFunction', 'some', 'data');
+      consoleSpy.mockRestore();
+    });
+  });
+
+  describe('logMessage', () => {
+    it('should log the message and data', () => {
+      const consoleSpy = jest.spyOn(console, 'log').mockImplementation();
+      logMessage('message', 'some', 'data');
+      expect(consoleSpy).toHaveBeenCalledWith(1, 'MESSAGE', 'message', 'some', 'data');
       consoleSpy.mockRestore();
     });
   });

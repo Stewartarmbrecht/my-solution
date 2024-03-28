@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useAppDispatch } from '@my-solution/my-state';
 import { nanoid } from '@reduxjs/toolkit';
 import { Post, PostStatus, postAdded } from '@my-solution/my-shared';
+import { logMessage } from '@my-solution/my-shared';
 
 export function AddPost() {
   const [newPostName, setNewPostName] = useState('');
@@ -15,7 +16,7 @@ export function AddPost() {
       status: PostStatus.ACTIVE,
     };
     dispatch(postAdded(post));
-    console.log('Post saved successfully!', post);
+    logMessage('Post saved successfully!', post);
   }
 
   return (
