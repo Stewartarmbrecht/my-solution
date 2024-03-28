@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux';
 import { DataStore } from '@aws-amplify/datastore';
 import { getCurrentUser } from 'aws-amplify/auth';
 import { Hub } from 'aws-amplify/utils';
+import { useSynchronizer } from './sync/useSynchronizer';
 
 jest.mock('aws-amplify/utils', () => ({
   Hub: {
@@ -49,7 +50,7 @@ describe('MyBackend', () => {
       callback({
         payload: {
           event: 'signedIn',
-          // other properties...
+          data: { username: 'testuser', email: 'someemail@somewhere.com' }
         },
       });
       return jest.fn();
@@ -83,5 +84,29 @@ describe('MyBackend', () => {
         userName: 'testuser',
       },
     }));
+  });
+
+  it('should call useSynchronizer with the isUserLoggedIn state', () => {
+    const mockDispatch = jest.fn();
+    (useDispatch as unknown as jest.Mock).mockReturnValue(mockDispatch);
+    render(<MyBackend {...defaultProps} />);
+    expect(useSynchronizer).toHaveBeenCalledWith(true);
+  });
+
+  it('should set the userLoggedIn state to true when the hub raises the signedIn in event', async () => {
+    const mockDispatch = jest.fn();
+    (useDispatch as unknown as jest.Mock).mockReturnValue(mockDispatch);
+    (Hub.listen as jest.Mock).mockImplementation((channel, callback) => {
+      callback({
+        payload: {
+          event: 'signedOut'
+        },
+      });
+      return jest.fn();
+    });
+    // set getCurrentUser to throw an exception.
+    (getCurrentUser as jest.Mock).mockRejectedValue(new Error('User not found'));
+    render(<MyBackend {...defaultProps} />);
+    await waitFor(() => expect(mockDispatch).toHaveBeenCalledWith({ type: 'user/userLoggedOut' }));
   });
 });

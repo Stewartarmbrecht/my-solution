@@ -5,7 +5,7 @@ import { Authenticator } from '@aws-amplify/ui-react-native';
 import { DataStore } from '@aws-amplify/datastore';
 //import { ExpoSQLiteAdapter } from '@aws-amplify/datastore-storage-adapter/ExpoSQLiteAdapter';
 import amplifyconfig from './aws-exports';
-import { logCall, logRaw, logSetup, userLoggedIn } from '@my-solution/my-shared';
+import { logCall, logError, logRaw, logSetup, userLoggedIn, userLoggedOut } from '@my-solution/my-shared';
 import { useSynchronizer } from './sync/useSynchronizer';
 import { useEffect, useState } from 'react';
 import { getCurrentUser } from 'aws-amplify/auth';
@@ -49,10 +49,11 @@ export function MyBackend(props: MyBackendProps) {
         dispatch(userLoggedIn({
           userEmail: 'dontknowthat@yet.com',
           userName: user?.username,
-        }))
+        }));
         setIsUserLoggedIn(true);
       } catch (error) {
-        logRaw('error:', error);
+        dispatch(userLoggedOut());
+        logError(error as Error);
       }
     }
     loadUser();

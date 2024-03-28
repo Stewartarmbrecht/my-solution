@@ -225,5 +225,25 @@ describe('useSynchronizer', () => {
     });
   });
 
-  // Add more test cases as needed
+  it('should not perform any actions if user is not logged in', () => {
+    jest.clearAllMocks();
+    const subscribeMock = jest.fn();
+    subscribeMock.mockReturnValueOnce({ unsubscribe: jest.fn() });
+
+    const observeMock = DataStore.observe as jest.Mock;
+    observeMock.mockReturnValueOnce({ subscribe: subscribeMock });
+
+    const queryMock = DataStore.query as jest.Mock;
+    queryMock.mockResolvedValueOnce([]);
+
+    const dispatch = jest.fn();
+    const useDispatchMock = useDispatch as unknown as jest.Mock;
+    useDispatchMock.mockReturnValue(dispatch);
+
+    renderHook(() => useSynchronizer(false));
+
+    expect(dispatch).not.toHaveBeenCalled();
+    expect(observeMock).not.toHaveBeenCalled();
+    expect(queryMock).not.toHaveBeenCalled();
+  });
 });
