@@ -13,8 +13,8 @@ frontend:
         - npm install
         - npm install --quiet --global expo-cli
         - npm install --quiet --global eas-cli
-        - npx nx run-many -t test-coverage
         - npm ci
+        - npx nx run-many -t test-coverage
     build:
       commands:
         - npx nx export-web my-app
