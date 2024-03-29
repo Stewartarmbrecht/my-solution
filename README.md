@@ -361,17 +361,20 @@ Ex: npx nx start my-app
 6. **Debug Web App:** 
 Once the app is started.  Open the dev tools.  In the sources tab you can find files using Cmd/Cntrl+Shift+P and typing the file name.  You can also set breakpoints.  Install the redux tools as well as the React Native tools and you can inspect redux, the UI elements, and the UI performance.
 
-4. **Run All Tests:** Run your tests with coverage:
+7. **Run All Tests:** Run your tests with coverage:
 ```
 npx nx test <project name> 
 Ex: npx nx test my-backend
 ```
-5. **Verify Code Coverage:** After you completed building your feature and have all tests passing, verify you have 100% code coverage.
+8. **Verify Code Coverage:** After you completed building your feature and have all tests passing, verify you have 100% code coverage.
 ```
 npx nx test-coverage <project name> 
 Ex: npx nx test-coverage my-backend
 ```
-
+9. **Install Expo Modules:** Use the following command to install expo modules in your app project:
+```
+npx nx install my-app package1,package2,package3
+```
 
 
 <br>

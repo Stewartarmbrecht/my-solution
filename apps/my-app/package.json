@@ -1,6 +1,7 @@
 {
   "name": "my-app",
   "version": "1.0.3",
+  "main": "expo-router/entry",
   "private": true,
   "scripts": {
     "eas-build-post-install": "cd ../../ && node tools/scripts/eas-build-post-install.mjs . apps/my-app",
@@ -44,7 +45,11 @@
     "jest": "*",
     "jest-expo": "*",
     "react-devtools": "*",
-    "dotenv": "*"
+    "dotenv": "*",
+    "expo-router": "*",
+    "react-native-screens": "*",
+    "expo-linking": "*",
+    "expo-constants": "*"
   },
   "devDependencies": {
     "@config-plugins/detox": "*",
