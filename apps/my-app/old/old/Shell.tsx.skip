@@ -1,6 +1,6 @@
 import { SafeAreaView, StatusBar, View } from "react-native";
-import { Banner } from "./Banner";
-import { Main } from "./Main";
+import { Banner } from "./Banner.tsx.skip";
+import { Main } from "./Main.tsx.skip";
 
 export function Shell() {
   return (

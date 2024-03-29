@@ -1,0 +1,171 @@
+{
+  "name": "test-app",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/test-app/",
+  "projectType": "application",
+  "targets": {
+    "start": {
+      "executor": "@nx/expo:start",
+      "dependsOn": [
+        "sync-deps"
+      ],
+      "options": {
+        "port": 19001,
+        "dev-client": true
+      }
+    },
+    "serve-web": {
+      "executor": "nx:run-commands",
+      "dependsOn": [
+        "sync-deps"
+      ],
+      "options": {
+        "command": "npx serve -s dist/apps/test-app -l 5000"
+      }
+    },
+    "run-ios": {
+      "executor": "@nx/expo:run",
+      "dependsOn": [
+        "sync-deps"
+      ],
+      "options": {
+        "platform": "ios"
+      }
+    },
+    "run-android": {
+      "executor": "@nx/expo:run",
+      "dependsOn": [
+        "sync-deps"
+      ],
+      "options": {
+        "platform": "android"
+      }
+    },
+    "build-dev": {
+      "executor": "@nx/expo:build",
+      "options": {
+        "platform": "all",
+        "profile": "development"
+      }
+    },
+    "build-dev-ios": {
+      "executor": "@nx/expo:build",
+      "options": {
+        "platform": "ios",
+        "profile": "development"
+      }
+    },
+    "build-preview": {
+      "executor": "@nx/expo:build",
+      "options": {
+        "platform": "all",
+        "profile": "preview"
+      }
+    },
+    "build-preview-ios": {
+      "executor": "@nx/expo:build",
+      "options": {
+        "platform": "ios",
+        "profile": "preview"
+      }
+    },
+    "build": {
+      "executor": "@nx/expo:build",
+      "options": {}
+    },
+    "submit": {
+      "executor": "@nx/expo:submit",
+      "options": {}
+    },
+    "build-list": {
+      "executor": "@nx/expo:build-list",
+      "options": {}
+    },
+    "sync-deps": {
+      "executor": "@nx/expo:sync-deps",
+      "options": {}
+    },
+    "prebuild": {
+      "executor": "@nx/expo:prebuild",
+      "dependsOn": [
+        "sync-deps"
+      ],
+      "options": {}
+    },
+    "install": {
+      "executor": "@nx/expo:install",
+      "options": {}
+    },
+    "update": {
+      "executor": "@nx/expo:update",
+      "options": {}
+    },
+    "update-preview": {
+      "command": "eas update --branch preview --platform all --auto",
+      "options": {
+        "cwd": "apps/test-app"
+      }
+    },
+    "update-preview-ios": {
+      "command": "eas update --platform ios --branch preview --auto",
+      "options": {
+        "cwd": "apps/test-app"
+      }
+    },
+    "update-preview-ci": {
+      "command": "eas update --branch preview --platform all --auto --non-interactive",
+      "options": {
+        "cwd": "apps/test-app"
+      }
+    },
+    "export": {
+      "executor": "@nx/expo:export",
+      "dependsOn": [
+        "sync-deps"
+      ],
+      "options": {
+        "platform": "all",
+        "outputDir": "dist/apps/test-app"
+      },
+      "outputs": [
+        "{options.outputDir}"
+      ]
+    },
+    "export-web": {
+      "executor": "@nx/expo:export",
+      "dependsOn": [
+        "sync-deps"
+      ],
+      "options": {
+        "platform": "web",
+        "bundler": "metro",
+        "outputDir": "dist/apps/test-app"
+      }
+    },
+
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": [
+        "{options.outputFile}"
+      ]
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
+      "options": {
+        "jestConfig": "apps/test-app/jest.config.ts"
+      }
+    },
+    "test-coverage": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/test-app/jest.config.ts",
+        "coverage": true
+      }
+    }
+  },
+  "tags": []
+}

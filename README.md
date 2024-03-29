@@ -375,7 +375,16 @@ Ex: npx nx test-coverage my-backend
 ```
 npx nx install my-app package1,package2,package3
 ```
-
+10. **Sort Package Dependencies:** Use the following command to sort the dependencies in a package.json
+```
+cd to-directory-with-package-json
+npx sort-package-json
+```
+10. **Update Development Build:** If you install modules that require updating the development build that is deployed to devices:
+```
+npx nx build-dev my-app
+```
+After you run the build, you will need to scan the QR code on all devices to update your development build.
 
 <br>
 <br>
