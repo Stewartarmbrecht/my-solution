@@ -340,6 +340,40 @@ TBD...
 TBD...
 
 
+# DEVELOPMENT FLOW
+1. **Write Test:** Write your unit test.
+2. **Verify Test Fails:** Run your unit test and verify it fails:
+```
+Cntrl/Cmd+Shift+P
+Test: Run Test at Cursor
+```
+3. **Write Code:** Write your code and rerun the tests until they pass.
+4. **Verify Test Passes:** If you need to debug a test:
+```
+Cntrl/Cmd+Shift+P
+Test: Debug Test at Cursor
+```
+5. **Verify in App:** Run the app and verify your code change in the web and mobile app.
+```
+npx nx start <app project>
+Ex: npx nx start my-app
+```
+6. **Debug Web App:** 
+Once the app is started.  Open the dev tools.  In the sources tab you can find files using Cmd/Cntrl+Shift+P and typing the file name.  You can also set breakpoints.  Install the redux tools as well as the React Native tools and you can inspect redux, the UI elements, and the UI performance.
+
+4. **Run All Tests:** Run your tests with coverage:
+```
+npx nx test <project name> 
+Ex: npx nx test my-backend
+```
+5. **Verify Code Coverage:** After you completed building your feature and have all tests passing, verify you have 100% code coverage.
+```
+npx nx test-coverage <project name> 
+Ex: npx nx test-coverage my-backend
+```
+
+
+
 <br>
 <br>
 <br>

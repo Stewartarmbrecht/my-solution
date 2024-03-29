@@ -3,4 +3,5 @@
   "typescript.referencesCodeLens.showOnAllFunctions": true,
   "typescript.tsdk": "node_modules/typescript/lib",
   "react-native.packager.port": 19001,
+  "typescript.tsserver.nodePath": "node",
 }

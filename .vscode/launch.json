@@ -13,17 +13,9 @@
       "name": "Debug Expo",
       "type": "expo",
       "bundlerHost": "10.24.1.57",
-      "bundlerPort": "19300",
+      "bundlerPort": "19001",
       "request": "attach",
       "projectRoot": "${workspaceFolder}/apps/my-app"
-    },
-    {
-      "name": "Attach to packager",
-      "cwd": "${workspaceFolder}/apps/my-app",
-      "type": "reactnative",
-      "request": "attach",
-      "port": 9229,
-      "sourceMaps": true
     }
   ]
 }
