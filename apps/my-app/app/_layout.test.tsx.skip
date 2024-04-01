@@ -1,0 +1,41 @@
+import { renderRouter, screen } from 'expo-router/testing-library';
+import { View } from 'react-native';
+import { useFonts } from 'expo-font';
+
+jest.mock('expo-font', () => ({
+  useFonts: jest.fn().mockReturnValue([true, null]),
+}));
+
+jest.mock('expo-splash-screen', () => ({
+  hideAsync: jest.fn(),
+  preventAutoHideAsync: jest.fn(),
+}));
+
+jest.mock('expo-font', () => ({
+  useFonts: jest.fn().mockReturnValue([true, null]),
+}));
+
+describe('RootLayout', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it('should render tab one', () => {
+    const MockComponent = jest.fn(() => <View />);
+    renderRouter({ index: MockComponent });
+    expect(screen).toHavePathname('/');
+  });
+
+  it('should render tab two', () => {
+    const MockComponent = jest.fn(() => <View />);
+    renderRouter({ index: MockComponent }, { initialUrl: '/two' });
+    expect(screen).toHavePathname('/two');
+  });
+
+  it('should render the splash screen while the fonts are loading', () => {
+    const MockComponent = jest.fn(() => <View />);
+    (useFonts as jest.Mock).mockReturnValue([false, null]);
+    renderRouter({ index: MockComponent });
+    expect(screen.queryByTestId('splash')).not.toBeNull();
+  });
+});
