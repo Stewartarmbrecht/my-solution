@@ -1,0 +1,897 @@
+  console.error
+    Warning: Failed prop type: Invalid props.style key `0` supplied to `Text`.
+    Bad object: {
+      "0": [
+        {
+          "fontSize": 17,
+          "fontWeight": "600"
+        },
+        {
+          "color": "rgb(28, 28, 30)"
+        },
+        null
+      ],
+      "1": {}
+    }
+    Valid keys: [
+      "alignContent",
+      "alignItems",
+      "alignSelf",
+      "aspectRatio",
+      "borderBottomWidth",
+      "borderEndWidth",
+      "borderLeftWidth",
+      "borderRightWidth",
+      "borderStartWidth",
+      "borderTopWidth",
+      "borderWidth",
+      "bottom",
+      "columnGap",
+      "direction",
+      "display",
+      "end",
+      "flex",
+      "flexBasis",
+      "flexDirection",
+      "flexGrow",
+      "flexShrink",
+      "flexWrap",
+      "gap",
+      "height",
+      "inset",
+      "insetBlock",
+      "insetBlockEnd",
+      "insetBlockStart",
+      "insetInline",
+      "insetInlineEnd",
+      "insetInlineStart",
+      "justifyContent",
+      "left",
+      "margin",
+      "marginBlock",
+      "marginBlockEnd",
+      "marginBlockStart",
+      "marginBottom",
+      "marginEnd",
+      "marginHorizontal",
+      "marginInline",
+      "marginInlineEnd",
+      "marginInlineStart",
+      "marginLeft",
+      "marginRight",
+      "marginStart",
+      "marginTop",
+      "marginVertical",
+      "maxHeight",
+      "maxWidth",
+      "minHeight",
+      "minWidth",
+      "overflow",
+      "padding",
+      "paddingBlock",
+      "paddingBlockEnd",
+      "paddingBlockStart",
+      "paddingBottom",
+      "paddingEnd",
+      "paddingHorizontal",
+      "paddingInline",
+      "paddingInlineEnd",
+      "paddingInlineStart",
+      "paddingLeft",
+      "paddingRight",
+      "paddingStart",
+      "paddingTop",
+      "paddingVertical",
+      "position",
+      "right",
+      "rowGap",
+      "start",
+      "top",
+      "width",
+      "zIndex",
+      "shadowColor",
+      "shadowOffset",
+      "shadowOpacity",
+      "shadowRadius",
+      "transform",
+      "backfaceVisibility",
+      "backgroundColor",
+      "borderBottomColor",
+      "borderBottomEndRadius",
+      "borderBottomLeftRadius",
+      "borderBottomRightRadius",
+      "borderBottomStartRadius",
+      "borderColor",
+      "borderCurve",
+      "borderEndColor",
+      "borderEndEndRadius",
+      "borderEndStartRadius",
+      "borderLeftColor",
+      "borderRadius",
+      "borderRightColor",
+      "borderStartColor",
+      "borderStartEndRadius",
+      "borderStartStartRadius",
+      "borderStyle",
+      "borderTopColor",
+      "borderTopEndRadius",
+      "borderTopLeftRadius",
+      "borderTopRightRadius",
+      "borderTopStartRadius",
+      "elevation",
+      "opacity",
+      "pointerEvents",
+      "color",
+      "fontFamily",
+      "fontSize",
+      "fontStyle",
+      "fontVariant",
+      "fontWeight",
+      "includeFontPadding",
+      "letterSpacing",
+      "lineHeight",
+      "textAlign",
+      "textAlignVertical",
+      "textDecorationColor",
+      "textDecorationLine",
+      "textDecorationStyle",
+      "textShadowColor",
+      "textShadowOffset",
+      "textShadowRadius",
+      "textTransform",
+      "userSelect",
+      "verticalAlign",
+      "writingDirection"
+    ]
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockComponent.js:30:18)
+        at /workspaces/my-solution/node_modules/react-native/Libraries/Animated/createAnimatedComponent.js:36:57
+        at HeaderTitle (/workspaces/my-solution/node_modules/@react-navigation/elements/src/Header/HeaderTitle.tsx:17:39)
+        at View
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockComponent.js:30:18)
+        at /workspaces/my-solution/node_modules/react-native/Libraries/Animated/createAnimatedComponent.js:36:57
+        at View
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockComponent.js:30:18)
+        at View
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockComponent.js:30:18)
+        at /workspaces/my-solution/node_modules/react-native/Libraries/Animated/createAnimatedComponent.js:36:57
+        at Header (/workspaces/my-solution/node_modules/@react-navigation/elements/src/Header/Header.tsx:46:35)
+        at View
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockComponent.js:30:18)
+        at View
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockComponent.js:30:18)
+        at Background (/workspaces/my-solution/node_modules/@react-navigation/elements/src/Background.tsx:9:38)
+        at Screen (/workspaces/my-solution/node_modules/@react-navigation/elements/src/Screen.tsx:34:38)
+        at RNSScreen
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockNativeComponent.js:17:18)
+        at /workspaces/my-solution/node_modules/react-native/Libraries/Animated/createAnimatedComponent.js:36:57
+        at Suspender (/workspaces/my-solution/node_modules/react-freeze/src/index.tsx:6:3)
+        at Suspense
+        at Freeze (/workspaces/my-solution/node_modules/react-freeze/src/index.tsx:24:26)
+        at DelayedFreeze (/workspaces/my-solution/node_modules/react-native-screens/lib/commonjs/index.native.tsx:193:26)
+        at InnerScreen (/workspaces/my-solution/node_modules/react-native-screens/lib/commonjs/index.native.tsx:245:56)
+        at Screen (/workspaces/my-solution/node_modules/react-native-screens/lib/commonjs/index.native.tsx:561:13)
+        at MaybeScreen (/workspaces/my-solution/node_modules/@react-navigation/bottom-tabs/src/views/ScreenFallback.tsx:36:31)
+        at RNSScreenContainer
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockNativeComponent.js:17:18)
+        at ScreenContainer (/workspaces/my-solution/node_modules/react-native-screens/lib/commonjs/index.native.tsx:394:11)
+        at MaybeScreenContainer (/workspaces/my-solution/node_modules/@react-navigation/bottom-tabs/src/views/ScreenFallback.tsx:22:3)
+        at View
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockComponent.js:30:18)
+        at SafeAreaProviderCompat (/workspaces/my-solution/node_modules/@react-navigation/elements/src/SafeAreaProviderCompat.tsx:36:50)
+        at BottomTabView (/workspaces/my-solution/node_modules/@react-navigation/bottom-tabs/src/views/BottomTabView.tsx:36:5)
+        at PreventRemoveProvider (/workspaces/my-solution/node_modules/@react-navigation/core/src/PreventRemoveProvider.tsx:45:49)
+        at NavigationContent (/workspaces/my-solution/node_modules/@react-navigation/core/src/useComponent.tsx:10:30)
+        at /workspaces/my-solution/node_modules/@react-navigation/core/src/useComponent.tsx:26:26
+        at BottomTabNavigator (/workspaces/my-solution/node_modules/@react-navigation/bottom-tabs/src/navigators/createBottomTabNavigator.tsx:31:3)
+        at /workspaces/my-solution/node_modules/expo-router/src/layouts/withLayoutContext.tsx:83:9
+        at TabLayout (/workspaces/my-solution/apps/my-app/app/(tabs)/_layout.tsx:19:37)
+        at Suspense
+        at Route (/workspaces/my-solution/node_modules/expo-router/src/Route.tsx:60:25)
+        at /workspaces/my-solution/node_modules/expo-router/src/useScreens.tsx:201:9
+        at StaticContainer (/workspaces/my-solution/node_modules/@react-navigation/core/src/StaticContainer.tsx:7:16)
+        at EnsureSingleNavigator (/workspaces/my-solution/node_modules/@react-navigation/core/src/EnsureSingleNavigator.tsx:20:49)
+        at SceneView (/workspaces/my-solution/node_modules/@react-navigation/core/src/SceneView.tsx:40:3)
+        at View
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockComponent.js:30:18)
+        at DebugContainer (/workspaces/my-solution/node_modules/@react-navigation/native-stack/src/views/DebugContainer.native.tsx:23:13)
+        at MaybeNestedStack (/workspaces/my-solution/node_modules/@react-navigation/native-stack/src/views/NativeStackView.native.tsx:47:3)
+        at View
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockComponent.js:30:18)
+        at RNSScreen
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockNativeComponent.js:17:18)
+        at /workspaces/my-solution/node_modules/react-native/Libraries/Animated/createAnimatedComponent.js:36:57
+        at Suspender (/workspaces/my-solution/node_modules/react-freeze/src/index.tsx:6:3)
+        at Suspense
+        at Freeze (/workspaces/my-solution/node_modules/react-freeze/src/index.tsx:24:26)
+        at DelayedFreeze (/workspaces/my-solution/node_modules/react-native-screens/lib/commonjs/index.native.tsx:193:26)
+        at InnerScreen (/workspaces/my-solution/node_modules/react-native-screens/lib/commonjs/index.native.tsx:245:56)
+        at Screen (/workspaces/my-solution/node_modules/react-native-screens/lib/commonjs/index.native.tsx:561:13)
+        at SceneView (/workspaces/my-solution/node_modules/@react-navigation/native-stack/src/views/NativeStackView.native.tsx:132:3)
+        at Suspender (/workspaces/my-solution/node_modules/react-freeze/src/index.tsx:6:3)
+        at Suspense
+        at Freeze (/workspaces/my-solution/node_modules/react-freeze/src/index.tsx:24:26)
+        at DelayedFreeze (/workspaces/my-solution/node_modules/react-native-screens/lib/commonjs/index.native.tsx:193:26)
+        at RNSScreenStack
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockNativeComponent.js:17:18)
+        at ScreenStack (/workspaces/my-solution/node_modules/react-native-screens/lib/commonjs/index.native.tsx:210:11)
+        at NativeStackViewInner (/workspaces/my-solution/node_modules/@react-navigation/native-stack/src/views/NativeStackView.native.tsx:395:33)
+        at View
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockComponent.js:30:18)
+        at SafeAreaProviderCompat (/workspaces/my-solution/node_modules/@react-navigation/elements/src/SafeAreaProviderCompat.tsx:36:50)
+        at NativeStackView
+        at PreventRemoveProvider (/workspaces/my-solution/node_modules/@react-navigation/core/src/PreventRemoveProvider.tsx:45:49)
+        at NavigationContent (/workspaces/my-solution/node_modules/@react-navigation/core/src/useComponent.tsx:10:30)
+        at /workspaces/my-solution/node_modules/@react-navigation/core/src/useComponent.tsx:26:26
+        at NativeStackNavigator (/workspaces/my-solution/node_modules/@react-navigation/native-stack/src/navigators/createNativeStackNavigator.tsx:22:3)
+        at /workspaces/my-solution/node_modules/expo-router/src/layouts/withLayoutContext.tsx:83:9
+        at ThemeProvider (/workspaces/my-solution/node_modules/@react-navigation/native/src/theming/ThemeProvider.tsx:11:41)
+        at MyBackend (/workspaces/my-solution/apps/my-app/__mocks__/@my-solution/my-backend/MyBackend.tsx:9:17)
+        at Provider (/workspaces/my-solution/node_modules/react-redux/src/components/Provider.tsx:58:3)
+        at MyState (/workspaces/my-solution/libs/my-state/src/MyState.tsx:9:14)
+        at RootLayoutNav (/workspaces/my-solution/apps/my-app/app/_layout.tsx:61:37)
+        at RootLayout (/workspaces/my-solution/apps/my-app/app/_layout.tsx:39:12)
+        at Try (/workspaces/my-solution/node_modules/expo-router/src/views/Try.tsx:14:18)
+        at Suspense
+        at Route (/workspaces/my-solution/node_modules/expo-router/src/Route.tsx:60:25)
+        at /workspaces/my-solution/node_modules/expo-router/src/useScreens.tsx:201:9
+        at RNCSafeAreaProvider
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockNativeComponent.js:17:18)
+        at SafeAreaProvider (/workspaces/my-solution/node_modules/react-native-safe-area-context/src/SafeAreaContext.tsx:35:3)
+        at wrapper (/workspaces/my-solution/node_modules/expo-router/src/ExpoRoot.tsx:39:22)
+        at EnsureSingleNavigator (/workspaces/my-solution/node_modules/@react-navigation/core/src/EnsureSingleNavigator.tsx:20:49)
+        at BaseNavigationContainer (/workspaces/my-solution/node_modules/@react-navigation/core/src/BaseNavigationContainer.tsx:82:7)
+        at ThemeProvider (/workspaces/my-solution/node_modules/@react-navigation/native/src/theming/ThemeProvider.tsx:11:41)
+        at NavigationContainerInner (/workspaces/my-solution/node_modules/expo-router/src/fork/NavigationContainer.native.tsx:54:5)
+        at ContextNavigator (/workspaces/my-solution/node_modules/expo-router/src/ExpoRoot.tsx:62:3)
+        at ExpoRoot (/workspaces/my-solution/node_modules/expo-router/src/ExpoRoot.tsx:33:28)
+
+      23 |   it('should render tab one', () => {
+      24 |     Platform.OS = 'web';
+    > 25 |     renderRouter('./apps/my-app/app', {
+         |                 ^
+      26 |       initialUrl: '/',
+      27 |     });
+      28 |     expect(screen.getByText('One')).toBeTruthy();
+
+      at printWarning (../../node_modules/react/cjs/react-jsx-runtime.development.js:87:30)
+      at error (../../node_modules/react/cjs/react-jsx-runtime.development.js:61:7)
+      at checkPropTypes (../../node_modules/react/cjs/react-jsx-runtime.development.js:631:11)
+      at validatePropTypes (../../node_modules/react/cjs/react-jsx-runtime.development.js:1164:7)
+      at jsxWithValidation (../../node_modules/react/cjs/react-jsx-runtime.development.js:1284:7)
+      at jsxWithValidationDynamic (../../node_modules/react/cjs/react-jsx-runtime.development.js:1301:12)
+      at ../../node_modules/react-native/Libraries/Animated/createAnimatedComponent.js:54:7
+      at renderWithHooks (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:6351:18)
+      at updateForwardRef (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:9150:20)
+      at beginWork (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:11361:16)
+      at performUnitOfWork (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:15808:12)
+      at workLoopSync (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:15745:5)
+      at renderRootSync (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:15717:7)
+      at performSyncWorkOnRoot (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:15422:20)
+      at flushSyncCallbacks (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:2597:22)
+      at flushActQueue (../../node_modules/react/cjs/react.development.js:2667:24)
+      at Object.act (../../node_modules/react/cjs/react.development.js:2521:11)
+      at renderWithAct (../../node_modules/@testing-library/react-native/src/render-act.ts:14:21)
+      at renderInternal (../../node_modules/@testing-library/react-native/src/render.tsx:62:33)
+      at render (../../node_modules/@testing-library/react-native/src/render.tsx:32:10)
+      at renderRouter (../../node_modules/expo-router/src/testing-library/index.tsx:93:24)
+      at Object.<anonymous> (app-test/_layout.test.tsx:25:17)
+
+  console.error
+    The above error occurred in the <Icon> component:
+    
+        at Icon (/workspaces/my-solution/node_modules/@expo/vector-icons/src/createIconSet.tsx:112:3)
+        at View
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockComponent.js:30:18)
+        at Pressable (/workspaces/my-solution/node_modules/react-native/Libraries/Components/Pressable/Pressable.js:206:5)
+        at /workspaces/my-solution/node_modules/@radix-ui/react-slot/dist/packages/react/slot/src/Slot.tsx:61:11
+        at /workspaces/my-solution/node_modules/@radix-ui/react-slot/dist/packages/react/slot/src/Slot.tsx:13:11
+        at ExpoRouterLink (/workspaces/my-solution/node_modules/expo-router/src/link/Link.tsx:166:5)
+        at View
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockComponent.js:30:18)
+        at /workspaces/my-solution/node_modules/react-native/Libraries/Animated/createAnimatedComponent.js:36:57
+        at View
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockComponent.js:30:18)
+        at View
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockComponent.js:30:18)
+        at /workspaces/my-solution/node_modules/react-native/Libraries/Animated/createAnimatedComponent.js:36:57
+        at Header (/workspaces/my-solution/node_modules/@react-navigation/elements/src/Header/Header.tsx:46:35)
+        at View
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockComponent.js:30:18)
+        at View
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockComponent.js:30:18)
+        at Background (/workspaces/my-solution/node_modules/@react-navigation/elements/src/Background.tsx:9:38)
+        at Screen (/workspaces/my-solution/node_modules/@react-navigation/elements/src/Screen.tsx:34:38)
+        at RNSScreen
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockNativeComponent.js:17:18)
+        at /workspaces/my-solution/node_modules/react-native/Libraries/Animated/createAnimatedComponent.js:36:57
+        at Suspender (/workspaces/my-solution/node_modules/react-freeze/src/index.tsx:6:3)
+        at Suspense
+        at Freeze (/workspaces/my-solution/node_modules/react-freeze/src/index.tsx:24:26)
+        at DelayedFreeze (/workspaces/my-solution/node_modules/react-native-screens/lib/commonjs/index.native.tsx:193:26)
+        at InnerScreen (/workspaces/my-solution/node_modules/react-native-screens/lib/commonjs/index.native.tsx:245:56)
+        at Screen (/workspaces/my-solution/node_modules/react-native-screens/lib/commonjs/index.native.tsx:561:13)
+        at MaybeScreen (/workspaces/my-solution/node_modules/@react-navigation/bottom-tabs/src/views/ScreenFallback.tsx:36:31)
+        at RNSScreenContainer
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockNativeComponent.js:17:18)
+        at ScreenContainer (/workspaces/my-solution/node_modules/react-native-screens/lib/commonjs/index.native.tsx:394:11)
+        at MaybeScreenContainer (/workspaces/my-solution/node_modules/@react-navigation/bottom-tabs/src/views/ScreenFallback.tsx:22:3)
+        at View
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockComponent.js:30:18)
+        at SafeAreaProviderCompat (/workspaces/my-solution/node_modules/@react-navigation/elements/src/SafeAreaProviderCompat.tsx:36:50)
+        at BottomTabView (/workspaces/my-solution/node_modules/@react-navigation/bottom-tabs/src/views/BottomTabView.tsx:36:5)
+        at PreventRemoveProvider (/workspaces/my-solution/node_modules/@react-navigation/core/src/PreventRemoveProvider.tsx:45:49)
+        at NavigationContent (/workspaces/my-solution/node_modules/@react-navigation/core/src/useComponent.tsx:10:30)
+        at /workspaces/my-solution/node_modules/@react-navigation/core/src/useComponent.tsx:26:26
+        at BottomTabNavigator (/workspaces/my-solution/node_modules/@react-navigation/bottom-tabs/src/navigators/createBottomTabNavigator.tsx:31:3)
+        at /workspaces/my-solution/node_modules/expo-router/src/layouts/withLayoutContext.tsx:83:9
+        at TabLayout (/workspaces/my-solution/apps/my-app/app/(tabs)/_layout.tsx:19:37)
+        at Suspense
+        at Route (/workspaces/my-solution/node_modules/expo-router/src/Route.tsx:60:25)
+        at /workspaces/my-solution/node_modules/expo-router/src/useScreens.tsx:201:9
+        at StaticContainer (/workspaces/my-solution/node_modules/@react-navigation/core/src/StaticContainer.tsx:7:16)
+        at EnsureSingleNavigator (/workspaces/my-solution/node_modules/@react-navigation/core/src/EnsureSingleNavigator.tsx:20:49)
+        at SceneView (/workspaces/my-solution/node_modules/@react-navigation/core/src/SceneView.tsx:40:3)
+        at View
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockComponent.js:30:18)
+        at DebugContainer (/workspaces/my-solution/node_modules/@react-navigation/native-stack/src/views/DebugContainer.native.tsx:23:13)
+        at MaybeNestedStack (/workspaces/my-solution/node_modules/@react-navigation/native-stack/src/views/NativeStackView.native.tsx:47:3)
+        at View
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockComponent.js:30:18)
+        at RNSScreen
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockNativeComponent.js:17:18)
+        at /workspaces/my-solution/node_modules/react-native/Libraries/Animated/createAnimatedComponent.js:36:57
+        at Suspender (/workspaces/my-solution/node_modules/react-freeze/src/index.tsx:6:3)
+        at Suspense
+        at Freeze (/workspaces/my-solution/node_modules/react-freeze/src/index.tsx:24:26)
+        at DelayedFreeze (/workspaces/my-solution/node_modules/react-native-screens/lib/commonjs/index.native.tsx:193:26)
+        at InnerScreen (/workspaces/my-solution/node_modules/react-native-screens/lib/commonjs/index.native.tsx:245:56)
+        at Screen (/workspaces/my-solution/node_modules/react-native-screens/lib/commonjs/index.native.tsx:561:13)
+        at SceneView (/workspaces/my-solution/node_modules/@react-navigation/native-stack/src/views/NativeStackView.native.tsx:132:3)
+        at Suspender (/workspaces/my-solution/node_modules/react-freeze/src/index.tsx:6:3)
+        at Suspense
+        at Freeze (/workspaces/my-solution/node_modules/react-freeze/src/index.tsx:24:26)
+        at DelayedFreeze (/workspaces/my-solution/node_modules/react-native-screens/lib/commonjs/index.native.tsx:193:26)
+        at RNSScreenStack
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockNativeComponent.js:17:18)
+        at ScreenStack (/workspaces/my-solution/node_modules/react-native-screens/lib/commonjs/index.native.tsx:210:11)
+        at NativeStackViewInner (/workspaces/my-solution/node_modules/@react-navigation/native-stack/src/views/NativeStackView.native.tsx:395:33)
+        at View
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockComponent.js:30:18)
+        at SafeAreaProviderCompat (/workspaces/my-solution/node_modules/@react-navigation/elements/src/SafeAreaProviderCompat.tsx:36:50)
+        at NativeStackView
+        at PreventRemoveProvider (/workspaces/my-solution/node_modules/@react-navigation/core/src/PreventRemoveProvider.tsx:45:49)
+        at NavigationContent (/workspaces/my-solution/node_modules/@react-navigation/core/src/useComponent.tsx:10:30)
+        at /workspaces/my-solution/node_modules/@react-navigation/core/src/useComponent.tsx:26:26
+        at NativeStackNavigator (/workspaces/my-solution/node_modules/@react-navigation/native-stack/src/navigators/createNativeStackNavigator.tsx:22:3)
+        at /workspaces/my-solution/node_modules/expo-router/src/layouts/withLayoutContext.tsx:83:9
+        at ThemeProvider (/workspaces/my-solution/node_modules/@react-navigation/native/src/theming/ThemeProvider.tsx:11:41)
+        at MyBackend (/workspaces/my-solution/apps/my-app/__mocks__/@my-solution/my-backend/MyBackend.tsx:9:17)
+        at Provider (/workspaces/my-solution/node_modules/react-redux/src/components/Provider.tsx:58:3)
+        at MyState (/workspaces/my-solution/libs/my-state/src/MyState.tsx:9:14)
+        at RootLayoutNav (/workspaces/my-solution/apps/my-app/app/_layout.tsx:61:37)
+        at RootLayout (/workspaces/my-solution/apps/my-app/app/_layout.tsx:39:12)
+        at Try (/workspaces/my-solution/node_modules/expo-router/src/views/Try.tsx:14:18)
+        at Suspense
+        at Route (/workspaces/my-solution/node_modules/expo-router/src/Route.tsx:60:25)
+        at /workspaces/my-solution/node_modules/expo-router/src/useScreens.tsx:201:9
+        at RNCSafeAreaProvider
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockNativeComponent.js:17:18)
+        at SafeAreaProvider (/workspaces/my-solution/node_modules/react-native-safe-area-context/src/SafeAreaContext.tsx:35:3)
+        at wrapper (/workspaces/my-solution/node_modules/expo-router/src/ExpoRoot.tsx:39:22)
+        at EnsureSingleNavigator (/workspaces/my-solution/node_modules/@react-navigation/core/src/EnsureSingleNavigator.tsx:20:49)
+        at BaseNavigationContainer (/workspaces/my-solution/node_modules/@react-navigation/core/src/BaseNavigationContainer.tsx:82:7)
+        at ThemeProvider (/workspaces/my-solution/node_modules/@react-navigation/native/src/theming/ThemeProvider.tsx:11:41)
+        at NavigationContainerInner (/workspaces/my-solution/node_modules/expo-router/src/fork/NavigationContainer.native.tsx:54:5)
+        at ContextNavigator (/workspaces/my-solution/node_modules/expo-router/src/ExpoRoot.tsx:62:3)
+        at ExpoRoot (/workspaces/my-solution/node_modules/expo-router/src/ExpoRoot.tsx:33:28)
+    
+    React will try to recreate this component tree from scratch using the error boundary you provided, Try.
+
+      23 |   it('should render tab one', () => {
+      24 |     Platform.OS = 'web';
+    > 25 |     renderRouter('./apps/my-app/app', {
+         |                 ^
+      26 |       initialUrl: '/',
+      27 |     });
+      28 |     expect(screen.getByText('One')).toBeTruthy();
+
+      at logCapturedError (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:8661:23)
+      at Try.update.callback (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:8717:7)
+      at callCallback (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:4092:12)
+      at commitUpdateQueue (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:4113:9)
+      at commitLayoutEffectOnFiber (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:13205:13)
+      at commitLayoutMountEffects_complete (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:14330:9)
+      at commitLayoutEffects_begin (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:14316:7)
+      at commitLayoutEffects (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:14301:3)
+      at commitRootImpl (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:16062:5)
+      at commitRoot (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:15933:5)
+      at performSyncWorkOnRoot (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:15454:3)
+      at flushSyncCallbacks (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:2597:22)
+      at flushActQueue (../../node_modules/react/cjs/react.development.js:2667:24)
+      at Object.act (../../node_modules/react/cjs/react.development.js:2521:11)
+      at renderWithAct (../../node_modules/@testing-library/react-native/src/render-act.ts:14:21)
+      at renderInternal (../../node_modules/@testing-library/react-native/src/render.tsx:62:33)
+      at render (../../node_modules/@testing-library/react-native/src/render.tsx:32:10)
+      at renderRouter (../../node_modules/expo-router/src/testing-library/index.tsx:93:24)
+      at Object.<anonymous> (app-test/_layout.test.tsx:25:17)
+
+  console.error
+    The above error occurred in the <Icon> component:
+    
+        at Icon (/workspaces/my-solution/node_modules/@expo/vector-icons/src/createIconSet.tsx:112:3)
+        at TabBarIcon
+        at View
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockComponent.js:30:18)
+        at View
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockComponent.js:30:18)
+        at TabBarIcon (/workspaces/my-solution/node_modules/@react-navigation/bottom-tabs/src/views/TabBarIcon.tsx:31:3)
+        at Text
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockComponent.js:30:18)
+        at Link (/workspaces/my-solution/node_modules/@react-navigation/native/src/Link.tsx:29:3)
+        at BottomTabBarItem (/workspaces/my-solution/node_modules/@react-navigation/bottom-tabs/src/views/BottomTabItem.tsx:132:3)
+        at View
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockComponent.js:30:18)
+        at View
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockComponent.js:30:18)
+        at /workspaces/my-solution/node_modules/react-native/Libraries/Animated/createAnimatedComponent.js:36:57
+        at BottomTabBar (/workspaces/my-solution/node_modules/@react-navigation/bottom-tabs/src/views/BottomTabBar.tsx:129:3)
+        at View
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockComponent.js:30:18)
+        at SafeAreaProviderCompat (/workspaces/my-solution/node_modules/@react-navigation/elements/src/SafeAreaProviderCompat.tsx:36:50)
+        at BottomTabView (/workspaces/my-solution/node_modules/@react-navigation/bottom-tabs/src/views/BottomTabView.tsx:36:5)
+        at PreventRemoveProvider (/workspaces/my-solution/node_modules/@react-navigation/core/src/PreventRemoveProvider.tsx:45:49)
+        at NavigationContent (/workspaces/my-solution/node_modules/@react-navigation/core/src/useComponent.tsx:10:30)
+        at /workspaces/my-solution/node_modules/@react-navigation/core/src/useComponent.tsx:26:26
+        at BottomTabNavigator (/workspaces/my-solution/node_modules/@react-navigation/bottom-tabs/src/navigators/createBottomTabNavigator.tsx:31:3)
+        at /workspaces/my-solution/node_modules/expo-router/src/layouts/withLayoutContext.tsx:83:9
+        at TabLayout (/workspaces/my-solution/apps/my-app/app/(tabs)/_layout.tsx:19:37)
+        at Suspense
+        at Route (/workspaces/my-solution/node_modules/expo-router/src/Route.tsx:60:25)
+        at /workspaces/my-solution/node_modules/expo-router/src/useScreens.tsx:201:9
+        at StaticContainer (/workspaces/my-solution/node_modules/@react-navigation/core/src/StaticContainer.tsx:7:16)
+        at EnsureSingleNavigator (/workspaces/my-solution/node_modules/@react-navigation/core/src/EnsureSingleNavigator.tsx:20:49)
+        at SceneView (/workspaces/my-solution/node_modules/@react-navigation/core/src/SceneView.tsx:40:3)
+        at View
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockComponent.js:30:18)
+        at DebugContainer (/workspaces/my-solution/node_modules/@react-navigation/native-stack/src/views/DebugContainer.native.tsx:23:13)
+        at MaybeNestedStack (/workspaces/my-solution/node_modules/@react-navigation/native-stack/src/views/NativeStackView.native.tsx:47:3)
+        at View
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockComponent.js:30:18)
+        at RNSScreen
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockNativeComponent.js:17:18)
+        at /workspaces/my-solution/node_modules/react-native/Libraries/Animated/createAnimatedComponent.js:36:57
+        at Suspender (/workspaces/my-solution/node_modules/react-freeze/src/index.tsx:6:3)
+        at Suspense
+        at Freeze (/workspaces/my-solution/node_modules/react-freeze/src/index.tsx:24:26)
+        at DelayedFreeze (/workspaces/my-solution/node_modules/react-native-screens/lib/commonjs/index.native.tsx:193:26)
+        at InnerScreen (/workspaces/my-solution/node_modules/react-native-screens/lib/commonjs/index.native.tsx:245:56)
+        at Screen (/workspaces/my-solution/node_modules/react-native-screens/lib/commonjs/index.native.tsx:561:13)
+        at SceneView (/workspaces/my-solution/node_modules/@react-navigation/native-stack/src/views/NativeStackView.native.tsx:132:3)
+        at Suspender (/workspaces/my-solution/node_modules/react-freeze/src/index.tsx:6:3)
+        at Suspense
+        at Freeze (/workspaces/my-solution/node_modules/react-freeze/src/index.tsx:24:26)
+        at DelayedFreeze (/workspaces/my-solution/node_modules/react-native-screens/lib/commonjs/index.native.tsx:193:26)
+        at RNSScreenStack
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockNativeComponent.js:17:18)
+        at ScreenStack (/workspaces/my-solution/node_modules/react-native-screens/lib/commonjs/index.native.tsx:210:11)
+        at NativeStackViewInner (/workspaces/my-solution/node_modules/@react-navigation/native-stack/src/views/NativeStackView.native.tsx:395:33)
+        at View
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockComponent.js:30:18)
+        at SafeAreaProviderCompat (/workspaces/my-solution/node_modules/@react-navigation/elements/src/SafeAreaProviderCompat.tsx:36:50)
+        at NativeStackView
+        at PreventRemoveProvider (/workspaces/my-solution/node_modules/@react-navigation/core/src/PreventRemoveProvider.tsx:45:49)
+        at NavigationContent (/workspaces/my-solution/node_modules/@react-navigation/core/src/useComponent.tsx:10:30)
+        at /workspaces/my-solution/node_modules/@react-navigation/core/src/useComponent.tsx:26:26
+        at NativeStackNavigator (/workspaces/my-solution/node_modules/@react-navigation/native-stack/src/navigators/createNativeStackNavigator.tsx:22:3)
+        at /workspaces/my-solution/node_modules/expo-router/src/layouts/withLayoutContext.tsx:83:9
+        at ThemeProvider (/workspaces/my-solution/node_modules/@react-navigation/native/src/theming/ThemeProvider.tsx:11:41)
+        at MyBackend (/workspaces/my-solution/apps/my-app/__mocks__/@my-solution/my-backend/MyBackend.tsx:9:17)
+        at Provider (/workspaces/my-solution/node_modules/react-redux/src/components/Provider.tsx:58:3)
+        at MyState (/workspaces/my-solution/libs/my-state/src/MyState.tsx:9:14)
+        at RootLayoutNav (/workspaces/my-solution/apps/my-app/app/_layout.tsx:61:37)
+        at RootLayout (/workspaces/my-solution/apps/my-app/app/_layout.tsx:39:12)
+        at Try (/workspaces/my-solution/node_modules/expo-router/src/views/Try.tsx:14:18)
+        at Suspense
+        at Route (/workspaces/my-solution/node_modules/expo-router/src/Route.tsx:60:25)
+        at /workspaces/my-solution/node_modules/expo-router/src/useScreens.tsx:201:9
+        at RNCSafeAreaProvider
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockNativeComponent.js:17:18)
+        at SafeAreaProvider (/workspaces/my-solution/node_modules/react-native-safe-area-context/src/SafeAreaContext.tsx:35:3)
+        at wrapper (/workspaces/my-solution/node_modules/expo-router/src/ExpoRoot.tsx:39:22)
+        at EnsureSingleNavigator (/workspaces/my-solution/node_modules/@react-navigation/core/src/EnsureSingleNavigator.tsx:20:49)
+        at BaseNavigationContainer (/workspaces/my-solution/node_modules/@react-navigation/core/src/BaseNavigationContainer.tsx:82:7)
+        at ThemeProvider (/workspaces/my-solution/node_modules/@react-navigation/native/src/theming/ThemeProvider.tsx:11:41)
+        at NavigationContainerInner (/workspaces/my-solution/node_modules/expo-router/src/fork/NavigationContainer.native.tsx:54:5)
+        at ContextNavigator (/workspaces/my-solution/node_modules/expo-router/src/ExpoRoot.tsx:62:3)
+        at ExpoRoot (/workspaces/my-solution/node_modules/expo-router/src/ExpoRoot.tsx:33:28)
+    
+    React will try to recreate this component tree from scratch using the error boundary you provided, Try.
+
+      23 |   it('should render tab one', () => {
+      24 |     Platform.OS = 'web';
+    > 25 |     renderRouter('./apps/my-app/app', {
+         |                 ^
+      26 |       initialUrl: '/',
+      27 |     });
+      28 |     expect(screen.getByText('One')).toBeTruthy();
+
+      at logCapturedError (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:8661:23)
+      at Try.update.callback (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:8717:7)
+      at callCallback (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:4092:12)
+      at commitUpdateQueue (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:4113:9)
+      at commitLayoutEffectOnFiber (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:13205:13)
+      at commitLayoutMountEffects_complete (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:14330:9)
+      at commitLayoutEffects_begin (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:14316:7)
+      at commitLayoutEffects (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:14301:3)
+      at commitRootImpl (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:16062:5)
+      at commitRoot (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:15933:5)
+      at performSyncWorkOnRoot (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:15454:3)
+      at flushSyncCallbacks (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:2597:22)
+      at flushActQueue (../../node_modules/react/cjs/react.development.js:2667:24)
+      at Object.act (../../node_modules/react/cjs/react.development.js:2521:11)
+      at renderWithAct (../../node_modules/@testing-library/react-native/src/render-act.ts:14:21)
+      at renderInternal (../../node_modules/@testing-library/react-native/src/render.tsx:62:33)
+      at render (../../node_modules/@testing-library/react-native/src/render.tsx:32:10)
+      at renderRouter (../../node_modules/expo-router/src/testing-library/index.tsx:93:24)
+      at Object.<anonymous> (app-test/_layout.test.tsx:25:17)
+
+  console.error
+    The above error occurred in the <Icon> component:
+    
+        at Icon (/workspaces/my-solution/node_modules/@expo/vector-icons/src/createIconSet.tsx:112:3)
+        at TabBarIcon
+        at View
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockComponent.js:30:18)
+        at View
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockComponent.js:30:18)
+        at TabBarIcon (/workspaces/my-solution/node_modules/@react-navigation/bottom-tabs/src/views/TabBarIcon.tsx:31:3)
+        at Text
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockComponent.js:30:18)
+        at Link (/workspaces/my-solution/node_modules/@react-navigation/native/src/Link.tsx:29:3)
+        at BottomTabBarItem (/workspaces/my-solution/node_modules/@react-navigation/bottom-tabs/src/views/BottomTabItem.tsx:132:3)
+        at View
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockComponent.js:30:18)
+        at View
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockComponent.js:30:18)
+        at /workspaces/my-solution/node_modules/react-native/Libraries/Animated/createAnimatedComponent.js:36:57
+        at BottomTabBar (/workspaces/my-solution/node_modules/@react-navigation/bottom-tabs/src/views/BottomTabBar.tsx:129:3)
+        at View
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockComponent.js:30:18)
+        at SafeAreaProviderCompat (/workspaces/my-solution/node_modules/@react-navigation/elements/src/SafeAreaProviderCompat.tsx:36:50)
+        at BottomTabView (/workspaces/my-solution/node_modules/@react-navigation/bottom-tabs/src/views/BottomTabView.tsx:36:5)
+        at PreventRemoveProvider (/workspaces/my-solution/node_modules/@react-navigation/core/src/PreventRemoveProvider.tsx:45:49)
+        at NavigationContent (/workspaces/my-solution/node_modules/@react-navigation/core/src/useComponent.tsx:10:30)
+        at /workspaces/my-solution/node_modules/@react-navigation/core/src/useComponent.tsx:26:26
+        at BottomTabNavigator (/workspaces/my-solution/node_modules/@react-navigation/bottom-tabs/src/navigators/createBottomTabNavigator.tsx:31:3)
+        at /workspaces/my-solution/node_modules/expo-router/src/layouts/withLayoutContext.tsx:83:9
+        at TabLayout (/workspaces/my-solution/apps/my-app/app/(tabs)/_layout.tsx:19:37)
+        at Suspense
+        at Route (/workspaces/my-solution/node_modules/expo-router/src/Route.tsx:60:25)
+        at /workspaces/my-solution/node_modules/expo-router/src/useScreens.tsx:201:9
+        at StaticContainer (/workspaces/my-solution/node_modules/@react-navigation/core/src/StaticContainer.tsx:7:16)
+        at EnsureSingleNavigator (/workspaces/my-solution/node_modules/@react-navigation/core/src/EnsureSingleNavigator.tsx:20:49)
+        at SceneView (/workspaces/my-solution/node_modules/@react-navigation/core/src/SceneView.tsx:40:3)
+        at View
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockComponent.js:30:18)
+        at DebugContainer (/workspaces/my-solution/node_modules/@react-navigation/native-stack/src/views/DebugContainer.native.tsx:23:13)
+        at MaybeNestedStack (/workspaces/my-solution/node_modules/@react-navigation/native-stack/src/views/NativeStackView.native.tsx:47:3)
+        at View
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockComponent.js:30:18)
+        at RNSScreen
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockNativeComponent.js:17:18)
+        at /workspaces/my-solution/node_modules/react-native/Libraries/Animated/createAnimatedComponent.js:36:57
+        at Suspender (/workspaces/my-solution/node_modules/react-freeze/src/index.tsx:6:3)
+        at Suspense
+        at Freeze (/workspaces/my-solution/node_modules/react-freeze/src/index.tsx:24:26)
+        at DelayedFreeze (/workspaces/my-solution/node_modules/react-native-screens/lib/commonjs/index.native.tsx:193:26)
+        at InnerScreen (/workspaces/my-solution/node_modules/react-native-screens/lib/commonjs/index.native.tsx:245:56)
+        at Screen (/workspaces/my-solution/node_modules/react-native-screens/lib/commonjs/index.native.tsx:561:13)
+        at SceneView (/workspaces/my-solution/node_modules/@react-navigation/native-stack/src/views/NativeStackView.native.tsx:132:3)
+        at Suspender (/workspaces/my-solution/node_modules/react-freeze/src/index.tsx:6:3)
+        at Suspense
+        at Freeze (/workspaces/my-solution/node_modules/react-freeze/src/index.tsx:24:26)
+        at DelayedFreeze (/workspaces/my-solution/node_modules/react-native-screens/lib/commonjs/index.native.tsx:193:26)
+        at RNSScreenStack
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockNativeComponent.js:17:18)
+        at ScreenStack (/workspaces/my-solution/node_modules/react-native-screens/lib/commonjs/index.native.tsx:210:11)
+        at NativeStackViewInner (/workspaces/my-solution/node_modules/@react-navigation/native-stack/src/views/NativeStackView.native.tsx:395:33)
+        at View
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockComponent.js:30:18)
+        at SafeAreaProviderCompat (/workspaces/my-solution/node_modules/@react-navigation/elements/src/SafeAreaProviderCompat.tsx:36:50)
+        at NativeStackView
+        at PreventRemoveProvider (/workspaces/my-solution/node_modules/@react-navigation/core/src/PreventRemoveProvider.tsx:45:49)
+        at NavigationContent (/workspaces/my-solution/node_modules/@react-navigation/core/src/useComponent.tsx:10:30)
+        at /workspaces/my-solution/node_modules/@react-navigation/core/src/useComponent.tsx:26:26
+        at NativeStackNavigator (/workspaces/my-solution/node_modules/@react-navigation/native-stack/src/navigators/createNativeStackNavigator.tsx:22:3)
+        at /workspaces/my-solution/node_modules/expo-router/src/layouts/withLayoutContext.tsx:83:9
+        at ThemeProvider (/workspaces/my-solution/node_modules/@react-navigation/native/src/theming/ThemeProvider.tsx:11:41)
+        at MyBackend (/workspaces/my-solution/apps/my-app/__mocks__/@my-solution/my-backend/MyBackend.tsx:9:17)
+        at Provider (/workspaces/my-solution/node_modules/react-redux/src/components/Provider.tsx:58:3)
+        at MyState (/workspaces/my-solution/libs/my-state/src/MyState.tsx:9:14)
+        at RootLayoutNav (/workspaces/my-solution/apps/my-app/app/_layout.tsx:61:37)
+        at RootLayout (/workspaces/my-solution/apps/my-app/app/_layout.tsx:39:12)
+        at Try (/workspaces/my-solution/node_modules/expo-router/src/views/Try.tsx:14:18)
+        at Suspense
+        at Route (/workspaces/my-solution/node_modules/expo-router/src/Route.tsx:60:25)
+        at /workspaces/my-solution/node_modules/expo-router/src/useScreens.tsx:201:9
+        at RNCSafeAreaProvider
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockNativeComponent.js:17:18)
+        at SafeAreaProvider (/workspaces/my-solution/node_modules/react-native-safe-area-context/src/SafeAreaContext.tsx:35:3)
+        at wrapper (/workspaces/my-solution/node_modules/expo-router/src/ExpoRoot.tsx:39:22)
+        at EnsureSingleNavigator (/workspaces/my-solution/node_modules/@react-navigation/core/src/EnsureSingleNavigator.tsx:20:49)
+        at BaseNavigationContainer (/workspaces/my-solution/node_modules/@react-navigation/core/src/BaseNavigationContainer.tsx:82:7)
+        at ThemeProvider (/workspaces/my-solution/node_modules/@react-navigation/native/src/theming/ThemeProvider.tsx:11:41)
+        at NavigationContainerInner (/workspaces/my-solution/node_modules/expo-router/src/fork/NavigationContainer.native.tsx:54:5)
+        at ContextNavigator (/workspaces/my-solution/node_modules/expo-router/src/ExpoRoot.tsx:62:3)
+        at ExpoRoot (/workspaces/my-solution/node_modules/expo-router/src/ExpoRoot.tsx:33:28)
+    
+    React will try to recreate this component tree from scratch using the error boundary you provided, Try.
+
+      23 |   it('should render tab one', () => {
+      24 |     Platform.OS = 'web';
+    > 25 |     renderRouter('./apps/my-app/app', {
+         |                 ^
+      26 |       initialUrl: '/',
+      27 |     });
+      28 |     expect(screen.getByText('One')).toBeTruthy();
+
+      at logCapturedError (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:8661:23)
+      at Try.update.callback (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:8717:7)
+      at callCallback (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:4092:12)
+      at commitUpdateQueue (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:4113:9)
+      at commitLayoutEffectOnFiber (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:13205:13)
+      at commitLayoutMountEffects_complete (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:14330:9)
+      at commitLayoutEffects_begin (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:14316:7)
+      at commitLayoutEffects (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:14301:3)
+      at commitRootImpl (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:16062:5)
+      at commitRoot (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:15933:5)
+      at performSyncWorkOnRoot (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:15454:3)
+      at flushSyncCallbacks (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:2597:22)
+      at flushActQueue (../../node_modules/react/cjs/react.development.js:2667:24)
+      at Object.act (../../node_modules/react/cjs/react.development.js:2521:11)
+      at renderWithAct (../../node_modules/@testing-library/react-native/src/render-act.ts:14:21)
+      at renderInternal (../../node_modules/@testing-library/react-native/src/render.tsx:62:33)
+      at render (../../node_modules/@testing-library/react-native/src/render.tsx:32:10)
+      at renderRouter (../../node_modules/expo-router/src/testing-library/index.tsx:93:24)
+      at Object.<anonymous> (app-test/_layout.test.tsx:25:17)
+
+  console.error
+    The above error occurred in the <Icon> component:
+    
+        at Icon (/workspaces/my-solution/node_modules/@expo/vector-icons/src/createIconSet.tsx:112:3)
+        at TabBarIcon
+        at View
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockComponent.js:30:18)
+        at View
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockComponent.js:30:18)
+        at TabBarIcon (/workspaces/my-solution/node_modules/@react-navigation/bottom-tabs/src/views/TabBarIcon.tsx:31:3)
+        at Text
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockComponent.js:30:18)
+        at Link (/workspaces/my-solution/node_modules/@react-navigation/native/src/Link.tsx:29:3)
+        at BottomTabBarItem (/workspaces/my-solution/node_modules/@react-navigation/bottom-tabs/src/views/BottomTabItem.tsx:132:3)
+        at View
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockComponent.js:30:18)
+        at View
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockComponent.js:30:18)
+        at /workspaces/my-solution/node_modules/react-native/Libraries/Animated/createAnimatedComponent.js:36:57
+        at BottomTabBar (/workspaces/my-solution/node_modules/@react-navigation/bottom-tabs/src/views/BottomTabBar.tsx:129:3)
+        at View
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockComponent.js:30:18)
+        at SafeAreaProviderCompat (/workspaces/my-solution/node_modules/@react-navigation/elements/src/SafeAreaProviderCompat.tsx:36:50)
+        at BottomTabView (/workspaces/my-solution/node_modules/@react-navigation/bottom-tabs/src/views/BottomTabView.tsx:36:5)
+        at PreventRemoveProvider (/workspaces/my-solution/node_modules/@react-navigation/core/src/PreventRemoveProvider.tsx:45:49)
+        at NavigationContent (/workspaces/my-solution/node_modules/@react-navigation/core/src/useComponent.tsx:10:30)
+        at /workspaces/my-solution/node_modules/@react-navigation/core/src/useComponent.tsx:26:26
+        at BottomTabNavigator (/workspaces/my-solution/node_modules/@react-navigation/bottom-tabs/src/navigators/createBottomTabNavigator.tsx:31:3)
+        at /workspaces/my-solution/node_modules/expo-router/src/layouts/withLayoutContext.tsx:83:9
+        at TabLayout (/workspaces/my-solution/apps/my-app/app/(tabs)/_layout.tsx:19:37)
+        at Suspense
+        at Route (/workspaces/my-solution/node_modules/expo-router/src/Route.tsx:60:25)
+        at /workspaces/my-solution/node_modules/expo-router/src/useScreens.tsx:201:9
+        at StaticContainer (/workspaces/my-solution/node_modules/@react-navigation/core/src/StaticContainer.tsx:7:16)
+        at EnsureSingleNavigator (/workspaces/my-solution/node_modules/@react-navigation/core/src/EnsureSingleNavigator.tsx:20:49)
+        at SceneView (/workspaces/my-solution/node_modules/@react-navigation/core/src/SceneView.tsx:40:3)
+        at View
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockComponent.js:30:18)
+        at DebugContainer (/workspaces/my-solution/node_modules/@react-navigation/native-stack/src/views/DebugContainer.native.tsx:23:13)
+        at MaybeNestedStack (/workspaces/my-solution/node_modules/@react-navigation/native-stack/src/views/NativeStackView.native.tsx:47:3)
+        at View
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockComponent.js:30:18)
+        at RNSScreen
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockNativeComponent.js:17:18)
+        at /workspaces/my-solution/node_modules/react-native/Libraries/Animated/createAnimatedComponent.js:36:57
+        at Suspender (/workspaces/my-solution/node_modules/react-freeze/src/index.tsx:6:3)
+        at Suspense
+        at Freeze (/workspaces/my-solution/node_modules/react-freeze/src/index.tsx:24:26)
+        at DelayedFreeze (/workspaces/my-solution/node_modules/react-native-screens/lib/commonjs/index.native.tsx:193:26)
+        at InnerScreen (/workspaces/my-solution/node_modules/react-native-screens/lib/commonjs/index.native.tsx:245:56)
+        at Screen (/workspaces/my-solution/node_modules/react-native-screens/lib/commonjs/index.native.tsx:561:13)
+        at SceneView (/workspaces/my-solution/node_modules/@react-navigation/native-stack/src/views/NativeStackView.native.tsx:132:3)
+        at Suspender (/workspaces/my-solution/node_modules/react-freeze/src/index.tsx:6:3)
+        at Suspense
+        at Freeze (/workspaces/my-solution/node_modules/react-freeze/src/index.tsx:24:26)
+        at DelayedFreeze (/workspaces/my-solution/node_modules/react-native-screens/lib/commonjs/index.native.tsx:193:26)
+        at RNSScreenStack
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockNativeComponent.js:17:18)
+        at ScreenStack (/workspaces/my-solution/node_modules/react-native-screens/lib/commonjs/index.native.tsx:210:11)
+        at NativeStackViewInner (/workspaces/my-solution/node_modules/@react-navigation/native-stack/src/views/NativeStackView.native.tsx:395:33)
+        at View
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockComponent.js:30:18)
+        at SafeAreaProviderCompat (/workspaces/my-solution/node_modules/@react-navigation/elements/src/SafeAreaProviderCompat.tsx:36:50)
+        at NativeStackView
+        at PreventRemoveProvider (/workspaces/my-solution/node_modules/@react-navigation/core/src/PreventRemoveProvider.tsx:45:49)
+        at NavigationContent (/workspaces/my-solution/node_modules/@react-navigation/core/src/useComponent.tsx:10:30)
+        at /workspaces/my-solution/node_modules/@react-navigation/core/src/useComponent.tsx:26:26
+        at NativeStackNavigator (/workspaces/my-solution/node_modules/@react-navigation/native-stack/src/navigators/createNativeStackNavigator.tsx:22:3)
+        at /workspaces/my-solution/node_modules/expo-router/src/layouts/withLayoutContext.tsx:83:9
+        at ThemeProvider (/workspaces/my-solution/node_modules/@react-navigation/native/src/theming/ThemeProvider.tsx:11:41)
+        at MyBackend (/workspaces/my-solution/apps/my-app/__mocks__/@my-solution/my-backend/MyBackend.tsx:9:17)
+        at Provider (/workspaces/my-solution/node_modules/react-redux/src/components/Provider.tsx:58:3)
+        at MyState (/workspaces/my-solution/libs/my-state/src/MyState.tsx:9:14)
+        at RootLayoutNav (/workspaces/my-solution/apps/my-app/app/_layout.tsx:61:37)
+        at RootLayout (/workspaces/my-solution/apps/my-app/app/_layout.tsx:39:12)
+        at Try (/workspaces/my-solution/node_modules/expo-router/src/views/Try.tsx:14:18)
+        at Suspense
+        at Route (/workspaces/my-solution/node_modules/expo-router/src/Route.tsx:60:25)
+        at /workspaces/my-solution/node_modules/expo-router/src/useScreens.tsx:201:9
+        at RNCSafeAreaProvider
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockNativeComponent.js:17:18)
+        at SafeAreaProvider (/workspaces/my-solution/node_modules/react-native-safe-area-context/src/SafeAreaContext.tsx:35:3)
+        at wrapper (/workspaces/my-solution/node_modules/expo-router/src/ExpoRoot.tsx:39:22)
+        at EnsureSingleNavigator (/workspaces/my-solution/node_modules/@react-navigation/core/src/EnsureSingleNavigator.tsx:20:49)
+        at BaseNavigationContainer (/workspaces/my-solution/node_modules/@react-navigation/core/src/BaseNavigationContainer.tsx:82:7)
+        at ThemeProvider (/workspaces/my-solution/node_modules/@react-navigation/native/src/theming/ThemeProvider.tsx:11:41)
+        at NavigationContainerInner (/workspaces/my-solution/node_modules/expo-router/src/fork/NavigationContainer.native.tsx:54:5)
+        at ContextNavigator (/workspaces/my-solution/node_modules/expo-router/src/ExpoRoot.tsx:62:3)
+        at ExpoRoot (/workspaces/my-solution/node_modules/expo-router/src/ExpoRoot.tsx:33:28)
+    
+    React will try to recreate this component tree from scratch using the error boundary you provided, Try.
+
+      23 |   it('should render tab one', () => {
+      24 |     Platform.OS = 'web';
+    > 25 |     renderRouter('./apps/my-app/app', {
+         |                 ^
+      26 |       initialUrl: '/',
+      27 |     });
+      28 |     expect(screen.getByText('One')).toBeTruthy();
+
+      at logCapturedError (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:8661:23)
+      at Try.update.callback (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:8717:7)
+      at callCallback (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:4092:12)
+      at commitUpdateQueue (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:4113:9)
+      at commitLayoutEffectOnFiber (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:13205:13)
+      at commitLayoutMountEffects_complete (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:14330:9)
+      at commitLayoutEffects_begin (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:14316:7)
+      at commitLayoutEffects (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:14301:3)
+      at commitRootImpl (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:16062:5)
+      at commitRoot (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:15933:5)
+      at performSyncWorkOnRoot (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:15454:3)
+      at flushSyncCallbacks (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:2597:22)
+      at flushActQueue (../../node_modules/react/cjs/react.development.js:2667:24)
+      at Object.act (../../node_modules/react/cjs/react.development.js:2521:11)
+      at renderWithAct (../../node_modules/@testing-library/react-native/src/render-act.ts:14:21)
+      at renderInternal (../../node_modules/@testing-library/react-native/src/render.tsx:62:33)
+      at render (../../node_modules/@testing-library/react-native/src/render.tsx:32:10)
+      at renderRouter (../../node_modules/expo-router/src/testing-library/index.tsx:93:24)
+      at Object.<anonymous> (app-test/_layout.test.tsx:25:17)
+
+  console.error
+    The above error occurred in the <Icon> component:
+    
+        at Icon (/workspaces/my-solution/node_modules/@expo/vector-icons/src/createIconSet.tsx:112:3)
+        at TabBarIcon
+        at View
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockComponent.js:30:18)
+        at View
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockComponent.js:30:18)
+        at TabBarIcon (/workspaces/my-solution/node_modules/@react-navigation/bottom-tabs/src/views/TabBarIcon.tsx:31:3)
+        at Text
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockComponent.js:30:18)
+        at Link (/workspaces/my-solution/node_modules/@react-navigation/native/src/Link.tsx:29:3)
+        at BottomTabBarItem (/workspaces/my-solution/node_modules/@react-navigation/bottom-tabs/src/views/BottomTabItem.tsx:132:3)
+        at View
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockComponent.js:30:18)
+        at View
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockComponent.js:30:18)
+        at /workspaces/my-solution/node_modules/react-native/Libraries/Animated/createAnimatedComponent.js:36:57
+        at BottomTabBar (/workspaces/my-solution/node_modules/@react-navigation/bottom-tabs/src/views/BottomTabBar.tsx:129:3)
+        at View
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockComponent.js:30:18)
+        at SafeAreaProviderCompat (/workspaces/my-solution/node_modules/@react-navigation/elements/src/SafeAreaProviderCompat.tsx:36:50)
+        at BottomTabView (/workspaces/my-solution/node_modules/@react-navigation/bottom-tabs/src/views/BottomTabView.tsx:36:5)
+        at PreventRemoveProvider (/workspaces/my-solution/node_modules/@react-navigation/core/src/PreventRemoveProvider.tsx:45:49)
+        at NavigationContent (/workspaces/my-solution/node_modules/@react-navigation/core/src/useComponent.tsx:10:30)
+        at /workspaces/my-solution/node_modules/@react-navigation/core/src/useComponent.tsx:26:26
+        at BottomTabNavigator (/workspaces/my-solution/node_modules/@react-navigation/bottom-tabs/src/navigators/createBottomTabNavigator.tsx:31:3)
+        at /workspaces/my-solution/node_modules/expo-router/src/layouts/withLayoutContext.tsx:83:9
+        at TabLayout (/workspaces/my-solution/apps/my-app/app/(tabs)/_layout.tsx:19:37)
+        at Suspense
+        at Route (/workspaces/my-solution/node_modules/expo-router/src/Route.tsx:60:25)
+        at /workspaces/my-solution/node_modules/expo-router/src/useScreens.tsx:201:9
+        at StaticContainer (/workspaces/my-solution/node_modules/@react-navigation/core/src/StaticContainer.tsx:7:16)
+        at EnsureSingleNavigator (/workspaces/my-solution/node_modules/@react-navigation/core/src/EnsureSingleNavigator.tsx:20:49)
+        at SceneView (/workspaces/my-solution/node_modules/@react-navigation/core/src/SceneView.tsx:40:3)
+        at View
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockComponent.js:30:18)
+        at DebugContainer (/workspaces/my-solution/node_modules/@react-navigation/native-stack/src/views/DebugContainer.native.tsx:23:13)
+        at MaybeNestedStack (/workspaces/my-solution/node_modules/@react-navigation/native-stack/src/views/NativeStackView.native.tsx:47:3)
+        at View
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockComponent.js:30:18)
+        at RNSScreen
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockNativeComponent.js:17:18)
+        at /workspaces/my-solution/node_modules/react-native/Libraries/Animated/createAnimatedComponent.js:36:57
+        at Suspender (/workspaces/my-solution/node_modules/react-freeze/src/index.tsx:6:3)
+        at Suspense
+        at Freeze (/workspaces/my-solution/node_modules/react-freeze/src/index.tsx:24:26)
+        at DelayedFreeze (/workspaces/my-solution/node_modules/react-native-screens/lib/commonjs/index.native.tsx:193:26)
+        at InnerScreen (/workspaces/my-solution/node_modules/react-native-screens/lib/commonjs/index.native.tsx:245:56)
+        at Screen (/workspaces/my-solution/node_modules/react-native-screens/lib/commonjs/index.native.tsx:561:13)
+        at SceneView (/workspaces/my-solution/node_modules/@react-navigation/native-stack/src/views/NativeStackView.native.tsx:132:3)
+        at Suspender (/workspaces/my-solution/node_modules/react-freeze/src/index.tsx:6:3)
+        at Suspense
+        at Freeze (/workspaces/my-solution/node_modules/react-freeze/src/index.tsx:24:26)
+        at DelayedFreeze (/workspaces/my-solution/node_modules/react-native-screens/lib/commonjs/index.native.tsx:193:26)
+        at RNSScreenStack
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockNativeComponent.js:17:18)
+        at ScreenStack (/workspaces/my-solution/node_modules/react-native-screens/lib/commonjs/index.native.tsx:210:11)
+        at NativeStackViewInner (/workspaces/my-solution/node_modules/@react-navigation/native-stack/src/views/NativeStackView.native.tsx:395:33)
+        at View
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockComponent.js:30:18)
+        at SafeAreaProviderCompat (/workspaces/my-solution/node_modules/@react-navigation/elements/src/SafeAreaProviderCompat.tsx:36:50)
+        at NativeStackView
+        at PreventRemoveProvider (/workspaces/my-solution/node_modules/@react-navigation/core/src/PreventRemoveProvider.tsx:45:49)
+        at NavigationContent (/workspaces/my-solution/node_modules/@react-navigation/core/src/useComponent.tsx:10:30)
+        at /workspaces/my-solution/node_modules/@react-navigation/core/src/useComponent.tsx:26:26
+        at NativeStackNavigator (/workspaces/my-solution/node_modules/@react-navigation/native-stack/src/navigators/createNativeStackNavigator.tsx:22:3)
+        at /workspaces/my-solution/node_modules/expo-router/src/layouts/withLayoutContext.tsx:83:9
+        at ThemeProvider (/workspaces/my-solution/node_modules/@react-navigation/native/src/theming/ThemeProvider.tsx:11:41)
+        at MyBackend (/workspaces/my-solution/apps/my-app/__mocks__/@my-solution/my-backend/MyBackend.tsx:9:17)
+        at Provider (/workspaces/my-solution/node_modules/react-redux/src/components/Provider.tsx:58:3)
+        at MyState (/workspaces/my-solution/libs/my-state/src/MyState.tsx:9:14)
+        at RootLayoutNav (/workspaces/my-solution/apps/my-app/app/_layout.tsx:61:37)
+        at RootLayout (/workspaces/my-solution/apps/my-app/app/_layout.tsx:39:12)
+        at Try (/workspaces/my-solution/node_modules/expo-router/src/views/Try.tsx:14:18)
+        at Suspense
+        at Route (/workspaces/my-solution/node_modules/expo-router/src/Route.tsx:60:25)
+        at /workspaces/my-solution/node_modules/expo-router/src/useScreens.tsx:201:9
+        at RNCSafeAreaProvider
+        at Component (/workspaces/my-solution/node_modules/react-native/jest/mockNativeComponent.js:17:18)
+        at SafeAreaProvider (/workspaces/my-solution/node_modules/react-native-safe-area-context/src/SafeAreaContext.tsx:35:3)
+        at wrapper (/workspaces/my-solution/node_modules/expo-router/src/ExpoRoot.tsx:39:22)
+        at EnsureSingleNavigator (/workspaces/my-solution/node_modules/@react-navigation/core/src/EnsureSingleNavigator.tsx:20:49)
+        at BaseNavigationContainer (/workspaces/my-solution/node_modules/@react-navigation/core/src/BaseNavigationContainer.tsx:82:7)
+        at ThemeProvider (/workspaces/my-solution/node_modules/@react-navigation/native/src/theming/ThemeProvider.tsx:11:41)
+        at NavigationContainerInner (/workspaces/my-solution/node_modules/expo-router/src/fork/NavigationContainer.native.tsx:54:5)
+        at ContextNavigator (/workspaces/my-solution/node_modules/expo-router/src/ExpoRoot.tsx:62:3)
+        at ExpoRoot (/workspaces/my-solution/node_modules/expo-router/src/ExpoRoot.tsx:33:28)
+    
+    React will try to recreate this component tree from scratch using the error boundary you provided, Try.
+
+      23 |   it('should render tab one', () => {
+      24 |     Platform.OS = 'web';
+    > 25 |     renderRouter('./apps/my-app/app', {
+         |                 ^
+      26 |       initialUrl: '/',
+      27 |     });
+      28 |     expect(screen.getByText('One')).toBeTruthy();
+
+      at logCapturedError (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:8661:23)
+      at Try.update.callback (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:8717:7)
+      at callCallback (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:4092:12)
+      at commitUpdateQueue (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:4113:9)
+      at commitLayoutEffectOnFiber (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:13205:13)
+      at commitLayoutMountEffects_complete (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:14330:9)
+      at commitLayoutEffects_begin (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:14316:7)
+      at commitLayoutEffects (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:14301:3)
+      at commitRootImpl (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:16062:5)
+      at commitRoot (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:15933:5)
+      at performSyncWorkOnRoot (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:15454:3)
+      at flushSyncCallbacks (../../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:2597:22)
+      at flushActQueue (../../node_modules/react/cjs/react.development.js:2667:24)
+      at Object.act (../../node_modules/react/cjs/react.development.js:2521:11)
+      at renderWithAct (../../node_modules/@testing-library/react-native/src/render-act.ts:14:21)
+      at renderInternal (../../node_modules/@testing-library/react-native/src/render.tsx:62:33)
+      at render (../../node_modules/@testing-library/react-native/src/render.tsx:32:10)
+      at renderRouter (../../node_modules/expo-router/src/testing-library/index.tsx:93:24)
+      at Object.<anonymous> (app-test/_layout.test.tsx:25:17)
+

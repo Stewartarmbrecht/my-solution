@@ -17,7 +17,7 @@ describe('Banner', () => {
     const { getByText } = render(<Provider store={store}><Banner /></Provider>);
     expect(getByText('Hello there myusername,')).toBeTruthy();
     const signOutButton = getByText('Sign Out');
-    await act(() => {
+    await act(async () => {
       fireEvent.press(signOutButton);
     });
     expect(store.getState().user.userName).toBeUndefined();

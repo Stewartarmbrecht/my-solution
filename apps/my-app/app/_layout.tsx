@@ -13,6 +13,8 @@ import { useColorScheme } from '../components/useColorScheme';
 
 import { MyState } from '@my-solution/my-state';
 import { MyBackend } from '@my-solution/my-backend';
+import { Platform } from 'react-native';
+import { WebSplashScreen } from '../components/WebSplashScreen';
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -45,7 +47,11 @@ export default function RootLayout() {
   }, [loaded]);
 
   if (!loaded) {
-    return null;
+    if(Platform.OS === 'web') {
+      return <WebSplashScreen />;
+    } else {
+      return null;
+    }
   }
 
   return <RootLayoutNav />;

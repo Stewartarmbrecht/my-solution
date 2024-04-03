@@ -8,17 +8,17 @@
   "include": [
     "jest.config.ts",
     "test-setup.tsx",
-    "app.config.js",
+    // "app.config.js",
 
     "**/*.test.ts",
     "**/*.test.tsx",
-    "**/*.d.ts",
+    // "**/*.d.ts",
     
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.js",
-    "**/*.jsx",
+    // "**/*.ts",
+    // "**/*.tsx",
+    // "**/*.js",
+    // "**/*.jsx",
     
-    "**/*.json",
+    // "**/*.json",
   ]
 }
