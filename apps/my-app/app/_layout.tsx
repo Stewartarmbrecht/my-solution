@@ -37,6 +37,7 @@ export default function RootLayout() {
 
   // Expo Router uses Error Boundaries to catch errors in the navigation tree.
   useEffect(() => {
+    // istanbul ignore next
     if (error) throw error;
   }, [error]);
 

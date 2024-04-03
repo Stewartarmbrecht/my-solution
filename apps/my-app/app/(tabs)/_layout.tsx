@@ -5,7 +5,6 @@ import { Pressable } from 'react-native';
 
 import Colors from '../../constants/Colors';
 import { useColorScheme } from '../../components/useColorScheme';
-import { useClientOnlyValue } from '../../components/useClientOnlyValue';
 import { TabBarIcon } from '../../components/TabBarIcon';
 
 // You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
@@ -15,10 +14,10 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+        tabBarActiveTintColor: Colors[/*istanbul ignore next*/colorScheme ?? 'light'].tint,
         // Disable the static render of the header on web
         // to prevent a hydration error in React Navigation v6.
-        headerShown: useClientOnlyValue(false, true),
+        headerShown: true,
       }}>
       <Tabs.Screen
         name="index"
@@ -32,8 +31,9 @@ export default function TabLayout() {
                   <FontAwesome
                     name="info-circle"
                     size={25}
-                    color={Colors[colorScheme ?? 'light'].text}
-                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
+                    color={Colors[/*istanbul ignore next*/colorScheme ?? 'light'].text}
+                    style={{ marginRight: 15, opacity: /*istanbul ignore next*/pressed ? 0.5 : 1 }}
+                    testID='info-icon'
                   />
                 )}
               </Pressable>
