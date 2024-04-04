@@ -5,6 +5,7 @@ backend:
       commands:
         - cd libs/my-backend
         - amplifyPush --simple
+        - cd ../../
 frontend:
   phases:
     preBuild:
