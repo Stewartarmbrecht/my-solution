@@ -58,7 +58,8 @@
     "@expo/config": "*",
     "@expo/server": "*",
     "expo-web-browser": "*",
-    "expo-image": "*"
+    "expo-image": "*",
+    "@react-navigation/material-top-tabs": "*"
   },
   "devDependencies": {
     "@babel/core": "*",

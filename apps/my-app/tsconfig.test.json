@@ -19,6 +19,6 @@
     "**/*.js",
     "**/*.jsx",
     
-    "**/*.json",
+    "**/*.json", "../../libs/my-ui/src/screens/Main.tsx", "../../libs/my-ui/src/components/StyledText/StyledText.tsx", "../../libs/my-ui/src/components/TabBarIcon/TabBarIcon.tsx", "../../libs/my-ui/src/Banner/Banner.tsx", "../../libs/my-ui/src/EditScreenInfo/EditScreenInfo.tsx", "../../libs/my-ui/src/components/ExternalLink/ExternalLink.tsx", "../../libs/my-ui/src/Banner/Banner.test.tsx", "../../libs/my-ui/src/hooks/useThemeColor.tsx", "../../libs/my-ui/src/useColorScheme.ts", "../../libs/my-ui/src/screens/WebSplashScreen.tsx",
   ]
 }

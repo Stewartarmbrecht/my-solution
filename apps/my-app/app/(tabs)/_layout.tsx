@@ -3,14 +3,24 @@ import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { Link, Tabs } from 'expo-router';
 import { Pressable } from 'react-native';
 
-import Colors from '../../constants/Colors';
-import { useColorScheme } from '../../components/useColorScheme';
-import { TabBarIcon } from '../../components/TabBarIcon';
+import { Colors, useColorScheme, TabBarIcon } from '@my-solution/my-ui';
 
 // You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
 export default function TabLayout() {
   const colorScheme = useColorScheme();
-
+  
+  // if (Platform.OS === 'web') {
+  //   // Use a basic custom layout on web.
+  //   return (
+  //     <div style={{ flex: 1 }}>
+  //       <header>
+  //         <Link href="/"><Text>Home</Text></Link>
+  //         <Link href="/two"><Text>Two</Text></Link>
+  //       </header>
+  //       <Slot />
+  //     </div>
+  //   );
+  // }
   return (
     <Tabs
       screenOptions={{

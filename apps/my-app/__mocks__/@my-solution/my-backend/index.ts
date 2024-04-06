@@ -1,4 +1,4 @@
-import { Post, logCall, postAdded, postDeleted, userLoggedOut } from "@my-solution/my-shared";
+import { Post, logCall, postAdded, postDeleted } from "@my-solution/my-shared";
 import { PayloadAction, createReducer } from "@reduxjs/toolkit";
 
 export const syncReducer = createReducer(

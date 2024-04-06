@@ -9,12 +9,10 @@ import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 
-import { useColorScheme } from '../components/useColorScheme';
-
 import { MyState } from '@my-solution/my-state';
 import { MyBackend } from '@my-solution/my-backend';
 import { Platform } from 'react-native';
-import { WebSplashScreen } from '../components/WebSplashScreen';
+import { WebSplashScreen, useColorScheme } from '@my-solution/my-ui';
 
 export {
   // Catch any errors thrown by the Layout component.

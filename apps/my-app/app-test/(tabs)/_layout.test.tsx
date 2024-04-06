@@ -1,5 +1,4 @@
 import { act, fireEvent, renderRouter, screen } from 'expo-router/testing-library';
-import { Platform } from 'react-native';
 import { useFonts,  } from 'expo-font';
 
 jest.mock('expo-font', () => {
@@ -15,9 +14,14 @@ jest.mock('expo-splash-screen', () => ({
   preventAutoHideAsync: jest.fn(),
 }));
 
-jest.mock('../../components/TabBarIcon', () => ({
-  TabBarIcon: () => null,
-}));
+jest.mock('@my-solution/my-ui', () => {
+  const actual = jest.requireActual('@my-solution/my-ui');
+  return {
+    ...actual,
+    TabBarIcon: () => null,
+    useColorScheme: jest.fn().mockReturnValue('light'),
+  }
+});
 
 describe('_layout', () => {
   beforeEach(() => {

@@ -1,7 +1,7 @@
 import { renderRouter, screen } from 'expo-router/testing-library';
 import { Platform } from 'react-native';
 import { useFonts,  } from 'expo-font';
-import { useColorScheme } from '../components/useColorScheme';
+import { useColorScheme } from '@my-solution/my-ui';
 
 jest.mock('expo-font', () => {
   const actual = jest.requireActual('expo-font');
@@ -16,13 +16,14 @@ jest.mock('expo-splash-screen', () => ({
   preventAutoHideAsync: jest.fn(),
 }));
 
-jest.mock('../components/TabBarIcon', () => ({
-  TabBarIcon: () => null,
-}));
-
-jest.mock('../components/useColorScheme', () => ({
-  useColorScheme: jest.fn().mockReturnValue('light'),
-}));
+jest.mock('@my-solution/my-ui', () => {
+  const actual = jest.requireActual('@my-solution/my-ui');
+  return {
+    ...actual,
+    TabBarIcon: () => null,
+    useColorScheme: jest.fn().mockReturnValue('light'),
+  }
+});
 
 describe('_layout', () => {
   beforeEach(() => {
