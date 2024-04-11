@@ -2,62 +2,86 @@ import React from 'react';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { Link, Tabs } from 'expo-router';
 import { Pressable } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { Drawer } from 'expo-router/drawer';
+import { Platform } from 'react-native';
 
-import { Colors, useColorScheme, TabBarIcon } from '@my-solution/my-ui';
+import { Colors, useColorScheme, TabBarIcon, Banner, View } from '@my-solution/my-ui';
 
 // You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
 export default function TabLayout() {
   const colorScheme = useColorScheme();
   
-  // if (Platform.OS === 'web') {
-  //   // Use a basic custom layout on web.
-  //   return (
-  //     <div style={{ flex: 1 }}>
-  //       <header>
-  //         <Link href="/"><Text>Home</Text></Link>
-  //         <Link href="/two"><Text>Two</Text></Link>
-  //       </header>
-  //       <Slot />
-  //     </div>
-  //   );
-  // }
+  if (Platform.OS === 'web') {
+    // Use a basic custom layout on web.
+    return (
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <Banner />
+        <Drawer screenOptions={{
+          drawerType: 'permanent',
+        }}>
+          <Drawer.Screen
+            name="index" // This is the name of the page and must match the url from root
+            options={{
+              drawerLabel: 'Tasks',
+              title: 'Tasks',
+            }}
+          />
+          <Drawer.Screen
+            name="docs" // This is the name of the page and must match the url from root
+            options={{
+              drawerLabel: 'Docs',
+              title: 'Documentation',
+            }}
+          />
+        </Drawer>
+      </GestureHandlerRootView>
+    );
+  }
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[/*istanbul ignore next*/colorScheme ?? 'light'].tint,
-        // Disable the static render of the header on web
-        // to prevent a hydration error in React Navigation v6.
-        headerShown: true,
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Tab One',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          headerRight: () => (
-            <Link href="/modal" asChild>
-              <Pressable>
-                {({ pressed }) => (
-                  <FontAwesome
-                    name="info-circle"
-                    size={25}
-                    color={Colors[/*istanbul ignore next*/colorScheme ?? 'light'].text}
-                    style={{ marginRight: 15, opacity: /*istanbul ignore next*/pressed ? 0.5 : 1 }}
-                    testID='info-icon'
-                  />
-                )}
-              </Pressable>
-            </Link>
-          ),
+    <View style={{ flex: 1 }}>
+      <Banner />
+      <Tabs
+        screenOptions={{
+          tabBarActiveTintColor: Colors[/*istanbul ignore next*/colorScheme ?? 'light'].tint,
+          // Disable the static render of the header on web
+          // to prevent a hydration error in React Navigation v6.
+          headerShown: true,
+          headerStatusBarHeight: 0,
         }}
-      />
-      <Tabs.Screen
-        name="two"
-        options={{
-          title: 'Tab Two',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-        }}
-      />
-    </Tabs>
+        sceneContainerStyle={{
+          flex: 1,
+        }}>
+        <Tabs.Screen
+          name="index"
+          options={{
+            title: 'Tasks',
+            tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+            headerRight: () => (
+              <Link href="/modal" asChild>
+                <Pressable>
+                  {({ pressed }) => (
+                    <FontAwesome
+                      name="info-circle"
+                      size={25}
+                      color={Colors[/*istanbul ignore next*/colorScheme ?? 'light'].text}
+                      style={{ marginRight: 15, opacity: /*istanbul ignore next*/pressed ? 0.5 : 1 }}
+                      testID='info-icon'
+                    />
+                  )}
+                </Pressable>
+              </Link>
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name="docs"
+          options={{
+            title: 'Documentation',
+            tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          }}
+        />
+      </Tabs>
+    </View>
   );
 }

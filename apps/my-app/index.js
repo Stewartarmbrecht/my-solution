@@ -1,3 +1,4 @@
+import "@expo/metro-runtime";
 //import "expo-router/entry";
 
 import { registerRootComponent } from "expo";

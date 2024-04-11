@@ -5,7 +5,6 @@ import { View, Banner, Main } from '@my-solution/my-ui';
 export default function TabOneScreen() {
   return (
     <View style={styles.container}>
-      <Banner />
       <Main />
       {/* <Text style={styles.title}>Tab One</Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />

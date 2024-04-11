@@ -14,10 +14,10 @@ export function Main() {
           style={[styles.textXL, styles.appTitleText]} 
           testID="heading"
         >
-          Welcome to MyApp <span role="img" aria-label="Hand waving">👋</span>
+          Welcome to MyApp 👋
         </Text>
         <Text>
-          v0.0.1 Update 002
+          v0.0.2 Update 002
         </Text>
         <MyComponent />
         <MyPosts />

@@ -59,7 +59,9 @@
     "@expo/server": "*",
     "expo-web-browser": "*",
     "expo-image": "*",
-    "@react-navigation/material-top-tabs": "*"
+    "@react-navigation/material-top-tabs": "*",
+    "@react-navigation/drawer": "*",
+    "react-native-gesture-handler": "*"
   },
   "devDependencies": {
     "@babel/core": "*",
