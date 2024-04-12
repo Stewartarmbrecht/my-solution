@@ -61,7 +61,11 @@
     "expo-image": "*",
     "@react-navigation/material-top-tabs": "*",
     "@react-navigation/drawer": "*",
-    "react-native-gesture-handler": "*"
+    "react-native-gesture-handler": "*",
+    "tamagui": "*",
+    "@tamagui/babel-plugin": "*",
+    "@tamagui/config": "*",
+    "@tamagui/metro-plugin": "*"
   },
   "devDependencies": {
     "@babel/core": "*",

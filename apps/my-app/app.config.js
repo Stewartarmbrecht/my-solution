@@ -7,6 +7,8 @@ export default {
   version: '0.0.2',
   orientation: 'portrait',
   icon: './assets/images/icon.png',
+  // Added for tamagui.
+  userInterfaceStyle: 'automatic',
   splash: {
     image: './assets/images/splash.png',
     resizeMode: 'contain',
@@ -37,6 +39,8 @@ export default {
   },
   plugins: [
     'expo-router',
+    // Added as part of tamagui.
+    'expo-font',
     [
       '@config-plugins/detox',
       {

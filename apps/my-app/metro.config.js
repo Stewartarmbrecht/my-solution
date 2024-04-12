@@ -1,4 +1,6 @@
 const { withNxMetro } = require('@nx/expo');
+// Added for tamagui.
+const { withTamagui } = require('@tamagui/metro-plugin')
 const { getDefaultConfig } = require('expo/metro-config');
 const { mergeConfig } = require('metro-config');
 
@@ -20,8 +22,14 @@ const customConfig = {
     sourceExts: [...sourceExts, 'svg', 'mjs'],
   },
 };
+// Added for tamagui.
+const tamaguiConfig = withTamagui(defaultConfig, {
+    components: ['tamagui'],
+    config: './tamagui.config.ts',
+    outputCSS: './tamagui-web.css',
+})
 
-module.exports = withNxMetro(mergeConfig(defaultConfig, customConfig), {
+module.exports = withNxMetro(mergeConfig(tamaguiConfig, customConfig), {
   // Change this to true to see debugging info.
   // Useful if you have issues resolving modules
   debug: false,

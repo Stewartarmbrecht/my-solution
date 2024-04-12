@@ -2,8 +2,21 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
-    "types": ["node"]
+		"types": [
+			"node",
+      // Added next 2 for tamagui.
+			"@nx/react/typings/cssmodule.d.ts",
+			"@nx/react/typings/image.d.ts"
+		]  
   },
   "exclude": ["**/*.test.ts", "**/*.test.tsx", "test-setup.ts"],
-  "include": ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx"]
+  "include": [
+    "**/*.js", 
+    "**/*.jsx", 
+    "**/*.ts", 
+    "**/*.tsx",
+    // Added next two for tamagui.
+    ".expo/types/**/*.ts",
+    "expo-env.d.ts"
+  ]
 }

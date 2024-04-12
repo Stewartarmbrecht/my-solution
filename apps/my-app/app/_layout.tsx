@@ -1,6 +1,10 @@
 import 'react-native-url-polyfill/auto';
 import 'react-native-get-random-values';
 import 'core-js/full/symbol/async-iterator';
+// Added next 3 lines for tamagui.
+import '../tamagui-web.css'
+import { TamaguiProvider } from 'tamagui'
+import { tamaguiConfig } from '../tamagui.config'
 
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
@@ -29,6 +33,9 @@ SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const [loaded, error] = useFonts({
+    // Added next two lines for tamagui.
+    Inter: require("@tamagui/font-inter/otf/Inter-Medium.otf"),
+    InterBold: require("@tamagui/font-inter/otf/Inter-Bold.otf"),
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
     ...FontAwesome.font,
   });
@@ -62,12 +69,14 @@ function RootLayoutNav() {
   return (
     <MyState>
       <MyBackend>
-        <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-          <Stack>
-            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-            <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
-          </Stack>
-        </ThemeProvider>
+        <TamaguiProvider config={tamaguiConfig}>
+          <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+            <Stack>
+              <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+              <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
+            </Stack>
+          </ThemeProvider>
+        </TamaguiProvider>
       </MyBackend>
     </MyState>
   );
