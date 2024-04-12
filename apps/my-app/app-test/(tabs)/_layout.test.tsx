@@ -1,5 +1,6 @@
 import { act, fireEvent, renderRouter, screen } from 'expo-router/testing-library';
 import { useFonts,  } from 'expo-font';
+import { Platform } from 'react-native';
 
 jest.mock('expo-font', () => {
   const actual = jest.requireActual('expo-font');
@@ -14,8 +15,8 @@ jest.mock('expo-splash-screen', () => ({
   preventAutoHideAsync: jest.fn(),
 }));
 
-jest.mock('@my-solution/my-ui', () => {
-  const actual = jest.requireActual('@my-solution/my-ui');
+jest.mock('@my-solution/features', () => {
+  const actual = jest.requireActual('@my-solution/features');
   return {
     ...actual,
     TabBarIcon: () => null,
@@ -29,25 +30,49 @@ describe('_layout', () => {
   });
 
   it('should render tabs', async () => {
+    Platform.OS = 'ios';
     (useFonts as jest.Mock).mockReturnValue([true, null]);
     renderRouter('./apps/my-app/app', {
       initialUrl: '/',
     });
-    const tabOne = await screen.findAllByText('Tab One');
+    const tabOne = await screen.findAllByText('Tasks');
     expect(tabOne).toBeTruthy();
-    const tabTwo = await screen.findAllByText('Tab Two');
+    const tabTwo = await screen.findAllByText('Documentation');
     expect(tabTwo).toBeTruthy();
   });
-  it('should render tab two', async () => {
+  it('should render Documentation Tab', async () => {
+    Platform.OS = 'ios';
     (useFonts as jest.Mock).mockReturnValue([true, null]);
     renderRouter('./apps/my-app/app', {
-      initialUrl: '/two',
+      initialUrl: '/docs',
     });
-    const tabTwo = await screen.findAllByText('Tab Two');
+    const tabTwo = await screen.findAllByText('Documentation');
+    expect(tabTwo).toBeTruthy();
+  });
+
+  it('should render drawers on web', async () => {
+    Platform.OS = 'web';
+    (useFonts as jest.Mock).mockReturnValue([true, null]);
+    renderRouter('./apps/my-app/app', {
+      initialUrl: '/',
+    });
+    const tabOne = await screen.findAllByText('Tasks');
+    expect(tabOne).toBeTruthy();
+    const tabTwo = await screen.findAllByText('Documentation');
+    expect(tabTwo).toBeTruthy();
+  });
+  it('should render Documentation Drawer Tab on Web', async () => {
+    Platform.OS = 'web';
+    (useFonts as jest.Mock).mockReturnValue([true, null]);
+    renderRouter('./apps/my-app/app', {
+      initialUrl: '/docs',
+    });
+    const tabTwo = await screen.findAllByText('Documentation');
     expect(tabTwo).toBeTruthy();
   });
 
   it('should render an info icon in for tab one', async () => {
+    Platform.OS = 'ios';
     (useFonts as jest.Mock).mockReturnValue([true, null]);
     renderRouter('./apps/my-app/app', {
       initialUrl: '/',
@@ -56,6 +81,7 @@ describe('_layout', () => {
     expect(infoIcon).toBeTruthy();
   });
   it('should launch a modal window when the user presses the info icon', async () => {
+    Platform.OS = 'ios';
     (useFonts as jest.Mock).mockReturnValue([true, null]);
     renderRouter('./apps/my-app/app', {
       initialUrl: '/',

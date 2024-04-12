@@ -6,12 +6,12 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Drawer } from 'expo-router/drawer';
 import { Platform } from 'react-native';
 
-import { Colors, useColorScheme, TabBarIcon, Banner, View } from '@my-solution/my-ui';
+import { Colors, useColorScheme, TabBarIcon, Banner, View } from '@my-solution/features';
 
 // You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
 export default function TabLayout() {
   const colorScheme = useColorScheme();
-  
+
   if (Platform.OS === 'web') {
     // Use a basic custom layout on web.
     return (
@@ -19,18 +19,33 @@ export default function TabLayout() {
         <Banner />
         <Drawer screenOptions={{
           drawerType: 'permanent',
-        }}>
+        }}
+          useLegacyImplementation={false}
+        >
           <Drawer.Screen
-            name="index" // This is the name of the page and must match the url from root
+            name="index"
             options={{
-              drawerLabel: 'Tasks',
               title: 'Tasks',
+              headerRight: () => (
+                <Link href="/modal" asChild>
+                  <Pressable>
+                    {({ pressed }) => (
+                      <FontAwesome
+                        name="info-circle"
+                        size={25}
+                        color={Colors[/*istanbul ignore next*/colorScheme ?? 'light'].text}
+                        style={{ marginRight: 15, opacity: /*istanbul ignore next*/pressed ? 0.5 : 1 }}
+                        testID='info-icon'
+                      />
+                    )}
+                  </Pressable>
+                </Link>
+              ),
             }}
           />
           <Drawer.Screen
-            name="docs" // This is the name of the page and must match the url from root
+            name="docs"
             options={{
-              drawerLabel: 'Docs',
               title: 'Documentation',
             }}
           />

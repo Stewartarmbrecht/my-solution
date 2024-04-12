@@ -3,7 +3,7 @@ backend:
   phases:
     build:
       commands:
-        - cd libs/my-backend
+        - cd libs/backend
         - amplifyPush --simple
         - cd ../../
 frontend:

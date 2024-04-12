@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-import { EditScreenInfo, Text, View } from '@my-solution/my-ui';
+import { EditScreenInfo, Text, View } from '@my-solution/features';
 
 export default function TabTwoScreen() {
   return (

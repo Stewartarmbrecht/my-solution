@@ -19,6 +19,6 @@
     "**/*.js",
     "**/*.jsx",
     
-    "**/*.json", "../../libs/my-ui/src/screens/Main.tsx", "../../libs/my-ui/src/components/StyledText/StyledText.tsx", "../../libs/my-ui/src/components/TabBarIcon/TabBarIcon.tsx", "../../libs/my-ui/src/Banner/Banner.tsx", "../../libs/my-ui/src/EditScreenInfo/EditScreenInfo.tsx", "../../libs/my-ui/src/components/ExternalLink/ExternalLink.tsx", "../../libs/my-ui/src/Banner/Banner.test.tsx", "../../libs/my-ui/src/hooks/useThemeColor.tsx", "../../libs/my-ui/src/useColorScheme.ts", "../../libs/my-ui/src/screens/WebSplashScreen.tsx",
+    "**/*.json", "../../libs/features/src/screens/Main.tsx", "../../libs/features/src/components/StyledText/StyledText.tsx", "../../libs/features/src/components/TabBarIcon/TabBarIcon.tsx", "../../libs/features/src/Banner/Banner.tsx", "../../libs/features/src/EditScreenInfo/EditScreenInfo.tsx", "../../libs/features/src/components/ExternalLink/ExternalLink.tsx", "../../libs/features/src/Banner/Banner.test.tsx", "../../libs/features/src/hooks/useThemeColor.tsx", "../../libs/features/src/useColorScheme.ts", "../../libs/features/src/screens/WebSplashScreen.tsx",
   ]
 }

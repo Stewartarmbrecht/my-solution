@@ -277,7 +277,7 @@ You need to create an EAS Robot token so that Amplify can trigger a build and de
 ### Setup Prod Amplify Hosting
 [AWS Amplify Hosting Guide](https://docs.amplify.aws/javascript/tools/cli/hosting/#using-aws-amplify-console)
 ```
-npx nx amplify-add-hosting my-backend
+npx nx amplify-add-hosting backend
 ```
 **Select the plugin module to execute …** ❯ Hosting with Amplify Console (Managed hosting with custom domains, Continuous deployment)
 **Choose a type** > Continuous deployment (Git-based deployments)
@@ -306,7 +306,7 @@ Save and run the deployment.
     * **Environment:** Select the branch we just created: 'dev'.  
 6. To Develop using the dev environment run the following command:
 ```
-npx nx amplify-pull-dev my-backend
+npx nx amplify-pull-dev backend
 
 ? Select the authentication method you want to use: AWS profile
 ? Please choose the profile you want to use: default
@@ -321,7 +321,7 @@ npx nx amplify-pull-dev my-backend
 ```
 Then switch to using that environment for development:
 ```
-npx nx amplify-checkout-dev my-backend
+npx nx amplify-checkout-dev backend
 ```
 Then switch to the dev branch in the repo and merge master into dev:
 ```
@@ -364,12 +364,12 @@ Once the app is started.  Open the dev tools.  In the sources tab you can find f
 7. **Run All Tests:** Run your tests with coverage:
 ```
 npx nx test <project name> 
-Ex: npx nx test my-backend
+Ex: npx nx test backend
 ```
 8. **Verify Code Coverage:** After you completed building your feature and have all tests passing, verify you have 100% code coverage.
 ```
 npx nx test-coverage <project name> 
-Ex: npx nx test-coverage my-backend
+Ex: npx nx test-coverage backend
 ```
 9. **Install Expo Modules:** Use the following command to install expo modules in your app project:
 ```

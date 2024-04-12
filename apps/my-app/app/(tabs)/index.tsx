@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-import { View, Banner, Main } from '@my-solution/my-ui';
+import { View, Banner, Main } from '@my-solution/features';
 
 export default function TabOneScreen() {
   return (

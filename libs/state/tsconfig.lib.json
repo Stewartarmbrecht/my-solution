@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../dist/out-tsc",
+    "types": ["node"]
+  },
+  "exclude": ["**/*.spec.ts", "**/*.spec.tsx", "test-setup.ts"],
+  "include": [
+    "**/*.js", 
+    "**/*.jsx", 
+    "**/*.ts", 
+    "**/*.tsx",
+    "**/*.json"
+, "../backend/src/sync/Synchronizer.tsx", "../shared/src/utils/compareStringArrays.ts", "../shared/src/types/User.ts"  ]
+}

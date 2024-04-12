@@ -1,7 +1,7 @@
 import { renderRouter, screen } from 'expo-router/testing-library';
 import { Platform } from 'react-native';
 import { useFonts,  } from 'expo-font';
-import { useColorScheme } from '@my-solution/my-ui';
+import { useColorScheme } from '@my-solution/features';
 
 jest.mock('expo-font', () => {
   const actual = jest.requireActual('expo-font');
@@ -16,8 +16,8 @@ jest.mock('expo-splash-screen', () => ({
   preventAutoHideAsync: jest.fn(),
 }));
 
-jest.mock('@my-solution/my-ui', () => {
-  const actual = jest.requireActual('@my-solution/my-ui');
+jest.mock('@my-solution/features', () => {
+  const actual = jest.requireActual('@my-solution/features');
   return {
     ...actual,
     TabBarIcon: () => null,
@@ -35,7 +35,7 @@ describe('_layout', () => {
     renderRouter('./apps/my-app/app', {
       initialUrl: '/',
     });
-    const tabOne = await screen.findAllByText('Tab One');
+    const tabOne = await screen.findAllByText('Tasks');
     expect(tabOne).toBeTruthy();
   });
 
@@ -64,7 +64,7 @@ describe('_layout', () => {
     renderRouter('./apps/my-app/app', {
       initialUrl: '/',
     });
-    const tabOne = await screen.findAllByText('Tab One');
+    const tabOne = await screen.findAllByText('Tasks');
     expect(tabOne).toBeTruthy();
 
     // TODO: Just triggering code coverage.  No idea on how to assert on this:
