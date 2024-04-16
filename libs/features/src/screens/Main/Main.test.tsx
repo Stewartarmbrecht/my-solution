@@ -1,13 +1,7 @@
 import React from 'react';
-import { render } from '@testing-library/react-native';
 import { Main } from './Main';
-import { MyComponent } from '../../components/MyComponent';
 import { MyPosts } from '../../components/MyPosts';
-
-// Mock My Component
-jest.mock('../../components/MyComponent', () => ({
-  MyComponent: jest.fn().mockImplementation(() => null),
-}));
+import { renderWithTamagui } from '../../renderWithTamagui.test-util';
 
 // Mock My Posts
 jest.mock('../../components/MyPosts', () => ({
@@ -15,13 +9,8 @@ jest.mock('../../components/MyPosts', () => ({
 }));
 
 describe('Main', () => {
-  it('should render MyComponent', async () => {
-    render(<Main />);
-    expect(MyComponent as jest.Mock).toHaveBeenCalled();
-  });
-
   it('should render MyPosts', async () => {
-    render(<Main />);
+    renderWithTamagui(<Main />);
     expect(MyPosts as jest.Mock).toHaveBeenCalled();
   });
 });

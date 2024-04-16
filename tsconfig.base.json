@@ -3,13 +3,14 @@
   "compilerOptions": {
     "allowJs": true,
     "baseUrl": ".",
-    "declaration": false,
+    //"declaration": false,
     "emitDecoratorMetadata": true,
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "importHelpers": true,
     "jsx": "react-native",
     "lib": ["DOM", "ESNext"],
+    //"lib": ["es2017", "dom"],
     "module": "esnext",
     "moduleResolution": "node",
     //"noEmit": true,
@@ -17,7 +18,8 @@
       "@my-solution/backend": ["libs/backend/src/index.ts"],
       "@my-solution/shared": ["libs/shared/src/index.ts"],
       "@my-solution/state": ["libs/state/src/index.ts"],
-      "@my-solution/features": ["libs/features/src/index.ts"]
+      "@my-solution/features": ["libs/features/src/index.ts"],
+      "@my-solution/ui": ["libs/ui/src/index.ts"]
     },
     "resolveJsonModule": true,
     "rootDir": ".",
@@ -25,6 +27,7 @@
     "skipLibCheck": true,
     "sourceMap": true,
     "target": "ESNext",
+    //"target": "es2015",
   },
   "exclude": ["node_modules", "tmp"]
 }

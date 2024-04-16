@@ -4,7 +4,7 @@ import 'core-js/full/symbol/async-iterator';
 // Added next 3 lines for tamagui.
 // Removing to get tests to pass.
 // import '../tamagui-web.css'
-// import { TamaguiProvider } from 'tamagui'
+import { TamaguiProvider, View, tamaguiConfig } from '@my-solution/ui'
 // import { tamaguiConfig } from '../tamagui.config'
 
 import FontAwesome from '@expo/vector-icons/FontAwesome';
@@ -16,8 +16,9 @@ import { useEffect } from 'react';
 
 import { MyState } from '@my-solution/state';
 import { Backend } from '@my-solution/backend';
-import { Platform } from 'react-native';
-import { WebSplashScreen, useColorScheme } from '@my-solution/features';
+import { Platform, useColorScheme } from 'react-native';
+import { WebSplashScreen } from '@my-solution/features';
+import { logRaw } from '@my-solution/shared';
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -66,19 +67,21 @@ export default function RootLayout() {
 
 function RootLayoutNav() {
   const colorScheme = useColorScheme();
+  logRaw('colorScheme', colorScheme);
 
   return (
     <MyState>
       <Backend>
-        {/* Removing to get tests to pass.
-        <TamaguiProvider config={tamaguiConfig}> */}
-          <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-            <Stack>
-              <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-              <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
-            </Stack>
+        <TamaguiProvider config={tamaguiConfig} defaultTheme={/*istanbul ignore next*/colorScheme === 'dark' ? 'dark' : 'light'}>
+          <ThemeProvider value={/*istanbul ignore next*/colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+            <View f={1}>
+              <Stack>
+                <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+                <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
+              </Stack>
+            </View>
           </ThemeProvider>
-        {/* </TamaguiProvider> */}
+        </TamaguiProvider>
       </Backend>
     </MyState>
   );

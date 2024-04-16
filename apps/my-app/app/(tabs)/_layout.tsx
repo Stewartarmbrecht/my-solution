@@ -1,44 +1,37 @@
 import React from 'react';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { Link, Tabs } from 'expo-router';
-import { Pressable } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Drawer } from 'expo-router/drawer';
 import { Platform } from 'react-native';
 
-import { Colors, useColorScheme, TabBarIcon, Banner, View } from '@my-solution/features';
+import { Banner } from '@my-solution/features';
+import { BookOpen, Button, Info, MessageCircle, Settings, YStack, useTheme } from '@my-solution/ui';
 
 // You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
+  const theme = useTheme();
+  const accentColor = theme.accentColor.get();
+  const backgroundColor = theme.backgroundColor?.get();
   if (Platform.OS === 'web') {
     // Use a basic custom layout on web.
     return (
       <GestureHandlerRootView style={{ flex: 1 }}>
         <Banner />
         <Drawer screenOptions={{
-          drawerType: 'permanent',
-        }}
+            drawerType: 'permanent',
+            headerLeft: () => null,
+          }}
           useLegacyImplementation={false}
         >
           <Drawer.Screen
             name="index"
             options={{
-              title: 'Tasks',
+              title: 'Posts',
               headerRight: () => (
                 <Link href="/modal" asChild>
-                  <Pressable>
-                    {({ pressed }) => (
-                      <FontAwesome
-                        name="info-circle"
-                        size={25}
-                        color={Colors[/*istanbul ignore next*/colorScheme ?? 'light'].text}
-                        style={{ marginRight: 15, opacity: /*istanbul ignore next*/pressed ? 0.5 : 1 }}
-                        testID='info-icon'
-                      />
-                    )}
-                  </Pressable>
+                  <Button unstyled p="$0" m="$4">
+                    <Info color={accentColor} testID='info-icon' />
+                  </Button>
                 </Link>
               ),
             }}
@@ -49,20 +42,24 @@ export default function TabLayout() {
               title: 'Documentation',
             }}
           />
+          <Drawer.Screen
+            name="settings"
+            options={{
+              title: 'Settings',
+            }}
+          />
         </Drawer>
       </GestureHandlerRootView>
     );
   }
   return (
-    <View style={{ flex: 1 }}>
-      <Banner />
+    <YStack f={1}>
       <Tabs
         screenOptions={{
-          tabBarActiveTintColor: Colors[/*istanbul ignore next*/colorScheme ?? 'light'].tint,
           // Disable the static render of the header on web
           // to prevent a hydration error in React Navigation v6.
           headerShown: true,
-          headerStatusBarHeight: 0,
+          tabBarActiveTintColor: backgroundColor,
         }}
         sceneContainerStyle={{
           flex: 1,
@@ -70,21 +67,13 @@ export default function TabLayout() {
         <Tabs.Screen
           name="index"
           options={{
-            title: 'Tasks',
-            tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+            title: 'Posts',
+            tabBarIcon: ({ color }) => <MessageCircle color={color} />,
             headerRight: () => (
               <Link href="/modal" asChild>
-                <Pressable>
-                  {({ pressed }) => (
-                    <FontAwesome
-                      name="info-circle"
-                      size={25}
-                      color={Colors[/*istanbul ignore next*/colorScheme ?? 'light'].text}
-                      style={{ marginRight: 15, opacity: /*istanbul ignore next*/pressed ? 0.5 : 1 }}
-                      testID='info-icon'
-                    />
-                  )}
-                </Pressable>
+                <Button unstyled p="$0" m="$4">
+                  <Info color={accentColor} testID='info-icon' />
+                </Button>
               </Link>
             ),
           }}
@@ -93,10 +82,17 @@ export default function TabLayout() {
           name="docs"
           options={{
             title: 'Documentation',
-            tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+            tabBarIcon: ({ color }) => <BookOpen color={color} />,
+          }}
+        />
+        <Tabs.Screen
+          name="settings"
+          options={{
+            title: 'Settings',
+            tabBarIcon: ({ color }) => <Settings color={color} />,
           }}
         />
       </Tabs>
-    </View>
+    </YStack>
   );
 }

@@ -1,8 +1,9 @@
 import React from 'react';
-import { fireEvent, render } from '@testing-library/react-native';
+import { fireEvent } from '@testing-library/react-native';
 import { MyPost } from './MyPost';
 import { PostStatus } from '@my-solution/shared';
 import { useAppDispatch } from '@my-solution/state';
+import { renderWithTamagui } from '../../renderWithTamagui.test-util';
 
 jest.mock('@my-solution/state', () => ({
   useAppDispatch: jest.fn(),
@@ -18,7 +19,7 @@ describe('MyPost', () => {
       status: PostStatus.ACTIVE,
       content: 'This is my post',
     };
-    const { getByText } = render(<MyPost post={post} />);
+    const { getByText } = renderWithTamagui(<MyPost post={post} />);
     const title = getByText(post.title);
     expect(title).toBeTruthy();
   });
@@ -31,7 +32,7 @@ describe('MyPost', () => {
       status: PostStatus.ACTIVE,
       content: 'This is my post',
     };
-    const { getByText } = render(<MyPost post={post} />);
+    const { getByText } = renderWithTamagui(<MyPost post={post} />);
     const deleteButton = getByText('X');
     expect(deleteButton).toBeTruthy();
   });
@@ -44,7 +45,7 @@ describe('MyPost', () => {
       status: PostStatus.ACTIVE,
       content: 'This is my post',
     };
-    const { getByText } = render(<MyPost post={post} />);
+    const { getByText } = renderWithTamagui(<MyPost post={post} />);
     const deleteButton = getByText('X');
     fireEvent.press(deleteButton);
     expect(dispatch).toHaveBeenCalledWith({ type: 'posts/postDeleted', payload: post });

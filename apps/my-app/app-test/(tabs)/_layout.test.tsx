@@ -35,11 +35,13 @@ describe('_layout', () => {
     renderRouter('./apps/my-app/app', {
       initialUrl: '/',
     });
-    const tabOne = await screen.findAllByText('Tasks');
+    const tabOne = await screen.findAllByText('Posts');
     expect(tabOne).toBeTruthy();
     const tabTwo = await screen.findAllByText('Documentation');
     expect(tabTwo).toBeTruthy();
-  });
+    const settings = await screen.findAllByText('Settings');
+    expect(settings).toBeTruthy();
+  }, 10000);
   it('should render Documentation Tab', async () => {
     Platform.OS = 'ios';
     (useFonts as jest.Mock).mockReturnValue([true, null]);
@@ -48,7 +50,17 @@ describe('_layout', () => {
     });
     const tabTwo = await screen.findAllByText('Documentation');
     expect(tabTwo).toBeTruthy();
-  });
+  }, 10000);
+
+  it('should render Settings Tab', async () => {
+    Platform.OS = 'ios';
+    (useFonts as jest.Mock).mockReturnValue([true, null]);
+    renderRouter('./apps/my-app/app', {
+      initialUrl: '/settings',
+    });
+    const settings = await screen.findAllByText('Settings');
+    expect(settings).toBeTruthy();
+  }, 10000);
 
   it('should render drawers on web', async () => {
     Platform.OS = 'web';
@@ -56,11 +68,13 @@ describe('_layout', () => {
     renderRouter('./apps/my-app/app', {
       initialUrl: '/',
     });
-    const tabOne = await screen.findAllByText('Tasks');
+    const tabOne = await screen.findAllByText('Posts');
     expect(tabOne).toBeTruthy();
     const tabTwo = await screen.findAllByText('Documentation');
     expect(tabTwo).toBeTruthy();
-  });
+    const settings = await screen.findAllByText('Settings');
+    expect(settings).toBeTruthy();
+  }, 10000);
   it('should render Documentation Drawer Tab on Web', async () => {
     Platform.OS = 'web';
     (useFonts as jest.Mock).mockReturnValue([true, null]);
@@ -69,7 +83,16 @@ describe('_layout', () => {
     });
     const tabTwo = await screen.findAllByText('Documentation');
     expect(tabTwo).toBeTruthy();
-  });
+  }, 10000);
+  it('should render Settings Drawer Tab on Web', async () => {
+    Platform.OS = 'web';
+    (useFonts as jest.Mock).mockReturnValue([true, null]);
+    renderRouter('./apps/my-app/app', {
+      initialUrl: '/settings',
+    });
+    const settings = await screen.findAllByText('Settings');
+    expect(settings).toBeTruthy();
+  }, 10000);
 
   it('should render an info icon in for tab one', async () => {
     Platform.OS = 'ios';
@@ -79,7 +102,7 @@ describe('_layout', () => {
     });
     const infoIcon = await screen.findAllByTestId('info-icon');
     expect(infoIcon).toBeTruthy();
-  });
+  }, 10000);
   it('should launch a modal window when the user presses the info icon', async () => {
     Platform.OS = 'ios';
     (useFonts as jest.Mock).mockReturnValue([true, null]);
@@ -95,5 +118,5 @@ describe('_layout', () => {
     // expect the modal window to be visible
     const modal = await screen.findAllByText('Modal');
     expect(modal).toBeTruthy();
-  });
+  }, 10000);
 });

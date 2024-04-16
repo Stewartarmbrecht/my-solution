@@ -1,10 +1,10 @@
 import React from 'react';
-import { render } from '@testing-library/react-native';
 import { WebSplashScreen } from './WebSplashScreen';
+import { renderWithTamagui } from '../../renderWithTamagui.test-util';
 
 describe('WebSplashScreen', () => {
   it('should render the splash screen', () => {
-    const { getByTestId } = render(<WebSplashScreen />);
+    const { getByTestId } = renderWithTamagui(<WebSplashScreen />);
     expect(getByTestId('web-splash-screen')).toBeTruthy();
   });
 });

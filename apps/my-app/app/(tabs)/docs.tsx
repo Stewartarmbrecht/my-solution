@@ -1,30 +1,12 @@
-import { StyleSheet } from 'react-native';
-
-import { EditScreenInfo, Text, View } from '@my-solution/features';
+import { EditScreenInfo } from '@my-solution/features';
+import { H3, Separator, YStack } from '@my-solution/ui';
 
 export default function TabTwoScreen() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Documentation</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+    <YStack>
+      <H3>Documentation</H3>
+      <Separator />
       <EditScreenInfo path="app/(tabs)/docs.tsx" />
-    </View>
+    </YStack>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
-  },
-});

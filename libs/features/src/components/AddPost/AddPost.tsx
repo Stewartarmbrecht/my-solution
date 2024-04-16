@@ -1,11 +1,9 @@
-import { TextInput, Pressable, StyleSheet } from 'react-native';
-import { View } from '../View';
-import { Text } from '../Text';
 import { useState } from 'react';
 import { useAppDispatch } from '@my-solution/state';
 import { nanoid } from '@reduxjs/toolkit';
 import { Post, PostStatus, postAdded } from '@my-solution/shared';
 import { logMessage } from '@my-solution/shared';
+import { Button, Input, Paragraph, XStack } from '@my-solution/ui';
 
 export function AddPost() {
   const [newPostName, setNewPostName] = useState('');
@@ -20,43 +18,22 @@ export function AddPost() {
     dispatch(postAdded(post));
     logMessage('Post saved successfully!', post);
   }
-
   return (
-    <View>
-      <Text>
+    <XStack gap="$4" ai="center">
+      <Paragraph>
         New Post:
-      </Text>
-      <TextInput
-        style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+      </Paragraph>
+      <Input
         onChangeText={text => setNewPostName(text)}
         value={newPostName}
         placeholder='New Post Name'
         accessibilityLabel='New Post Name'
+        flex={1}
       />
-      <Pressable 
+      <Button 
         onPress={createPost}
-        style={styles.testButton}
-      >
-        <Text style={[styles.textMd, styles.textCenter]}>
-          Add
-        </Text>
-      </Pressable>
-    </View>
+        theme="blue_active"
+      >Add</Button>
+    </XStack>
   );
 }
-
-const styles = StyleSheet.create({
-  textCenter: {
-    textAlign: 'center',
-  },
-  textMd: {
-    fontSize: 18,
-  },
-  testButton: {
-    backgroundColor: '#cccccc',
-    paddingVertical: 16,
-    borderRadius: 8,
-    width: '50%',
-    marginTop: 24,
-  },
-});

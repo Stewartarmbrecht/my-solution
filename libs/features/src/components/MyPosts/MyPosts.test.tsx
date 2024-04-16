@@ -1,9 +1,9 @@
 import React from 'react';
-import { render } from '@testing-library/react-native';
 import { MyPosts } from './MyPosts';
 import { useAppSelector } from '@my-solution/state';
 import { MyPost } from '../MyPost';
 import { AddPost } from '../AddPost';
+import { renderWithTamagui } from '../../renderWithTamagui.test-util';
 
 //mock useAppSelector
 jest.mock('@my-solution/state', () => ({
@@ -34,16 +34,12 @@ describe('MyPosts', () => {
       status: 'ACTIVE',
       content: 'This is my second post',
     }]);
-    render(<MyPosts />);
+    renderWithTamagui(<MyPosts />);
     expect(MyPost).toHaveBeenCalledWith({ post: { id: '1', title: 'My Post', status: 'ACTIVE', content: 'This is my post' } }, {});
     expect(MyPost).toHaveBeenCalledWith({ post: { id: '2', title: 'My Second Post', status: 'ACTIVE', content: 'This is my second post' } }, {});
   });
   it('should render an AddPost', () => {
-    render(<MyPosts />);
+    renderWithTamagui(<MyPosts />);
     expect(AddPost).toHaveBeenCalledWith({}, {});
-  });
-  it('should label the post with "Posts:"', () => {
-    const { getByText } = render(<MyPosts />);
-    expect(getByText('Posts:')).toBeTruthy();
   });
 });

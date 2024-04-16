@@ -1,9 +1,8 @@
 import React from "react";
 import { StyleSheet } from "react-native";
-import { View } from '../View';
-import { Text } from '../Text';
 import { Image } from "expo-image";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { H1, View, XStack } from '@my-solution/ui';
 
 export function Banner() {
   // const dispatch = useAppDispatch();
@@ -12,53 +11,25 @@ export function Banner() {
   //   await signOut();
   //   dispatch(userLoggedOut());
   // }
+
   const insets = useSafeAreaInsets();
   
   const styles = StyleSheet.create({
-    bannerContainer: {
-      marginTop: insets.top,
-      flexDirection: 'row',
-    },
-    appTitleArea: {
-      flex: 1,
-      flexDirection: 'row'
-    },
     appIcon: {
       height: 42,
       aspectRatio: 1,
-      margin: 6,
-    },
-    appTitle: {
-      fontSize: 48,
-      flex: 2,
-    },
-    textLg: {
-      fontSize: 24,
-    },
-    textMd: {
-      fontSize: 18,
-    },
-    textCenter: {
-      textAlign: 'center',
-    },
-    signOutButton: {
-      backgroundColor: '#cccccc',
-      paddingVertical: 16,
-      borderRadius: 8,
     },
   });
   
   return (
-    <View style={styles.bannerContainer}>
-      <View style={styles.appTitleArea}>
+    <XStack ai="center" mt={insets.top}>
+      <View m="$2" ml="$4">
         <Image 
           source={require('../../../assets/images/banner-icon.png')} 
           style={styles.appIcon} 
         />
-        <Text style={styles.appTitle}>
-          My App
-        </Text>
       </View>
+      <H1 m="$2">My App</H1>
       {/* <Text style={styles.textLg}>Hello there {user?.userName},</Text>
       <Pressable 
         onPress={handleSignOut}
@@ -69,7 +40,7 @@ export function Banner() {
       <View>
         <Text>Username: {user?.userName}</Text>
       </View> */}
-    </View>
+    </XStack>
   );
 }
 

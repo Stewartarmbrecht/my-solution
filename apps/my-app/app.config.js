@@ -22,10 +22,12 @@ export default {
   assetBundlePatterns: ['**/*'],
   ios: {
     supportsTablet: true,
+    userInterfaceStyle: 'automatic',
     bundleIdentifier: IS_PROD ? 'com.stewartarmbrecht.myapp' : 
       (IS_PREVIEW ? 'com.stewartarmbrecht.myapp.preview' : 'com.stewartarmbrecht.myapp.dev'),
   },
   android: {
+    userInterfaceStyle: 'automatic',
     adaptiveIcon: {
       foregroundImage: './assets/images/adaptive-icon.png',
       backgroundColor: '#FFFFFF',

@@ -1,0 +1,21 @@
+{
+
+  "name": "@my-solution/ui",
+  "types": "./types/index.d.ts",
+  "main": "dist/cjs",
+  "module": "dist/esm",
+  "module:jsx": "dist/jsx",
+  "files": ["types", "src", "dist"],
+  "sideEffects": ["*.css"],
+  "dependencies": {
+    "@tamagui": "*",
+    "@tamagui/lucide-icons": "*"
+  },
+  "scripts": {
+    "build": "tamagui-build",
+    "watch": "tamagui-build --watch"
+  },
+  "devDependencies": {
+    "@tamagui/build": "*"
+  }
+}

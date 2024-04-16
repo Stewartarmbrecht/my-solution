@@ -1,80 +1,34 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
 
 import { ExternalLink } from '../../components/ExternalLink';
-import { MonoText } from '../../components/MonoText';
-import { View } from '../../components/View';
-import { Text } from '../../components/Text';
 
-import { Colors } from '../../utils/Colors';
+import { Card, Text, View, YStack } from '@my-solution/ui';
 
 export function EditScreenInfo({ path }: { path: string }) {
   return (
-    <View>
-      <View style={styles.getStartedContainer}>
-        <Text
-          style={styles.getStartedText}
-          lightColor="rgba(0,0,0,0.8)"
-          darkColor="rgba(255,255,255,0.8)">
+    <YStack>
+      <YStack>
+        <Text>
           Open up the code for this screen:
         </Text>
 
-        <View
-          style={[styles.codeHighlightContainer, styles.homeScreenFilename]}
-          darkColor="rgba(255,255,255,0.05)"
-          lightColor="rgba(0,0,0,0.05)"
-        >
-          <MonoText>{path}</MonoText>
+        <View>
+          <Text>{path}</Text>
         </View>
 
-        <Text
-          style={styles.getStartedText}
-          lightColor="rgba(0,0,0,0.8)"
-          darkColor="rgba(255,255,255,0.8)"
-        >
+        <Text>
           Change any of the text, save the file, and your app will automatically update.
         </Text>
-      </View>
+      </YStack>
 
-      <View style={styles.helpContainer}>
+      <Card>
         <ExternalLink
-          style={styles.helpLink}
           href="https://docs.expo.io/get-started/create-a-new-app/#opening-the-app-on-your-phonetablet">
-          <Text style={styles.helpLinkText} lightColor={Colors.light.tint}>
+          <Text>
             Tap here if your app doesn't automatically update after making changes
           </Text>
         </ExternalLink>
-      </View>
-    </View>
+      </Card>
+    </YStack>
   );
 }
-
-const styles = StyleSheet.create({
-  getStartedContainer: {
-    alignItems: 'center',
-    marginHorizontal: 50,
-  },
-  homeScreenFilename: {
-    marginVertical: 7,
-  },
-  codeHighlightContainer: {
-    borderRadius: 3,
-    paddingHorizontal: 4,
-  },
-  getStartedText: {
-    fontSize: 17,
-    lineHeight: 24,
-    textAlign: 'center',
-  },
-  helpContainer: {
-    marginTop: 15,
-    marginHorizontal: 20,
-    alignItems: 'center',
-  },
-  helpLink: {
-    paddingVertical: 15,
-  },
-  helpLinkText: {
-    textAlign: 'center',
-  },
-});

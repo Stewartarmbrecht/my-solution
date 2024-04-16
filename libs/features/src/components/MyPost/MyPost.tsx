@@ -1,8 +1,6 @@
 import { Post, postDeleted } from '@my-solution/shared';
 import { useAppDispatch } from '@my-solution/state';
-import { StyleSheet, Pressable } from 'react-native';
-import { View } from '../View';
-import { Text } from '../Text';
+import { Button, Card, Text, YStack } from '@my-solution/ui';
 
 /* eslint-disable-next-line */
 export interface MyPostProps {
@@ -16,42 +14,14 @@ export function MyPost(props: MyPostProps) {
   }
 
   return (
-    <View key={props.post.id} style={styles.container}>
-      <Pressable 
-        onPress={deletePostHandler}
-        style={styles.deleteButton}
-      >
-        <Text style={styles.deleteText}>X</Text>
-      </Pressable>
-      <Text style={styles.title}>{props.post.title}</Text>
-    </View>
+    <YStack gap="$2">
+      <Card flexDirection='row' ai="center" key={props.post.id} gap="$4">
+        <Button 
+          onPress={deletePostHandler}
+          theme="blue"
+        >X</Button>
+        <Text>{props.post.title}</Text>
+      </Card>
+    </YStack>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    padding: 2,
-    borderBottomWidth: 1,
-    borderBottomColor: '#cccccc',
-    flexDirection: 'row',
-    // Align children to the middle
-    alignItems: 'center',
-  },
-  title: {
-    textAlign: 'center',
-    textAlignVertical: 'center',
-    fontSize: 24,
-    padding: 8,
-  },
-  deleteButton: {
-    backgroundColor: '#cccccc',
-    padding: 8,
-    borderRadius: 8,
-  },
-  deleteText: {
-    textAlign: 'center',
-    textAlignVertical: 'center',
-    fontSize: 24,
-    padding: 2,
-  },
-});

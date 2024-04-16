@@ -1,14 +1,15 @@
 import React from 'react';
-import { render, fireEvent, waitFor } from '@testing-library/react-native';
+import { fireEvent, waitFor } from '@testing-library/react-native';
 import { AddPost } from './AddPost';
 import { useAppDispatch } from '@my-solution/state';
+import { renderWithTamagui } from '../../renderWithTamagui.test-util';
 jest.mock('@my-solution/state', () => ({
   useAppDispatch: jest.fn(),
 }));
 
 describe('AddPost', () => {
   it('should update the title when input value changes', () => {
-    const { getByPlaceholderText } = render(<AddPost />);
+    const { getByPlaceholderText } = renderWithTamagui(<AddPost />);
     const inputElement = getByPlaceholderText('New Post Name');
 
     fireEvent.changeText(inputElement, 'New Post Title');
@@ -18,7 +19,7 @@ describe('AddPost', () => {
   it('should dispatch postAdded action when Add button is pressed', async () => {
     const dispatch = jest.fn();
     (useAppDispatch as unknown as jest.Mock).mockReturnValue(dispatch);
-    const { getByPlaceholderText, getByText } = render(<AddPost />);
+    const { getByPlaceholderText, getByText } = renderWithTamagui(<AddPost />);
     const inputElement = getByPlaceholderText('New Post Name');
     const addButton = getByText('Add');
 

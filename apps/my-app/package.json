@@ -65,7 +65,9 @@
     "tamagui": "*",
     "@tamagui/babel-plugin": "*",
     "@tamagui/config": "*",
-    "@tamagui/metro-plugin": "*"
+    "@tamagui/metro-plugin": "*",
+    "@tamagui/build": "*",
+    "@tamagui/lucide-icons": "*"
   },
   "devDependencies": {
     "@babel/core": "*",

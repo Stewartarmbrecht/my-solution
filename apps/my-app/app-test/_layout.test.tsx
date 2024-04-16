@@ -35,7 +35,7 @@ describe('_layout', () => {
     renderRouter('./apps/my-app/app', {
       initialUrl: '/',
     });
-    const tabOne = await screen.findAllByText('Tasks');
+    const tabOne = await screen.findAllByText('Posts');
     expect(tabOne).toBeTruthy();
   });
 
@@ -64,7 +64,7 @@ describe('_layout', () => {
     renderRouter('./apps/my-app/app', {
       initialUrl: '/',
     });
-    const tabOne = await screen.findAllByText('Tasks');
+    const tabOne = await screen.findAllByText('Posts');
     expect(tabOne).toBeTruthy();
 
     // TODO: Just triggering code coverage.  No idea on how to assert on this:
