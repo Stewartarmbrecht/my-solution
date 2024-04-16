@@ -1,5 +1,7 @@
 const { withNxMetro } = require('@nx/expo');
-const { getDefaultConfig } = require('@expo/metro-config');
+// Added for tamagui.
+const { withTamagui } = require('@tamagui/metro-plugin')
+const { getDefaultConfig } = require('expo/metro-config');
 const { mergeConfig } = require('metro-config');
 
 const defaultConfig = getDefaultConfig(__dirname);
@@ -20,13 +22,19 @@ const customConfig = {
     sourceExts: [...sourceExts, 'svg', 'mjs'],
   },
 };
+// Added for tamagui.
+const tamaguiConfig = withTamagui(defaultConfig, {
+    components: ['tamagui'],
+    config: './tamagui.config.ts',
+    outputCSS: './tamagui-web.css',
+})
 
-module.exports = withNxMetro(mergeConfig(defaultConfig, customConfig), {
+module.exports = withNxMetro(mergeConfig(tamaguiConfig, customConfig), {
   // Change this to true to see debugging info.
   // Useful if you have issues resolving modules
   debug: false,
   // all the file extensions used for imports other than 'ts', 'tsx', 'js', 'jsx', 'json'
-  extensions: [],
+  //extensions: [],
   // Specify folders to watch, in addition to Nx defaults (workspace libraries and node_modules)
-  watchFolders: [],
+  //watchFolders: [],
 });

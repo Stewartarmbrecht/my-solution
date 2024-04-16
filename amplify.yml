@@ -3,17 +3,18 @@ backend:
   phases:
     build:
       commands:
-        - cd libs/my-backend
+        - cd libs/backend
         - amplifyPush --simple
+        - cd ../../
 frontend:
   phases:
     preBuild:
       commands:
         - nvm use 20
-        - npm install
         - npm install --quiet --global expo-cli
         - npm install --quiet --global eas-cli
         - npm ci
+        - npx nx run-many -t test-coverage
     build:
       commands:
         - npx nx export-web my-app

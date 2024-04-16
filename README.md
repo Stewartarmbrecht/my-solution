@@ -24,7 +24,7 @@ Below are the objectives that drove the design of this solution.
 
 ## Project Technologies
 
-1. **IDE - VS Code** - The development environment was built assuming the user is using VS Code.  While we have avoided using VS Code specific flows (like using VS Code tasks for development activities), we have not explicitly designed the code base or tested it to see if the flows work outside of VS Code.  Instructions on performing setup activities will assume you are working in VS Code.
+1. **IDE - VS Code** - The development environment was built assuming the user is using VS Code.  While we have avoided using VS Code specific flows (like using VS Code posts for development activities), we have not explicitly designed the code base or tested it to see if the flows work outside of VS Code.  Instructions on performing setup activities will assume you are working in VS Code.
 
 2. **Containerization - Docker** - Used to enable setting up development environments across multiple platforms: Windows, Mac, or Linux.
 
@@ -277,7 +277,7 @@ You need to create an EAS Robot token so that Amplify can trigger a build and de
 ### Setup Prod Amplify Hosting
 [AWS Amplify Hosting Guide](https://docs.amplify.aws/javascript/tools/cli/hosting/#using-aws-amplify-console)
 ```
-npx nx amplify-add-hosting my-backend
+npx nx amplify-add-hosting backend
 ```
 **Select the plugin module to execute …** ❯ Hosting with Amplify Console (Managed hosting with custom domains, Continuous deployment)
 **Choose a type** > Continuous deployment (Git-based deployments)
@@ -306,7 +306,7 @@ Save and run the deployment.
     * **Environment:** Select the branch we just created: 'dev'.  
 6. To Develop using the dev environment run the following command:
 ```
-npx nx amplify-pull-dev my-backend
+npx nx amplify-pull-dev backend
 
 ? Select the authentication method you want to use: AWS profile
 ? Please choose the profile you want to use: default
@@ -321,7 +321,7 @@ npx nx amplify-pull-dev my-backend
 ```
 Then switch to using that environment for development:
 ```
-npx nx amplify-checkout-dev my-backend
+npx nx amplify-checkout-dev backend
 ```
 Then switch to the dev branch in the repo and merge master into dev:
 ```
@@ -340,6 +340,52 @@ TBD...
 TBD...
 
 
+# DEVELOPMENT FLOW
+1. **Write Test:** Write your unit test.
+2. **Verify Test Fails:** Run your unit test and verify it fails:
+```
+Cntrl/Cmd+Shift+P
+Test: Run Test at Cursor
+```
+3. **Write Code:** Write your code and rerun the tests until they pass.
+4. **Verify Test Passes:** If you need to debug a test:
+```
+Cntrl/Cmd+Shift+P
+Test: Debug Test at Cursor
+```
+5. **Verify in App:** Run the app and verify your code change in the web and mobile app.
+```
+npx nx start <app project>
+Ex: npx nx start my-app
+```
+6. **Debug Web App:** 
+Once the app is started.  Open the dev tools.  In the sources tab you can find files using Cmd/Cntrl+Shift+P and typing the file name.  You can also set breakpoints.  Install the redux tools as well as the React Native tools and you can inspect redux, the UI elements, and the UI performance.
+
+7. **Run All Tests:** Run your tests with coverage:
+```
+npx nx test <project name> 
+Ex: npx nx test backend
+```
+8. **Verify Code Coverage:** After you completed building your feature and have all tests passing, verify you have 100% code coverage.
+```
+npx nx test-coverage <project name> 
+Ex: npx nx test-coverage backend
+```
+9. **Install Expo Modules:** Use the following command to install expo modules in your app project:
+```
+npx nx install my-app package1,package2,package3
+```
+10. **Sort Package Dependencies:** Use the following command to sort the dependencies in a package.json
+```
+cd to-directory-with-package-json
+npx sort-package-json
+```
+10. **Update Development Build:** If you install modules that require updating the development build that is deployed to devices:
+```
+npx nx build-dev my-app
+```
+After you run the build, you will need to scan the QR code on all devices to update your development build.
+
 <br>
 <br>
 <br>
@@ -356,9 +402,9 @@ Run `nx list` to get a list of available plugins and whether they have generator
 
 Learn more about [Nx generators on the docs](https://nx.dev/plugin-features/use-code-generators).
 
-## Running tasks
+## Running posts
 
-To execute tasks with Nx use the following syntax:
+To execute posts with Nx use the following syntax:
 
 ```
 nx <target> <project> <...options>
@@ -376,11 +422,11 @@ nx run-many -t <target1> <target2>
 nx run-many -t <target1> <target2> -p <proj1> <proj2>
 ```
 
-Targets can be defined in the `package.json` or `projects.json`. Learn more [in the docs](https://nx.dev/core-features/run-tasks).
+Targets can be defined in the `package.json` or `projects.json`. Learn more [in the docs](https://nx.dev/core-features/run-posts).
 
 ## Want better Editor Integration?
 
-Have a look at the [Nx Console extensions](https://nx.dev/nx-console). It provides autocomplete support, a UI for exploring and running tasks & generators, and more! Available for VSCode, IntelliJ and comes with a LSP for Vim users.
+Have a look at the [Nx Console extensions](https://nx.dev/nx-console). It provides autocomplete support, a UI for exploring and running posts & generators, and more! Available for VSCode, IntelliJ and comes with a LSP for Vim users.
 
 ## Ready to deploy?
 

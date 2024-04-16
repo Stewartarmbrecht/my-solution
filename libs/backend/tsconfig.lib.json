@@ -1,0 +1,19 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../dist/out-tsc",
+    "types": ["node"],
+  },
+  "exclude": [
+    "**/*.test.ts", 
+    "**/*.test.tsx", 
+    "test-setup.ts"
+  ],
+  "include": [
+    "**/*.js", 
+    "**/*.jsx", 
+    "**/*.ts", 
+    "**/*.tsx",
+    "**/*.json"
+  ]
+}

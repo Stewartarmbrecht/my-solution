@@ -1,25 +1,33 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "rootDir": ".",
-    "sourceMap": true,
-    "declaration": false,
-    "moduleResolution": "node",
+    "allowJs": true,
+    "baseUrl": ".",
+    //"declaration": false,
     "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
     "experimentalDecorators": true,
     "importHelpers": true,
-    "target": "es2015",
+    "jsx": "react-native",
+    "lib": ["DOM", "ESNext"],
+    //"lib": ["es2017", "dom"],
     "module": "esnext",
-    "lib": ["es2020", "dom"],
-    "skipLibCheck": true,
-    "skipDefaultLibCheck": true,
-    "baseUrl": ".",
+    "moduleResolution": "node",
+    //"noEmit": true,
     "paths": {
-      "@my-solution/my-backend": ["libs/my-backend/src/index.ts"],
-      "@my-solution/my-shared": ["libs/my-shared/src/index.ts"],
-      "@my-solution/my-state": ["libs/my-state/src/index.ts"],
-      "@my-solution/my-ui": ["libs/my-ui/src/index.ts"]
-    }
+      "@my-solution/backend": ["libs/backend/src/index.ts"],
+      "@my-solution/shared": ["libs/shared/src/index.ts"],
+      "@my-solution/state": ["libs/state/src/index.ts"],
+      "@my-solution/features": ["libs/features/src/index.ts"],
+      "@my-solution/ui": ["libs/ui/src/index.ts"]
+    },
+    "resolveJsonModule": true,
+    "rootDir": ".",
+    "skipDefaultLibCheck": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "target": "ESNext",
+    //"target": "es2015",
   },
   "exclude": ["node_modules", "tmp"]
 }

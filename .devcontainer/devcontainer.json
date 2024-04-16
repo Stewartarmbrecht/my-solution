@@ -1,7 +1,7 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/typescript-node
 {
-	"name": "my-solution-devcontainer",
+	"name": "stewartarmbrecht-my-solution-devcontainer",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
 	//"dockerComposeFile": ["docker-compose.yml"],
   //"service": "devcontainer",
@@ -46,7 +46,9 @@
 				"nrwl.angular-console",
 				"Orta.vscode-jest",
 				"alfnielsen.vsc-rename-files",
-				"msjsdiag.vscode-react-native"
+				"msjsdiag.vscode-react-native",
+				"naumovs.color-highlight",
+				"anseki.vscode-color"
 			]
 		}
 	}

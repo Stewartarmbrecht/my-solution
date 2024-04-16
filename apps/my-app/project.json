@@ -1,7 +1,7 @@
 {
   "name": "my-app",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/my-app/src",
+  "sourceRoot": "apps/my-app/",
   "projectType": "application",
   "targets": {
     "start": {
@@ -156,6 +156,15 @@
       ],
       "options": {
         "jestConfig": "apps/my-app/jest.config.ts"
+      }
+    },
+    "test-coverage": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/my-app/jest.config.ts",
+        "coverage": true,
+        "cwd": "apps/my-app"
       }
     }
   },
