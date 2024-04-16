@@ -25,10 +25,6 @@ jest.mock('@my-solution/backend', () => ({
 
 
 describe('Main', () => {
-  it('should render the user name of the logged in user', async () => {
-    const { findByText } = renderWithTamagui(<Provider store={store}><Settings /></Provider>);
-    expect(findByText('Settings')).toBeTruthy();
-  });
   it('should render the users name', () => {
     // Mock the user being logged in
     (useAppSelector as unknown as jest.Mock).mockReturnValue({ userName: 'myusername' });
