@@ -1,7 +1,7 @@
 import { Amplify } from 'aws-amplify';
 import { Hub } from 'aws-amplify/utils';
 
-import { Authenticator, Theme, ThemeProvider, defaultDarkModeOverride, useTheme } from '@aws-amplify/ui-react-native';
+import { Authenticator, Theme, ThemeProvider, defaultDarkModeOverride } from '@aws-amplify/ui-react-native';
 import { DataStore } from '@aws-amplify/datastore';
 //import { ExpoSQLiteAdapter } from '@aws-amplify/datastore-storage-adapter/ExpoSQLiteAdapter';
 import amplifyconfig from './aws-exports';
