@@ -1,6 +1,4 @@
 import {
-  blue,
-  blueDark,
   gray,
   grayDark,
   green,
@@ -17,8 +15,11 @@ import {
   yellowDark,
 } from '@tamagui/colors'
 import { createThemeBuilder } from '@tamagui/theme-builder'
-import type { Variable } from '@tamagui/web'
 import { createTokens } from '@tamagui/web'
+import { colors } from './colors';
+
+const blue = colors.blue;
+const blueDark = colors.blueDark;
 
 const colorTokens = {
   light: {
@@ -103,22 +104,6 @@ const color = {
   black10: '#626262',
   black11: '#a5a5a5',
   black12: '#fff',
-  blue0: 'rgba(255,255,255,0)',
-  blue075: 'rgba(1,150,236,0.75)',
-  blue05:  'rgba(1,150,236,0.5)',
-  blue025: 'rgba(1,150,236,0.25)',
-  blue1: '#0196ec',
-  blue2: '#199eeb',
-  blue3: '#36a9ec',
-  blue4: '#58b6ec',
-  blue5: '#6fbae6',
-  blue6: '#82c5eb',
-  blue7: '#9ccfed',
-  blue8: '#afd2e6',
-  blue9: '#cde3f0',
-  blue10: '#dfebf1',
-  blue11: '#f3f6f7',
-  blue12: '#fff',
   ...postfixObjKeys(lightColors, 'Light'),
   ...postfixObjKeys(darkColors, 'Dark'),
 }
@@ -127,15 +112,21 @@ export const palettes = (() => {
   const transparent = (hsl: string, opacity = 0) =>
     hsl.replace(`%)`, `%, ${opacity})`).replace(`hsl(`, `hsla(`)
 
-  const getColorPalette = (colors: Object): string[] => {
+  const getColorPalette = (colors: Object, accentColors: Object): string[] => {
     const colorPalette = Object.values(colors)
     // make the transparent color vibrant and towards the middle
     const colorI = colorPalette.length - 4
+
+    // accents!
+    const accentPalette = Object.values(accentColors)
+    const accentBackground = accentPalette[0]
+    const accentColor = accentPalette[accentPalette.length - 1]
 
     // add our transparent colors first/last
     // and make sure the last (foreground) color is white/black rather than colorful
     // this is mostly for consistency with the older theme-base
     return [
+      accentBackground,
       transparent(colorPalette[0], 0),
       transparent(colorPalette[0], 0.25),
       transparent(colorPalette[0], 0.5),
@@ -145,37 +136,46 @@ export const palettes = (() => {
       transparent(colorPalette[colorI], 0.5),
       transparent(colorPalette[colorI], 0.25),
       transparent(colorPalette[colorI], 0),
+      accentColor,
     ]
   }
 
+  const brandColor = {
+    light: color.blue4Light,
+    dark: color.blue4Dark,
+  }
+
   const lightPalette = [
-    color.blue0,
-    color.blue075,
-    color.blue05,
-    color.blue025,
-    color.blue1,
-    color.blue2,
-    color.blue3,
-    color.blue4,
-    color.blue5,
-    color.blue6,
-    color.blue7,
-    color.blue8,
-    color.blue9,
-    color.blue10,
-    color.blue11,
-    color.blue12,
+    brandColor.light,
+    color.white0,
+    color.white025,
+    color.white05,
+    color.white075,
+    color.white1,
+    color.white2,
+    color.white3,
+    color.white4,
+    color.white5,
+    color.white6,
+    color.white7,
+    color.white8,
+    color.white9,
+    color.white10,
+    color.white11,
+    color.white12,
     color.black075,
     color.black05,
     color.black025,
     color.black0,
+    brandColor.dark,
   ]
 
   const darkPalette = [
+    brandColor.dark,
     color.black0,
-    color.black075,
-    color.black05,
     color.black025,
+    color.black05,
+    color.black075,
     color.black1,
     color.black2,
     color.black3,
@@ -188,21 +188,38 @@ export const palettes = (() => {
     color.black10,
     color.black11,
     color.black12,
-    color.blue075,
-    color.blue05,
-    color.blue025,
-    color.blue0,
+    color.white075,
+    color.white05,
+    color.white025,
+    color.white0,
+    brandColor.light,
   ]
 
+  const lightColorNames = objectKeys(colorTokens.light)
   const lightPalettes = objectFromEntries(
-    objectKeys(colorTokens.light).map(
-      (key) => [`light_${key}`, getColorPalette(colorTokens.light[key])] as const
+    lightColorNames.map(
+      (key, index) =>
+        [
+          `light_${key}`,
+          getColorPalette(
+            colorTokens.light[key],
+            colorTokens.light[lightColorNames[(index + 1) % lightColorNames.length]]
+          ),
+        ] as const
     )
   )
 
+  const darkColorNames = objectKeys(colorTokens.dark)
   const darkPalettes = objectFromEntries(
-    objectKeys(colorTokens.dark).map(
-      (key) => [`dark_${key}`, getColorPalette(colorTokens.dark[key])] as const
+    darkColorNames.map(
+      (key, index) =>
+        [
+          `dark_${key}`,
+          getColorPalette(
+            colorTokens.dark[key],
+            colorTokens.light[darkColorNames[(index + 1) % darkColorNames.length]]
+          ),
+        ] as const
     )
   )
 
@@ -218,51 +235,61 @@ export const palettes = (() => {
   }
 })()
 
-export const templates = (() => {
-  const transparencies = 3
+export const getTemplates = (scheme: 'dark' | 'light') => {
+  const isLight = scheme === 'light'
+
+  // our palettes have 4 things padding each end until you get to bg/color:
+  // [accentBg, transparent1, transparent2, transparent3, transparent4, background, ...]
+  const bgIndex = 5
+  const lighten = isLight ? -1 : 1
+  const darken = -lighten
+  const borderColor = bgIndex + 3
 
   // templates use the palette and specify index
   // negative goes backwards from end so -1 is the last item
   const base = {
-    background0: 0,
-    background025: 1,
-    background05: 2,
-    background075: 3,
-    color1: transparencies + 1,
-    color2: transparencies + 2,
-    color3: transparencies + 3,
-    color4: transparencies + 4,
-    color5: transparencies + 5,
-    color6: transparencies + 6,
-    color7: transparencies + 7,
-    color8: transparencies + 8,
-    color9: transparencies + 9,
-    color10: transparencies + 10,
-    color11: transparencies + 11,
-    color12: transparencies + 12,
-    color0: -0,
-    color025: -1,
-    color05: -2,
-    color075: -3,
+    accentBackground: 0,
+    accentColor: -0,
+
+    background0: 1,
+    background025: 2,
+    background05: 3,
+    background075: 4,
+    color1: bgIndex,
+    color2: bgIndex + 1,
+    color3: bgIndex + 2,
+    color4: bgIndex + 3,
+    color5: bgIndex + 4,
+    color6: bgIndex + 5,
+    color7: bgIndex + 6,
+    color8: bgIndex + 7,
+    color9: bgIndex + 8,
+    color10: bgIndex + 9,
+    color11: bgIndex + 10,
+    color12: bgIndex + 11,
+    color0: -1,
+    color025: -2,
+    color05: -3,
+    color075: -4,
     // the background, color, etc keys here work like generics - they make it so you
     // can publish components for others to use without mandating a specific color scale
     // the @tamagui/button Button component looks for `$background`, so you set the
     // dark_red_Button theme to have a stronger background than the dark_red theme.
-    background: transparencies + 1,
-    backgroundHover: transparencies + 2,
-    backgroundPress: transparencies + 3,
-    backgroundFocus: transparencies + 1,
-    borderColor: transparencies + 4,
-    borderColorHover: transparencies + 5,
-    borderColorFocus: transparencies + 2,
-    borderColorPress: transparencies + 4,
-    color: -transparencies - 1,
-    colorHover: -transparencies - 2,
-    colorPress: -transparencies - 1,
-    colorFocus: -transparencies - 2,
-    colorTransparent: -0,
-    placeholderColor: -transparencies - 4,
-    outlineColor: -1,
+    background: bgIndex,
+    backgroundHover: bgIndex + lighten, // always lighten on hover no matter the scheme
+    backgroundPress: bgIndex + darken, // always darken on press no matter the theme
+    backgroundFocus: bgIndex + darken,
+    borderColor,
+    borderColorHover: borderColor + lighten,
+    borderColorPress: borderColor + darken,
+    borderColorFocus: borderColor,
+    color: -bgIndex,
+    colorHover: -bgIndex - 1,
+    colorPress: -bgIndex,
+    colorFocus: -bgIndex - 1,
+    colorTransparent: -1,
+    placeholderColor: -bgIndex - 3,
+    outlineColor: -2,
   }
 
   const surface1 = {
@@ -298,15 +325,20 @@ export const templates = (() => {
     borderColorPress: base.borderColorPress + 3,
   }
 
-  const surfaceActive = {
+  const surfaceActiveBg = {
     background: base.background + 5,
     backgroundHover: base.background + 5,
     backgroundPress: base.backgroundPress + 5,
     backgroundFocus: base.backgroundFocus + 5,
-    borderColor: base.borderColor + 5,
-    borderColorHover: base.borderColor + 5,
-    borderColorFocus: base.borderColorFocus + 5,
-    borderColorPress: base.borderColorPress + 5,
+  }
+
+  const surfaceActive = {
+    ...surfaceActiveBg,
+    // match border to background when active
+    borderColor: surfaceActiveBg.background,
+    borderColorHover: surfaceActiveBg.backgroundHover,
+    borderColorFocus: surfaceActiveBg.backgroundFocus,
+    borderColorPress: surfaceActiveBg.backgroundPress,
   }
 
   const inverseSurface1 = {
@@ -361,7 +393,22 @@ export const templates = (() => {
     inverseActive,
     surfaceActive,
   }
-})()
+}
+
+const lightTemplates = getTemplates('light')
+const darkTemplates = getTemplates('dark')
+const templates = {
+  ...objectFromEntries(
+    objectKeys(lightTemplates).map(
+      (name) => [`light_${name}`, lightTemplates[name]] as const
+    )
+  ),
+  ...objectFromEntries(
+    objectKeys(darkTemplates).map(
+      (name) => [`dark_${name}`, darkTemplates[name]] as const
+    )
+  ),
+}
 
 const shadows = {
   light: {
@@ -399,7 +446,7 @@ const overlayThemeDefinitions = [
   {
     parent: 'dark',
     theme: {
-      background: 'rgba(0,0,0,0.9)',
+      background: 'rgba(0,0,0,0.8)',
     },
   },
 ]
@@ -509,8 +556,20 @@ const themeBuilder = createThemeBuilder()
     active: {
       template: 'surface3',
     },
+    surface1: {
+      template: 'surface1',
+    },
+    surface2: {
+      template: 'surface2',
+    },
+    surface3: {
+      template: 'surface3',
+    },
+    surface4: {
+      template: 'surfaceActive',
+    },
   })
-  .addChildThemes(
+  .addComponentThemes(
     {
       ListItem: {
         template: 'surface1',
@@ -522,9 +581,6 @@ const themeBuilder = createThemeBuilder()
       Switch: surface2,
       SwitchThumb: inverseSurface1,
       TooltipContent: surface2,
-      DrawerFrame: {
-        template: 'surface1',
-      },
       Progress: {
         template: 'surface1',
       },
@@ -548,7 +604,14 @@ const themeBuilder = createThemeBuilder()
       TextArea: surface1,
     },
     {
-      avoidNestingWithin: ['alt1', 'alt2'],
+      avoidNestingWithin: [
+        'alt1',
+        'alt2',
+        'surface1',
+        'surface2',
+        'surface3',
+        'surface4',
+      ],
     }
   )
 
@@ -556,21 +619,123 @@ const themeBuilder = createThemeBuilder()
 
 const themesIn = themeBuilder.build()
 
-export type Theme = Record<keyof typeof templates.base, string> &
+export type Theme = Record<keyof typeof lightTemplates.base, string> &
   typeof nonInherited.light
+
 export type ThemesOut = Record<keyof typeof themesIn, Theme>
-export const themes = themesIn as ThemesOut
+
+export const themes = themesIn as any as ThemesOut
+
+// --- tokens ---
+
+// should roughly map to button/input etc height at each level
+// fonts should match that height/lineHeight at each stop
+// so these are really non-linear on purpose
+// why?
+//   - at sizes <1, used for fine grained things (borders, smallest paddingY)
+//     - so smallest padY should be roughly 1-4px so it can join with lineHeight
+//   - at sizes >=1, have to consider "pressability" (jumps up)
+//   - after that it should go upwards somewhat naturally
+//   - H1 / headings top out at 10 naturally, so after 10 we can go upwards faster
+//  but also one more wrinkle...
+//  space is used in conjunction with size
+//  i'm setting space to generally just a fixed fraction of size (~1/3-2/3 still fine tuning)
+export const size = {
+  $0: 0,
+  '$0.25': 2,
+  '$0.5': 4,
+  '$0.75': 8,
+  $1: 20,
+  '$1.5': 24,
+  $2: 28,
+  '$2.5': 32,
+  $3: 36,
+  '$3.5': 40,
+  $4: 44,
+  $true: 44,
+  '$4.5': 48,
+  $5: 52,
+  $6: 64,
+  $7: 74,
+  $8: 84,
+  $9: 94,
+  $10: 104,
+  $11: 124,
+  $12: 144,
+  $13: 164,
+  $14: 184,
+  $15: 204,
+  $16: 224,
+  $17: 224,
+  $18: 244,
+  $19: 264,
+  $20: 284,
+}
+
+type SizeKeysIn = keyof typeof size
+type Sizes = {
+  [Key in SizeKeysIn extends `$${infer Key}` ? Key : SizeKeysIn]: number
+}
+type SizeKeys = `${keyof Sizes extends `${infer K}` ? K : never}`
+
+export const spaces = Object.entries(size).map(([k, v]) => {
+  return [k, sizeToSpace(v)] as const
+})
+
+export const spacesNegative = spaces.slice(1).map(([k, v]) => [`-${k.slice(1)}`, -v])
+
+type SizeKeysWithNegatives =
+  | Exclude<`-${SizeKeys extends `$${infer Key}` ? Key : SizeKeys}`, '-0'>
+  | SizeKeys
+
+export const space: {
+  [Key in SizeKeysWithNegatives]: Key extends keyof Sizes ? Sizes[Key] : number
+} = {
+  ...Object.fromEntries(spaces),
+  ...Object.fromEntries(spacesNegative),
+} as any
+
+export const zIndex = {
+  0: 0,
+  1: 100,
+  2: 200,
+  3: 300,
+  4: 400,
+  5: 500,
+}
+
+export const radius = {
+  0: 0,
+  1: 3,
+  2: 5,
+  3: 7,
+  4: 9,
+  true: 9,
+  5: 10,
+  6: 16,
+  7: 19,
+  8: 22,
+  9: 26,
+  10: 34,
+  11: 42,
+  12: 50,
+}
+
+export const tokens = createTokens({
+  color,
+  radius,
+  zIndex,
+  space,
+  size,
+})
 
 // --- utils ---
 
-export function postfixObjKeys<
-  A extends { [key: string]: Variable<string> | string },
-  B extends string,
->(
+export function postfixObjKeys<A extends { [key: string]: string }, B extends string>(
   obj: A,
   postfix: B
 ): {
-  [Key in `${keyof A extends string ? keyof A : never}${B}`]: Variable<string> | string
+  [Key in `${keyof A extends string ? keyof A : never}${B}`]: string
 } {
   return Object.fromEntries(
     Object.entries(obj).map(([k, v]) => [`${k}${postfix}`, v])

@@ -32,7 +32,6 @@ export function AddPost() {
       />
       <Button 
         onPress={createPost}
-        theme="blue_active"
       >Add</Button>
     </XStack>
   );

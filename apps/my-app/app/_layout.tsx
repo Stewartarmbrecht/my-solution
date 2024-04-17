@@ -4,7 +4,7 @@ import 'core-js/full/symbol/async-iterator';
 // Added next 3 lines for tamagui.
 // Removing to get tests to pass.
 // import '../tamagui-web.css'
-import { TamaguiProvider, View, tamaguiConfig } from '@my-solution/ui'
+import { TamaguiProvider, View, colors, tamaguiConfig } from '@my-solution/ui'
 // import { tamaguiConfig } from '../tamagui.config'
 
 import FontAwesome from '@expo/vector-icons/FontAwesome';
@@ -55,7 +55,7 @@ export default function RootLayout() {
   }, [loaded]);
 
   if (!loaded) {
-    if(Platform.OS === 'web') {
+    if (Platform.OS === 'web') {
       return <WebSplashScreen />;
     } else {
       return null;
@@ -68,21 +68,25 @@ export default function RootLayout() {
 function RootLayoutNav() {
   const colorScheme = useColorScheme();
   logRaw('colorScheme', colorScheme);
+  DefaultTheme.colors.primary = colors.blue.blue8;
+  DarkTheme.colors.primary = colors.blueDark.blue8;
+  //DefaultTheme.colors.background = colorScheme === 'dark' ? '#000000' : '#b8dff6';
+  
 
   return (
-    <MyState>
-      <Backend>
-        <TamaguiProvider config={tamaguiConfig} defaultTheme={/*istanbul ignore next*/colorScheme === 'dark' ? 'dark' : 'light'}>
-          <ThemeProvider value={/*istanbul ignore next*/colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+    <TamaguiProvider config={tamaguiConfig} defaultTheme={/*istanbul ignore next*/colorScheme === 'dark' ? 'dark_blue' : 'light_blue'}>
+      <ThemeProvider value={/*istanbul ignore next*/colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+        <MyState>
+          <Backend>
             <View f={1}>
               <Stack>
                 <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
                 <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
               </Stack>
             </View>
-          </ThemeProvider>
-        </TamaguiProvider>
-      </Backend>
-    </MyState>
+          </Backend>
+        </MyState>
+      </ThemeProvider>
+    </TamaguiProvider>
   );
 }

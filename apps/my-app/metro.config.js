@@ -23,13 +23,13 @@ const customConfig = {
   },
 };
 // Added for tamagui.
-const tamaguiConfig = withTamagui(defaultConfig, {
-    components: ['tamagui'],
-    config: './tamagui.config.ts',
-    outputCSS: './tamagui-web.css',
-})
+// const tamaguiConfig = withTamagui(defaultConfig, {
+//     components: ['tamagui'],
+//     config: './tamagui.config.ts',
+//     outputCSS: './tamagui-web.css',
+// })
 
-module.exports = withNxMetro(mergeConfig(tamaguiConfig, customConfig), {
+module.exports = withNxMetro(mergeConfig(defaultConfig, customConfig), {
   // Change this to true to see debugging info.
   // Useful if you have issues resolving modules
   debug: false,
