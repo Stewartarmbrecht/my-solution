@@ -16,5 +16,5 @@
     "./**/*.test.js",
     "./**/*.test.jsx",
     "./**/*.d.ts"
-, "theme.ts.skip"  ]
+  ]
 }

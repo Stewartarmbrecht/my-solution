@@ -28,5 +28,5 @@
     // Added next two for tamagui.
     ".expo/types/**/*.ts",
     "expo-env.d.ts"
-, "theme.ts.skip"  ]
+  ]
 }

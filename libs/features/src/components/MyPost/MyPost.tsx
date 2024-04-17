@@ -18,7 +18,6 @@ export function MyPost(props: MyPostProps) {
       <Card flexDirection='row' ai="center" key={props.post.id} gap="$4">
         <Button 
           onPress={deletePostHandler}
-          theme="blue"
         >X</Button>
         <Text>{props.post.title}</Text>
       </Card>
