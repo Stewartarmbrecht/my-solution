@@ -2,7 +2,7 @@ import React from 'react';
 
 import { ExternalLink } from '../../components/ExternalLink';
 
-import { Card, Text, View, YStack } from '@my-solution/ui';
+import { Card, Text, YStack } from '@my-solution/ui';
 
 export function EditScreenInfo({ path }: { path: string }) {
   return (

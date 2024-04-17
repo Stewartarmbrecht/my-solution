@@ -7,14 +7,15 @@
   },
   "include": [
     "jest.config.ts",
-    "./**/*.ts",
-    "./**/*.tsx",
-    "./**/*.js",
-    "./**/*.jsx",
-    "./**/*.test.ts",
-    "./**/*.test.tsx",
-    "./**/*.test.js",
-    "./**/*.test.jsx",
-    "./**/*.d.ts"
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.js",
+    "src/**/*.jsx",
+    "src/**/*.test.ts",
+    "src/**/*.test.tsx",
+    "src/**/*.test.js",
+    "src/**/*.test.jsx",
+    "types/**/*.d.ts",
+    "tamagui.config.ts"
   ]
 }

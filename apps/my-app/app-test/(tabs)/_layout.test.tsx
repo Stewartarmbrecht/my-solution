@@ -1,6 +1,6 @@
 import { act, fireEvent, renderRouter, screen } from 'expo-router/testing-library';
 import { useFonts,  } from 'expo-font';
-import { Platform } from 'react-native';
+import { useMedia } from '@my-solution/ui';
 
 jest.mock('expo-font', () => {
   const actual = jest.requireActual('expo-font');
@@ -24,13 +24,23 @@ jest.mock('@my-solution/features', () => {
   }
 });
 
+// Mock useMedia() to change the screen width for different tests.
+jest.mock('@my-solution/ui', () => {
+  const actual = jest.requireActual('@my-solution/ui');
+  return {
+    ...actual,
+    useMedia: jest.fn().mockReturnValue({ gtSm: false }),
+  }
+});
+
 describe('_layout', () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
-  it('should render tabs', async () => {
-    Platform.OS = 'ios';
+  it('should render tabs when on a small device width', async () => {
+    (useMedia as jest.Mock).mockReturnValue({ gtSm: false });
+
     (useFonts as jest.Mock).mockReturnValue([true, null]);
     renderRouter('./apps/my-app/app', {
       initialUrl: '/',
@@ -43,7 +53,8 @@ describe('_layout', () => {
     expect(settings).toBeTruthy();
   }, 30000);
   it('should render Documentation Tab', async () => {
-    Platform.OS = 'ios';
+    (useMedia as jest.Mock).mockReturnValue({ gtSm: false });
+
     (useFonts as jest.Mock).mockReturnValue([true, null]);
     renderRouter('./apps/my-app/app', {
       initialUrl: '/docs',
@@ -53,7 +64,8 @@ describe('_layout', () => {
   }, 30000);
 
   it('should render Settings Tab', async () => {
-    Platform.OS = 'ios';
+    (useMedia as jest.Mock).mockReturnValue({ gtSm: false });
+
     (useFonts as jest.Mock).mockReturnValue([true, null]);
     renderRouter('./apps/my-app/app', {
       initialUrl: '/settings',
@@ -62,8 +74,9 @@ describe('_layout', () => {
     expect(settings).toBeTruthy();
   }, 30000);
 
-  it('should render drawers on web', async () => {
-    Platform.OS = 'web';
+  it('should render drawers on screens larger than small', async () => {
+    (useMedia as jest.Mock).mockReturnValue({ gtSm: true });
+
     (useFonts as jest.Mock).mockReturnValue([true, null]);
     renderRouter('./apps/my-app/app', {
       initialUrl: '/',
@@ -75,8 +88,9 @@ describe('_layout', () => {
     const settings = await screen.findAllByText('Settings');
     expect(settings).toBeTruthy();
   }, 30000);
-  it('should render Documentation Drawer Tab on Web', async () => {
-    Platform.OS = 'web';
+  it('should render Documentation Drawer Tab on screens larger than small', async () => {
+    (useMedia as jest.Mock).mockReturnValue({ gtSm: true });
+
     (useFonts as jest.Mock).mockReturnValue([true, null]);
     renderRouter('./apps/my-app/app', {
       initialUrl: '/docs',
@@ -84,8 +98,9 @@ describe('_layout', () => {
     const tabTwo = await screen.findAllByText('Documentation');
     expect(tabTwo).toBeTruthy();
   }, 30000);
-  it('should render Settings Drawer Tab on Web', async () => {
-    Platform.OS = 'web';
+  it('should render Settings Drawer Tab on screens larger than small', async () => {
+    (useMedia as jest.Mock).mockReturnValue({ gtSm: true });
+
     (useFonts as jest.Mock).mockReturnValue([true, null]);
     renderRouter('./apps/my-app/app', {
       initialUrl: '/settings',
@@ -95,7 +110,8 @@ describe('_layout', () => {
   }, 30000);
 
   it('should render an info icon in for tab one', async () => {
-    Platform.OS = 'ios';
+    (useMedia as jest.Mock).mockReturnValue({ gtSm: false });
+
     (useFonts as jest.Mock).mockReturnValue([true, null]);
     renderRouter('./apps/my-app/app', {
       initialUrl: '/',
@@ -104,7 +120,8 @@ describe('_layout', () => {
     expect(infoIcon).toBeTruthy();
   }, 30000);
   it('should launch a modal window when the user presses the info icon', async () => {
-    Platform.OS = 'ios';
+    (useMedia as jest.Mock).mockReturnValue({ gtSm: false });
+
     (useFonts as jest.Mock).mockReturnValue([true, null]);
     renderRouter('./apps/my-app/app', {
       initialUrl: '/',

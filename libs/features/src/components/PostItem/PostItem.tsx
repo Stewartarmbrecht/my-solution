@@ -3,11 +3,11 @@ import { useAppDispatch } from '@my-solution/state';
 import { Button, Card, Text, YStack } from '@my-solution/ui';
 
 /* eslint-disable-next-line */
-export interface MyPostProps {
+export interface PostProps {
   post: Post;
 }
 
-export function MyPost(props: MyPostProps) {
+export function PostItem(props: PostProps) {
   const dispatch = useAppDispatch();
   const deletePostHandler = () => {
     dispatch(postDeleted(props.post));

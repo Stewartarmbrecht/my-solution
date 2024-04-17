@@ -10,14 +10,14 @@
     "test-setup.tsx",
     "app.config.js",
 
-    "**/*.test.ts",
-    "**/*.test.tsx",
-    "**/*.d.ts",
+    "./**/*.test.ts",
+    "./**/*.test.tsx",
+    "./**/*.d.ts",
     
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.js",
-    "**/*.jsx",
+    "./**/*.ts",
+    "./**/*.tsx",
+    "./**/*.js",
+    "./**/*.jsx",
     
     "**/*.json",
   ]
