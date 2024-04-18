@@ -44,6 +44,12 @@ export default {
     // Added as part of tamagui.
     'expo-font',
     [
+      "expo-screen-orientation",
+      {
+        "initialOrientation": "DEFAULT"
+      }
+    ],
+    [
       '@config-plugins/detox',
       {
         skipProguard: false,

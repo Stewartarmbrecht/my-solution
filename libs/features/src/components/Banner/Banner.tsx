@@ -22,7 +22,7 @@ export function Banner() {
   });
   
   return (
-    <XStack ai="center" mt={insets.top}>
+    <XStack ai="center" mt={insets.top} ml={insets.left} mr={insets.right} mb={insets.bottom}>
       <View m="$2" ml="$4">
         <Image 
           source={require('../../../assets/images/banner-icon.png')} 

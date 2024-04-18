@@ -12,7 +12,7 @@ export default function TabLayout() {
   const accentColor = theme.accentColor.get();
   const backgroundColor = theme.backgroundColor?.get();
   const media = useMedia();
-  if (media.gtSm) {
+  if (media.gtMd) {
     // Use a basic custom layout on web.
     return (
       <GestureHandlerRootView style={{ flex: 1 }}>

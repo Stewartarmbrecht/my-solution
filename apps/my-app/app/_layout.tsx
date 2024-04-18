@@ -19,6 +19,7 @@ import { Backend } from '@my-solution/backend';
 import { Platform, useColorScheme } from 'react-native';
 import { WebSplashScreen } from '@my-solution/features';
 import { logRaw } from '@my-solution/shared';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -78,12 +79,10 @@ function RootLayoutNav() {
       <ThemeProvider value={/*istanbul ignore next*/colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
         <MyState>
           <Backend>
-            <View f={1}>
-              <Stack>
-                <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-                <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
-              </Stack>
-            </View>
+            <Stack>
+              <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+              <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
+            </Stack>
           </Backend>
         </MyState>
       </ThemeProvider>

@@ -67,7 +67,8 @@
     "@tamagui/config": "*",
     "@tamagui/metro-plugin": "*",
     "@tamagui/build": "*",
-    "@tamagui/lucide-icons": "*"
+    "@tamagui/lucide-icons": "*",
+    "expo-screen-orientation": "*"
   },
   "devDependencies": {
     "@babel/core": "*",

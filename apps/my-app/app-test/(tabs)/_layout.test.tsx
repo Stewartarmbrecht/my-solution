@@ -29,7 +29,7 @@ jest.mock('@my-solution/ui', () => {
   const actual = jest.requireActual('@my-solution/ui');
   return {
     ...actual,
-    useMedia: jest.fn().mockReturnValue({ gtSm: false }),
+    useMedia: jest.fn().mockReturnValue({ gtMd: false }),
   }
 });
 
@@ -39,7 +39,7 @@ describe('_layout', () => {
   });
 
   it('should render tabs when on a small device width', async () => {
-    (useMedia as jest.Mock).mockReturnValue({ gtSm: false });
+    (useMedia as jest.Mock).mockReturnValue({ gtMd: false });
 
     (useFonts as jest.Mock).mockReturnValue([true, null]);
     renderRouter('./apps/my-app/app', {
@@ -53,7 +53,7 @@ describe('_layout', () => {
     expect(settings).toBeTruthy();
   }, 30000);
   it('should render Documentation Tab', async () => {
-    (useMedia as jest.Mock).mockReturnValue({ gtSm: false });
+    (useMedia as jest.Mock).mockReturnValue({ gtMd: false });
 
     (useFonts as jest.Mock).mockReturnValue([true, null]);
     renderRouter('./apps/my-app/app', {
@@ -64,7 +64,7 @@ describe('_layout', () => {
   }, 30000);
 
   it('should render Settings Tab', async () => {
-    (useMedia as jest.Mock).mockReturnValue({ gtSm: false });
+    (useMedia as jest.Mock).mockReturnValue({ gtMd: false });
 
     (useFonts as jest.Mock).mockReturnValue([true, null]);
     renderRouter('./apps/my-app/app', {
@@ -75,7 +75,7 @@ describe('_layout', () => {
   }, 30000);
 
   it('should render drawers on screens larger than small', async () => {
-    (useMedia as jest.Mock).mockReturnValue({ gtSm: true });
+    (useMedia as jest.Mock).mockReturnValue({ gtMd: true });
 
     (useFonts as jest.Mock).mockReturnValue([true, null]);
     renderRouter('./apps/my-app/app', {
@@ -89,7 +89,7 @@ describe('_layout', () => {
     expect(settings).toBeTruthy();
   }, 30000);
   it('should render Documentation Drawer Tab on screens larger than small', async () => {
-    (useMedia as jest.Mock).mockReturnValue({ gtSm: true });
+    (useMedia as jest.Mock).mockReturnValue({ gtMd: true });
 
     (useFonts as jest.Mock).mockReturnValue([true, null]);
     renderRouter('./apps/my-app/app', {
@@ -99,7 +99,7 @@ describe('_layout', () => {
     expect(tabTwo).toBeTruthy();
   }, 30000);
   it('should render Settings Drawer Tab on screens larger than small', async () => {
-    (useMedia as jest.Mock).mockReturnValue({ gtSm: true });
+    (useMedia as jest.Mock).mockReturnValue({ gtMd: true });
 
     (useFonts as jest.Mock).mockReturnValue([true, null]);
     renderRouter('./apps/my-app/app', {
@@ -110,7 +110,7 @@ describe('_layout', () => {
   }, 30000);
 
   it('should render an info icon in for tab one', async () => {
-    (useMedia as jest.Mock).mockReturnValue({ gtSm: false });
+    (useMedia as jest.Mock).mockReturnValue({ gtMd: false });
 
     (useFonts as jest.Mock).mockReturnValue([true, null]);
     renderRouter('./apps/my-app/app', {
@@ -120,7 +120,7 @@ describe('_layout', () => {
     expect(infoIcon).toBeTruthy();
   }, 30000);
   it('should launch a modal window when the user presses the info icon', async () => {
-    (useMedia as jest.Mock).mockReturnValue({ gtSm: false });
+    (useMedia as jest.Mock).mockReturnValue({ gtMd: false });
 
     (useFonts as jest.Mock).mockReturnValue([true, null]);
     renderRouter('./apps/my-app/app', {
