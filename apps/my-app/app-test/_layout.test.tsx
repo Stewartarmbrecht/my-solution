@@ -1,7 +1,7 @@
 import { renderRouter, screen } from 'expo-router/testing-library';
 import { Platform } from 'react-native';
 import { useFonts,  } from 'expo-font';
-import { useColorScheme } from '@my-solution/features';
+import { useColorScheme } from '@my-solution/ui';
 
 jest.mock('expo-font', () => {
   const actual = jest.requireActual('expo-font');
@@ -21,6 +21,14 @@ jest.mock('@my-solution/features', () => {
   return {
     ...actual,
     TabBarIcon: () => null,
+  }
+});
+
+// Mock react-native useColorScheme
+jest.mock('@my-solution/ui', () => {
+  const actual = jest.requireActual('@my-solution/ui');
+  return {
+    ...actual,
     useColorScheme: jest.fn().mockReturnValue('light'),
   }
 });

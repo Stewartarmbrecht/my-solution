@@ -1,6 +1,6 @@
 import { Post, postDeleted } from "@my-solution/shared";
 import { useAppDispatch } from "@my-solution/state";
-import { Button, Card, Stack, Text, XStack, YStack } from "@my-solution/ui";
+import { Button, Card, Stack, Text, YStack } from "@my-solution/ui";
 import moment from "moment";
 import { Platform } from "react-native";
 

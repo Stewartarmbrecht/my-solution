@@ -4,7 +4,7 @@ import 'core-js/full/symbol/async-iterator';
 // Added next 3 lines for tamagui.
 // Removing to get tests to pass.
 // import '../tamagui-web.css'
-import { TamaguiProvider, View, colors, tamaguiConfig } from '@my-solution/ui'
+import { TamaguiProvider, colors, tamaguiConfig } from '@my-solution/ui'
 // import { tamaguiConfig } from '../tamagui.config'
 
 import FontAwesome from '@expo/vector-icons/FontAwesome';
@@ -16,10 +16,10 @@ import { useEffect } from 'react';
 
 import { MyState } from '@my-solution/state';
 import { Backend } from '@my-solution/backend';
-import { Platform, useColorScheme } from 'react-native';
+import { Platform } from 'react-native';
+import { useColorScheme } from '@my-solution/ui';
 import { WebSplashScreen } from '@my-solution/features';
 import { logRaw } from '@my-solution/shared';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
 export {
   // Catch any errors thrown by the Layout component.

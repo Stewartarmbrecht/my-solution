@@ -20,7 +20,6 @@ jest.mock('@my-solution/features', () => {
   return {
     ...actual,
     TabBarIcon: () => null,
-    useColorScheme: jest.fn().mockReturnValue('light'),
   }
 });
 
