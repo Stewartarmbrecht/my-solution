@@ -16,15 +16,15 @@
   "exclude": [
     "node_modules/**/*",
     "jest.config.ts",
-    "./**/*.test.ts", 
-    "./**/*.test.tsx", 
+    "src/**/*.test.ts", 
+    "src/**/*.test.tsx", 
     "test-setup.ts"
   ],
   "include": [
-    "./**/*.js", 
-    "./**/*.jsx", 
-    "./**/*.ts", 
-    "./**/*.tsx",
+    "src/**/*.js", 
+    "src/**/*.jsx", 
+    "src/**/*.ts", 
+    "src/**/*.tsx",
     // Added next two for tamagui.
     ".expo/types/**/*.ts",
     "expo-env.d.ts"

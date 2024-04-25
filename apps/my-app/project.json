@@ -38,7 +38,8 @@
         "sync-deps"
       ],
       "options": {
-        "platform": "android"
+        "platform": "android",
+        "port": 19001
       }
     },
     "build-dev": {
@@ -52,6 +53,13 @@
       "executor": "@nx/expo:build",
       "options": {
         "platform": "ios",
+        "profile": "development"
+      }
+    },
+    "build-dev-android": {
+      "executor": "@nx/expo:build",
+      "options": {
+        "platform": "android",
         "profile": "development"
       }
     },

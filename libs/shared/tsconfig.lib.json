@@ -6,10 +6,10 @@
   },
   "exclude": ["**/*.spec.ts", "**/*.spec.tsx", "test-setup.ts"],
   "include": [
-    "**/*.js", 
-    "**/*.jsx", 
-    "**/*.ts", 
-    "**/*.tsx",
-    "**/*.json"
+    "src/**/*.js", 
+    "src/**/*.jsx", 
+    "src/**/*.ts", 
+    "src/**/*.tsx",
+    "src/**/*.json"
   ]
 }

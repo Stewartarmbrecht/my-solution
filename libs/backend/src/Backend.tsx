@@ -10,7 +10,7 @@ import { useSynchronizer } from './sync/useSynchronizer';
 import { useEffect, useState } from 'react';
 import { getCurrentUser } from 'aws-amplify/auth';
 import { useDispatch } from 'react-redux';
-import { useColorScheme } from 'react-native';
+import { useColorScheme } from '@my-solution/ui';
 import { colors } from '@my-solution/ui';
 
 Amplify.configure(amplifyconfig);

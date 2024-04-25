@@ -4,7 +4,7 @@ import 'core-js/full/symbol/async-iterator';
 // Added next 3 lines for tamagui.
 // Removing to get tests to pass.
 // import '../tamagui-web.css'
-import { TamaguiProvider, View, colors, tamaguiConfig } from '@my-solution/ui'
+import { TamaguiProvider, colors, tamaguiConfig } from '@my-solution/ui'
 // import { tamaguiConfig } from '../tamagui.config'
 
 import FontAwesome from '@expo/vector-icons/FontAwesome';
@@ -16,7 +16,8 @@ import { useEffect } from 'react';
 
 import { MyState } from '@my-solution/state';
 import { Backend } from '@my-solution/backend';
-import { Platform, useColorScheme } from 'react-native';
+import { Platform } from 'react-native';
+import { useColorScheme } from '@my-solution/ui';
 import { WebSplashScreen } from '@my-solution/features';
 import { logRaw } from '@my-solution/shared';
 
@@ -78,12 +79,10 @@ function RootLayoutNav() {
       <ThemeProvider value={/*istanbul ignore next*/colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
         <MyState>
           <Backend>
-            <View f={1}>
-              <Stack>
-                <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-                <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
-              </Stack>
-            </View>
+            <Stack>
+              <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+              <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
+            </Stack>
           </Backend>
         </MyState>
       </ThemeProvider>

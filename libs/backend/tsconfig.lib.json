@@ -5,15 +5,15 @@
     "types": ["node"],
   },
   "exclude": [
-    "**/*.test.ts", 
-    "**/*.test.tsx", 
+    "src/**/*.test.ts", 
+    "src/**/*.test.tsx", 
     "test-setup.ts"
   ],
   "include": [
-    "**/*.js", 
-    "**/*.jsx", 
-    "**/*.ts", 
-    "**/*.tsx",
-    "**/*.json"
+    "src/**/*.js", 
+    "src/**/*.jsx", 
+    "src/**/*.ts", 
+    "src/**/*.tsx",
+    "src/**/*.json"
   ]
 }

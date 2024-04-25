@@ -1,7 +1,7 @@
 import React from 'react';
-import { MyPosts } from './MyPosts';
+import { PostList } from './PostList';
 import { useAppSelector } from '@my-solution/state';
-import { MyPost } from '../MyPost';
+import { PostItem } from '../PostItem';
 import { AddPost } from '../AddPost';
 import { renderWithTamagui } from '../../renderWithTamagui.test-util';
 
@@ -11,9 +11,9 @@ jest.mock('@my-solution/state', () => ({
   useAppDispatch: jest.fn(),
 }));
 
-//spy on MyPost
-jest.mock('../MyPost', () => ({
-  MyPost: jest.fn(() => null),
+//spy on PostItem
+jest.mock('../PostItem', () => ({
+  PostItem: jest.fn(() => null),
 }));
 
 //mock AddPost
@@ -21,8 +21,8 @@ jest.mock('../AddPost', () => ({
   AddPost: jest.fn(() => null),
 }));
 
-describe('MyPosts', () => {
-  it('should render a MyPost for each post', () => {
+describe('PostItems', () => {
+  it('should render a PostItem for each post', () => {
     (useAppSelector as unknown as jest.Mock).mockReturnValue([{
       id: '1',
       title: 'My Post',
@@ -34,12 +34,12 @@ describe('MyPosts', () => {
       status: 'ACTIVE',
       content: 'This is my second post',
     }]);
-    renderWithTamagui(<MyPosts />);
-    expect(MyPost).toHaveBeenCalledWith({ post: { id: '1', title: 'My Post', status: 'ACTIVE', content: 'This is my post' } }, {});
-    expect(MyPost).toHaveBeenCalledWith({ post: { id: '2', title: 'My Second Post', status: 'ACTIVE', content: 'This is my second post' } }, {});
+    renderWithTamagui(<PostList />);
+    expect(PostItem).toHaveBeenCalledWith({ post: { id: '1', title: 'My Post', status: 'ACTIVE', content: 'This is my post' } }, {});
+    expect(PostItem).toHaveBeenCalledWith({ post: { id: '2', title: 'My Second Post', status: 'ACTIVE', content: 'This is my second post' } }, {});
   });
   it('should render an AddPost', () => {
-    renderWithTamagui(<MyPosts />);
+    renderWithTamagui(<PostList />);
     expect(AddPost).toHaveBeenCalledWith({}, {});
   });
 });

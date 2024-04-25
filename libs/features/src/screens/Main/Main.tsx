@@ -1,4 +1,4 @@
-import { MyPosts } from "../../components/MyPosts";
+import { PostList } from "../../components/PostList";
 import { ScrollView } from "react-native";
 import { YStack } from "@my-solution/ui";
 
@@ -9,7 +9,7 @@ export function Main() {
       style={{ alignSelf: 'stretch', margin: 12 }}
     >
       <YStack gap="$4">
-        <MyPosts />
+        <PostList />
       </YStack>
     </ScrollView>
   )

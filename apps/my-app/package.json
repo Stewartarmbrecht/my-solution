@@ -5,7 +5,9 @@
   "main": "./index.js",
   "scripts": {
     "eas-build-post-install": "cd ../../ && node tools/scripts/eas-build-post-install.mjs . apps/my-app",
-    "eas-build-pre-install": "cd ../../ && node tools/scripts/eas-build-pre-install.mjs . apps/my-app && cp package-lock.json apps/my-app"
+    "eas-build-pre-install": "cd ../../ && node tools/scripts/eas-build-pre-install.mjs . apps/my-app && cp package-lock.json apps/my-app",
+    "android": "expo run:android",
+    "ios": "expo run:ios"
   },
   "dependencies": {
     "@aws-amplify/datastore": "*",
@@ -67,7 +69,9 @@
     "@tamagui/config": "*",
     "@tamagui/metro-plugin": "*",
     "@tamagui/build": "*",
-    "@tamagui/lucide-icons": "*"
+    "@tamagui/lucide-icons": "*",
+    "expo-screen-orientation": "*",
+    "moment": "*"
   },
   "devDependencies": {
     "@babel/core": "*",

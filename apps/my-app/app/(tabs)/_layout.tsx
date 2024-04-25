@@ -2,17 +2,17 @@ import React from 'react';
 import { Link, Tabs } from 'expo-router';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Drawer } from 'expo-router/drawer';
-import { Platform } from 'react-native';
 
 import { Banner } from '@my-solution/features';
-import { BookOpen, Button, Info, MessageCircle, Settings, YStack, useTheme } from '@my-solution/ui';
+import { BookOpen, Button, Info, MessageCircle, Settings, YStack, useMedia, useTheme } from '@my-solution/ui';
 
 // You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
 export default function TabLayout() {
   const theme = useTheme();
   const accentColor = theme.accentColor.get();
   const backgroundColor = theme.backgroundColor?.get();
-  if (Platform.OS === 'web') {
+  const media = useMedia();
+  if (media.gtMd) {
     // Use a basic custom layout on web.
     return (
       <GestureHandlerRootView style={{ flex: 1 }}>
@@ -20,6 +20,9 @@ export default function TabLayout() {
         <Drawer screenOptions={{
             drawerType: 'permanent',
             headerLeft: () => null,
+            drawerStyle: {
+              width: 175,
+            }
           }}
           useLegacyImplementation={false}
         >
