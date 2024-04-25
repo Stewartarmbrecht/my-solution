@@ -220,6 +220,9 @@ npx nx start my-app
 Then scan the QR Code with your phone.  The app should be running on your phone.
 If you have a problem with the preview app being loaded from the dev server QR code, then just enter the URL manually in the dev instance of the app.  The URL should be http://<your IP Address>:<The port you selected>
 
+## RUN MOBILE DEVELOPMENT BUILD ON ANDROID EMULATOR
+... To be documented.
+
 ## DEBUG MOBILE APP
 
 ### Debugging Code

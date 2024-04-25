@@ -42,3 +42,10 @@ expo-env.d.ts
 
 # Added for tamagui
 .tamagui
+
+# Expo prebuild
+android/
+ios/
+
+# Detox
+androidTest/

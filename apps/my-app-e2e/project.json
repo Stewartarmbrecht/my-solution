@@ -63,6 +63,10 @@
         "production": {
           "detoxConfiguration": "android.emu.release",
           "buildTarget": "my-app-e2e:build-android:production"
+        },
+        "production-att": {
+          "detoxConfiguration": "android.att.release",
+          "buildTarget": "my-app-e2e:build-android:production"
         }
       }
     },

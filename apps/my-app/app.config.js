@@ -53,7 +53,7 @@ export default {
       '@config-plugins/detox',
       {
         skipProguard: false,
-        subdomains: ['10.0.2.2', 'localhost'],
+        subdomains: ['localhost', '10.24.1.57'],
       },
     ],
   ],
