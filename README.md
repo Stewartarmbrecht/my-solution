@@ -221,7 +221,15 @@ Then scan the QR Code with your phone.  The app should be running on your phone.
 If you have a problem with the preview app being loaded from the dev server QR code, then just enter the URL manually in the dev instance of the app.  The URL should be http://<your IP Address>:<The port you selected>
 
 ## RUN MOBILE DEVELOPMENT BUILD ON ANDROID EMULATOR
-... To be documented.
+### First Time
+```
+npx nx run-android my-app
+```
+### After Dev Build Installed
+'''
+npx nx start-local my-app
+'''
+Then press a to run on android.
 
 ## DEBUG MOBILE APP
 
@@ -389,62 +397,10 @@ npx nx build-dev my-app
 ```
 After you run the build, you will need to scan the QR code on all devices to update your development build.
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 
-# NX generated readme...
-## Generate code
+# DEPLOYMENT FLOW
 
-If you happen to use Nx plugins, you can leverage code generators that might come with it.
+1. **Add Backend Features** - Make changes to the backend that only add new features that will not interfere with the existing production app.
 
-Run `nx list` to get a list of available plugins and whether they have generators. Then run `nx list <plugin-name>` to see what generators are available.
+2. 
 
-Learn more about [Nx generators on the docs](https://nx.dev/plugin-features/use-code-generators).
-
-## Running posts
-
-To execute posts with Nx use the following syntax:
-
-```
-nx <target> <project> <...options>
-```
-
-You can also run multiple targets:
-
-```
-nx run-many -t <target1> <target2>
-```
-
-..or add `-p` to filter specific projects
-
-```
-nx run-many -t <target1> <target2> -p <proj1> <proj2>
-```
-
-Targets can be defined in the `package.json` or `projects.json`. Learn more [in the docs](https://nx.dev/core-features/run-posts).
-
-## Want better Editor Integration?
-
-Have a look at the [Nx Console extensions](https://nx.dev/nx-console). It provides autocomplete support, a UI for exploring and running posts & generators, and more! Available for VSCode, IntelliJ and comes with a LSP for Vim users.
-
-## Ready to deploy?
-
-Just run `nx build demoapp` to build the application. The build artifacts will be stored in the `dist/` directory, ready to be deployed.
-
-## Set up CI!
-
-Nx comes with local caching already built-in (check your `nx.json`). On CI you might want to go a step further.
-
-- [Set up remote caching](https://nx.dev/core-features/share-your-cache)
-- [Set up task distribution across multiple machines](https://nx.dev/nx-cloud/features/distribute-task-execution)
-- [Learn more how to setup CI](https://nx.dev/recipes/ci)
-
-## Connect with us!
-
-- [Join the community](https://nx.dev/community)
-- [Subscribe to the Nx Youtube Channel](https://www.youtube.com/@nxdevtools)
-- [Follow us on Twitter](https://twitter.com/nxdevtools)

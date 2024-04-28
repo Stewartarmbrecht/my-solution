@@ -7,7 +7,19 @@
     "start": {
       "executor": "@nx/expo:start",
       "dependsOn": [
-        "sync-deps"
+        "sync-deps",
+        "set-hostname-ip"
+      ],
+      "options": {
+        "port": 19001,
+        "dev-client": true
+      }
+    },
+    "start-local": {
+      "executor": "@nx/expo:start",
+      "dependsOn": [
+        "sync-deps",
+        "set-hostname-localhost"
       ],
       "options": {
         "port": 19001,
@@ -23,6 +35,24 @@
         "command": "npx serve -s dist/apps/my-app -l 5000"
       }
     },
+    "set-hostname-localhost": {
+      "executor": "nx:run-commands",
+      "dependsOn": [
+        "sync-deps"
+      ],
+      "options": {
+        "command": "export REACT_NATIVE_PACKAGER_HOSTNAME=localhost"
+      }
+    },
+    "set-hostname-ip": {
+      "executor": "nx:run-commands",
+      "dependsOn": [
+        "sync-deps"
+      ],
+      "options": {
+        "command": "export REACT_NATIVE_PACKAGER_HOSTNAME=10.24.1.57"
+      }
+    },
     "run-ios": {
       "executor": "@nx/expo:run",
       "dependsOn": [
@@ -35,11 +65,22 @@
     "run-android": {
       "executor": "@nx/expo:run",
       "dependsOn": [
-        "sync-deps"
+        "sync-deps",
+        "connect-host-emulator",
+        "set-hostname-localhost"
       ],
       "options": {
         "platform": "android",
         "port": 19001
+      }
+    },
+    "connect-host-emulator": {
+      "executor": "nx:run-commands",
+      "dependsOn": [
+        "sync-deps"
+      ],
+      "options": {
+        "command": "adb connect host.docker.internal"
       }
     },
     "build-dev": {

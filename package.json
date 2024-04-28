@@ -80,9 +80,11 @@
     "@typescript-eslint/eslint-plugin": "6.21.0",
     "@typescript-eslint/parser": "6.21.0",
     "babel-jest": "^29.7.0",
+    "cypress": "^13.8.1",
     "detox": "20.18.1",
     "eslint": "8.48.0",
     "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-cypress": "^3.0.2",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-react": "^7.32.2",
@@ -103,7 +105,9 @@
   },
   "expo": {
     "install": {
-      "exclude": ["react-native-get-random-values"]
+      "exclude": [
+        "react-native-get-random-values"
+      ]
     }
   }
 }

@@ -1,0 +1,7 @@
+{
+  "extends": [
+    "plugin:cypress/recommended",
+    "plugin:mocha/recommended",
+    "plugin:chai-friendly/recommended"
+  ]
+}

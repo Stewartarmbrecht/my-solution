@@ -118,6 +118,8 @@
     "shelljs": "*",
     "ts-jest": "*",
     "ts-node": "*",
-    "typescript": "*"
+    "typescript": "*",
+    "cypress": "*",
+    "eslint-plugin-cypress": "*"
   }
 }
