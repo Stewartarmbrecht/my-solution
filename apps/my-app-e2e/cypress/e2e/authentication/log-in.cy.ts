@@ -2,7 +2,7 @@
 
 describe('log-in', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:5000')
+    cy.visit('http://localhost:19001')
   })
 
   it('accepts user name and password', () => {
@@ -22,6 +22,7 @@ describe('log-in', () => {
     cy.get('[data-testid="authenticator__text-field__input-username"]').type('stewbbb');
     cy.get('[data-testid="authenticator__text-field__input-password"]').type('QcI814u2');
     cy.get('Button').contains('Sign in').click();
+    //cy.wait(5000);
     cy.get('h1').contains('Posts').should('exist');
   })
 })

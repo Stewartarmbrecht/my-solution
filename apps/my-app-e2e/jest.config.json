@@ -2,8 +2,8 @@
   "preset": "../../jest.preset",
   "rootDir": ".",
   "testMatch": [
-    "<rootDir>/src/**/*.test.ts?(x)",
-    "<rootDir>/src/**/*.spec.ts?(x)"
+    "<rootDir>/detox/**/*.test.ts?(x)",
+    "<rootDir>/detox/**/*.spec.ts?(x)"
   ],
   "testTimeout": 120000,
   "maxWorkers": 1,

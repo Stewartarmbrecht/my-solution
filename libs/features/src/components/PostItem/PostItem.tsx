@@ -17,7 +17,7 @@ export function PostItem(props: PostProps) {
 
   return (
     <YStack gap="$2">
-      <Card fd="row" key={props.post.id}>
+      <Card fd="row" key={props.post.id} testID="post-item">
         <Stack
           f={1}
           p="$4"

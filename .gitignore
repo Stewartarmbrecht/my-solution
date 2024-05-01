@@ -62,3 +62,5 @@ apps/my-app-e2e/artifacts
 
 # ignore the andriod command line tools download.
 commandlinetools-linux.zip
+
+**/*.apk

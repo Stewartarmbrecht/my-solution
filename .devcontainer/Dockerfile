@@ -1,5 +1,34 @@
 # FROM mcr.microsoft.com/devcontainers/typescript-node:1-20-bullseye
 FROM cypress/browsers:node-20.12.2-chrome-124.0.6367.60-1-ff-125.0.1-edge-124.0.2478.51-1
+
+# ---microsoft node-javascript image steps---
+ARG USERNAME=node
+ARG NPM_GLOBAL=/usr/local/share/npm-global
+
+# Add NPM global to PATH.
+ENV PATH=${NPM_GLOBAL}/bin:${PATH}
+
+RUN \
+    # Configure global npm install location, use group to adapt to UID/GID changes
+    if ! cat /etc/group | grep -e "^npm:" > /dev/null 2>&1; then groupadd -r npm; fi \
+    && usermod -a -G npm ${USERNAME} \
+    && umask 0002 \
+    && mkdir -p ${NPM_GLOBAL} \
+    && touch /usr/local/etc/npmrc \
+    && chown ${USERNAME}:npm ${NPM_GLOBAL} /usr/local/etc/npmrc \
+    && chmod g+s ${NPM_GLOBAL} \
+    && npm config -g set prefix ${NPM_GLOBAL} \
+    && su ${USERNAME} -c "npm config -g set prefix ${NPM_GLOBAL}" \
+    # Install eslint
+    && su ${USERNAME} -c "umask 0002 && npm install -g eslint" \
+    && npm cache clean --force > /dev/null 2>&1
+
+# --microsoft/typescript-node image steps--
+ARG NODE_MODULES="tslint-to-eslint-config typescript"
+RUN su node -c "umask 0002 && npm install -g ${NODE_MODULES}" \
+    && npm cache clean --force > /dev/null 2>&1
+
+# ---Install additional packages---
 RUN apt-get update
 RUN apt-get -y install xdg-utils
 RUN npm install -g sharp-cli@^2.1.0
@@ -41,3 +70,8 @@ RUN yes | sdkmanager "build-tools;33.0.1"
 RUN yes | sdkmanager "cmake;3.22.1"
 
 # RUN yes | apt-get -y install libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libnss3 libxss1 libasound2 libxtst6 xauth xvfb
+
+RUN apt-get install watchman
+ENV CI=false
+ENV npm_config_loglevel=info
+RUN npx cypress install

@@ -24,27 +24,27 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-// import 'cypress';
+export {};
 
-// // cypress/support/index.ts
-// declare global {
-//   namespace Cypress {
-//     interface Chainable {
-//       /**
-//        * Custom command to log in.  Will reuse the user session if already logged in.
-//        * @example cy.login('stewbbb', 'password');
-//        */
-//       login(user: string, password: string): Chainable<void>
-//     }
-//   }
-// }
+// cypress/support/index.ts
+declare global {
+  namespace Cypress {
+    interface Chainable {
+      /**
+       * Custom command to log in.  Will reuse the user session if already logged in.
+       * @example cy.login('stewbbb', 'password');
+       */
+      login(user: string, password: string): Chainable<void>
+    }
+  }
+}
 
-// Cypress.Commands.add('login', (user, password) => {
-//   cy.session([user, password], () => {
-//     cy.visit('http://localhost:5000/')
-//     cy.get('[data-testid="authenticator__text-field__input-username"]').type('stewbbb');
-//     cy.get('[data-testid="authenticator__text-field__input-password"]').type('QcI814u2');
-//     cy.get('Button').contains('Sign in').click();
-//     cy.get('h1').contains('Posts').should('exist');
-//   })
-// })
+Cypress.Commands.add('login', (user, password) => {
+  cy.session([user, password], () => {
+    cy.visit('http://localhost:19001/')
+    cy.get('[data-testid="authenticator__text-field__input-username"]').type('stewbbb');
+    cy.get('[data-testid="authenticator__text-field__input-password"]').type('QcI814u2');
+    cy.get('Button').contains('Sign in').click();
+    cy.get('h1').contains('Posts').should('exist');
+  })
+})

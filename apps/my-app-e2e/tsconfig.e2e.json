@@ -6,5 +6,5 @@
     "allowJs": true,
     "types": ["node", "jest", "detox", "cypress"]
   },
-  "include": ["src/**/*.ts", "src/**/*.js"]
+  "include": ["detox/**/*.ts", "detox/**/*.js"]
 }

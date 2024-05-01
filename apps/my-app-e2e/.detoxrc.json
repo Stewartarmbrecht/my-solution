@@ -67,6 +67,9 @@
       "device": {
         "adbName": "host.docker.internal"
       }
+    },
+    "ios-attached": {
+      "type": "ios.attached"
     }
   },
   "configurations": {
@@ -109,6 +112,10 @@
     "android.att.docker": {
       "device": "android-attached",
       "app": "android.release"
+    },
+    "ios.att.debug": {
+      "device": "ios-attached",
+      "app": "ios.debug"
     }
   }
 }

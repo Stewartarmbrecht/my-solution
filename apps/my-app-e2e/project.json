@@ -51,6 +51,9 @@
     },
     "test-android": {
       "executor": "@nx/detox:test",
+      "dependsOn": [
+        "connect-andriod-host-emulator"
+      ],
       "options": {
         "detoxConfiguration": "android.emu.local",
         "buildTarget": "my-app-e2e:build-android"
@@ -73,6 +76,24 @@
     "lint": {
       "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"]
+    },
+    "test-web-dev": {
+      "command": "npx cypress open",
+      "options": {
+        "cwd": "apps/my-app-e2e"
+      }
+    },
+    "install-web-test": {
+      "command": "npx cypress install",
+      "options": {
+        "cwd": "apps/my-app-e2e"
+      }
+    },
+    "connect-andriod-host-emulator": {
+      "command": "adb connect host.docker.internal",
+      "options": {
+        "cwd": "apps/my-app-e2e"
+      }
     }
   },
   "tags": [],

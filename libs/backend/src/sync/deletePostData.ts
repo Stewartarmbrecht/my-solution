@@ -3,7 +3,7 @@ import { DataStore } from "@aws-amplify/datastore";
 import { PostData } from "../models";
 
 export async function deletePostData(post: Post): Promise<void> {
-  logCall('postsSlice.deletePostData', post);
+  logCall('backend.sync.deletePostData', post);
   if (post.serverId === undefined) {
     return;
   }

@@ -352,46 +352,69 @@ TBD...
 
 
 # DEVELOPMENT FLOW
-1. **Write Test:** Write your unit test.
-2. **Verify Test Fails:** Run your unit test and verify it fails:
+In the code below, replace my-app with the name of your application.
+
+## New Feature Development
+
+1. **Write End-to-End (E2E) Web Test:** Write a cypress test that performs the new feature you want to build.  This test should be located in the 'my-app-e2e/cypress/e2e' folder.
+2. **Verify E2E Web Test Fails:** Start the app and the Cypress test runner:
+In the first terminal run metro and verify the app is up and running.
+```
+npx nx start my-app
+w <- type 'w' to launch a browser and push metro through the first build.
+```
+In the second terminal:
+```
+npx nx test-web-dev my-app-e2e
+```
+3. **Write E2E Mobile Test:** Write a detox test that performs the new feature you want to build.  This test should be located in the 'my-app-e2e/detox' folder.
+4. **Run E2E Mobile Test:** Run the new E2E test you wrote for mobile.
+3. **Write Unit Test:** Write a unit test the requires the new code you need to write.
+4. **Verify Unit Test Fails:** Run your unit test and verify it fails:
 ```
 Cntrl/Cmd+Shift+P
 Test: Run Test at Cursor
 ```
-3. **Write Code:** Write your code and rerun the tests until they pass.
-4. **Verify Test Passes:** If you need to debug a test:
+5. **Write Code:** Write your code and rerun the tests until they pass.
+6. **Verify Unit Test Passes:** If you need to debug a test:
 ```
 Cntrl/Cmd+Shift+P
 Test: Debug Test at Cursor
 ```
-5. **Verify in App:** Run the app and verify your code change in the web and mobile app.
-```
-npx nx start <app project>
-Ex: npx nx start my-app
-```
-6. **Debug Web App:** 
+7. **Verify E2E Test Passes:** Run your test that you created through the Cypress UI.
+8. **Verify in App:** Manually verify your new feature in the web browser that you started in the first step.
+9. **Debug Web App:** 
 Once the app is started.  Open the dev tools.  In the sources tab you can find files using Cmd/Cntrl+Shift+P and typing the file name.  You can also set breakpoints.  Install the redux tools as well as the React Native tools and you can inspect redux, the UI elements, and the UI performance.
+10. **Run All Unit Tests:** Run all unit tests to verify all are still passing:
+```
+npx nx run-many -t test
+```
+Alternatively, you can run all unit tests in a single project (ex. my-app) using:
+```
+npx nx test my-app
+```
+11. **Verify Unit Test Code Coverage:** After you completed building your feature and have all tests passing, verify you have 100% code coverage.
+```
+npx nx run-many -t test-coverage
+```
+Alternatively, you can check code coverage for a single project (ex. my-app) using:
+```
+npx nx test-coverage my-app
+```
+12. **Run All E2E Web Tests:** Run all the cypress tests to verify 
 
-7. **Run All Tests:** Run your tests with coverage:
-```
-npx nx test <project name> 
-Ex: npx nx test backend
-```
-8. **Verify Code Coverage:** After you completed building your feature and have all tests passing, verify you have 100% code coverage.
-```
-npx nx test-coverage <project name> 
-Ex: npx nx test-coverage backend
-```
-9. **Install Expo Modules:** Use the following command to install expo modules in your app project:
+## Adding Dependencies
+
+1. **Install Expo Modules:** Use the following command to install expo modules in your app project:
 ```
 npx nx install my-app package1,package2,package3
 ```
-10. **Sort Package Dependencies:** Use the following command to sort the dependencies in a package.json
+2. **Sort Package Dependencies:** Use the following command to sort the dependencies in a package.json
 ```
 cd to-directory-with-package-json
 npx sort-package-json
 ```
-10. **Update Development Build:** If you install modules that require updating the development build that is deployed to devices:
+3. **Update Development Build:** If you install modules that require updating the development build that is deployed to devices:
 ```
 npx nx build-dev my-app
 ```
