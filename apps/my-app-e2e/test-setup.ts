@@ -1,5 +1,7 @@
-import { device } from 'detox';
+//import { device } from 'detox';
+import { openApp } from './detox/utils/openApp';
 
 beforeAll(async () => {
-  await device.launchApp();
+  await openApp();
+  //await device.launchApp();
 });

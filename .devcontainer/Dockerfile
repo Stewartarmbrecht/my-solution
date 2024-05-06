@@ -75,3 +75,11 @@ RUN apt-get install watchman
 ENV CI=false
 ENV npm_config_loglevel=info
 RUN npx cypress install
+
+RUN apt -y update
+RUN apt -y upgrade
+
+RUN apt install python3-pip -y
+
+RUN pip3 install gmsaas
+

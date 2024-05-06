@@ -46,19 +46,30 @@
         },
         "production": {
           "detoxConfiguration": "android.emu.release"
+        },
+        "genymotion": {
+          "detoxConfiguration": "android.att.debug"
         }
       }
     },
     "test-android": {
       "executor": "@nx/detox:test",
       "dependsOn": [
-        "connect-andriod-host-emulator"
+        "launch-genymotion"
       ],
       "options": {
         "detoxConfiguration": "android.emu.local",
         "buildTarget": "my-app-e2e:build-android"
       },
       "configurations": {
+        "debug-genycloud": {
+          "detoxConfiguration": "android.genycloud.debug",
+          "reuse": true
+        },
+        "debug-att": {
+          "detoxConfiguration": "android.att.debug",
+          "reuse": true
+        },
         "bare": {
           "detoxConfiguration": "android.emu.debug",
           "buildTarget": "my-app-e2e:build-android:bare"
@@ -89,10 +100,23 @@
         "cwd": "apps/my-app-e2e"
       }
     },
-    "connect-andriod-host-emulator": {
-      "command": "adb connect host.docker.internal",
+    "launch-genymotion": {
+      "executor": "nx:run-commands",
+      "dependsOn": [
+        "sync-deps"
+      ],
       "options": {
-        "cwd": "apps/my-app-e2e"
+        "cwd": "apps/my-app-e2e",
+        "command": "./detox/utils/startOrReuseGenymotion.sh"
+      }
+    },
+    "stop-genymotion": {
+      "executor": "nx:run-commands",
+      "dependsOn": [
+        "sync-deps"
+      ],
+      "options": {
+        "command": "gmsaas instances list -q | xargs -n1 gmsaas instances stop"
       }
     }
   },

@@ -363,12 +363,16 @@ In the first terminal run metro and verify the app is up and running.
 npx nx start my-app
 w <- type 'w' to launch a browser and push metro through the first build.
 ```
-In the second terminal:
+In a second terminal:
 ```
 npx nx test-web-dev my-app-e2e
 ```
 3. **Write E2E Mobile Test:** Write a detox test that performs the new feature you want to build.  This test should be located in the 'my-app-e2e/detox' folder.
 4. **Run E2E Mobile Test:** Run the new E2E test you wrote for mobile.
+If you haven't started the metro bundler do so.
+```
+npx nx test-android-debug my-app-e2e
+```
 3. **Write Unit Test:** Write a unit test the requires the new code you need to write.
 4. **Verify Unit Test Fails:** Run your unit test and verify it fails:
 ```
@@ -427,3 +431,11 @@ After you run the build, you will need to scan the QR code on all devices to upd
 
 2. 
 
+# OTHER NOTES
+## Slow Http Connections
+If you are experiencing slow initial connections from the host or external device to your metro bundler just change the nameserver lines in /etc/resolv.conf to:
+```
+nameserver 8.8.8.8
+nameserver 8.8.4.4
+```
+https://stackoverflow.com/questions/41923522/why-is-network-internet-in-my-docker-container-so-slow

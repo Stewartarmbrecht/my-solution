@@ -2,7 +2,8 @@ import { by, element, expect } from 'detox';
 
 describe('posts', () => {
   beforeEach(async () => {
-    await device.reloadReactNative();
+    await device.openURL({url: 'exp+my-app://'});
+    // await device.reloadReactNative();
     await element(by.id('login-username')).typeText('stewbbb');
     await element(by.id('login-password')).typeText('QcI814u2');
     await element(by.id('login-button')).tap();

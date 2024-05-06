@@ -65,9 +65,7 @@
     "run-android": {
       "executor": "@nx/expo:run",
       "dependsOn": [
-        "sync-deps",
-        "connect-host-emulator",
-        "set-hostname-localhost"
+        "sync-deps"
       ],
       "options": {
         "platform": "android",
@@ -102,6 +100,14 @@
       "options": {
         "platform": "android",
         "profile": "development"
+      }
+    },
+    "build-local-dev-android": {
+      "executor": "@nx/expo:build",
+      "options": {
+        "platform": "android",
+        "profile": "development",
+        "local": true
       }
     },
     "build-preview": {

@@ -1,9 +1,8 @@
-import { device, element, by, expect } from 'detox';
+import { element, by, expect } from 'detox';
 
 describe('MyApp', () => {
   beforeEach(async () => {
-    await device.launchApp();
-    await device.reloadReactNative();
+    await device.openURL({url: 'exp+my-app://'});
   });
 
   it('should display welcome message', async () => {
