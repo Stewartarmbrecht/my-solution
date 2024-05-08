@@ -55,16 +55,14 @@
     "test-android": {
       "executor": "@nx/detox:test",
       "dependsOn": [
-        "launch-genymotion"
       ],
       "options": {
-        "detoxConfiguration": "android.emu.local",
+        "detoxConfiguration": "debug-genycloud",
         "buildTarget": "my-app-e2e:build-android"
       },
       "configurations": {
         "debug-genycloud": {
-          "detoxConfiguration": "android.genycloud.debug",
-          "reuse": true
+          "detoxConfiguration": "android.genycloud.debug"
         },
         "debug-att": {
           "detoxConfiguration": "android.att.debug",

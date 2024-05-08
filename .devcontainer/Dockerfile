@@ -83,3 +83,6 @@ RUN apt install python3-pip -y
 
 RUN pip3 install gmsaas
 
+RUN npm install -g esbuild
+
+RUN gmsaas config set android-sdk-path /home/node/Android/Sdk

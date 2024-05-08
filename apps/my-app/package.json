@@ -73,7 +73,8 @@
     "@tamagui/build": "*",
     "@tamagui/lucide-icons": "*",
     "expo-screen-orientation": "*",
-    "moment": "*"
+    "moment": "*",
+    "@aws-amplify/auth": "*"
   },
   "devDependencies": {
     "@babel/core": "*",
@@ -101,6 +102,7 @@
     "babel-jest": "*",
     "babel-preset-expo": "*",
     "detox": "*",
+    "esbuild": "*",
     "eslint": "*",
     "eslint-config-prettier": "*",
     "eslint-plugin-import": "*",

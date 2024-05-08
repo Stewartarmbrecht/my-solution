@@ -7,8 +7,7 @@
     "start": {
       "executor": "@nx/expo:start",
       "dependsOn": [
-        "sync-deps",
-        "set-hostname-ip"
+        "sync-deps"
       ],
       "options": {
         "port": 19001,

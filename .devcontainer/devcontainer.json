@@ -30,7 +30,7 @@
 		"10.24.1.57:5037:5037"
 	],
 	"remoteEnv": {
-		"REACT_NATIVE_PACKAGER_HOSTNAME": "10.24.1.57"
+		"REACT_NATIVE_PACKAGER_HOSTNAME": "localhost"
 	},
 	"customizations": {
 		"vscode": {

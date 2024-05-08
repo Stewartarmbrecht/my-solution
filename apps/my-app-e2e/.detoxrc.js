@@ -62,7 +62,7 @@ module.exports = {
     genycloud: {
       type: 'android.genycloud',
       device: {
-        recipeUUID: '53d71621-b0b8-4e5a-8cea-0055ea98988f'
+        recipeUUID: '95016679-8f8d-4890-b026-e4ad889aadf1'
       }
     }
   },
