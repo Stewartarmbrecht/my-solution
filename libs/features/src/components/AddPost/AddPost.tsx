@@ -35,6 +35,7 @@ export function AddPost() {
       />
       <Button 
         onPress={createPost}
+        testID="new-post-submit"
       >Add</Button>
     </XStack>
   );

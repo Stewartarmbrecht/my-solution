@@ -24,7 +24,7 @@ export function PostItem(props: PostProps) {
           pr="$0"
           $gtSm={{ flexDirection: "row", alignItems: "center" }} 
         >
-          <Text f={1}>{props.post.title}</Text>
+          <Text f={1} testID="post-item.title">{props.post.title}</Text>
           <Stack
             fd="row"
             mt="$4"
