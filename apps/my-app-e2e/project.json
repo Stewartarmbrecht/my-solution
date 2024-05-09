@@ -48,7 +48,7 @@
           "detoxConfiguration": "android.emu.release"
         },
         "genymotion": {
-          "detoxConfiguration": "android.att.debug"
+          "detoxConfiguration": "android.genycloud.debug"
         }
       }
     },
@@ -61,7 +61,7 @@
         "buildTarget": "my-app-e2e:build-android"
       },
       "configurations": {
-        "debug-genycloud": {
+        "genymotion": {
           "detoxConfiguration": "android.genycloud.debug"
         },
         "debug-att": {

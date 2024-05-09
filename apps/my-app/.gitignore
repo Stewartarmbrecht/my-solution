@@ -44,8 +44,5 @@ expo-env.d.ts
 .tamagui
 
 # Expo prebuild
-android/
-ios/
-
-# Detox
-androidTest/
+#android/
+#ios/

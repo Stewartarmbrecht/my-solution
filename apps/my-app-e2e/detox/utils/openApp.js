@@ -49,7 +49,7 @@ const getDeepLinkUrl = url =>
   `exp+my-app://expo-development-client/?url=${encodeURIComponent(url)}`;
 
 const getDevLauncherPackagerUrl = platform => 
-  `http://localhost:19001/?disableOnboarding=1`;
+  `http://localhost:19002/?disableOnboarding=1`;
 
 const getLatestUpdateUrl = () =>
   `https://u.expo.dev/${getAppId()}?channel-name=test_debug&disableOnboarding=1`;

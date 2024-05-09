@@ -14,15 +14,23 @@
         "dev-client": true
       }
     },
-    "start-local": {
+    "start-detox": {
       "executor": "@nx/expo:start",
       "dependsOn": [
-        "sync-deps",
-        "set-hostname-localhost"
+        "sync-deps"
       ],
       "options": {
-        "port": 19001,
+        "port": 19002,
         "dev-client": true
+      }
+    },
+    "start-ip": {
+      "executor": "nx:run-commands",
+      "dependsOn": [
+        "sync-deps"
+      ],
+      "options": {
+        "command": "REACT_NATIVE_PACKAGER_HOSTNAME=10.24.1.57 npx nx start my-app"
       }
     },
     "serve-web": {

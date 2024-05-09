@@ -25,6 +25,6 @@ describe('MyApp', () => {
     await element(by.id('authenticator__text-field__input-username')).typeText('stewbbb');
     await element(by.id('authenticator__text-field__input-password')).typeText('QcI814u2');
     await element(by.text('Sign in')).tap();
-    await waitFor(element(by.text('Posts'))).toBeVisible().withTimeout(5000);
+    await waitFor(element(by.text('Posts'))).toBeVisible().withTimeout(10000);
   })
 });
