@@ -356,39 +356,64 @@ In the code below, replace my-app with the name of your application.
 
 ## New Feature Development
 
-1. **Write End-to-End (E2E) Web Test:** Write a cypress test that performs the new feature you want to build.  This test should be located in the 'my-app-e2e/cypress/e2e' folder.
-2. **Verify E2E Web Test Fails:** Start the app and the Cypress test runner:
-In the first terminal run metro and verify the app is up and running.
+The steps below assume that you have a physical ios device for development and a genymotion cloud service for detox testing.
+
+1. **Start the App for Web and Mobile**: 
+In the first terminal run the start commend.  This starts an instance of the metro bundler that listens on your hosts ip and port 19001.  This enables your physical device to connect using the debug build.
 ```
 npx nx start my-app
 w <- type 'w' to launch a browser and push metro through the first build.
 ```
-In a second terminal:
+After verifying the web app is running correctly, open the dev app on your physcial phone.
+2. **Start the App for Detox Testing:**:  Run a second metro bundler that listens on localhost.  This instance will be connected to by genycloud android instance for detox e2e tests.
 ```
-npx nx test-web-dev my-app-e2e
+npx nx start-detox my-app
+w <- type 'w' to launch a browser and push metro through the first build.
 ```
-3. **Write E2E Mobile Test:** Write a detox test that performs the new feature you want to build.  This test should be located in the 'my-app-e2e/detox' folder.
-4. **Run E2E Mobile Test:** Run the new E2E test you wrote for mobile.
-If you haven't started the metro bundler do so.
+3. **Open Cypress E2E Tester:** Use this interface to run your web E2E tests.
+In a 3rd terminal run the following command.  It will launch the Cyperss interface.
 ```
-npx nx test-android-debug my-app-e2e
+npx nx open-cypress my-app-e2e
 ```
-3. **Write Unit Test:** Write a unit test the requires the new code you need to write.
-4. **Verify Unit Test Fails:** Run your unit test and verify it fails:
+3. **Write End-to-End (E2E) Web Test:** Write a cypress test that performs the new feature you want to build.  This test should be located in the 'my-app-e2e/cypress/e2e' folder.
+4. **Verify E2E Web Test Fails:** Start the app and the Cypress test runner:
+Navigate to the test spec you created in the Cypress interface from the "Open Cypress E2E Tester" step and run the spec you created.
+Or if you do not want to use the Cypress interface you can run the following command in a new terminal:
+```
+npx nx test-web-dev-run my-app-e2e --spec /path/to/your/test.cy.ts
+```
+5. **Write E2E Mobile Test:** Write a detox test that performs the new feature you want to build.  This test should be located in the 'my-app-e2e/detox' folder.  Use an AI to convert the test from cypress to detox.
+6. **Verify E2E Mobile Test Fails:** Run the new E2E test you wrote for mobile.
+In a new terminal run the following command.  This assumes you have already built your android apk in the setup.  It will launch an instance of android in the cloud, deploy your app to the device, then run your test.
+```
+npx nx genycloud-test my-app-e2e /path/to/your/test.spec.ts
+```
+7. **Write Unit Test:** Write a unit test that requires the new code you need to write.  Create a .test.ts or .test.tsx file that has the name of the function you need to write.  Stub the actual code file so that your test compiles.
+8. **Verify Unit Test Fails:** Run your unit test and verify it fails:
 ```
 Cntrl/Cmd+Shift+P
 Test: Run Test at Cursor
 ```
-5. **Write Code:** Write your code and rerun the tests until they pass.
-6. **Verify Unit Test Passes:** If you need to debug a test:
+9. **Write Code:** Write your code and rerun the unit tests until they pass.
+```
+Cntrl/Cmd+Shift+P
+Test: Run Tests in Current File
+```
+10. **Verify in Web App:** Manually verify your new feature in the web browser that you started in the first step.
+11. **Verify in Mobile App:** Manually verify your new feature in the dev app on your mobile device connected to the metro service you started in the "Start the App for Web and Mobile" step (first step).
+12. **Verify Unit Test Passes:** If you need to debug a test:
 ```
 Cntrl/Cmd+Shift+P
 Test: Debug Test at Cursor
 ```
-7. **Verify E2E Test Passes:** Run your test that you created through the Cypress UI.
-8. **Verify in App:** Manually verify your new feature in the web browser that you started in the first step.
-9. **Debug Web App:** 
+13. **Verify E2E Web Test Passes:** Run your test that you created through the Cypress UI.
+```
+npx nx test-web-dev-run my-app-e2e --spec /path/to/your/test.cy.ts
+```
+14. **Debug Web App:** Set breakpoints in the browser devtools and execute your feature in the app.
 Once the app is started.  Open the dev tools.  In the sources tab you can find files using Cmd/Cntrl+Shift+P and typing the file name.  You can also set breakpoints.  Install the redux tools as well as the React Native tools and you can inspect redux, the UI elements, and the UI performance.
+15. **Debug Mobile App:** Set breakpoints in VSCode and execute your feature in the mobile app.
+
 10. **Run All Unit Tests:** Run all unit tests to verify all are still passing:
 ```
 npx nx run-many -t test

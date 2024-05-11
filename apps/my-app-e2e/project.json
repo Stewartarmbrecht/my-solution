@@ -86,10 +86,17 @@
       "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"]
     },
-    "test-web-dev": {
+    "open-cypress": {
       "command": "npx cypress open",
       "options": {
         "cwd": "apps/my-app-e2e"
+      }
+    },
+    "run-cypress": {
+      "command": "npx cypress run",
+      "options": {
+        "cwd": "apps/my-app-e2e",
+        "browser": "edge"
       }
     },
     "install-web-test": {
@@ -115,6 +122,16 @@
       ],
       "options": {
         "command": "gmsaas instances list -q | xargs -n1 gmsaas instances stop"
+      }
+    },
+    "genycloud-test": {
+      "executor": "nx:run-commands",
+      "dependsOn": [
+        "sync-deps"
+      ],
+      "options": {
+        "cwd": "apps/my-app-e2e",
+        "command": "npx detox test --configuration android.genycloud.debug"
       }
     }
   },
