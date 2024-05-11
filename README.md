@@ -433,16 +433,32 @@ npx nx test-coverage my-app
 12. **Run All E2E Web Tests:** Run all the cypress tests to verify 
 
 ## Adding Dependencies
-
-1. **Install Expo Modules:** Use the following command to install expo modules in your app project:
+1. **Check If Package Versions Are Outdated:** Check if your install dependencies are outdated.
+```
+npx npm-check-updates
+```
+1. **Upgrading Individual NPM Depencies:** Execute npm install from the root of the solution.
+```
+npm install expo@latest
+```
+2. **Upgradeing All NPM Dependencies:** Upgrade all dependencies to their latest version.
+```
+npx npm-check-updates -u
+```
+2. **Install Expo Modules:** Use the following command to install expo modules in your app project:
 ```
 npx nx install my-app package1,package2,package3
 ```
-2. **Sort Package Dependencies:** Use the following command to sort the dependencies in a package.json
+3. **Upgrade/Correct Expo Modules:** Use the following command to install expo modules in your app project:
+```
+npx nx install my-app --fix
+```
+4. **Sort Package Dependencies:** Use the following command to sort the dependencies in a package.json
 ```
 cd to-directory-with-package-json
 npx sort-package-json
 ```
+
 3. **Update Development Build:** If you install modules that require updating the development build that is deployed to devices:
 ```
 npx nx build-dev my-app
