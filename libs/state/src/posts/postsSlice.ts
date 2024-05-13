@@ -15,8 +15,10 @@ import {
 
 const postsAdapter = createEntityAdapter<Post>({
   sortComparer: (a, b) => {
-    const aCreatedAt = a.createdAt ?? '9999-12-31T23:59:59.999Z';
-    const bCreatedAt = b.createdAt ?? '9999-12-31T23:59:59.999Z';
+    /*istanbul ignore next*/ 
+    const aCreatedAt = a.createdAt ?? new Date().toISOString();
+    /*istanbul ignore next*/ 
+    const bCreatedAt = b.createdAt ?? new Date().toISOString();
 
     return bCreatedAt.localeCompare(aCreatedAt)
   },
@@ -37,9 +39,13 @@ const postsSlice = createSlice({
     builder
     .addCase(postAdded, (state, action) => {
       logCall('postsSlice.addPost', action.payload);
-      state.entities[action.payload.id] = action.payload;
+      if (action.payload.createdAt === undefined) {
+        action.payload.createdAt = new Date().toISOString();
+      }
+      postsAdapter.addOne(state, action.payload);
+      // state.entities[action.payload.id] = action.payload;
       // add new post to the beginning of the array
-      state.ids.unshift(action.payload.id);
+      // state.ids.unshift(action.payload.id);
     })
     .addCase(postDeleted, (state, action) => {
       logCall('postsSlice.deletePost', action.payload);

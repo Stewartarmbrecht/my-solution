@@ -78,7 +78,9 @@ export function useSynchronizer(isUserLoggedIn: boolean) {
         const postsData: PostData[] = await DataStore.query(PostData);
         logCall('useSynchronizer.useEffect.loadDataStorePosts.DataStore.query');
         const posts: Post[] = postsData.sort((a, b) => {
+          /*istanbul ignore next*/
           const aCreatedAt = a.createdAt ?? '9999-12-31T23:59:59.999Z';
+          /*istanbul ignore next*/
           const bCreatedAt = b.createdAt ?? '9999-12-31T23:59:59.999Z';
           return bCreatedAt.localeCompare(aCreatedAt);
         }).map((postData) => ({

@@ -86,13 +86,13 @@
       "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"]
     },
-    "open-cypress": {
+    "test-e2e-web-open": {
       "command": "npx cypress open",
       "options": {
         "cwd": "apps/my-app-e2e"
       }
     },
-    "run-cypress": {
+    "test-e2e-web": {
       "command": "npx cypress run",
       "options": {
         "cwd": "apps/my-app-e2e",
@@ -115,6 +115,16 @@
         "command": "./detox/utils/startOrReuseGenymotion.sh"
       }
     },
+    "install-debug-geny": {
+      "executor": "nx:run-commands",
+      "dependsOn": [
+        "launch-genymotion"
+      ],
+      "options": {
+        "cwd": "apps/my-app-e2e",
+        "command": "adb install ../my-app/android/app/build/outputs/apk/debug/app-debug.apk"
+      }
+    },
     "stop-genymotion": {
       "executor": "nx:run-commands",
       "dependsOn": [
@@ -124,7 +134,7 @@
         "command": "gmsaas instances list -q | xargs -n1 gmsaas instances stop"
       }
     },
-    "genycloud-test": {
+    "test-e2e-mobile": {
       "executor": "nx:run-commands",
       "dependsOn": [
         "sync-deps"

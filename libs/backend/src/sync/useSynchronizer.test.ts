@@ -35,6 +35,17 @@ describe('useSynchronizer', () => {
       status: 'ACTIVE',
       rating: 4.5,
       content: 'Lorem ipsum dolor sit amet',
+      createdAt: '2022-01-01',
+      author: 'tester'
+    },{
+      id: '2',
+      clientId: '2',
+      title: 'Post 2',
+      status: 'ACTIVE',
+      rating: 4.2,
+      content: 'Lorem ipsum dolor sit amet 2',
+      createdAt: '2022-01-03',
+      author: 'tester 2'
     }]);
 
     const dispatch = jest.fn();
@@ -49,12 +60,25 @@ describe('useSynchronizer', () => {
     await waitFor(() => expect(dispatch).toHaveBeenCalledWith({
         type: 'posts/postsLoadedViaSync',
         payload: [{
+          id: '2',
+          serverId: '2',
+          title: 'Post 2',
+          status: 'ACTIVE',
+          rating: 4.2,
+          content: 'Lorem ipsum dolor sit amet 2',
+          createdAt: '2022-01-03',
+          updatedAt: undefined,
+          author: 'tester 2'
+        },{
           id: '1',
           serverId: '1',
           title: 'Post 1',
           content: 'Lorem ipsum dolor sit amet',
           rating: 4.5,
           status: 'ACTIVE',
+          createdAt: '2022-01-01',
+          updatedAt: undefined,
+          author: 'tester'
         }]
       })
     );

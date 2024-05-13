@@ -2,8 +2,10 @@ import { configureStore } from "@reduxjs/toolkit";
 import { postsReducer, selectAllPosts } from "./postsSlice";
 import { postAdded, postDeleted, postDeletedViaSync, postAddedOrUpdatedViaSync, postsLoadedViaSync, PostStatus, Post } from "@my-solution/shared";
 import { AppStore } from "../store";
-import { authReducer, syncReducer } from "@my-solution/backend";
+import { syncReducer } from "@my-solution/backend";
 import { userReducer } from "../user/userSlice";
+
+const delay = (ms: number) => new Promise(res => setTimeout(res, ms));
 
 describe('postsSlice', () => {
   let store: AppStore;
@@ -14,7 +16,6 @@ describe('postsSlice', () => {
         posts: postsReducer,
         sync: syncReducer,
         user: userReducer,
-        auth: authReducer,
       },
     });
   });
@@ -36,6 +37,67 @@ describe('postsSlice', () => {
     expect(posts[0]).toEqual(post);
     expect(state.ids.length).toBe(1);
     expect(state.entities[post.id]).toEqual(post);
+  });
+
+  it('should store posts sorted by created date', () => {
+    const post1: Post = {
+      id: '1',
+      title: 'New Post',
+      content: 'Lorem ipsum dolor sit amet',
+      status: PostStatus.ACTIVE,
+      createdAt: new Date('2021-01-01').toISOString(),
+      updatedAt: new Date('2021-01-01').toISOString(),
+    };
+
+    const post2: Post = {
+      id: '2',
+      title: 'New Post 2',
+      content: 'Lorem ipsum dolor sit amet',
+      status: PostStatus.ACTIVE,
+      createdAt: new Date('2021-01-02').toISOString(),
+      updatedAt: new Date('2021-01-02').toISOString(),
+    };
+
+    store.dispatch(postAdded(post1));
+    store.dispatch(postAdded(post2));
+
+    const state = store.getState().posts;
+    const posts = selectAllPosts(store.getState());
+
+    expect(posts.length).toBe(2);
+    expect(state.ids.length).toBe(2);
+    expect(state.ids[0]).toBe(post2.id);
+    expect(state.ids[1]).toBe(post1.id);
+    expect(state.entities[post1.id]).toEqual(post1);
+  });
+
+  it('should store posts sorted by created date without dates', async () => {
+    const post1: Post = {
+      id: '1',
+      title: 'New Post',
+      content: 'Lorem ipsum dolor sit amet',
+      status: PostStatus.ACTIVE,
+    };
+
+    const post2: Post = {
+      id: '2',
+      title: 'New Post 2',
+      content: 'Lorem ipsum dolor sit amet',
+      status: PostStatus.ACTIVE,
+    };
+
+    store.dispatch(postAdded(post1));
+    await delay(100);
+    store.dispatch(postAdded(post2));
+
+    const state = store.getState().posts;
+    const posts = selectAllPosts(store.getState());
+
+    expect(posts.length).toBe(2);
+    expect(state.ids.length).toBe(2);
+    expect(state.ids[0]).toBe(post2.id);
+    expect(state.ids[1]).toBe(post1.id);
+    expect(state.entities[post1.id]).toEqual(post1);
   });
 
   it('should remove a post when postDeleted action is dispatched', () => {
@@ -99,9 +161,15 @@ describe('postsSlice', () => {
     const posts = selectAllPosts(store.getState());
 
     expect(posts.length).toBe(1);
-    expect(posts[0]).toEqual(updatedPost);
+    expect(posts[0]).toEqual(expect.objectContaining({
+      ...updatedPost,
+      createdAt: expect.any(String)
+    }));
     expect(state.ids.length).toBe(1);
-    expect(state.entities[updatedPost.id]).toEqual(updatedPost);
+    expect(state.entities[updatedPost.id]).toEqual(expect.objectContaining({
+      ...updatedPost,
+      createdAt: expect.any(String)
+    }));
   });
 
   it('should not update a post when postAddedOrUpdatedViaSync action is dispatched and the post in state is the same as the payload', () => {
@@ -110,6 +178,7 @@ describe('postsSlice', () => {
       title: 'New Post',
       content: 'Lorem ipsum dolor sit amet',
       status: PostStatus.ACTIVE,
+      createdAt: new Date('2021-01-01').toISOString(),
     };
 
     store.dispatch(postAdded(post));
@@ -119,6 +188,7 @@ describe('postsSlice', () => {
       title: 'New Post',
       content: 'Lorem ipsum dolor sit amet',
       status: PostStatus.ACTIVE,
+      createdAt: new Date('2021-01-01').toISOString(),
     };
 
     store.dispatch(postAddedOrUpdatedViaSync(updatedPost));

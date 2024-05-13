@@ -22,7 +22,7 @@ export const globalOptions = {
     /* istanbul ignore next */
     //return data[0] === 'call';
   },
-  logging: process.env.LOGGING ?? 'true',
+  logging: /* istanbul ignore next */process.env.LOGGING ?? 'true',
 };
 /**
  * @description

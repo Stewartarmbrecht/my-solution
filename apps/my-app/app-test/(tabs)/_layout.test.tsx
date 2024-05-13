@@ -1,5 +1,5 @@
 import { act, fireEvent, renderRouter, screen } from 'expo-router/testing-library';
-import { useFonts,  } from 'expo-font';
+import { useFonts } from 'expo-font';
 import { useMedia } from '@my-solution/ui';
 
 jest.mock('expo-font', () => {
@@ -29,6 +29,7 @@ jest.mock('@my-solution/ui', () => {
   return {
     ...actual,
     useMedia: jest.fn().mockReturnValue({ gtMd: false }),
+    useTheme: jest.fn().mockReturnValue({ accentColor: { get: jest.fn() } }),
   }
 });
 

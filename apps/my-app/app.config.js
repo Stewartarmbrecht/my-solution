@@ -4,7 +4,8 @@ const IS_PREVIEW = process.env.APP_VARIANT === 'preview';
 export default {
   name: IS_PROD ? 'MyApp' : (IS_PREVIEW ? 'MyApp (Preview)' : 'MyApp (Dev)'),
   slug: 'my-app',
-  version: '0.0.3',
+  version: '0.0.4',
+  runtimeVersion: "0.0.4",
   orientation: 'portrait',
   icon: './assets/images/icon.png',
   // Added for tamagui.
@@ -65,8 +66,5 @@ export default {
     eas: {
       projectId: 'fbd799b8-ac94-42ee-83ff-194ce23b9a59',
     },
-  },
-  runtimeVersion: {
-    policy: 'appVersion',
   },
 };
