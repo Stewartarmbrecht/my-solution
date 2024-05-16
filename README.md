@@ -107,7 +107,7 @@ Cntrl+Shift+P
 
 2. Initialize Amplify
 You need to initialize amplify to create some local files so that you can run the app.
-Note: if amplify is not recognized as a command I have found that rebuilding the container will fix this.  Just press Cntrl+Shift+P and them type Rebuild Container and select the Dev Container command.
+Note: if amplify is not recognized as a command I have found that rebuilding the container will fix this.  Just press Cntrl+Shift+P and then type Rebuild Container and select the Dev Container command.
 ```
 npx nx amplify-init <solutionName>-backend
 ```
