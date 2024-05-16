@@ -1,0 +1,266 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "test",
+			"type": "nx",
+			"project": "",
+			"command": "run-many",
+			"flags": ["-t test"],
+			"problemMatcher": [],
+			"detail": "Run all unit tests."
+		},
+		{
+			"label": "test-my-app",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"flags": ["my-app:test"],
+			"problemMatcher": [],
+			"detail": "Run all unit tests in the my-app project."
+		},
+		{
+			"label": "test-features",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"flags": ["features:test"],
+			"problemMatcher": [],
+			"detail": "Run all unit tests in the features project."
+		},
+		{
+			"label": "test-backend",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"flags": ["backend:test"],
+			"problemMatcher": [],
+			"detail": "Run all unit tests in the backend project."
+		},
+		{
+			"label": "test-shared",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"flags": ["shared:test"],
+			"problemMatcher": [],
+			"detail": "Run all unit tests in the shared project."
+		},
+		{
+			"label": "test-state",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"flags": ["state:test"],
+			"problemMatcher": [],
+			"detail": "Run all unit tests in the state project."
+		},
+		{
+			"label": "test-coverage",
+			"type": "nx",
+			"project": "",
+			"command": "run-many",
+			"flags": ["-t test-coverage"],
+			"problemMatcher": [],
+			"detail": "Run all unit tests with code coverage enforced."
+		},
+		{
+			"label": "test-coverage-features",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"flags": ["features:test-coverage"],
+			"problemMatcher": [],
+			"detail": "Run all unit tests with code coverage enforced for the features project."
+		},
+		{
+			"label": "test-coverage-my-app",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"flags": ["my-app:test-coverage"],
+			"problemMatcher": [],
+			"detail": "Run all unit tests with code coverage enforced for the my-app project."
+		},
+		{
+			"label": "test-coverage-shared",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"flags": ["shared:test-coverage"],
+			"problemMatcher": [],
+			"detail": "Run all unit tests with code coverage enforced for the shared project."
+		},
+		{
+			"label": "test-coverage-backend",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"flags": ["backend:test-coverage"],
+			"problemMatcher": [],
+			"detail": "Run all unit tests with code coverage enforced for the backend project."
+		},
+		{
+			"label": "test-coverage-state",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"flags": ["state:test-coverage"],
+			"problemMatcher": [],
+			"detail": "Run all unit tests with code coverage enforced for the state project."
+		},
+		{
+			"label": "build-dev",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"flags": ["my-app:eas-build-dev"],
+			"problemMatcher": [],
+			"detail": "Build the development version of the app in eas for both ios and android."
+		},
+		{
+			"label": "build-preview",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"flags": ["my-app:eas-build-preview"],
+			"problemMatcher": [],
+			"detail": "Build the preview version of the app in eas for both ios and android."
+		},
+		{
+			"label": "local-build-dev-android",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"positional": "my-app:local-build-dev-android",
+			"problemMatcher": [],
+			"detail": "Locally builds the android version of the app using eas.  Use this before running detox on dev instances."
+		},
+		{
+			"label": "run-android-geny",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"flags": ["my-app:run-android-geny"],
+			"problemMatcher": [],
+			"detail": "Run a dev cloud instance of geny android emulator then start the metro bundler and deploy to it."
+		},
+		{
+			"label": "run",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"positional": "my-app:start-ip",
+			"flags": [],
+			"problemMatcher": [],
+			"detail": "Run the metro bundler on the current host ip port 19001."
+		},
+		{
+			"label": "run-for-detox",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"positional": "my-app:start-detox",
+			"flags": [],
+			"problemMatcher": [],
+			"detail": "Run the metro bundler on localhost ip port 19002."
+		},
+		{
+			"label": "test-e2e-web-open",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"positional": "my-app-e2e:test-e2e-web-open",
+			"flags": [],
+			"problemMatcher": [],
+			"detail": "Open the web test runner."
+		},
+		{
+			"label": "test-e2e-web-current-spec",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"positional": "my-app-e2e:test-e2e-web",
+      "flags": ["--spec=${file}"],
+			"problemMatcher": [],
+			"detail": "Run the current spec file in the web test runner."
+		},
+		{
+			"label": "test-e2e-web",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"positional": "my-app-e2e:test-e2e-web",
+      "flags": [],
+			"problemMatcher": [],
+			"detail": "Run all end to end web tests."
+		},
+		{
+			"label": "build-dev-detox",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"positional": "my-app-e2e:build-android",
+      "flags": ["--configuration=genymotion"],
+			"problemMatcher": [],
+			"detail": "Build a dev version of the app ready for detox testing."
+		},
+		{
+			"label": "build-release-detox",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"positional": "my-app-e2e:build-android",
+      "flags": ["--configuration=genymotion-release"],
+			"problemMatcher": [],
+			"detail": "Build a release version of the app ready for detox testing."
+		},
+		{
+			"label": "test-e2e-mobile-current-spec",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"positional": "my-app-e2e:test-e2e-mobile",
+      "flags": ["${file}"],
+			"problemMatcher": [],
+			"detail": "Launch Genymotion emulator, install the app, and run the current test file in the mobile app test runner."
+		},
+		{
+			"label": "test-e2e-mobile-debug",
+			"detail": "Launch Genymotion emulator, install the app, and run all mobile app tests.",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"positional": "my-app-e2e:test-e2e-mobile-debug",
+			"flags": [],
+			"problemMatcher": []
+		},
+		{
+			"label": "test-e2e-mobile-debug-reuse",
+			"detail": "Launch Genymotion emulator, install the app, and run all mobile app tests.",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"positional": "my-app-e2e:test-e2e-mobile-debug-reuse",
+			"flags": [],
+			"problemMatcher": []
+		},
+		{
+			"label": "test-e2e-mobile-release",
+			"detail": "Launch Genymotion emulator, install the app, and run all mobile app tests.",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"positional": "my-app-e2e:test-e2e-mobile-release",
+			"flags": [],
+			"problemMatcher": []
+		},
+		{
+      "label": "check-dependencies",
+			"detail": "Checks the npm dependency versions for updates.  Also checks the version match for expo.",
+      "type": "shell",
+      "command": "npx npm-check-updates && npx nx install my-app --check",
+      "problemMatcher": []
+    }
+	]
+}
