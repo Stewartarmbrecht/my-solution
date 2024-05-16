@@ -14,6 +14,7 @@ export function AddPost() {
       title: newPostName,
       rating: 5,
       status: PostStatus.ACTIVE,
+      createdAt: new Date().toISOString(),
     };
     dispatch(postAdded(post));
     logMessage('Post saved successfully!', post);
@@ -29,9 +30,12 @@ export function AddPost() {
         placeholder='New Post Name'
         accessibilityLabel='New Post Name'
         flex={1}
+        testID='new-post-name'
+        onSubmitEditing={createPost}
       />
       <Button 
         onPress={createPost}
+        testID="new-post-submit"
       >Add</Button>
     </XStack>
   );

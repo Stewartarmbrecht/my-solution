@@ -3,8 +3,11 @@ const IS_PREVIEW = process.env.APP_VARIANT === 'preview';
 
 export default {
   name: IS_PROD ? 'MyApp' : (IS_PREVIEW ? 'MyApp (Preview)' : 'MyApp (Dev)'),
-  slug: 'my-app',
-  version: '0.0.2',
+  slug: IS_PROD ? 'my-app' : (IS_PREVIEW ? 'my-app-preview' : 'my-app-dev'),
+  version: '0.0.6',
+  runtimeVersion: {
+    "policy": "appVersion"
+  },
   orientation: 'portrait',
   icon: './assets/images/icon.png',
   // Added for tamagui.
@@ -15,7 +18,7 @@ export default {
     backgroundColor: '#ffffff',
   }, 
   owner: 'stewartarmbrecht',
-  scheme: 'myapp',
+  scheme: IS_PROD ? 'my-app' : (IS_PREVIEW ? 'my-app-preview' : 'my-app-dev'),
   updates: {
     url: "https://u.expo.dev/fbd799b8-ac94-42ee-83ff-194ce23b9a59"
   },
@@ -65,8 +68,5 @@ export default {
     eas: {
       projectId: 'fbd799b8-ac94-42ee-83ff-194ce23b9a59',
     },
-  },
-  runtimeVersion: {
-    policy: 'appVersion',
   },
 };

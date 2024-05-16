@@ -11,6 +11,7 @@ import {
 import { DataStore } from '@aws-amplify/datastore';
 import { PostData } from '../models';
 import { useDispatch } from 'react-redux';
+import { nanoid } from '@reduxjs/toolkit';
 
 /**
  * Synchronizes the redux data with the amplify datastore.
@@ -26,8 +27,9 @@ export function useSynchronizer(isUserLoggedIn: boolean) {
     if (!isUserLoggedIn) {
       return;
     }
+    const subId = nanoid();
     const subscription = DataStore.observe(PostData).subscribe(msg => {
-      logCall('useSynchronizer.useEffect.DataStore.observe', 'msg:', msg);
+      logCall('useSynchronizer.useEffect.DataStore.observe', 'msg:', msg, 'sub:', subId);
       switch (msg.opType) {
         case 'DELETE':
           dispatch(postDeletedViaSync({
@@ -75,7 +77,13 @@ export function useSynchronizer(isUserLoggedIn: boolean) {
       try {
         const postsData: PostData[] = await DataStore.query(PostData);
         logCall('useSynchronizer.useEffect.loadDataStorePosts.DataStore.query');
-        const posts: Post[] = postsData.map((postData) => ({
+        const posts: Post[] = postsData.sort((a, b) => {
+          /*istanbul ignore next*/
+          const aCreatedAt = a.createdAt ?? '9999-12-31T23:59:59.999Z';
+          /*istanbul ignore next*/
+          const bCreatedAt = b.createdAt ?? '9999-12-31T23:59:59.999Z';
+          return bCreatedAt.localeCompare(aCreatedAt);
+        }).map((postData) => ({
             id: postData.clientId,
             serverId: postData.id,
             title: postData.title,
@@ -97,6 +105,7 @@ export function useSynchronizer(isUserLoggedIn: boolean) {
     }    
     loadDataStorePosts();
     return () => {
+      logCall('useSynchronizer.useEffect.unsubscribe');
       subscription.unsubscribe()
     };
   }, [dispatch, isUserLoggedIn]); // Or [] if effect doesn't need props or state  

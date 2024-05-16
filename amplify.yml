@@ -1,6 +1,11 @@
 version: 1.0
 backend:
   phases:
+    preBuild:
+      commands:
+        - nvm use 20
+        - npm ci
+        - npx nx test-coverage backend
     build:
       commands:
         - cd libs/backend

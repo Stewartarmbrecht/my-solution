@@ -56,9 +56,10 @@ web-build/
 cache/
 
 
-apps/undefined-e2e/artifacts
 apps/my-app-e2e/artifacts
 **/coverage/
 
 # ignore the andriod command line tools download.
 commandlinetools-linux.zip
+
+**/*.apk

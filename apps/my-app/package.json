@@ -4,8 +4,9 @@
   "private": true,
   "main": "./index.js",
   "scripts": {
+    "eas-build-pre-install": "cd ../../ && node tools/scripts/eas-build-pre-install.mjs . apps/my-app && cp package-lock.json apps/my-app && tools/scripts/eas-build-pre-install.sh",
+    "eas-build-on-success": "../../tools/scripts/eas-build-on-success.sh",
     "eas-build-post-install": "cd ../../ && node tools/scripts/eas-build-post-install.mjs . apps/my-app",
-    "eas-build-pre-install": "cd ../../ && node tools/scripts/eas-build-pre-install.mjs . apps/my-app && cp package-lock.json apps/my-app",
     "android": "expo run:android",
     "ios": "expo run:ios"
   },
@@ -14,6 +15,7 @@
     "@aws-amplify/react-native": "*",
     "@aws-amplify/ui-react-native": "*",
     "@expo/metro-config": "*",
+    "@expo/metro-runtime": "*",
     "@expo/vector-icons": "*",
     "@nx/expo": "*",
     "@react-navigation/native": "*",
@@ -59,7 +61,6 @@
     "tslib": "*",
     "@expo/config": "*",
     "@expo/server": "*",
-    "expo-web-browser": "*",
     "expo-image": "*",
     "@react-navigation/material-top-tabs": "*",
     "@react-navigation/drawer": "*",
@@ -71,7 +72,8 @@
     "@tamagui/build": "*",
     "@tamagui/lucide-icons": "*",
     "expo-screen-orientation": "*",
-    "moment": "*"
+    "moment": "*",
+    "@aws-amplify/auth": "*"
   },
   "devDependencies": {
     "@babel/core": "*",
@@ -99,6 +101,7 @@
     "babel-jest": "*",
     "babel-preset-expo": "*",
     "detox": "*",
+    "esbuild": "*",
     "eslint": "*",
     "eslint-config-prettier": "*",
     "eslint-plugin-import": "*",
@@ -118,6 +121,8 @@
     "shelljs": "*",
     "ts-jest": "*",
     "ts-node": "*",
-    "typescript": "*"
+    "typescript": "*",
+    "cypress": "*",
+    "eslint-plugin-cypress": "*"
   }
 }

@@ -17,8 +17,8 @@
         "cwd": "libs/backend"
       }
     },
-    "amplify-codegen": {
-      "command": "amplify codegen",
+    "amplify-codegen-models": {
+      "command": "amplify codegen models",
       "options": {
         "cwd": "libs/backend"
       }

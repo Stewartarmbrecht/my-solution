@@ -29,7 +29,7 @@
 		"10.24.1.53:5037:5037"
 	],
 	"remoteEnv": {
-		"REACT_NATIVE_PACKAGER_HOSTNAME": "10.24.1.53"
+		"REACT_NATIVE_PACKAGER_HOSTNAME": "localhost"
 	},
 	"customizations": {
 		"vscode": {
@@ -49,7 +49,8 @@
 				"alfnielsen.vsc-rename-files",
 				"msjsdiag.vscode-react-native",
 				"naumovs.color-highlight",
-				"anseki.vscode-color"
+				"anseki.vscode-color",
+				"andrew-codes.cypress-snippets"
 			]
 		}
 	}

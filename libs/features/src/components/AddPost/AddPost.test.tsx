@@ -29,6 +29,7 @@ describe('AddPost', () => {
     await waitFor(() => expect(dispatch).toHaveBeenCalledWith({
       type: 'posts/postAdded',
       payload: {
+        createdAt: expect.any(String),
         id: expect.any(String),
         title: 'New Post Title',
         rating: 5,

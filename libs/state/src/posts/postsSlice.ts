@@ -13,7 +13,16 @@ import {
   postsLoadedViaSync 
 } from "@my-solution/shared";
 
-const postsAdapter = createEntityAdapter<Post>();
+const postsAdapter = createEntityAdapter<Post>({
+  sortComparer: (a, b) => {
+    /*istanbul ignore next*/ 
+    const aCreatedAt = a.createdAt ?? new Date().toISOString();
+    /*istanbul ignore next*/ 
+    const bCreatedAt = b.createdAt ?? new Date().toISOString();
+
+    return bCreatedAt.localeCompare(aCreatedAt)
+  },
+});
 
 const initialState: Posts = postsAdapter.getInitialState({
   ids: [],
@@ -30,7 +39,13 @@ const postsSlice = createSlice({
     builder
     .addCase(postAdded, (state, action) => {
       logCall('postsSlice.addPost', action.payload);
+      if (action.payload.createdAt === undefined) {
+        action.payload.createdAt = new Date().toISOString();
+      }
       postsAdapter.addOne(state, action.payload);
+      // state.entities[action.payload.id] = action.payload;
+      // add new post to the beginning of the array
+      // state.ids.unshift(action.payload.id);
     })
     .addCase(postDeleted, (state, action) => {
       logCall('postsSlice.deletePost', action.payload);

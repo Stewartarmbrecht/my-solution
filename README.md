@@ -50,6 +50,7 @@ Below are the objectives that drove the design of this solution.
 
 
 # SETUP 
+To run the vscode tasks: press cntrl/cmd + shift + p then type "run task" then select the task named in the step.
 
 
 ## SOURCE CODE REPOSITORY
@@ -134,8 +135,10 @@ npx nx amplify-push <solutionName>-backend
 To run the app you need to export the ip address of your machine and set the port for the javascript bundle to the value you set above then start the app.  This command will start the app in web mode:
 
 ```
+vscode task: metro
+or
 npx nx start my-app
-after the app starts press 'w'
+w <- type 'w' to launch a browser and push metro through the first build.
 ```
 
 ## DEBUG LOCAL WEB APP
@@ -145,10 +148,12 @@ Be sure to install the React Developer Tools and the Redux Developer Tools add o
 ## RUN UNIT TESTS
 1. Run all unit tests and verify success.
 ```
+vscode task: test
+or
 npx nx run-many -t test
 ```
 
-## DEPLOY MOBILE DEVELOPMENT BUILD
+## BUILD MOBILE DEVELOPMENT APP
 
 1. Create an Expo Account:  [Expo Sign Up](https://expo.dev/signup)
 2. Remove eas project id and updates URL.  In the app.config.js, comment out 'updates' and the 'extra.eas' sections so it looks like this:
@@ -168,6 +173,8 @@ npx nx run-many -t test
 ``` 
 2. Create a build:
 ```
+vscode task: build-dev
+or
 npx nx build-dev my-app
 ```
 * Email or username: [from the EAS account you created]
@@ -207,21 +214,57 @@ owner: "stewartarmbrecht"
 ```
 4. Rerun the build:
 ```
+vscode task: build-dev
+or
 npx nx build-dev my-app
 ```
 5. Install development build by scanning the QR Code
 
 
+## BUILD MOBILE DEVELOPMENT DETOX ANDROID APP
+This creates an local instance of the development APK for using Detox to test.
+```
+vscode task: build-dev-detox
+or
+npx nx build-dev-detox my-app
+```
+
+## RUN MOBILE E2E TESTS
+1. Setup Genymotion account:  [Create Account](https://cloud.geny.io/)
+2. Log into Genymotion SaaS using a token: [Create Token](https://docs.genymotion.com/saas/10_Public_HTTP_API/)  
+```
+gmsaas auth token
+```
+3. Run detox tests:
+```
+vscode task: test-e2e-mobile
+or
+npx nx test-e2e-mobile my-app-e2e
+```
+
 ## RUN MOBILE DEVELOPMENT BUILD ON PHYSICAL DEVICE
 After you have installed the development build.  Run the app:
 ```
+vscode task: run
+or
 npx nx start my-app
 ```
 Then scan the QR Code with your phone.  The app should be running on your phone.
 If you have a problem with the preview app being loaded from the dev server QR code, then just enter the URL manually in the dev instance of the app.  The URL should be http://<your IP Address>:<The port you selected>
 
 ## RUN MOBILE DEVELOPMENT BUILD ON ANDROID EMULATOR
-... To be documented.
+First you need to build a local instance of the android app:
+```
+vscode task: local-build-dev-android
+or
+npx nx local-build-dev-android my-app
+```
+Once you have built a local dev instance you can deploy it to your android emulator:
+```
+vscode task: run-android-geny
+or
+npx nx run-android-geny my-app
+``` 
 
 ## DEBUG MOBILE APP
 
@@ -247,6 +290,8 @@ If you have a problem with the preview app being loaded from the dev server QR c
 The mobile preview build gives you an instance of the application that will run without the metro server running.  This instance will also accept updates via the preview channel.
 1. Create a preview build:
 ```
+vscode task: build-preview
+or
 npx nx build-preview my-app
 ```
 2. Install Preview.  Scan the QR Code from running the last command and install the app on your phone.
@@ -344,107 +389,173 @@ TBD...
 
 
 # DEVELOPMENT FLOW
-1. **Write Test:** Write your unit test.
-2. **Verify Test Fails:** Run your unit test and verify it fails:
+In the code below, replace my-app with the name of your application.
+To run the vscode tasks: press cntrl/cmd + shift + p then type "run task" then select the task named in the step.
+
+## New Feature Development
+
+The steps below assume that you have a physical ios device for development and a genymotion cloud service for detox testing.
+
+1. **Start the App for Web and Mobile**: 
+In the first terminal run the start commend.  This starts an instance of the metro bundler that listens on your hosts ip and port 19001.  This enables your physical device to connect using the debug build.
+```
+vscode task: run
+or
+npx nx start my-app
+w <- type 'w' to launch a browser and push metro through the first build.
+```
+After verifying the web app is running correctly, open the dev app on your physcial phone.
+2. **Start the App for Detox Testing:**:  Run a second metro bundler that listens on localhost.  This instance will be connected to by genycloud android instance for detox e2e tests.
+```
+vscode task: run-detox
+or
+npx nx start-detox my-app
+w <- type 'w' to launch a browser and push metro through the first build.
+```
+3. **Open E2E Web Tester:** Use this interface to run your web E2E tests.
+In a 3rd terminal run the following command.  It will launch the Cyperss interface.
+```
+vscode task: test-e2e-web-open
+or
+npx nx test-e2e-web-open my-app-e2e
+```
+3. **Write End-to-End (E2E) Web Test:** Write a cypress test that performs the new feature you want to build.  This test should be located in the 'my-app-e2e/cypress/e2e' folder.
+4. **Verify E2E Web Test Fails:** Start the app and the Cypress test runner:
+Navigate to the test spec you created in the Cypress interface from the "Open Cypress E2E Tester" step and run the spec you created.
+Or if you do not want to use the Cypress interface you can run the following command in a new terminal:
+```
+vscode task: test-e2e-web-current-spec 
+(make sure to view the spec file you want to run in the editor before running the task.)
+or
+npx nx test-e2e-web my-app-e2e --spec /path/to/your/test.cy.ts
+```
+5. **Write E2E Mobile Test:** Write a detox test that performs the new feature you want to build.  This test should be located in the 'my-app-e2e/detox' folder.  Use an AI to convert the test from cypress to detox.
+6. **Verify E2E Mobile Test Fails:** Run the new E2E test you wrote for mobile.
+In a new terminal run the following command.  This assumes you have already built your detox android apk in the setup.  It will launch an instance of android in the cloud, deploy your app to the device, then run your test.
+```
+vscode task: test-e2e-mobile-current-spec 
+(make sure to view the spec file you want to run in the editor before running the task.)
+or
+npx nx test-e2e-mobile my-app-e2e /path/to/your/test.spec.ts
+```
+7. **Write Unit Test:** Write a unit test that requires the new code you need to write.  Create a .test.ts or .test.tsx file that has the name of the function you need to write.  Stub the actual code file so that your test compiles.
+8. **Verify Unit Test Fails:** Run your unit test and verify it fails:
 ```
 Cntrl/Cmd+Shift+P
 Test: Run Test at Cursor
 ```
-3. **Write Code:** Write your code and rerun the tests until they pass.
-4. **Verify Test Passes:** If you need to debug a test:
+9. **Write Code and Rerun:** Write your code and rerun the unit tests until they pass.
+```
+Cntrl/Cmd+Shift+P
+Test: Run Tests in Current File
+```
+10. **Verify in Web App:** Manually verify your new feature in the web browser that you started in the first step.
+11. **Verify in Mobile App:** Manually verify your new feature in the dev app on your mobile device connected to the metro service you started in the "Start the App for Web and Mobile" step (first step).
+12. **Verify Unit Test Passes:** If you need to debug a test:
 ```
 Cntrl/Cmd+Shift+P
 Test: Debug Test at Cursor
 ```
-5. **Verify in App:** Run the app and verify your code change in the web and mobile app.
-```
-npx nx start <app project>
-Ex: npx nx start my-app
-```
-6. **Debug Web App:** 
+13. **Verify E2E Web Test Passes:** Rerun your test that you created through the Cypress UI or via the CLI using the command listed in Verify E2E Web Test Fails step.
+14. **Verify E2E Mobile Test Passes:** Rerun your test that you created via the CLI using the command listed in Verify E2E Mobile Test Fails step.
+15. **Debug Web App:** Set breakpoints in the browser devtools and execute your feature in the app.
 Once the app is started.  Open the dev tools.  In the sources tab you can find files using Cmd/Cntrl+Shift+P and typing the file name.  You can also set breakpoints.  Install the redux tools as well as the React Native tools and you can inspect redux, the UI elements, and the UI performance.
+16. **Debug Mobile App:** Set breakpoints in VSCode and execute your feature in the mobile app.
+//TODO: Add steps and commands.
 
-7. **Run All Tests:** Run your tests with coverage:
+17. **Run All Unit Tests:** Run all unit tests to verify all are still passing:
 ```
-npx nx test <project name> 
-Ex: npx nx test backend
+vscode task: test
+or
+npx nx run-many -t test
 ```
-8. **Verify Code Coverage:** After you completed building your feature and have all tests passing, verify you have 100% code coverage.
+Alternatively, you can run all unit tests in a single project (ex. my-app) using:
 ```
-npx nx test-coverage <project name> 
-Ex: npx nx test-coverage backend
+vscode task: test-my-app
+(Replace my-app with the name of the project:  backend, features, shared, or state)
+or
+npx nx test my-app
 ```
-9. **Install Expo Modules:** Use the following command to install expo modules in your app project:
+18. **Verify 100% Unit Test Code Coverage:** After you completed building your feature and have all tests passing, verify you have 100% code coverage.
+```
+vscode task: test-coverage
+or
+npx nx run-many -t test-coverage
+```
+Alternatively, you can check code coverage for a single project (ex. my-app) using:
+```
+vscode task: test-coverage-my-app
+(Replace my-app with the name of the project:  backend, features, shared, or state)
+or
+npx nx test-coverage my-app
+```
+19. **Run All E2E Web Tests:** Run all the cypress tests to verify the web app is working.
+```
+vscode task: test-e2e-web
+or
+npx nx test-e2e-web my-app-e2e
+```
+20. **Run All e2e Mobile Tests:** Run all the detox tests to verify the mobile app is working.
+```
+vscode task: test-e2e-mobile
+or
+npx nx test-e2e-mobile my-app-e2e
+```
+
+## Adding Dependencies
+1. **Check If Package Versions Are Outdated:** Check if your install dependencies are outdated.
+```
+vscode task: check-dependencies
+or
+npx npm-check-updates
+```
+1. **Upgrading Individual NPM Depencies:** Execute npm install from the root of the solution.
+```
+npm install expo@latest
+```
+2. **Upgradeing All NPM Dependencies:** Upgrade all dependencies to their latest version.
+```
+npx npm-check-updates -u
+```
+2. **Install Expo Modules:** Use the following command to install expo modules in your app project:
 ```
 npx nx install my-app package1,package2,package3
 ```
-10. **Sort Package Dependencies:** Use the following command to sort the dependencies in a package.json
+3. **Upgrade/Correct Expo Modules:** Use the following command to install expo modules in your app project:
+```
+npx nx install my-app --fix
+```
+4. **Sort Package Dependencies:** Use the following command to sort the dependencies in a package.json
 ```
 cd to-directory-with-package-json
 npx sort-package-json
 ```
-10. **Update Development Build:** If you install modules that require updating the development build that is deployed to devices:
+5. **Build Android Mobile App Locally:** You can build the android version of the app and run it in genymotion to check that the mobile app compiles and can run on a device.
+```
+npx nx build-local-dev-android my-app
+```
+6. **Run Android Mobile App in Genymotion:** After you have built a new version of the app, you can launch an emulator in genymotion and deploy the build using the following commands:
+```
+```
+7. **Build Android and IOS Using EAS:** If you install modules that require updating the development build that is deployed to devices:
 ```
 npx nx build-dev my-app
 ```
 After you run the build, you will need to scan the QR code on all devices to update your development build.
+8. **Install EAS Build on Device:** 
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 
-# NX generated readme...
-## Generate code
+# DEPLOYMENT FLOW
 
-If you happen to use Nx plugins, you can leverage code generators that might come with it.
+1. **Add Backend Features** - Make changes to the backend that only add new features that will not interfere with the existing production app.
 
-Run `nx list` to get a list of available plugins and whether they have generators. Then run `nx list <plugin-name>` to see what generators are available.
+2. 
 
-Learn more about [Nx generators on the docs](https://nx.dev/plugin-features/use-code-generators).
-
-## Running posts
-
-To execute posts with Nx use the following syntax:
-
+# OTHER NOTES
+## Slow Http Connections
+If you are experiencing slow initial connections from the host or external device to your metro bundler just change the nameserver lines in /etc/resolv.conf to:
 ```
-nx <target> <project> <...options>
+nameserver 8.8.8.8
+nameserver 8.8.4.4
 ```
-
-You can also run multiple targets:
-
-```
-nx run-many -t <target1> <target2>
-```
-
-..or add `-p` to filter specific projects
-
-```
-nx run-many -t <target1> <target2> -p <proj1> <proj2>
-```
-
-Targets can be defined in the `package.json` or `projects.json`. Learn more [in the docs](https://nx.dev/core-features/run-posts).
-
-## Want better Editor Integration?
-
-Have a look at the [Nx Console extensions](https://nx.dev/nx-console). It provides autocomplete support, a UI for exploring and running posts & generators, and more! Available for VSCode, IntelliJ and comes with a LSP for Vim users.
-
-## Ready to deploy?
-
-Just run `nx build demoapp` to build the application. The build artifacts will be stored in the `dist/` directory, ready to be deployed.
-
-## Set up CI!
-
-Nx comes with local caching already built-in (check your `nx.json`). On CI you might want to go a step further.
-
-- [Set up remote caching](https://nx.dev/core-features/share-your-cache)
-- [Set up task distribution across multiple machines](https://nx.dev/nx-cloud/features/distribute-task-execution)
-- [Learn more how to setup CI](https://nx.dev/recipes/ci)
-
-## Connect with us!
-
-- [Join the community](https://nx.dev/community)
-- [Subscribe to the Nx Youtube Channel](https://www.youtube.com/@nxdevtools)
-- [Follow us on Twitter](https://twitter.com/nxdevtools)
+https://stackoverflow.com/questions/41923522/why-is-network-internet-in-my-docker-container-so-slow

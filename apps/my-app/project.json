@@ -14,6 +14,62 @@
         "dev-client": true
       }
     },
+    "start-detox": {
+      "executor": "@nx/expo:start",
+      "dependsOn": [
+        "sync-deps"
+      ],
+      "options": {
+        "port": 19002,
+        "dev-client": true
+      }
+    },
+    "start-ip": {
+      "executor": "nx:run-commands",
+      "dependsOn": [
+        "sync-deps"
+      ],
+      "options": {
+        "command": "REACT_NATIVE_PACKAGER_HOSTNAME=10.24.1.57 npx nx start my-app"
+      }
+    },
+    "eas-build-dev": {
+      "executor": "@nx/expo:build",
+      "options": {
+        "platform": "all",
+        "profile": "development"
+      }
+    },
+    "eas-build-dev-android": {
+      "executor": "@nx/expo:build",
+      "options": {
+        "platform": "android",
+        "profile": "development"
+      }
+    },
+    "local-build-dev-android": {
+      "executor": "@nx/expo:build",
+      "options": {
+        "platform": "android",
+        "profile": "development",
+        "local": true
+      }
+    },
+    "run-android-geny": {
+      "executor": "nx:run-commands",
+      "dependsOn": [
+        "sync-deps",
+        {
+          "target": "install-debug-geny",
+          "projects": "my-app-e2e"
+        }
+      ],
+      "options": {
+        "command": "REACT_NATIVE_PACKAGER_HOSTNAME=localhost npx nx start-detox my-app -a"
+      }
+    },
+
+
     "serve-web": {
       "executor": "nx:run-commands",
       "dependsOn": [
@@ -21,6 +77,24 @@
       ],
       "options": {
         "command": "npx serve -s dist/apps/my-app -l 5000"
+      }
+    },
+    "set-hostname-localhost": {
+      "executor": "nx:run-commands",
+      "dependsOn": [
+        "sync-deps"
+      ],
+      "options": {
+        "command": "export REACT_NATIVE_PACKAGER_HOSTNAME=localhost"
+      }
+    },
+    "set-hostname-ip": {
+      "executor": "nx:run-commands",
+      "dependsOn": [
+        "sync-deps"
+      ],
+      "options": {
+        "command": "export REACT_NATIVE_PACKAGER_HOSTNAME=10.24.1.57"
       }
     },
     "run-ios": {
@@ -32,52 +106,30 @@
         "platform": "ios"
       }
     },
-    "run-android": {
-      "executor": "@nx/expo:run",
+    "connect-host-emulator": {
+      "executor": "nx:run-commands",
       "dependsOn": [
         "sync-deps"
       ],
       "options": {
-        "platform": "android",
-        "port": 19001
+        "command": "adb connect host.docker.internal"
       }
     },
-    "build-dev": {
-      "executor": "@nx/expo:build",
-      "options": {
-        "platform": "all",
-        "profile": "development"
-      }
-    },
-    "build-dev-ios": {
-      "executor": "@nx/expo:build",
-      "options": {
-        "platform": "ios",
-        "profile": "development"
-      }
-    },
-    "build-dev-android": {
-      "executor": "@nx/expo:build",
-      "options": {
-        "platform": "android",
-        "profile": "development"
-      }
-    },
-    "build-preview": {
+    "eas-build-preview": {
       "executor": "@nx/expo:build",
       "options": {
         "platform": "all",
         "profile": "preview"
       }
     },
-    "build-preview-ios": {
+    "eas-build-preview-ios": {
       "executor": "@nx/expo:build",
       "options": {
         "platform": "ios",
         "profile": "preview"
       }
     },
-    "build": {
+    "eas-build": {
       "executor": "@nx/expo:build",
       "options": {}
     },
@@ -85,7 +137,7 @@
       "executor": "@nx/expo:submit",
       "options": {}
     },
-    "build-list": {
+    "eas-build-list": {
       "executor": "@nx/expo:build-list",
       "options": {}
     },
