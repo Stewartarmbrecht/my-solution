@@ -3,7 +3,7 @@ if [[ $(gmsaas instances list -q) ]]; then
   echo "Genymotion instance is already running."
 else
   echo "Starting Genymotion instance..."
-  gmsaas instances start 53d71621-b0b8-4e5a-8cea-0055ea98988f my-app-dev
+  gmsaas instances start 95016679-8f8d-4890-b026-e4ad889aadf1 my-app-dev
 fi
 # Connect to the Genymotion instance.
 gmsaas instances list -q | xargs -n1 gmsaas instances adbconnect

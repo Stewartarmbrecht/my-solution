@@ -505,6 +505,8 @@ npx nx test-e2e-mobile my-app-e2e
 ## Adding Dependencies
 1. **Check If Package Versions Are Outdated:** Check if your install dependencies are outdated.
 ```
+vscode task: check-dependencies
+or
 npx npm-check-updates
 ```
 1. **Upgrading Individual NPM Depencies:** Execute npm install from the root of the solution.

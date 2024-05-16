@@ -49,6 +49,9 @@
         },
         "genymotion": {
           "detoxConfiguration": "android.genycloud.debug"
+        },
+        "genymotion-release": {
+          "detoxConfiguration": "android.genycloud.release"
         }
       }
     },
@@ -134,14 +137,34 @@
         "command": "gmsaas instances list -q | xargs -n1 gmsaas instances stop"
       }
     },
-    "test-e2e-mobile": {
+    "test-e2e-mobile-debug": {
       "executor": "nx:run-commands",
       "dependsOn": [
         "sync-deps"
       ],
       "options": {
         "cwd": "apps/my-app-e2e",
-        "command": "npx detox test --configuration android.genycloud.debug"
+        "command": "EXPO_USE_UPDATES='false' npx detox test --configuration android.genycloud.debug --force-adb-install"
+      }
+    },
+    "test-e2e-mobile-debug-reuse": {
+      "executor": "nx:run-commands",
+      "dependsOn": [
+        "sync-deps"
+      ],
+      "options": {
+        "cwd": "apps/my-app-e2e",
+        "command": "EXPO_USE_UPDATES='false' npx detox test --configuration android.genycloud.debug --reuse"
+      }
+    },
+    "test-e2e-mobile-release": {
+      "executor": "nx:run-commands",
+      "dependsOn": [
+        "sync-deps"
+      ],
+      "options": {
+        "cwd": "apps/my-app-e2e",
+        "command": "npx detox test --configuration android.genycloud.release"
       }
     }
   },

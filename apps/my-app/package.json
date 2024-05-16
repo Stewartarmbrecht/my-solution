@@ -61,7 +61,6 @@
     "tslib": "*",
     "@expo/config": "*",
     "@expo/server": "*",
-    "expo-web-browser": "*",
     "expo-image": "*",
     "@react-navigation/material-top-tabs": "*",
     "@react-navigation/drawer": "*",

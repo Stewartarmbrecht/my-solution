@@ -38,7 +38,7 @@ async function openAppForDebugBuild(platform) {
     console.log('Launching app with deep link:', deepLinkUrl);
     await device.launchApp({
       newInstance: true,
-      url: deepLinkUrl,
+      url: deepLinkUrl,      
     });
   }
 
