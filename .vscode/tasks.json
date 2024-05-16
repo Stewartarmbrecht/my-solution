@@ -261,6 +261,22 @@
       "type": "shell",
       "command": "npx npm-check-updates && npx nx install my-app --check",
       "problemMatcher": []
+    },
+		{
+      "label": "login-genymotion",
+			"detail": "Sets auth token for accessing genymotion.",
+      "type": "shell",
+			"args": ["auth", "token", "${input:token}"],
+      "command": "gmsaas",
+      "problemMatcher": []
     }
+	],
+	"inputs": [
+		{
+			"id": "token",
+			"type": "promptString",
+			"description": "Enter Genymotion token.",
+			"default": ""
+		}
 	]
 }
