@@ -256,13 +256,20 @@
 			"problemMatcher": []
 		},
 		{
-      "label": "check-dependencies",
+      "label": "build-check-dependencies",
 			"detail": "Checks the npm dependency versions for updates.  Also checks the version match for expo.",
       "type": "shell",
       "command": "npx npm-check-updates && npx nx install my-app --check",
       "problemMatcher": []
     },
 		{
+      "label": "build-install-dependencies-my-app",
+			"detail": "Installs one or more dependencies into the my-app project.",
+      "type": "shell",
+      "command": "npx nx install my-app ${input:dependencies}",
+      "problemMatcher": []
+    },
+    {
       "label": "login-genymotion",
 			"detail": "Sets auth token for accessing genymotion.",
       "type": "shell",
@@ -271,7 +278,12 @@
       "problemMatcher": []
     }
 	],
-	"inputs": [
+  "inputs": [
+    {
+      "id": "dependencies",
+      "type": "promptString",
+      "description": "Enter a space separate list of dependencies to install.",
+    },
 		{
 			"id": "token",
 			"type": "promptString",

@@ -20,5 +20,9 @@
     "./**/*.jsx",
     
     "**/*.json",
+  ],
+  "exclude": [
+    "./android",
+    "./ios",
   ]
 }

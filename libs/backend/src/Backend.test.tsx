@@ -1,3 +1,8 @@
+/* eslint-disable import/first */
+jest.mock('./aws-exports', () => ({
+  default: {},
+}));
+
 import React from 'react';
 import { Text } from 'react-native';
 import { Backend, BackendProps } from './Backend';
@@ -14,9 +19,6 @@ jest.mock('aws-amplify/utils', () => ({
   Hub: {
     listen: jest.fn(),
   },
-}));
-jest.mock('./aws-exports', () => ({
-  default: {},
 }));
 jest.mock('aws-amplify', () => ({
   Amplify: {

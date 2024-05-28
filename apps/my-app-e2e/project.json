@@ -144,7 +144,7 @@
       ],
       "options": {
         "cwd": "apps/my-app-e2e",
-        "command": "EXPO_USE_UPDATES='false' npx detox test --configuration android.genycloud.debug --force-adb-install"
+        "command": "EXP_USE_UPDATES=false npx detox test --configuration android.genycloud.debug"
       }
     },
     "test-e2e-mobile-debug-reuse": {
@@ -154,7 +154,7 @@
       ],
       "options": {
         "cwd": "apps/my-app-e2e",
-        "command": "EXPO_USE_UPDATES='false' npx detox test --configuration android.genycloud.debug --reuse"
+        "command": "npx detox test --configuration android.genycloud.debug --reuse"
       }
     },
     "test-e2e-mobile-release": {

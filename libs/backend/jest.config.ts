@@ -9,6 +9,7 @@ module.exports = {
   setupFilesAfterEnv: ['<rootDir>/test-setup.ts'],
   moduleNameMapper: {
     '\\.svg$': '@nx/expo/plugins/jest/svg-mock',
+    '^./aws-exports$': '<rootDir>/__mocks__/src/aws-exports.js',
   },
   collectCoverageFrom: [
     '**/*.{ts,tsx}',
