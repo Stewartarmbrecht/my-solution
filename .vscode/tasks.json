@@ -11,13 +11,22 @@
 			"detail": "Run all unit tests."
 		},
 		{
-			"label": "test-my-app",
+			"label": "test-myapp",
 			"type": "nx",
 			"project": "",
 			"command": "run",
 			"flags": ["my-app:test"],
 			"problemMatcher": [],
 			"detail": "Run all unit tests in the my-app project."
+		},
+		{
+			"label": "test-mysite",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"flags": ["my-site:test"],
+			"problemMatcher": [],
+			"detail": "Run all unit tests in the my-site project."
 		},
 		{
 			"label": "test-features",
@@ -65,7 +74,7 @@
 			"detail": "Run all unit tests with code coverage enforced."
 		},
 		{
-			"label": "test-coverage-features",
+			"label": "test-features-coverage",
 			"type": "nx",
 			"project": "",
 			"command": "run",
@@ -74,7 +83,7 @@
 			"detail": "Run all unit tests with code coverage enforced for the features project."
 		},
 		{
-			"label": "test-coverage-my-app",
+			"label": "test-myapp-coverage",
 			"type": "nx",
 			"project": "",
 			"command": "run",
@@ -83,7 +92,16 @@
 			"detail": "Run all unit tests with code coverage enforced for the my-app project."
 		},
 		{
-			"label": "test-coverage-shared",
+			"label": "test-mysite-coverage",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"flags": ["my-site:test-coverage"],
+			"problemMatcher": [],
+			"detail": "Run all unit tests with code coverage enforced for the my-site project."
+		},
+		{
+			"label": "test-shared-coverage",
 			"type": "nx",
 			"project": "",
 			"command": "run",
@@ -92,7 +110,7 @@
 			"detail": "Run all unit tests with code coverage enforced for the shared project."
 		},
 		{
-			"label": "test-coverage-backend",
+			"label": "test-backend-coverage",
 			"type": "nx",
 			"project": "",
 			"command": "run",
@@ -101,7 +119,7 @@
 			"detail": "Run all unit tests with code coverage enforced for the backend project."
 		},
 		{
-			"label": "test-coverage-state",
+			"label": "test-state-coverage",
 			"type": "nx",
 			"project": "",
 			"command": "run",
@@ -110,7 +128,7 @@
 			"detail": "Run all unit tests with code coverage enforced for the state project."
 		},
 		{
-			"label": "build-dev",
+			"label": "build-myapp-dev",
 			"type": "nx",
 			"project": "",
 			"command": "run",
@@ -119,7 +137,7 @@
 			"detail": "Build the development version of the app in eas for both ios and android."
 		},
 		{
-			"label": "build-preview",
+			"label": "build-myapp-preview",
 			"type": "nx",
 			"project": "",
 			"command": "run",
@@ -128,7 +146,7 @@
 			"detail": "Build the preview version of the app in eas for both ios and android."
 		},
 		{
-			"label": "local-build-dev-android",
+			"label": "build-myapp-local-dev-android",
 			"type": "nx",
 			"project": "",
 			"command": "run",
@@ -137,7 +155,7 @@
 			"detail": "Locally builds the android version of the app using eas.  Use this before running detox on dev instances."
 		},
 		{
-			"label": "run-android-geny",
+			"label": "run-myapp-android-geny",
 			"type": "nx",
 			"project": "",
 			"command": "run",
@@ -146,7 +164,7 @@
 			"detail": "Run a dev cloud instance of geny android emulator then start the metro bundler and deploy to it."
 		},
 		{
-			"label": "run",
+			"label": "run-myapp",
 			"type": "nx",
 			"project": "",
 			"command": "run",
@@ -156,7 +174,7 @@
 			"detail": "Run the metro bundler on the current host ip port 19001."
 		},
 		{
-			"label": "run-for-detox",
+			"label": "run-myapp-for-detox",
 			"type": "nx",
 			"project": "",
 			"command": "run",
@@ -166,7 +184,7 @@
 			"detail": "Run the metro bundler on localhost ip port 19002."
 		},
 		{
-			"label": "test-e2e-web-open",
+			"label": "test-myapp-open-e2e-web",
 			"type": "nx",
 			"project": "",
 			"command": "run",
@@ -176,7 +194,7 @@
 			"detail": "Open the web test runner."
 		},
 		{
-			"label": "test-e2e-web-current-spec",
+			"label": "test-myapp-e2e-web-current-spec",
 			"type": "nx",
 			"project": "",
 			"command": "run",
@@ -186,7 +204,7 @@
 			"detail": "Run the current spec file in the web test runner."
 		},
 		{
-			"label": "test-e2e-web",
+			"label": "test-myapp-e2e-web",
 			"type": "nx",
 			"project": "",
 			"command": "run",
@@ -196,7 +214,7 @@
 			"detail": "Run all end to end web tests."
 		},
 		{
-			"label": "build-dev-detox",
+			"label": "build-myapp-dev-detox",
 			"type": "nx",
 			"project": "",
 			"command": "run",
@@ -206,7 +224,7 @@
 			"detail": "Build a dev version of the app ready for detox testing."
 		},
 		{
-			"label": "build-release-detox",
+			"label": "build-myapp-release-detox",
 			"type": "nx",
 			"project": "",
 			"command": "run",
@@ -216,7 +234,7 @@
 			"detail": "Build a release version of the app ready for detox testing."
 		},
 		{
-			"label": "test-e2e-mobile-current-spec",
+			"label": "test-myapp-e2e-mobile-current-spec",
 			"type": "nx",
 			"project": "",
 			"command": "run",
@@ -226,7 +244,7 @@
 			"detail": "Launch Genymotion emulator, install the app, and run the current test file in the mobile app test runner."
 		},
 		{
-			"label": "test-e2e-mobile-debug",
+			"label": "test-myapp-e2e-mobile-debug",
 			"detail": "Launch Genymotion emulator, install the app, and run all mobile app tests.",
 			"type": "nx",
 			"project": "",
@@ -236,7 +254,7 @@
 			"problemMatcher": []
 		},
 		{
-			"label": "test-e2e-mobile-debug-reuse",
+			"label": "test-myapp-e2e-mobile-debug-reuse",
 			"detail": "Launch Genymotion emulator, install the app, and run all mobile app tests.",
 			"type": "nx",
 			"project": "",
@@ -246,7 +264,7 @@
 			"problemMatcher": []
 		},
 		{
-			"label": "test-e2e-mobile-release",
+			"label": "test-myapp-e2e-mobile-release",
 			"detail": "Launch Genymotion emulator, install the app, and run all mobile app tests.",
 			"type": "nx",
 			"project": "",
@@ -256,17 +274,191 @@
 			"problemMatcher": []
 		},
 		{
-      "label": "build-check-dependencies",
+      "label": "dependencies-check",
 			"detail": "Checks the npm dependency versions for updates.  Also checks the version match for expo.",
       "type": "shell",
       "command": "npx npm-check-updates && npx nx install my-app --check",
       "problemMatcher": []
     },
 		{
-      "label": "build-install-dependencies-my-app",
+      "label": "dependencies-install",
+			"detail": "Installs one or more dependencies into the my-app project.",
+      "type": "shell",
+      "command": "npm install",
+      "problemMatcher": []
+    },
+		{
+      "label": "dependencies-install-myapp",
 			"detail": "Installs one or more dependencies into the my-app project.",
       "type": "shell",
       "command": "npx nx install my-app ${input:dependencies}",
+      "problemMatcher": []
+    },
+		{
+      "label": "dependencies-nx-migrate",
+			"detail": "Upgrades nx to the latest version and all of it's modules.",
+      "type": "shell",
+      "command": "npx nx migrate latest",
+      "problemMatcher": []
+    },
+		{
+			"label": "build-mysite-dev",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"flags": ["my-site:eas-build-dev"],
+			"problemMatcher": [],
+			"detail": "Build the development version of the app in eas for both ios and android."
+		},
+		{
+			"label": "build-mysite-preview",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"flags": ["my-site:eas-build-preview"],
+			"problemMatcher": [],
+			"detail": "Build the preview version of the app in eas for both ios and android."
+		},
+		{
+			"label": "build-mysite-local-dev-android",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"positional": "my-site:local-build-dev-android",
+			"problemMatcher": [],
+			"detail": "Locally builds the android version of the app using eas.  Use this before running detox on dev instances."
+		},
+		{
+			"label": "run-mysite-android-geny",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"flags": ["my-site:run-android-geny"],
+			"problemMatcher": [],
+			"detail": "Run a dev cloud instance of geny android emulator then start the metro bundler and deploy to it."
+		},
+		{
+			"label": "run-mysite",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"positional": "my-site:start-ip",
+			"flags": [],
+			"problemMatcher": [],
+			"detail": "Run the metro bundler on the current host ip port 19001."
+		},
+		{
+			"label": "run-mysite-for-detox",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"positional": "my-site:start-detox",
+			"flags": [],
+			"problemMatcher": [],
+			"detail": "Run the metro bundler on localhost ip port 19002."
+		},
+		{
+			"label": "test-mysite-open-e2e-web",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"positional": "my-site-e2e:test-e2e-web-open",
+			"flags": [],
+			"problemMatcher": [],
+			"detail": "Open the web test runner."
+		},
+		{
+			"label": "test-mysite-e2e-web-current-spec",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"positional": "my-site-e2e:test-e2e-web",
+      "flags": ["--spec=${file}"],
+			"problemMatcher": [],
+			"detail": "Run the current spec file in the web test runner."
+		},
+		{
+			"label": "test-mysite-e2e-web",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"positional": "my-site-e2e:test-e2e-web",
+      "flags": [],
+			"problemMatcher": [],
+			"detail": "Run all end to end web tests."
+		},
+		{
+			"label": "build-mysite-dev-detox",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"positional": "my-site-e2e:build-android",
+      "flags": ["--configuration=genymotion"],
+			"problemMatcher": [],
+			"detail": "Build a dev version of the app ready for detox testing."
+		},
+		{
+			"label": "build-mysite-release-detox",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"positional": "my-site-e2e:build-android",
+      "flags": ["--configuration=genymotion-release"],
+			"problemMatcher": [],
+			"detail": "Build a release version of the app ready for detox testing."
+		},
+		{
+			"label": "test-mysite-e2e-mobile-current-spec",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"positional": "my-site-e2e:test-e2e-mobile",
+      "flags": ["${file}"],
+			"problemMatcher": [],
+			"detail": "Launch Genymotion emulator, install the app, and run the current test file in the mobile app test runner."
+		},
+		{
+			"label": "test-mysite-e2e-mobile-debug",
+			"detail": "Launch Genymotion emulator, install the app, and run all mobile app tests.",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"positional": "my-site-e2e:test-e2e-mobile-debug",
+			"flags": [],
+			"problemMatcher": []
+		},
+		{
+			"label": "test-mysite-e2e-mobile-debug-reuse",
+			"detail": "Launch Genymotion emulator, install the app, and run all mobile app tests.",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"positional": "my-site-e2e:test-e2e-mobile-debug-reuse",
+			"flags": [],
+			"problemMatcher": []
+		},
+		{
+			"label": "test-mysite-e2e-mobile-release",
+			"detail": "Launch Genymotion emulator, install the app, and run all mobile app tests.",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"positional": "my-site-e2e:test-e2e-mobile-release",
+			"flags": [],
+			"problemMatcher": []
+		},
+		{
+      "label": "build-mysite-check-dependencies",
+			"detail": "Checks the npm dependency versions for updates.  Also checks the version match for expo.",
+      "type": "shell",
+      "command": "npx npm-check-updates && npx nx install my-site --check",
+      "problemMatcher": []
+    },
+		{
+      "label": "build-mysite-install-dependencies",
+			"detail": "Installs one or more dependencies into the my-site project.",
+      "type": "shell",
+      "command": "npx nx install my-site ${input:dependencies}",
       "problemMatcher": []
     },
     {

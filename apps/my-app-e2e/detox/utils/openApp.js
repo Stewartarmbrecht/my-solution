@@ -9,7 +9,7 @@ module.exports.openApp = async function openApp() {
   const config = await resolveConfig();
   console.log('Configuration:', config.configurationName);
   if (config.configurationName.split('.')[2] === 'debug') {
-    console.log('Opening app for debug build...');
+    console.log('Opening app for debug build...', platform);
     return await openAppForDebugBuild(platform);
   } else {
     return await device.launchApp({
@@ -38,7 +38,8 @@ async function openAppForDebugBuild(platform) {
     console.log('Launching app with deep link:', deepLinkUrl);
     await device.launchApp({
       newInstance: true,
-      url: deepLinkUrl,      
+      url: deepLinkUrl,
+      
     });
   }
 
@@ -49,7 +50,8 @@ const getDeepLinkUrl = url =>
   `exp+my-app://expo-development-client/?url=${encodeURIComponent(url)}`;
 
 const getDevLauncherPackagerUrl = platform => 
-  `http://localhost:19002/index.bundle?platform=${platform}&dev=true&minify=false&disableOnboarding=1`;
+  //`http://localhost:19002`;
+  `http://localhost:19002?platform=${platform}&dev=true&minify=false&disableOnboarding=1`;
 
 const getLatestUpdateUrl = () =>
   `https://u.expo.dev/${getAppId()}?channel-name=test_debug&disableOnboarding=1`;

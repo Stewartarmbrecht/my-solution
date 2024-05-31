@@ -57,7 +57,7 @@ module.exports = {
     'android-attached': {
       type: 'android.attached',
       device: {
-        adbName: 'host.docker.internal'
+        adbName: 'G3MX81285D3081000918'
       }
     },
     genycloud: {

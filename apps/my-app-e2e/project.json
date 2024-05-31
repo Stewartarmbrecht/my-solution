@@ -144,7 +144,7 @@
       ],
       "options": {
         "cwd": "apps/my-app-e2e",
-        "command": "EXP_USE_UPDATES=false npx detox test --configuration android.genycloud.debug"
+        "command": "npx detox test --configuration android.att.debug"
       }
     },
     "test-e2e-mobile-debug-reuse": {
