@@ -44,5 +44,5 @@ expo-env.d.ts
 .tamagui
 
 # Expo prebuild
-#android/
-#ios/
+android/
+ios/

@@ -55,17 +55,13 @@
         "local": true
       }
     },
-    "run-android-geny": {
+    "run-android": {
       "executor": "nx:run-commands",
       "dependsOn": [
-        "sync-deps",
-        {
-          "target": "install-debug-geny",
-          "projects": "my-app-e2e"
-        }
+        "sync-deps"
       ],
       "options": {
-        "command": "REACT_NATIVE_PACKAGER_HOSTNAME=localhost npx nx start-detox my-app -a"
+        "command": "REACT_NATIVE_PACKAGER_HOSTNAME=localhost npx expo run:android"
       }
     },
 

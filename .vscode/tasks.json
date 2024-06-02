@@ -173,13 +173,13 @@
 			"detail": "Locally builds the android version of the app using eas.  Use this before running detox on dev instances."
 		},
 		{
-			"label": "run-myapp-android-geny",
+			"label": "run-myapp-android",
 			"type": "nx",
 			"project": "",
 			"command": "run",
-			"flags": ["my-app:run-android-geny"],
+			"flags": ["my-app:run-android"],
 			"problemMatcher": [],
-			"detail": "Run a dev cloud instance of geny android emulator then start the metro bundler and deploy to it."
+			"detail": "Run a dev client instance of geny android emulator then start the metro bundler and deploy to it."
 		},
 		{
 			"label": "run-myapp",
