@@ -1,8 +1,8 @@
-import { element, by, expect } from 'detox';
+import { element, by, expect, device } from 'detox';
 
 describe('MyApp', () => {
   beforeEach(async () => {
-    await device.openURL({url: 'exp+my-app://'});
+    //await device.openURL({url: 'exp+my-app://'});
   });
 
   it('should display welcome message', async () => {

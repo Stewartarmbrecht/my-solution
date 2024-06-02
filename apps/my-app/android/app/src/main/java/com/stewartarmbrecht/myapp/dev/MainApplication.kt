@@ -2,10 +2,6 @@ package com.stewartarmbrecht.myapp.dev
 
 import android.app.Application
 import android.content.res.Configuration
-// Add the following 3 lines to make detox work with a dev client.  (I think.)
-import android.content.SharedPreferences;
-import android.os.Bundle;
-import android.preference.PreferenceManager;
 
 import com.facebook.react.PackageList
 import com.facebook.react.ReactApplication
@@ -45,9 +41,6 @@ class MainApplication : Application(), ReactApplication {
   override fun onCreate() {
     super.onCreate()
     SoLoader.init(this, false)
-    // Add the following two lines to make detox work with a dev client.  (I think.)
-    var preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-    preferences.edit().putString("debug_http_host", "localhost:19002").apply();
     if (BuildConfig.IS_NEW_ARCHITECTURE_ENABLED) {
       // If you opted-in for the New Architecture, we load the native entry point for this app.
       load()

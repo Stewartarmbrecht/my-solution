@@ -19,7 +19,7 @@ import { Backend } from '@my-solution/backend';
 import { Platform } from 'react-native';
 import { useColorScheme } from '@my-solution/ui';
 import { WebSplashScreen } from '@my-solution/features';
-import { logRaw } from '@my-solution/shared';
+import { logCall, logRaw, logSetup } from '@my-solution/shared';
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -35,6 +35,7 @@ export const unstable_settings = {
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
+  logSetup('RootLayout');
   const [loaded, error] = useFonts({
     // Added next two lines for tamagui. (Removing to get tests to run)
     // Inter: require("@tamagui/font-inter/otf/Inter-Medium.otf"),
@@ -50,6 +51,7 @@ export default function RootLayout() {
   }, [error]);
 
   useEffect(() => {
+    logCall('RootLayout', 'useEffect', 'SplashScreen.hideAsync')
     if (loaded) {
       SplashScreen.hideAsync();
     }
@@ -67,6 +69,7 @@ export default function RootLayout() {
 }
 
 function RootLayoutNav() {
+  logCall('RootLayoutNav');
   const colorScheme = useColorScheme();
   logRaw('colorScheme', colorScheme);
   DefaultTheme.colors.primary = colors.blue.blue8;

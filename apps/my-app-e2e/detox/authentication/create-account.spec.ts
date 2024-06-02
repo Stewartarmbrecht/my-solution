@@ -1,11 +1,12 @@
-import { element, by, expect } from 'detox';
+import { element, by, expect, device } from 'detox';
 
 describe('log-in', () => {
   beforeEach(async () => {
-    await device.openURL({url: 'exp+my-app://'});
+    //await device.openURL({url: 'exp+my-app://'});
   });
 
   it('accepts collect username, name, email, and password', async () => {
+    await expect(element(by.text('Create Account'))).toBeVisible();
     await element(by.text('Create Account')).tap();
     await expect(element(by.id('authenticator__text-field__input-username'))).toBeVisible();
     await expect(element(by.id('authenticator__text-field__input-email'))).toBeVisible();

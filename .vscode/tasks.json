@@ -128,6 +128,15 @@
 			"detail": "Run all unit tests with code coverage enforced for the state project."
 		},
 		{
+			"label": "build-prebuild-myapp-clean",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"flags": ["my-app:prebuild", "--clean"],
+			"problemMatcher": [],
+			"detail": "Runs expo prebuild with the --clean flag."
+		},
+		{
 			"label": "build-myapp-dev",
 			"type": "nx",
 			"project": "",
@@ -144,6 +153,15 @@
 			"flags": ["my-app:eas-build-preview"],
 			"problemMatcher": [],
 			"detail": "Build the preview version of the app in eas for both ios and android."
+		},
+		{
+			"label": "build-myapp-preview-android-local",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"flags": ["my-app:eas-build-preview-android-local"],
+			"problemMatcher": [],
+			"detail": "Build the preview version of the app locally using eas for android."
 		},
 		{
 			"label": "build-myapp-local-dev-android",
@@ -219,7 +237,7 @@
 			"project": "",
 			"command": "run",
 			"positional": "my-app-e2e:build-android",
-      "flags": ["--configuration=genymotion"],
+      "flags": ["--configuration=attached-debug"],
 			"problemMatcher": [],
 			"detail": "Build a dev version of the app ready for detox testing."
 		},
@@ -238,8 +256,18 @@
 			"type": "nx",
 			"project": "",
 			"command": "run",
-			"positional": "my-app-e2e:test-e2e-mobile",
+			"positional": "my-app-e2e:test-e2e-mobile-debug",
       "flags": ["${file}"],
+			"problemMatcher": [],
+			"detail": "Launch Genymotion emulator, install the app, and run the current test file in the mobile app test runner."
+		},
+		{
+			"label": "test-myapp-e2e-mobile-current-spec-reuse",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"positional": "my-app-e2e:test-e2e-mobile-debug",
+      "flags": ["${file}", "--reuse"],
 			"problemMatcher": [],
 			"detail": "Launch Genymotion emulator, install the app, and run the current test file in the mobile app test runner."
 		},

@@ -1,4 +1,5 @@
 import "@expo/metro-runtime";
+import { logSetup } from "@my-solution/shared";
 //import "expo-router/entry";
 
 import { registerRootComponent } from "expo";
@@ -6,10 +7,11 @@ import { ExpoRoot } from "expo-router";
 
 // Must be exported or Fast Refresh won't update the context
 export function App() {
+  logSetup('App launching...');
   const ctx = require.context("./app");
   return <ExpoRoot context={ctx} />;
 }
-
+logSetup('registerRootComponent');
 registerRootComponent(App);
 
 //import { registerRootComponent } from 'expo';

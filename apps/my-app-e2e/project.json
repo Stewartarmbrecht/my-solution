@@ -47,6 +47,9 @@
         "production": {
           "detoxConfiguration": "android.emu.release"
         },
+        "attached-debug": {
+          "detoxConfiguration": "android.att.debug"
+        },
         "genymotion": {
           "detoxConfiguration": "android.genycloud.debug"
         },
@@ -154,7 +157,7 @@
       ],
       "options": {
         "cwd": "apps/my-app-e2e",
-        "command": "npx detox test --configuration android.genycloud.debug --reuse"
+        "command": "npx detox test --configuration android.att.debug --reuse"
       }
     },
     "test-e2e-mobile-release": {

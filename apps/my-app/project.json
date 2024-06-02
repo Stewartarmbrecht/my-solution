@@ -122,6 +122,14 @@
         "profile": "preview"
       }
     },
+    "eas-build-preview-android-local": {
+      "executor": "@nx/expo:build",
+      "options": {
+        "platform": "android",
+        "profile": "preview",
+        "local": true
+      }
+    },
     "eas-build-preview-ios": {
       "executor": "@nx/expo:build",
       "options": {
