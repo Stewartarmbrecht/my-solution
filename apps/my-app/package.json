@@ -39,6 +39,7 @@
     "expo-splash-screen": "*",
     "expo-status-bar": "*",
     "expo-system-ui": "*",
+    "expo-updates": "*",
     "jest": "*",
     "jest-expo": "*",
     "metro-config": "*",

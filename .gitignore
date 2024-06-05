@@ -40,6 +40,7 @@ testem.log
 Thumbs.db
 
 .nx/cache
+.nx/workspace-data
 
 # Expo
 node_modules/
@@ -64,3 +65,4 @@ apps/my-app-e2e/artifacts
 commandlinetools-linux.zip
 
 **/*.apk
+**/*.aab

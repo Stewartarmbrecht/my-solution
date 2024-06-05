@@ -1,0 +1,25 @@
+# flow.yaml
+
+appId: com.stewartarmbrecht.myapp.dev
+---
+- launchApp
+- runFlow:
+    when: 
+      visible: 
+        id: "authenticator__text-field__input-username"
+    file: "sign-in.yaml"
+- tapOn:
+    id: new-post-name
+    label: Tap on new post name textbox
+- eraseText
+- inputText: New Test
+- hideKeyboard
+- tapOn:
+    id: new-post-submit
+    label: Tap Add button
+- assertVisible:
+    text: New Test
+    index: 1
+- tapOn: 
+    text: X
+    label: Tap Delete button

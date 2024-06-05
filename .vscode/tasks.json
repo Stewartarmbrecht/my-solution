@@ -2,6 +2,67 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
+      "label": "build-install-dependencies",
+			"detail": "Runs npm install to install all dependencies.",
+      "type": "shell",
+      "command": "npm install",
+      "problemMatcher": []
+    },
+		{
+      "label": "build-check-dependencies",
+			"detail": "Checks the npm dependency versions for updates.  Also checks the version match for expo modules for my-app and my-site.",
+      "type": "shell",
+      "command": "npx npm-check-updates && npx nx install my-app --check && npx nx install my-site --check",
+      "problemMatcher": []
+    },
+		{
+      "label": "build-install-dependencies-myapp",
+			"detail": "Installs one or more dependencies into the my-app project.",
+      "type": "shell",
+      "command": "npx nx install my-app ${input:dependencies}",
+      "problemMatcher": []
+    },
+		{
+      "label": "build-install-dependencies-mysite",
+			"detail": "Installs one or more dependencies into the my-site project.",
+      "type": "shell",
+      "command": "npx nx install my-site ${input:dependencies}",
+      "problemMatcher": []
+    },
+		{
+      "label": "build-migrate-nx",
+			"detail": "Upgrades nx to the latest version and all of it's modules.",
+      "type": "shell",
+      "command": "npx nx migrate latest --run-migrations",
+      "problemMatcher": []
+    },
+
+
+
+		{
+			"label": "start-metro-myapp",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"positional": "my-app:start-metro",
+			"flags": [],
+			"problemMatcher": [],
+			"detail": "Starts the metro bundler for my-app."
+		},
+		{
+			"label": "connect-android-device",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"positional": "my-app:connect-android-device",
+			"flags": [],
+			"problemMatcher": [],
+			"detail": "Connects to you android device over wifi using the IP you updated in the project and port 5555."
+		},
+
+
+
+		{
 			"label": "test",
 			"type": "nx",
 			"project": "",
@@ -168,9 +229,27 @@
 			"type": "nx",
 			"project": "",
 			"command": "run",
-			"positional": "my-app:local-build-dev-android",
+			"positional": "my-app:eas-build-dev-android-local",
 			"problemMatcher": [],
 			"detail": "Locally builds the android version of the app using eas.  Use this before running detox on dev instances."
+		},
+		{
+			"label": "build-myapp-local-production-android",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"positional": "my-app:eas-build-production-android-local",
+			"problemMatcher": [],
+			"detail": "Locally builds the android production version of the app using eas."
+		},
+		{
+			"label": "build-myapp-local-preview-android",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"positional": "my-app:eas-build-preview-android-local",
+			"problemMatcher": [],
+			"detail": "Locally builds the preview android version of the app using eas."
 		},
 		{
 			"label": "run-myapp-android",
@@ -180,16 +259,6 @@
 			"flags": ["my-app:run-android"],
 			"problemMatcher": [],
 			"detail": "Run a dev client instance of geny android emulator then start the metro bundler and deploy to it."
-		},
-		{
-			"label": "run-myapp",
-			"type": "nx",
-			"project": "",
-			"command": "run",
-			"positional": "my-app:start-ip",
-			"flags": [],
-			"problemMatcher": [],
-			"detail": "Run the metro bundler on the current host ip port 19001."
 		},
 		{
 			"label": "run-myapp-for-detox",
@@ -301,34 +370,6 @@
 			"flags": [],
 			"problemMatcher": []
 		},
-		{
-      "label": "dependencies-check",
-			"detail": "Checks the npm dependency versions for updates.  Also checks the version match for expo.",
-      "type": "shell",
-      "command": "npx npm-check-updates && npx nx install my-app --check",
-      "problemMatcher": []
-    },
-		{
-      "label": "dependencies-install",
-			"detail": "Installs one or more dependencies into the my-app project.",
-      "type": "shell",
-      "command": "npm install",
-      "problemMatcher": []
-    },
-		{
-      "label": "dependencies-install-myapp",
-			"detail": "Installs one or more dependencies into the my-app project.",
-      "type": "shell",
-      "command": "npx nx install my-app ${input:dependencies}",
-      "problemMatcher": []
-    },
-		{
-      "label": "dependencies-nx-migrate",
-			"detail": "Upgrades nx to the latest version and all of it's modules.",
-      "type": "shell",
-      "command": "npx nx migrate latest",
-      "problemMatcher": []
-    },
 		{
 			"label": "build-mysite-dev",
 			"type": "nx",

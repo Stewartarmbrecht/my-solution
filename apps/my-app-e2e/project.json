@@ -4,6 +4,14 @@
   "sourceRoot": "apps/my-app-e2e/src",
   "projectType": "application",
   "targets": {
+    "open-cypress": {
+      "command": "npx cypress open",
+      "options": {
+        "cwd": "apps/my-app-e2e"
+      }
+    },
+
+
     "build-ios": {
       "executor": "@nx/detox:build",
       "options": {
@@ -91,12 +99,6 @@
     "lint": {
       "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"]
-    },
-    "test-e2e-web-open": {
-      "command": "npx cypress open",
-      "options": {
-        "cwd": "apps/my-app-e2e"
-      }
     },
     "test-e2e-web": {
       "command": "npx cypress run",

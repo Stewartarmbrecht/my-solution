@@ -1,8 +1,9 @@
-import { by, element, expect } from 'detox';
+import { by, element, expect, device } from 'detox';
 
 describe('posts', () => {
   beforeEach(async () => {
-    await device.openURL({url: 'exp+my-app://'});
+    console.log('beforeEach', device);
+    await device.openURL({ url:'my-app-dev://' });
     // await device.reloadReactNative();
     await element(by.id('authenticator__text-field__input-username')).typeText('stewbbb');
     await element(by.id('authenticator__text-field__input-password')).typeText('QcI814u2');

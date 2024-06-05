@@ -4,35 +4,29 @@
   "sourceRoot": "apps/my-app/",
   "projectType": "application",
   "targets": {
-    "start": {
-      "executor": "@nx/expo:start",
-      "dependsOn": [
-        "sync-deps"
-      ],
-      "options": {
-        "port": 19001,
-        "dev-client": true
-      }
-    },
-    "start-detox": {
-      "executor": "@nx/expo:start",
-      "dependsOn": [
-        "sync-deps"
-      ],
-      "options": {
-        "port": 19002,
-        "dev-client": true
-      }
-    },
-    "start-ip": {
+    "start-metro": {
       "executor": "nx:run-commands",
       "dependsOn": [
         "sync-deps"
       ],
       "options": {
-        "command": "REACT_NATIVE_PACKAGER_HOSTNAME=10.24.1.57 npx nx start my-app"
+        "command": "REACT_NATIVE_PACKAGER_HOSTNAME=10.24.1.57 npx expo start --port=19001 --dev-client",
+        "cwd": "apps/my-app"
       }
     },
+    "connect-android-device": {
+      "executor": "nx:run-commands",
+      "dependsOn": [
+        "sync-deps"
+      ],
+      "options": {
+        "command": "adb connect 10.24.1.164:{args.port}",
+        "cwd": "apps/my-app",
+        "port": "5555"
+      }
+    },
+
+
     "eas-build-dev": {
       "executor": "@nx/expo:build",
       "options": {
@@ -47,11 +41,19 @@
         "profile": "development"
       }
     },
-    "local-build-dev-android": {
+    "eas-build-dev-android-local": {
       "executor": "@nx/expo:build",
       "options": {
         "platform": "android",
         "profile": "development",
+        "local": true
+      }
+    },
+    "eas-build-production-android-local": {
+      "executor": "@nx/expo:build",
+      "options": {
+        "platform": "android",
+        "profile": "production",
         "local": true
       }
     },
@@ -61,7 +63,7 @@
         "sync-deps"
       ],
       "options": {
-        "command": "REACT_NATIVE_PACKAGER_HOSTNAME=localhost npx expo run:android"
+        "command": "npx expo run:android"
       }
     },
 

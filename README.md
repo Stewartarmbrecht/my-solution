@@ -394,31 +394,57 @@ To run the vscode tasks: press cntrl/cmd + shift + p then type "run task" then s
 
 ## New Feature Development
 
-The steps below assume that you have a physical ios device for development and a genymotion cloud service for detox testing.
+The steps below assume that you have a physical Android device for development.
 
-1. **Start the App for Web and Mobile**: 
-In the first terminal run the start commend.  This starts an instance of the metro bundler that listens on your hosts ip and port 19001.  This enables your physical device to connect using the debug build.
-```
-vscode task: run
-or
-npx nx start my-app
-w <- type 'w' to launch a browser and push metro through the first build.
-```
-After verifying the web app is running correctly, open the dev app on your physcial phone.
-2. **Start the App for Detox Testing:**:  Run a second metro bundler that listens on localhost.  This instance will be connected to by genycloud android instance for detox e2e tests.
-```
-vscode task: run-detox
-or
-npx nx start-detox my-app
-w <- type 'w' to launch a browser and push metro through the first build.
-```
-3. **Open E2E Web Tester:** Use this interface to run your web E2E tests.
-In a 3rd terminal run the following command.  It will launch the Cyperss interface.
-```
-vscode task: test-e2e-web-open
-or
-npx nx test-e2e-web-open my-app-e2e
-```
+### First Time
+| Step                         | VS Code Task                  | NX Project & Task                         |
+|------------------------------|-------------------------------|-------------------------------------------|
+| Install Dependencies         | build-install-dependencies    | NA                                        |
+| Build Dev App Android Local  | build-dev-myapp-android-local | |
+| Install Dev App Android Local| build-dev-myapp-android-local | |
+
+### Every Development Session
+| Step                         | VS Code Task                  | NX Project & Task                         |
+|------------------------------|-------------------------------|-------------------------------------------|
+| Start Server                 | start-server-myapp            | npx nx start my-app                       |
+| Connect Mobile               | start-mobile-connection       | npx nx connect-mobile my-app              |
+| Open Web Test Studio         | open-web-test-studio-myapp    | npx nx open-web-test-studio my-app-e2e    |
+| Open Mobile Studio           | open-mobile-test-studio-myapp | npx nx open-mobile-test-studio my-app-e2e |
+| Create E2E Tests             | create-e2e-tests-myapp        | npx nx create-e2e-tests my-app-e2e --path=./path/to/test|
+| Create Unit Test             | create-unit-test-myapp        | npx nx create-unit-test my-app-e2e --path=./path/to/test|
+| Run Unit Test                | test-current-unit-test        | npx nx run-unit-test my-app --path=./path/to/test|
+| Run Web Test                 | test-current-web-test         | npx nx run-web-test my-app-e2e --path=./path/to/test|
+| Run Mobile Test              | test-current-mobile-test      | npx nx run-mobile-test my-app-e2e --path=./path/to/test|
+| Run Proj Unit Tests          | test-unit-myapp               | npx nx run-mobile-test my-app-e2e --path=./path/to/test|
+| Run Proj Unit Tests w Cover  | test-unit-coverage-myapp      | npx nx run-mobile-test my-app-e2e --path=./path/to/test|
+| Run Proj Web Tests           | test-web-myapp                | npx nx run-mobile-test my-app-e2e --path=./path/to/test|
+| Run Proj Mobile Tests        | test-mobile-myapp             | npx nx run-mobile-test my-app-e2e --path=./path/to/test|
+| Run All Unit Tests           | test-unit-all                 | npx nx run-mobile-test my-app-e2e --path=./path/to/test|
+| Run All Unit Tests w Cover   | test-unit-coverage-all        | npx nx run-mobile-test my-app-e2e --path=./path/to/test|
+| Run All Web Tests            | test-all-web-tests-myapp      | npx nx run-web-test my-app-e2e            |
+| Run All Mobile Tests         | test-all-web-tests-myapp      | npx nx run-web-test my-app-e2e            |
+
+### Miscelaneous Tasks
+| Step                         | VS Code Task                  | NX Project & Task                         |
+|------------------------------|-------------------------------|-------------------------------------------|
+| Check Dependencies           | build-check-deps-[project]    | |
+| Sort Dependencies            | build-sort-deps-[project]     | |
+| Check Root Dependencies      | build-check-deps              | |
+| Sort Root Dependencies       | build-sort-deps               | |
+| Build Dev App Android Cloud  | build-dev-myapp-android-cloud | |
+| Build Dev App Cloud          | build-dev-myapp-android-cloud | |
+| Build Prev App Android Local | build-preview-myapp-android-local | |
+| Build Production App         |
+
+
+1. **Start Expo**: This starts an instance of the metro bundler that listens on your hosts ip and port 19001.  This enables your physical device to connect using the debug build.  It also serves up the web app.
+2. **Connect Android Device:**:  Connect to your Android device over wifi.
+I have found that the most efficient testing is performed on a baseline Android device.  Either get a used Android phone or buy a cheap one off Amazon. I am using this one:  [UMIDIGI G3 Max](https://www.amazon.com/dp/B083DPKVRV?ref=ppx_yo2ov_dt_b_product_details&th=1). If you have not already built and deployed a dev version of your app see above.
+3. **Open Cypress:** Use this interface to run your web E2E tests.  
+4. **Open Maestro:** Use this interface to write steps for E2E mobile testing.
+5. **Create E2E Tests:** Creates both a test.spec.ts file for Cypress plus a test.yaml file for Maestro.
+
+
 3. **Write End-to-End (E2E) Web Test:** Write a cypress test that performs the new feature you want to build.  This test should be located in the 'my-app-e2e/cypress/e2e' folder.
 4. **Verify E2E Web Test Fails:** Start the app and the Cypress test runner:
 Navigate to the test spec you created in the Cypress interface from the "Open Cypress E2E Tester" step and run the spec you created.
@@ -544,12 +570,6 @@ npx nx build-dev my-app
 After you run the build, you will need to scan the QR code on all devices to update your development build.
 8. **Install EAS Build on Device:** 
 
-
-# DEPLOYMENT FLOW
-
-1. **Add Backend Features** - Make changes to the backend that only add new features that will not interfere with the existing production app.
-
-2. 
 
 # OTHER NOTES
 ## Slow Http Connections

@@ -1,0 +1,29 @@
+# flow.yaml
+
+appId: com.stewartarmbrecht.myapp.dev
+---
+- launchApp
+- waitForAnimationToEnd:
+    timeout: 5000
+- tapOn:
+    id: "authenticator__text-field__input-username"
+    waitToSettleTimeoutMs: 10
+- inputText: 
+    text: "stewbbb"
+    waitToSettleTimeoutMs: 10
+- tapOn:
+    id: "authenticator__text-field__input-password"
+    waitToSettleTimeoutMs: 10
+- inputText: 
+    text: "QcI814u2"
+    waitToSettleTimeoutMs: 10
+- tapOn:
+    text: "Sign in"
+    index: 1
+    waitToSettleTimeoutMs: 10
+- tapOn: 
+    text: "Settings"
+    waitToSettleTimeoutMs: 10
+- tapOn: 
+    text: "Sign Out"
+    waitToSettleTimeoutMs: 10
