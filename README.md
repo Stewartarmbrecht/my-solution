@@ -427,6 +427,7 @@ The steps below assume that you have a physical Android device for development.
 ### Miscelaneous Tasks
 | Step                         | VS Code Task                  | NX Project & Task                         |
 |------------------------------|-------------------------------|-------------------------------------------|
+| Install New Dependencies     | build-install-deps-[project]    | |
 | Check Dependencies           | build-check-deps-[project]    | |
 | Sort Dependencies            | build-sort-deps-[project]     | |
 | Check Root Dependencies      | build-check-deps              | |

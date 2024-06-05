@@ -2,28 +2,28 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
-      "label": "build-install-dependencies",
+      "label": "build-install-deps",
 			"detail": "Runs npm install to install all dependencies.",
       "type": "shell",
       "command": "npm install",
       "problemMatcher": []
     },
 		{
-      "label": "build-check-dependencies",
+      "label": "build-check-deps",
 			"detail": "Checks the npm dependency versions for updates.  Also checks the version match for expo modules for my-app and my-site.",
       "type": "shell",
       "command": "npx npm-check-updates && npx nx install my-app --check && npx nx install my-site --check",
       "problemMatcher": []
     },
 		{
-      "label": "build-install-dependencies-myapp",
+      "label": "build-install-deps-myapp",
 			"detail": "Installs one or more dependencies into the my-app project.",
       "type": "shell",
       "command": "npx nx install my-app ${input:dependencies}",
       "problemMatcher": []
     },
 		{
-      "label": "build-install-dependencies-mysite",
+      "label": "build-install-deps-mysite",
 			"detail": "Installs one or more dependencies into the my-site project.",
       "type": "shell",
       "command": "npx nx install my-site ${input:dependencies}",
@@ -543,7 +543,7 @@
     {
       "id": "dependencies",
       "type": "promptString",
-      "description": "Enter a space separate list of dependencies to install.",
+      "description": "Enter a comma separate list of dependencies to install.",
     },
 		{
 			"id": "token",
