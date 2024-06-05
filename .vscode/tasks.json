@@ -36,6 +36,13 @@
       "command": "npx nx migrate latest --run-migrations",
       "problemMatcher": []
     },
+		{
+      "label": "build-sort-deps",
+			"detail": "Sorts dependencies in all package.json files.",
+      "type": "shell",
+      "command": "npx sort-package-json && cd apps/my-app && npx sort-package-json && cd ../my-site && npx sort-package-json && cd ../..",
+      "problemMatcher": []
+    },
 
 
 
