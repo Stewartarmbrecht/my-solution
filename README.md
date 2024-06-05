@@ -399,15 +399,16 @@ The steps below assume that you have a physical Android device for development.
 ### First Time
 | Step                         | VS Code Task                  | NX Project & Task                         |
 |------------------------------|-------------------------------|-------------------------------------------|
-| Install Dependencies         | build-install-dependencies    | NA                                        |
-| Build Dev App Android Local  | build-dev-myapp-android-local | |
-| Install Dev App Android Local| build-dev-myapp-android-local | |
+| Install Dependencies         | deps-install                  | NA                                        |
+| Connect Mobile               | connect-mobile                | npx nx connect-mobile my-app              |
+| Run Mobile                   | run-mobile                    | npx nx run-android my-app                 |
+| Install Mobile Dev App       | install-mobile-dev            | |
 
 ### Every Development Session
 | Step                         | VS Code Task                  | NX Project & Task                         |
 |------------------------------|-------------------------------|-------------------------------------------|
-| Start Server                 | start-server-myapp            | npx nx start my-app                       |
 | Connect Mobile               | start-mobile-connection       | npx nx connect-mobile my-app              |
+| Start Server                 | start-server-myapp            | npx nx start my-app                       |
 | Open Web Test Studio         | open-web-test-studio-myapp    | npx nx open-web-test-studio my-app-e2e    |
 | Open Mobile Studio           | open-mobile-test-studio-myapp | npx nx open-mobile-test-studio my-app-e2e |
 | Create E2E Tests             | create-e2e-tests-myapp        | npx nx create-e2e-tests my-app-e2e --path=./path/to/test|
@@ -424,14 +425,17 @@ The steps below assume that you have a physical Android device for development.
 | Run All Web Tests            | test-all-web-tests-myapp      | npx nx run-web-test my-app-e2e            |
 | Run All Mobile Tests         | test-all-web-tests-myapp      | npx nx run-web-test my-app-e2e            |
 
-### Miscelaneous Tasks
+### Dependency Management
 | Step                         | VS Code Task                  | NX Project & Task                         |
 |------------------------------|-------------------------------|-------------------------------------------|
-| Install New Dependencies     | build-install-deps-[project]  | npx nx install my-app dependency1,dep2    |
-| Check Dependencies           | build-check-deps              | N/A                                       |
-| Sort Dependencies            | build-sort-deps-[project]     | |
-| Check Root Dependencies      | build-check-deps              | |
-| Sort Root Dependencies       | build-sort-deps               | |
+| Install Dependencies         | deps-install                  | NA                                        |
+| Install New Dependencies     | deps-new-[project]            | npx nx install my-app dependency1,dep2    |
+| Check Dependencies           | deps-check                    | N/A                                       |
+| Sort Dependencies            | deps-sort                     | N/A                                       |
+
+### Additional Build Tasks
+| Step                         | VS Code Task                  | NX Project & Task                         |
+|------------------------------|-------------------------------|-------------------------------------------|
 | Build Dev App Android Cloud  | build-dev-myapp-android-cloud | |
 | Build Dev App Cloud          | build-dev-myapp-android-cloud | |
 | Build Prev App Android Local | build-preview-myapp-android-local | |

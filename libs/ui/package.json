@@ -9,6 +9,8 @@
   "sideEffects": ["*.css"],
   "dependencies": {
     "@tamagui": "*",
+    "@tamagui/config": "*",
+    "@tamagui/colors": "*",
     "@tamagui/lucide-icons": "*"
   },
   "scripts": {

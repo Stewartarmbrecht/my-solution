@@ -1,51 +1,87 @@
 {
 	"version": "2.0.0",
 	"tasks": [
+
+// DEPENDENCY MANAGEMENT
 		{
-      "label": "build-install-deps",
+      "label": "deps-install",
 			"detail": "Runs npm install to install all dependencies.",
       "type": "shell",
       "command": "npm install",
       "problemMatcher": []
     },
 		{
-      "label": "build-check-deps",
+      "label": "deps-check",
 			"detail": "Checks the npm dependency versions for updates.  Also checks the version match for expo modules for my-app and my-site.",
       "type": "shell",
       "command": "npx npm-check-updates && npx nx install my-app --check && npx nx install my-site --check",
       "problemMatcher": []
     },
 		{
-      "label": "build-install-deps-myapp",
+      "label": "deps-new-myapp",
 			"detail": "Installs one or more dependencies into the my-app project.",
       "type": "shell",
       "command": "npx nx install my-app ${input:dependencies}",
       "problemMatcher": []
     },
 		{
-      "label": "build-install-deps-mysite",
+      "label": "deps-new-mysite",
 			"detail": "Installs one or more dependencies into the my-site project.",
       "type": "shell",
       "command": "npx nx install my-site ${input:dependencies}",
       "problemMatcher": []
     },
 		{
-      "label": "build-migrate-nx",
+      "label": "deps-migrate-nx",
 			"detail": "Upgrades nx to the latest version and all of it's modules.",
       "type": "shell",
       "command": "npx nx migrate latest --run-migrations",
       "problemMatcher": []
     },
 		{
-      "label": "build-sort-deps",
+      "label": "deps-sort",
 			"detail": "Sorts dependencies in all package.json files.",
       "type": "shell",
       "command": "npx sort-package-json && cd apps/my-app && npx sort-package-json && cd ../my-site && npx sort-package-json && cd ../..",
       "problemMatcher": []
     },
 
+		// CONNECT
+		{
+			"label": "connect-mobile",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"positional": "my-app:connect-mobile",
+			"flags": [],
+			"problemMatcher": [],
+			"detail": "Connects to you android device over wifi using the IP you updated in the project and port 5555."
+		},
+
+		// RUN
+		{
+			"label": "run-mobile-myapp",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"flags": ["my-app:run-mobile"],
+			"problemMatcher": [],
+			"detail": "Builds and runs an Android version of the app on a connected Android device.  Be sure to run connect-mobile first."
+		},
 
 
+		// BUILD
+		{
+			"label": "build-myapp-dev",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"flags": ["my-app:build-dev"],
+			"problemMatcher": [],
+			"detail": "Build the development version of the app using eas for both ios and android."
+		},
+
+		// ARCHIVE
 		{
 			"label": "start-metro-myapp",
 			"type": "nx",
@@ -55,16 +91,6 @@
 			"flags": [],
 			"problemMatcher": [],
 			"detail": "Starts the metro bundler for my-app."
-		},
-		{
-			"label": "connect-android-device",
-			"type": "nx",
-			"project": "",
-			"command": "run",
-			"positional": "my-app:connect-android-device",
-			"flags": [],
-			"problemMatcher": [],
-			"detail": "Connects to you android device over wifi using the IP you updated in the project and port 5555."
 		},
 
 
@@ -205,15 +231,6 @@
 			"detail": "Runs expo prebuild with the --clean flag."
 		},
 		{
-			"label": "build-myapp-dev",
-			"type": "nx",
-			"project": "",
-			"command": "run",
-			"flags": ["my-app:eas-build-dev"],
-			"problemMatcher": [],
-			"detail": "Build the development version of the app in eas for both ios and android."
-		},
-		{
 			"label": "build-myapp-preview",
 			"type": "nx",
 			"project": "",
@@ -257,15 +274,6 @@
 			"positional": "my-app:eas-build-preview-android-local",
 			"problemMatcher": [],
 			"detail": "Locally builds the preview android version of the app using eas."
-		},
-		{
-			"label": "run-myapp-android",
-			"type": "nx",
-			"project": "",
-			"command": "run",
-			"flags": ["my-app:run-android"],
-			"problemMatcher": [],
-			"detail": "Run a dev client instance of geny android emulator then start the metro bundler and deploy to it."
 		},
 		{
 			"label": "run-myapp-for-detox",

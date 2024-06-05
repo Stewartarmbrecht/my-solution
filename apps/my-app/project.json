@@ -4,17 +4,11 @@
   "sourceRoot": "apps/my-app/",
   "projectType": "application",
   "targets": {
-    "start-metro": {
-      "executor": "nx:run-commands",
-      "dependsOn": [
-        "sync-deps"
-      ],
-      "options": {
-        "command": "REACT_NATIVE_PACKAGER_HOSTNAME=10.24.1.57 npx expo start --port=19001 --dev-client",
-        "cwd": "apps/my-app"
-      }
+    "install": {
+      "executor": "@nx/expo:install",
+      "options": {}
     },
-    "connect-android-device": {
+    "connect-mobile": {
       "executor": "nx:run-commands",
       "dependsOn": [
         "sync-deps"
@@ -23,6 +17,30 @@
         "command": "adb connect 10.24.1.164:{args.port}",
         "cwd": "apps/my-app",
         "port": "5555"
+      }
+    },
+    "run-mobile": {
+      "executor": "nx:run-commands",
+      "dependsOn": [
+        "sync-deps"
+      ],
+      "options": {
+        "command": "npx expo run:android",
+        "cwd": "apps/my-app"
+      }
+    },
+
+
+
+
+    "start-metro": {
+      "executor": "nx:run-commands",
+      "dependsOn": [
+        "sync-deps"
+      ],
+      "options": {
+        "command": "REACT_NATIVE_PACKAGER_HOSTNAME=10.24.1.57 npx expo start --port=19001 --dev-client",
+        "cwd": "apps/my-app"
       }
     },
 
@@ -55,15 +73,6 @@
         "platform": "android",
         "profile": "production",
         "local": true
-      }
-    },
-    "run-android": {
-      "executor": "nx:run-commands",
-      "dependsOn": [
-        "sync-deps"
-      ],
-      "options": {
-        "command": "npx expo run:android"
       }
     },
 
@@ -156,10 +165,6 @@
       "dependsOn": [
         "sync-deps"
       ],
-      "options": {}
-    },
-    "install": {
-      "executor": "@nx/expo:install",
       "options": {}
     },
     "update": {
