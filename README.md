@@ -409,9 +409,9 @@ The steps below assume that you have a physical Android device for development.
 | V | Connect Mobile               | start-mobile-connection       | npx nx connect-mobile                     |
 | V | Start Server                 | start-server                  | npx nx start [project]                    |
 | V | Start Web Test Studio        | start-web-test-studio         | npx nx start-web-test-studio [project]    |
-| V | Start Mobile Test Studio     | start-mobile-test-studio      | npx nx start-mobile-test-studio [project]|
-|   | Create E2E Tests             | create-e2e-tests-myapp        | npx nx create-e2e-tests my-app-e2e --path=./path/to/test|
-|   | Create Unit Test             | create-unit-test-myapp        | npx nx create-unit-test my-app-e2e --path=./path/to/test|
+| V | Start Mobile Test Studio     | start-mobile-test-studio      | npx nx start-mobile-test-studio [project] |
+|   | Create E2E Tests             | create-e2e-tests-myapp        | npx nx create-e2e-tests [project]         |
+|   | Create Unit Test             | create-unit-test-myapp        | npx nx create-unit-test [project]         |
 | V | Run Unit Test                | Test: Run test in current file| N/A                                       |
 | V | Run Web Test                 | Use Cypress Studio            | N/A                                       |
 | V | Run Mobile Test              | test-mobile-current-file      | npx nx run test-mobile ./path/from/solution/root/to/test.yaml|
