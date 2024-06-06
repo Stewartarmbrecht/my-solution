@@ -8,6 +8,8 @@ appId: com.stewartarmbrecht.myapp.dev
       visible: 
         id: "authenticator__text-field__input-username"
     file: "sign-in.yaml"
+- waitForAnimationToEnd:
+    timeout: 5000
 - tapOn:
     id: new-post-name
     label: Tap on new post name textbox

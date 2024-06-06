@@ -117,7 +117,7 @@
     "ts-jest": "*",
     "ts-node": "*",
     "tsconfig-paths": "*",
-    "typescript": "*",
-    "tslib": "*"
+    "tslib": "*",
+    "typescript": "*"
   }
 }

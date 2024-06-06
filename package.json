@@ -1,11 +1,13 @@
 {
-  "name": "@my-solution/source",
+  "name": "my-solution",
   "version": "0.0.0",
   "private": true,
   "license": "MIT",
   "scripts": {
-    "android": "expo run:android",
-    "ios": "expo run:ios"
+    "connect-mobile": "adb connect 10.24.1.164:5555",
+    "deps-check": "npx npm-check-updates && npx nx install my-app --check && npx nx install my-site --check",
+    "deps-sort": "npx sort-package-json && cd apps/my-app && npx sort-package-json && cd ../my-site && npx sort-package-json && cd ../..",
+    "test-mobile": "maestro test"
   },
   "dependencies": {
     "@aws-amplify/react-native": "1.1.0",
@@ -66,7 +68,7 @@
     "@nx/workspace": "19.2.0",
     "@swc-node/register": "1.9.1",
     "@swc/core": "1.5.7",
-    "@tamagui/babel-plugin":"1.100.0",
+    "@tamagui/babel-plugin": "1.100.0",
     "@tamagui/config": "1.100.0",
     "@tamagui/metro-plugin": "1.100.0",
     "@testing-library/jest-dom": "^6.4.5",
@@ -103,8 +105,8 @@
     "shelljs": "^0.8.5",
     "ts-jest": "^29.1.2",
     "ts-node": "^10.9.2",
-    "typescript": "~5.3.3",
-    "tslib": "^2.6.2"
+    "tslib": "^2.6.2",
+    "typescript": "~5.3.3"
   },
   "expo": {
     "install": {
@@ -112,5 +114,6 @@
         "react-native-get-random-values"
       ]
     }
-  }
+  },
+  "nx": {}
 }
