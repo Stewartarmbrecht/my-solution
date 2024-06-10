@@ -1,0 +1,11 @@
+# flow.yaml
+
+appId: ${APP}
+---
+- launchApp:
+    stopApp: false
+- runFlow:
+    when: 
+      visible: 
+        id: authenticator__text-field__input-username
+    file: log-in.yaml

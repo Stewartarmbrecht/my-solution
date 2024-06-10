@@ -118,6 +118,7 @@
     "ts-node": "*",
     "tsconfig-paths": "*",
     "tslib": "*",
-    "typescript": "*"
+    "typescript": "*",
+    "expo-atlas": "^0.3.0"
   }
 }

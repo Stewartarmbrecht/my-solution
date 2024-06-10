@@ -25,6 +25,7 @@
     "core-js": "^3.37.1",
     "expo": "~51.0.10",
     "expo-application": "~5.9.1",
+    "expo-atlas": "^0.3.8",
     "expo-constants": "~16.0.2",
     "expo-dev-client": "~4.0.15",
     "expo-font": "~12.0.5",

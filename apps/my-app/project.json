@@ -18,13 +18,23 @@
         "cwd": "apps/my-app"
       }
     },
+    "run-mobile-release": {
+      "executor": "nx:run-commands",
+      "dependsOn": [
+        "sync-deps"
+      ],
+      "options": {
+        "command": "npx expo run:android --variant release",
+        "cwd": "apps/my-app"
+      }
+    },
     "start": {
       "executor": "nx:run-commands",
       "dependsOn": [
         "sync-deps"
       ],
       "options": {
-        "command": "REACT_NATIVE_PACKAGER_HOSTNAME=10.24.1.57 npx expo start --port=19001 --dev-client",
+        "command": "EXPO_UNSTABLE_ATLAS=true REACT_NATIVE_PACKAGER_HOSTNAME=10.24.1.57 npx expo start --port=19001 --dev-client",
         "cwd": "apps/my-app"
       }
     },

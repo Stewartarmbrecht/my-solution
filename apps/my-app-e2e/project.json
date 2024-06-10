@@ -23,7 +23,13 @@
       }
     },
     "test-mobile": {
-      "command": "maestro test ./maestro/",
+      "command": "maestro test -e APP=com.stewartarmbrecht.myapp.dev tests/e2e/",
+      "options": {
+        "cwd": "apps/my-app-e2e"
+      }
+    },
+    "test-mobile-release": {
+      "command": "maestro test -e APP=com.stewartarmbrecht.myapp.preview tests/e2e/",
       "options": {
         "cwd": "apps/my-app-e2e"
       }

@@ -397,48 +397,49 @@ To run the vscode tasks: press cntrl/cmd + shift + p then type "run task" then s
 The steps below assume that you have a physical Android device for development.
 
 ### First Time
-| V | Step                         | VS Code Task                  | Terminal                                  |
-|---|------------------------------|-------------------------------|-------------------------------------------|
-| V | Install Dependencies         | deps-install                  | npm install                               |
-| V | Connect Mobile               | connect-mobile                | npx nx connect-mobile                     |
-| V | Run Mobile                   | run-mobile                    | npx nx run-android my-app                 |
+| V | Step                         | VS Code Task                               | Terminal                                  |
+|---|------------------------------|--------------------------------------------|-------------------------------------------|
+| V | Install Dependencies         | Install dependencies                       | npm install                               |
+| V | Connect Mobile               | Connect mobile device                      | npx nx connect-mobile                     |
+| V | Run Mobile                   | Build and run mobile                       | npx nx run-android my-app                 |
+| V | Run Mobile Preview           | Build and run mobile (preview)             | npx nx run-android-release my-app         |
 
 ### Every Development Session
-| V | Step                         | VS Code Task                  | Terminal                                  |
-|---|------------------------------|-------------------------------|-------------------------------------------|
-| V | Connect Mobile               | start-mobile-connection       | npx nx connect-mobile                     |
-| V | Start Server                 | start-server                  | npx nx start [project]                    |
-| V | Start Web Test Studio        | start-web-test-studio         | npx nx start-web-test-studio [project]    |
-| V | Start Mobile Test Studio     | start-mobile-test-studio      | npx nx start-mobile-test-studio [project] |
-|   | Create E2E Tests             | create-e2e-tests-myapp        | npx nx create-e2e-tests [project]         |
-|   | Create Unit Test             | create-unit-test-myapp        | npx nx create-unit-test [project]         |
-| V | Run Unit Test                | Test: Run test in current file| N/A                                       |
-| V | Run Web Test                 | Use Cypress Studio            | N/A                                       |
-| V | Run Mobile Test              | test-mobile-current-file      | npx nx run test-mobile ./path/from/solution/root/to/test.yaml|
-| V | Run Proj Unit Tests          | test-unit-project             | npx nx test [project]                     |
-| V | Run Proj Unit Tests w Cover  | test-unit-coverage-project    | npx nx test-coverage [project]            |
-| V | Run Proj Web Tests           | test-web-project              | npx nx test-web [project]                 |
-| V | Run Proj Mobile Tests        | test-mobile-project           | npx nx test-mobile [project]              |
-| V | Run All Unit Tests           | test-unit                     | npx nx run-many -t test                   |
-| V | Run All Unit Tests w Cover   | test-unit-coverage-all        | npx nx run-many -t test-coverage          |
-|   | Run All Web Tests            | test-all-web-tests-myapp      | npx nx run-web-test my-app-e2e            |
-|   | Run All Mobile Tests         | test-all-web-tests-myapp      | npx nx run-web-test my-app-e2e            |
+| V | Step                         | VS Code Task                               | Terminal                                  |
+|---|------------------------------|--------------------------------------------|-------------------------------------------|
+| V | Connect Mobile               | Connect mobile device                      | npx nx connect-mobile                     |
+| V | Start Server                 | Start mobile server (metro)                | npx nx start [project]                    |
+| V | Start Web Test Studio        | Start web test studio (Cypress)            | npx nx start-web-test-studio [project]    |
+| V | Start Mobile Test Studio     | Start mobile test studio (Maestro)         | npx nx start-mobile-test-studio [project] |
+|   | Create E2E Tests             | Create e2e tests for project               | npx nx create-e2e-tests [project]         |
+|   | Create Unit Test             | Create unit test                           | npx nx create-unit-test [project]         |
+| V | Run Unit Test                | Test: Run test in current file             | N/A                                       |
+| V | Run Web Test                 | Use Cypress Studio                         | N/A                                       |
+| V | Run Mobile Test              | Run mobile tests in current file           | npx nx run test-mobile ./path/to/test.yaml (solution root)|
+| V | Run Proj Unit Tests          | Run unit tests for project                 | npx nx test [project]                     |
+| V | Run Proj Unit Tests w Cover  | Run unit tests with coverage for project   | npx nx test-coverage [project]            |
+| V | Run Proj Web Tests           | test-web-project                           | npx nx test-web [project]                 |
+| V | Run Proj Mobile Tests        | test-mobile-project                        | npx nx test-mobile [project]              |
+| V | Run All Unit Tests           | test-unit                                  | npx nx run-many -t test                   |
+| V | Run All Unit Tests w Cover   | test-unit-coverage-all                     | npx nx run-many -t test-coverage          |
+|   | Run All Web Tests            | test-web                                   | npx nx run-many test-web                  |
+| V | Run All Mobile Tests         | test-mobile                                | npx nx run-many test-mobile               |
 
 ### Dependency Management
-| V | Step                         | VS Code Task                  | Terminal                                  |
-|---|------------------------------|-------------------------------|-------------------------------------------|
-| V | Install Dependencies         | deps-install                  | npm install                               |
-| V | Install New Dependencies     | deps-new-[project]            | npx nx install [project] dependency1,dep2 |
-| V | Check Dependencies           | deps-check                    | npx nx deps-check                         |
-| V | Sort Dependencies            | deps-sort                     | npx nx deps-sort                          |
-| V | Migrate Nx                   | deps-migrate-nx               | npx nx migrate latest --run-migrations    |
+| V | Step                         | VS Code Task                               | Terminal                                  |
+|---|------------------------------|--------------------------------------------|-------------------------------------------|
+| V | Install Dependencies         | deps-install                               | npm install                               |
+| V | Install New Dependencies     | deps-new-[project]                         | npx nx install [project] dependency1,dep2 |
+| V | Check Dependencies           | deps-check                                 | npx nx deps-check                         |
+| V | Sort Dependencies            | deps-sort                                  | npx nx deps-sort                          |
+| V | Migrate Nx                   | deps-migrate-nx                            | npx nx migrate latest --run-migrations    |
 
 ### Additional Build Tasks
-| V | Step                         | VS Code Task                  | NX Project & Task                         |
-|---|------------------------------|-------------------------------|-------------------------------------------|
-|   | Build Dev App Android Cloud  | build-dev-myapp-android-cloud | |
-|   | Build Dev App Cloud          | build-dev-myapp-android-cloud | |
-|   | Build Prev App Android Local | build-preview-myapp-android-local | |
+| V | Step                         | VS Code Task                               | NX Project & Task                         |
+|---|------------------------------|--------------------------------------------|-------------------------------------------|
+|   | Build Dev App Android Cloud  | build-dev-myapp-android-cloud              | |
+|   | Build Dev App Cloud          | build-dev-myapp-android-cloud              | |
+|   | Build Prev App Android Local | build-preview-myapp-android-local          | |
 |   | Build Production App         |
 
 

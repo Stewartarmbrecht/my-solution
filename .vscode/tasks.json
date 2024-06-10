@@ -4,35 +4,35 @@
 
 		// DEPENDENCY MANAGEMENT
 		{
-      "label": "deps-install",
+      "label": "Install dependencies",
 			"detail": "Runs npm install to install all dependencies.",
       "type": "shell",
       "command": "npm install",
       "problemMatcher": []
     },
 		{
-      "label": "deps-check",
+      "label": "Check dependencies",
 			"detail": "Checks the npm dependency versions for updates.  Also checks the version match for expo modules for my-app and my-site.",
       "type": "shell",
       "command": "npx nx deps-check",
       "problemMatcher": []
     },
 		{
-      "label": "deps-new",
+      "label": "Install new dependencies",
 			"detail": "Installs one or more dependencies into a specific project.",
       "type": "shell",
       "command": "npx nx install ${input:project} ${input:dependencies}",
       "problemMatcher": []
     },
 		{
-      "label": "deps-migrate-nx",
+      "label": "Migrate NX depencies",
 			"detail": "Upgrades nx to the latest version and all of it's modules.",
       "type": "shell",
       "command": "npx nx migrate latest --run-migrations",
       "problemMatcher": []
     },
 		{
-      "label": "deps-sort",
+      "label": "Sort dependencies",
 			"detail": "Sorts dependencies in all package.json files.",
       "type": "shell",
       "command": "npx nx deps-sort",
@@ -41,7 +41,7 @@
 
 		// CONNECT
 		{
-			"label": "connect-mobile",
+			"label": "Connect mobile device",
 			"detail": "Connects to you android device over wifi using the IP you updated in the project and port 5555.",
       "type": "shell",
       "command": "npx nx connect-mobile",
@@ -50,7 +50,7 @@
 
 		// RUN
 		{
-			"label": "run-mobile",
+			"label": "Build and run mobile",
 			"detail": "Builds and runs an Android version of the app on a connected Android device.  Be sure to run connect-mobile first.",
 			"type": "nx",
 			"project": "",
@@ -58,10 +58,19 @@
 			"flags": ["${input:mobile-project}:run-mobile"],
 			"problemMatcher": []
 		},
+		{
+			"label": "Build and run mobile (preview)",
+			"detail": "Builds and runs an Android, release version of the app on a connected Android device.  Be sure to run connect-mobile first.",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"flags": ["${input:mobile-project}:run-mobile-preview"],
+			"problemMatcher": []
+		},
 
 		// START
 		{
-			"label": "start-server",
+			"label": "Start server (metro)",
 			"detail": "Starts the metro bundler for a mobile project.",
 			"type": "nx",
 			"project": "",
@@ -71,39 +80,39 @@
 			"problemMatcher": []
 		},
 		{
-			"label": "start-web-test-studio",
+			"label": "Start web test studio (Cypress)",
 			"detail": "Starts the Cypress web test studio for my-app (in my-app-e2e project).",
 			"type": "nx",
 			"project": "",
 			"command": "run",
-			"positional": "{input:mobile-project}-e2e:start-web-test-studio",
+			"positional": "${input:mobile-project}-e2e:start-web-test-studio",
 			"flags": [],
 			"problemMatcher": []
 		},
 		{
-			"label": "start-mobile-test-studio",
+			"label": "Start mobile test studio (Maestro)",
 			"detail": "Starts the Maestro web test studio for my-app (in my-app-e2e project).",
 			"type": "nx",
 			"project": "",
 			"command": "run",
-			"positional": "{input:mobile-project}-e2e:start-mobile-test-studio",
+			"positional": "${input:mobile-project}-e2e:start-mobile-test-studio",
 			"flags": [],
 			"problemMatcher": []
 		},
 
 		// TEST
 		{
-			"label": "test-mobile-current-file",
+			"label": "Run mobile tests in current file",
 			"detail": "Run the mobile test for the currently viewed file.",
 			"type": "nx",
 			"project": "",
 			"command": "run",
 			"positional": "test-mobile",
-      "flags": ["${file}"],
+      "flags": ["-e PASSWORD=${input.password}", "${file}"],
 			"problemMatcher": []
 		},
 		{
-			"label": "test-unit-project",
+			"label": "Run unit tests for select project",
 			"detail": "Run unit tests for a single project.",
 			"type": "nx",
 			"project": "",
@@ -112,7 +121,7 @@
 			"problemMatcher": []
 		},
 		{
-			"label": "test-unit-coverage-project",
+			"label": "Run unit tests for select project with coverage",
 			"detail": "Run unit tests for a single project with code coverage enforced.",
 			"type": "nx",
 			"project": "",
@@ -121,8 +130,8 @@
 			"problemMatcher": []
 		},
 		{
-			"label": "test-web-project",
-			"detail": "Run web tests for a single project.",
+			"label": "Run web tests for select project",
+			"detail": "Runs all web tests for a project you select.",
 			"type": "nx",
 			"project": "",
 			"command": "run",
@@ -130,16 +139,25 @@
 			"problemMatcher": []
 		},
 		{
-			"label": "test-mobile-project",
-			"detail": "Run mobile tests for a single project.",
+			"label": "Run mobile tests for select project",
+			"detail": "Runs all mobile tests for a project you select.",
 			"type": "nx",
 			"project": "",
 			"command": "run",
-			"positional": "${input:mobile-project}-e2e:test-mobile",
+			"positional": "${input:mobile-project}-e2e:test-mobile -e PASSWORD=${input:password}",
 			"problemMatcher": []
 		},
 		{
-			"label": "test-unit",
+			"label": "Run mobile tests for select project (release)",
+			"detail": "Runs all mobile tests for a project you select using the release version of the app.  Build and run mobile (release) first.",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"positional": "${input:mobile-project}-e2e:test-mobile-release -e PASSWORD=${input:password}",
+			"problemMatcher": []
+		},
+		{
+			"label": "Run all unit tests",
 			"detail": "Run all unit tests for all projects.",
 			"type": "nx",
 			"project": "",
@@ -148,12 +166,30 @@
 			"problemMatcher": []
 		},
 		{
-			"label": "test-unit-coverage",
+			"label": "Run all unit tests with coverage",
 			"detail": "Run all unit tests for all projects with coverage.",
 			"type": "nx",
 			"project": "",
 			"command": "run-many",
 			"positional": "-t test-coverage",
+			"problemMatcher": []
+		},
+		{
+			"label": "Run all mobile tests",
+			"detail": "Run ALL mobile tests for all projects.",
+			"type": "nx",
+			"project": "",
+			"command": "run-many",
+			"positional": "-t=test-mobile",
+			"problemMatcher": []
+		},
+		{
+			"label": "Run all web tests",
+			"detail": "Run web tests for a single project.",
+			"type": "nx",
+			"project": "",
+			"command": "run-many",
+			"positional": "-t=test-web",
 			"problemMatcher": []
 		}
 	],
@@ -177,6 +213,12 @@
 			"options": ["my-app", "my-site"],
 			"default": "my-app"
     },
+		{
+			"id": "password",
+			"type": "promptString",
+			"description": "Enter test account password.",
+			"default": ""
+		},
 		{
 			"id": "token",
 			"type": "promptString",
