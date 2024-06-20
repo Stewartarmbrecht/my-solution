@@ -17,3 +17,8 @@ enum PostStatus {
   ACTIVE
   INACTIVE
 }
+
+type DataItem @model @auth(rules: [{ allow: owner }]) {
+  id: ID!
+  payload: String!
+}
