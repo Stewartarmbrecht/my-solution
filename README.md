@@ -394,45 +394,61 @@ To run the vscode tasks: press cntrl/cmd + shift + p then type "run task" then s
 
 ## New Feature Development
 
-The steps below assume that you have a physical Android device for development.
+The steps below assume that you have a physical Android device for development.  
+
+Explanation of tags used in the Terminal commands:
+* [project-file] = ./path/from/project/root/to/file.ext
+* [solution-file] = ./path/from/solution/root/to/file.ext
+* [project] = Project Name.  Ex: my-app, features, ui, etc.
 
 ### First Time
 | V | Step                         | VS Code Task                               | Terminal                                  |
 |---|------------------------------|--------------------------------------------|-------------------------------------------|
-| V | Install Dependencies         | Install dependencies                       | npm install                               |
-| V | Connect Mobile               | Connect mobile device                      | npx nx connect-mobile                     |
-| V | Run Mobile                   | Build and run mobile                       | npx nx run-android my-app                 |
-| V | Run Mobile Preview           | Build and run mobile (preview)             | npx nx run-android-release my-app         |
+|   | Install Dependencies         | Install dependencies                       | npm install                               |
+|   | Connect Mobile               | Connect mobile device                      | npx nx connect-mobile                     |
+|   | Run Mobile                   | Build and run mobile                       | npx nx run-android my-app                 |
+|   | Run Mobile Preview           | Build and run mobile (preview)             | npx nx run-android-preview my-app         |
 
 ### Every Development Session
 | V | Step                         | VS Code Task                               | Terminal                                  |
 |---|------------------------------|--------------------------------------------|-------------------------------------------|
-| V | Connect Mobile               | Connect mobile device                      | npx nx connect-mobile                     |
-| V | Start Server                 | Start mobile server (metro)                | npx nx start [project]                    |
-| V | Start Web Test Studio        | Start web test studio (Cypress)            | npx nx start-web-test-studio [project]    |
-| V | Start Mobile Test Studio     | Start mobile test studio (Maestro)         | npx nx start-mobile-test-studio [project] |
+|   | Connect Mobile               | Connect mobile device                      | npx nx connect-mobile                     |
+|   | Start Server                 | Start mobile server (metro)                | npx nx start [project]                    |
+|   | Start Web Test Studio        | Start web test studio (Cypress)            | npx nx start-web-test-studio [project]    |
+|   | Start Mobile Test Studio     | Start mobile test studio (Maestro)         | npx nx start-mobile-test-studio [project] |
 |   | Create E2E Tests             | Create e2e tests for project               | npx nx create-e2e-tests [project]         |
 |   | Create Unit Test             | Create unit test                           | npx nx create-unit-test [project]         |
-| V | Run Unit Test                | Test: Run test in current file             | N/A                                       |
-| V | Run Web Test                 | Use Cypress Studio                         | N/A                                       |
-| V | Run Mobile Test              | Run mobile tests in current file           | npx nx run test-mobile ./path/to/test.yaml (solution root)|
-| V | Run Proj Unit Tests          | Run unit tests for project                 | npx nx test [project]                     |
-| V | Run Proj Unit Tests w Cover  | Run unit tests with coverage for project   | npx nx test-coverage [project]            |
-| V | Run Proj Web Tests           | test-web-project                           | npx nx test-web [project]                 |
-| V | Run Proj Mobile Tests        | test-mobile-project                        | npx nx test-mobile [project]              |
-| V | Run All Unit Tests           | test-unit                                  | npx nx run-many -t test                   |
-| V | Run All Unit Tests w Cover   | test-unit-coverage-all                     | npx nx run-many -t test-coverage          |
-|   | Run All Web Tests            | test-web                                   | npx nx run-many test-web                  |
-| V | Run All Mobile Tests         | test-mobile                                | npx nx run-many test-mobile               |
+|   | Run Unit Test                | Test: Run test in current file             | N/A                                       |
+|   | Run Web Test                 | Use Cypress Studio                         | N/A                                       |
+|   | Run Mobile Test              | Run mobile tests in current file           | npx nx run test-mobile [solution-file]    |
+|   | Deploy Preview Update        | Deploy preview update                      | npx nx run deploy-preview-update          |
+|   | Run Mobile Test (preview)    | Run mobile tests in current file (preview) | npx nx run test-mobile-preview [project-file]|
+|   | Run Proj Unit Tests          | Run unit tests for project                 | npx nx test [project]                     |
+|   | Run Proj Unit Tests w Cover  | Run unit tests with coverage for project   | npx nx test-coverage [project]            |
+|   | Run Proj Web Tests           | Run web tests for project                  | npx nx test-web [project]                 |
+|   | Run Proj Mobile Tests        | Run mobile tests for project               | npx nx test-mobile [project]              |
+|   | Run All Unit Tests           | Run all unit tests                         | npx nx run-many -t test                   |
+|   | Run All Unit Tests w Cover   | Run all unit tests with coverage           | npx nx run-many -t test-coverage          |
+|   | Run All Web Tests            | Run all web tests                          | npx nx run-many test-web                  |
+|   | Run All Mobile Tests         | Run all mobile tests                       | npx nx run-many test-mobile               |
+|   | Run All Mobile Tests Release | Run all mobile tests (preview)             | npx nx run-many test-mobile-preview       |
+
+### Cloud Services
+| V | Step                         | VS Code Task                               | Terminal                                  |
+|---|------------------------------|--------------------------------------------|-------------------------------------------|
+|   | View Amplify Project         | View Amplify project                       | npx nx run view-amplify-project           |
+|   | View Expo.dev Project        | View Expo.dev project                      | npx nx run view-expodev-project           |
+|   | View Github Project          | View Github project                        | npx nx run view-github-project            |
+|   | View Discord                 | View Discord                               | npx nx run view-discord                   |
 
 ### Dependency Management
 | V | Step                         | VS Code Task                               | Terminal                                  |
 |---|------------------------------|--------------------------------------------|-------------------------------------------|
-| V | Install Dependencies         | deps-install                               | npm install                               |
-| V | Install New Dependencies     | deps-new-[project]                         | npx nx install [project] dependency1,dep2 |
-| V | Check Dependencies           | deps-check                                 | npx nx deps-check                         |
-| V | Sort Dependencies            | deps-sort                                  | npx nx deps-sort                          |
-| V | Migrate Nx                   | deps-migrate-nx                            | npx nx migrate latest --run-migrations    |
+|   | Install Dependencies         | Install dependencies                       | npm install                               |
+|   | Install New Dependencies     | Install new dependencies                   | npx nx install [project] dependency1,dep2 |
+|   | Check Dependencies           | Check dependencies                         | npx nx deps-check                         |
+|   | Sort Dependencies            | Sort dependencies                          | npx nx deps-sort                          |
+|   | Migrate Nx                   | Migrate NX dependencies                    | npx nx migrate latest --run-migrations    |
 
 ### Additional Build Tasks
 | V | Step                         | VS Code Task                               | NX Project & Task                         |

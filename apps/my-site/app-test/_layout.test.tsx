@@ -40,7 +40,7 @@ describe('_layout', () => {
 
   it('should render tab one for the root', async () => {
     (useFonts as jest.Mock).mockReturnValue([true, null]);
-    renderRouter('./apps/my-app/app', {
+    renderRouter('./apps/my-site/app', {
       initialUrl: '/',
     });
     const tabOne = await screen.findAllByText('Posts');
@@ -50,13 +50,13 @@ describe('_layout', () => {
   it('should render the splash screen while the fonts are loading on web', () => {
     Platform.OS = 'web';
     (useFonts as jest.Mock).mockReturnValue([false, null]);
-    renderRouter('./apps/my-app/app');
+    renderRouter('./apps/my-site/app');
     expect(screen.queryByTestId('web-splash-screen')).not.toBeNull();
   });
   it('should return null while the fonts are loading on mobile', () => {
     Platform.OS = 'ios';
     (useFonts as jest.Mock).mockReturnValue([false, null]);
-    renderRouter('./apps/my-app/app');
+    renderRouter('./apps/my-site/app');
     expect(screen.queryByTestId('web-splash-screen')).toBeNull();
   });
   //it('should thrown an error if useFonts throws an error', () => {
@@ -64,12 +64,12 @@ describe('_layout', () => {
 
     // Set useFonts to throw an error
     // (useFonts as jest.Mock).mockReturnValue([null, new Error('Test Error')]);
-    // expect(() => renderRouter('./apps/my-app/app')).toThrow('Test Error');
+    // expect(() => renderRouter('./apps/my-site/app')).toThrow('Test Error');
   //});
   it('should set the theme to dark if the color scheme is dark', async () => {
     (useColorScheme as jest.Mock).mockReturnValue('dark');
     (useFonts as jest.Mock).mockReturnValue([true, null]);
-    renderRouter('./apps/my-app/app', {
+    renderRouter('./apps/my-site/app', {
       initialUrl: '/',
     });
     const tabOne = await screen.findAllByText('Posts');
@@ -81,7 +81,7 @@ describe('_layout', () => {
   });
   it('should show file not found if the path provided does not map to a route', async () => {
     (useFonts as jest.Mock).mockReturnValue([true, null]);
-    renderRouter('./apps/my-app/app', {
+    renderRouter('./apps/my-site/app', {
       initialUrl: '/notfound',
     });
     const notFound = await screen.findAllByText('This screen doesn\'t exist.');

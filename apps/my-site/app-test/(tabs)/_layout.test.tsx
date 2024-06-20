@@ -42,7 +42,7 @@ describe('_layout', () => {
     (useMedia as jest.Mock).mockReturnValue({ gtMd: false });
 
     (useFonts as jest.Mock).mockReturnValue([true, null]);
-    renderRouter('./apps/my-app/app', {
+    renderRouter('./apps/my-site/app', {
       initialUrl: '/',
     });
     const tabOne = await screen.findAllByText('Posts');
@@ -56,7 +56,7 @@ describe('_layout', () => {
     (useMedia as jest.Mock).mockReturnValue({ gtMd: false });
 
     (useFonts as jest.Mock).mockReturnValue([true, null]);
-    renderRouter('./apps/my-app/app', {
+    renderRouter('./apps/my-site/app', {
       initialUrl: '/docs',
     });
     const tabTwo = await screen.findAllByText('Documentation');
@@ -67,7 +67,7 @@ describe('_layout', () => {
     (useMedia as jest.Mock).mockReturnValue({ gtMd: false });
 
     (useFonts as jest.Mock).mockReturnValue([true, null]);
-    renderRouter('./apps/my-app/app', {
+    renderRouter('./apps/my-site/app', {
       initialUrl: '/settings',
     });
     const settings = await screen.findAllByText('Settings');
@@ -78,7 +78,7 @@ describe('_layout', () => {
     (useMedia as jest.Mock).mockReturnValue({ gtMd: true });
 
     (useFonts as jest.Mock).mockReturnValue([true, null]);
-    renderRouter('./apps/my-app/app', {
+    renderRouter('./apps/my-site/app', {
       initialUrl: '/',
     });
     const tabOne = await screen.findAllByText('Posts');
@@ -92,7 +92,7 @@ describe('_layout', () => {
     (useMedia as jest.Mock).mockReturnValue({ gtMd: true });
 
     (useFonts as jest.Mock).mockReturnValue([true, null]);
-    renderRouter('./apps/my-app/app', {
+    renderRouter('./apps/my-site/app', {
       initialUrl: '/docs',
     });
     const tabTwo = await screen.findAllByText('Documentation');
@@ -102,7 +102,7 @@ describe('_layout', () => {
     (useMedia as jest.Mock).mockReturnValue({ gtMd: true });
 
     (useFonts as jest.Mock).mockReturnValue([true, null]);
-    renderRouter('./apps/my-app/app', {
+    renderRouter('./apps/my-site/app', {
       initialUrl: '/settings',
     });
     const settings = await screen.findAllByText('Settings');
@@ -113,7 +113,7 @@ describe('_layout', () => {
     (useMedia as jest.Mock).mockReturnValue({ gtMd: false });
 
     (useFonts as jest.Mock).mockReturnValue([true, null]);
-    renderRouter('./apps/my-app/app', {
+    renderRouter('./apps/my-site/app', {
       initialUrl: '/',
     });
     const infoIcon = await screen.findAllByTestId('info-icon');
@@ -123,7 +123,7 @@ describe('_layout', () => {
     (useMedia as jest.Mock).mockReturnValue({ gtMd: false });
 
     (useFonts as jest.Mock).mockReturnValue([true, null]);
-    renderRouter('./apps/my-app/app', {
+    renderRouter('./apps/my-site/app', {
       initialUrl: '/',
     });
     const infoIcon = await screen.findAllByTestId('info-icon');

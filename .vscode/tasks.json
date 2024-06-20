@@ -100,6 +100,19 @@
 			"problemMatcher": []
 		},
 
+		// DEVELOPMENT
+		{
+			"label": "Generate backend model",
+			"detail": "Generates types from the graphql.schema file.  Run this after changing the file.",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"positional": "backend:amplify-codegen-models",
+      "flags": [],
+			"problemMatcher": []
+		},
+
+
 		// TEST
 		{
 			"label": "Run mobile tests in current file",
