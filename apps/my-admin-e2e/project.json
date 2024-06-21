@@ -1,0 +1,40 @@
+{
+  "name": "my-admin-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/my-admin-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "start-web-test-studio": {
+      "command": "npx cypress open",
+      "options": {
+        "cwd": "apps/my-admin-e2e"
+      }
+    },
+    "start-mobile-test-studio": {
+      "command": "maestro studio",
+      "options": {
+        "cwd": "apps/my-admin-e2e"
+      }
+    },
+    "test-web": {
+      "command": "npx cypress run",
+      "options": {
+        "cwd": "apps/my-admin-e2e"
+      }
+    },
+    "test-mobile": {
+      "command": "maestro test -e APP=com.stewartarmbrecht.myadmin.dev tests/e2e/",
+      "options": {
+        "cwd": "apps/my-admin-e2e"
+      }
+    },
+    "test-mobile-release": {
+      "command": "maestro test -e APP=com.stewartarmbrecht.myadmin.preview tests/e2e/",
+      "options": {
+        "cwd": "apps/my-admin-e2e"
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["my-admin"]
+}

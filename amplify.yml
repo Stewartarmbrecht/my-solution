@@ -19,6 +19,7 @@ frontend:
         - npm install --quiet --global expo-cli
         - npm install --quiet --global eas-cli
         - npm ci
+        - ./node_modules/.bin/patch-package
         - FORCE_COLOR=false npx nx run-many -t test-coverage --no-colors
     build:
       commands:

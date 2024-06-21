@@ -1,0 +1,10 @@
+# flow.yaml
+
+appId: ${APP}
+---
+- launchApp:
+    stopApp: false
+- runFlow:
+    when:
+      visible: "Settings"
+    file: "log-out.yaml"

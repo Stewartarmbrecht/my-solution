@@ -1,0 +1,230 @@
+{
+  "name": "my-admin",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/my-admin/",
+  "projectType": "application",
+  "targets": {
+    "install": {
+      "executor": "@nx/expo:install",
+      "options": {}
+    },
+    "run-mobile": {
+      "executor": "nx:run-commands",
+      "dependsOn": [
+        "sync-deps"
+      ],
+      "options": {
+        "command": "npx expo run:android",
+        "cwd": "apps/my-admin"
+      }
+    },
+    "start": {
+      "executor": "nx:run-commands",
+      "dependsOn": [
+        "sync-deps"
+      ],
+      "options": {
+        "command": "REACT_NATIVE_PACKAGER_HOSTNAME=10.24.1.57 npx expo start --port=19001 --dev-client",
+        "cwd": "apps/my-admin"
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
+      "options": {
+        "jestConfig": "apps/my-admin/jest.config.ts"
+      }
+    },
+
+
+
+
+    "eas-build-dev": {
+      "executor": "@nx/expo:build",
+      "options": {
+        "platform": "all",
+        "profile": "development"
+      }
+    },
+    "eas-build-dev-android": {
+      "executor": "@nx/expo:build",
+      "options": {
+        "platform": "android",
+        "profile": "development"
+      }
+    },
+    "eas-build-dev-android-local": {
+      "executor": "@nx/expo:build",
+      "options": {
+        "platform": "android",
+        "profile": "development",
+        "local": true
+      }
+    },
+    "eas-build-production-android-local": {
+      "executor": "@nx/expo:build",
+      "options": {
+        "platform": "android",
+        "profile": "production",
+        "local": true
+      }
+    },
+
+
+    "serve-web": {
+      "executor": "nx:run-commands",
+      "dependsOn": [
+        "sync-deps"
+      ],
+      "options": {
+        "command": "npx serve -s dist/apps/my-admin -l 5000"
+      }
+    },
+    "set-hostname-localhost": {
+      "executor": "nx:run-commands",
+      "dependsOn": [
+        "sync-deps"
+      ],
+      "options": {
+        "command": "export REACT_NATIVE_PACKAGER_HOSTNAME=localhost"
+      }
+    },
+    "set-hostname-ip": {
+      "executor": "nx:run-commands",
+      "dependsOn": [
+        "sync-deps"
+      ],
+      "options": {
+        "command": "export REACT_NATIVE_PACKAGER_HOSTNAME=10.24.1.57"
+      }
+    },
+    "run-ios": {
+      "executor": "@nx/expo:run",
+      "dependsOn": [
+        "sync-deps"
+      ],
+      "options": {
+        "platform": "ios"
+      }
+    },
+    "connect-host-emulator": {
+      "executor": "nx:run-commands",
+      "dependsOn": [
+        "sync-deps"
+      ],
+      "options": {
+        "command": "adb connect host.docker.internal"
+      }
+    },
+    "eas-build-preview": {
+      "executor": "@nx/expo:build",
+      "options": {
+        "platform": "all",
+        "profile": "preview"
+      }
+    },
+    "eas-build-preview-android-local": {
+      "executor": "@nx/expo:build",
+      "options": {
+        "platform": "android",
+        "profile": "preview",
+        "local": true
+      }
+    },
+    "eas-build-preview-ios": {
+      "executor": "@nx/expo:build",
+      "options": {
+        "platform": "ios",
+        "profile": "preview"
+      }
+    },
+    "eas-build": {
+      "executor": "@nx/expo:build",
+      "options": {}
+    },
+    "submit": {
+      "executor": "@nx/expo:submit",
+      "options": {}
+    },
+    "eas-build-list": {
+      "executor": "@nx/expo:build-list",
+      "options": {}
+    },
+    "sync-deps": {
+      "executor": "@nx/expo:sync-deps",
+      "options": {}
+    },
+    "prebuild": {
+      "executor": "@nx/expo:prebuild",
+      "dependsOn": [
+        "sync-deps"
+      ],
+      "options": {}
+    },
+    "update": {
+      "executor": "@nx/expo:update",
+      "options": {}
+    },
+    "update-preview": {
+      "command": "eas update --branch preview --platform all --auto",
+      "options": {
+        "cwd": "apps/my-admin"
+      }
+    },
+    "update-preview-ios": {
+      "command": "eas update --platform ios --branch preview --auto",
+      "options": {
+        "cwd": "apps/my-admin"
+      }
+    },
+    "update-preview-ci": {
+      "command": "eas update --branch preview --platform all --auto --non-interactive",
+      "options": {
+        "cwd": "apps/my-admin"
+      }
+    },
+    "export": {
+      "executor": "@nx/expo:export",
+      "dependsOn": [
+        "sync-deps"
+      ],
+      "options": {
+        "platform": "all",
+        "outputDir": "dist/apps/my-admin"
+      },
+      "outputs": [
+        "{options.outputDir}"
+      ]
+    },
+    "export-web": {
+      "executor": "@nx/expo:export",
+      "dependsOn": [
+        "sync-deps"
+      ],
+      "options": {
+        "platform": "web",
+        "bundler": "metro",
+        "outputDir": "dist/apps/my-admin"
+      }
+    },
+
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": [
+        "{options.outputFile}"
+      ]
+    },
+    "test-coverage": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/my-admin/jest.config.ts",
+        "coverage": true,
+        "cwd": "apps/my-admin"
+      }
+    }
+  },
+  "tags": []
+}

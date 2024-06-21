@@ -70,12 +70,32 @@
 
 		// START
 		{
-			"label": "Start server (metro)",
-			"detail": "Starts the metro bundler for a mobile project.",
+			"label": "Start server for app (metro)",
+			"detail": "Starts the metro bundler for the app project.",
 			"type": "nx",
 			"project": "",
 			"command": "run",
-			"positional": "${input:mobile-project}:start",
+			"positional": "my-app:start",
+			"flags": [],
+			"problemMatcher": [],
+		},
+		{
+			"label": "Start server for site (metro)",
+			"detail": "Starts the metro bundler for the site project.",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"positional": "my-site:start",
+			"flags": [],
+			"problemMatcher": []
+		},
+		{
+			"label": "Start server for admin (metro)",
+			"detail": "Starts the metro bundler for the admin project.",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"positional": "my-admin:start",
 			"flags": [],
 			"problemMatcher": []
 		},
@@ -216,14 +236,14 @@
 			"id": "project",
 			"type": "pickString",
 			"description": "Select a project",
-			"options": ["my-app", "my-app-e2e", "my-site", "my-site-e2e", "backend", "features", "shared", "state", "ui"],
+			"options": ["my-app", "my-app-e2e", "my-admin", "my-admin-e2e", "my-site", "my-site-e2e", "backend", "features", "shared", "state", "ui"],
 			"default": "my-app"
     },
     {
 			"id": "mobile-project",
 			"type": "pickString",
 			"description": "Select a project",
-			"options": ["my-app", "my-site"],
+			"options": ["my-app", "my-admin", "my-site"],
 			"default": "my-app"
     },
 		{
