@@ -5,7 +5,7 @@ backend:
       commands:
         - nvm use 20
         - npm ci
-        - npx nx test-coverage backend
+        - npx nx test-coverage-ci backend
     build:
       commands:
         - cd libs/backend
@@ -19,7 +19,7 @@ frontend:
         - npm install --quiet --global expo-cli
         - npm install --quiet --global eas-cli
         - npm ci
-        - npx nx run-many -t test-coverage
+        - npx nx run-many -t test-coverage-ci
     build:
       commands:
         - npx nx export-web my-app

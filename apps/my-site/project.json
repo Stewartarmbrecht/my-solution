@@ -226,6 +226,12 @@
         "coverage": true,
         "cwd": "apps/my-site"
       }
+    },
+    "test-coverage-ci": {
+      "command": "FORCE_COLOR=false npx jest test --no-colors --coverage",
+      "options": {
+        "cwd": "apps/my-site"
+      }
     }
   },
   "tags": []
