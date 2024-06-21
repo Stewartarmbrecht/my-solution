@@ -57,7 +57,7 @@
       }
     },
     "test-coverage-ci": {
-      "command": "FORCE_COLOR=false npx jest test --no-colors --coverage",
+      "command": "FORCE_COLOR=false npx jest test --no-colors --coverage --config jest.config.ts",
       "options": {
         "cwd": "apps/my-app"
       }
