@@ -5,6 +5,7 @@ backend:
       commands:
         - nvm use 20
         - npm ci
+        - ./node_modules/.bin/patch-package
         - FORCE_COLOR=false npx nx test-coverage backend --no-colors
     build:
       commands:
