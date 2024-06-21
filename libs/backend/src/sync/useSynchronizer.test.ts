@@ -30,22 +30,26 @@ describe('useSynchronizer', () => {
     const queryMock = DataStore.query as jest.Mock;
     queryMock.mockResolvedValueOnce([{
       id: '1',
-      clientId: '1',
-      title: 'Post 1',
-      status: 'ACTIVE',
-      rating: 4.5,
-      content: 'Lorem ipsum dolor sit amet',
       createdAt: '2022-01-01',
-      author: 'tester'
+      payload: JSON.stringify({
+        id: '1',
+        title: 'Post 1',
+        status: 'ACTIVE',
+        rating: 4.5,
+        content: 'Lorem ipsum dolor sit amet',
+        author: 'tester'
+      }),
     },{
       id: '2',
-      clientId: '2',
-      title: 'Post 2',
-      status: 'ACTIVE',
-      rating: 4.2,
-      content: 'Lorem ipsum dolor sit amet 2',
       createdAt: '2022-01-03',
-      author: 'tester 2'
+      payload: JSON.stringify({
+        id: '2',
+        title: 'Post 2',
+        status: 'ACTIVE',
+        rating: 4.2,
+        content: 'Lorem ipsum dolor sit amet 2',
+        author: 'tester 2'
+      }),
     }]);
 
     const dispatch = jest.fn();
@@ -96,11 +100,13 @@ describe('useSynchronizer', () => {
     const queryMock = DataStore.query as jest.Mock;
     queryMock.mockResolvedValueOnce([{
       id: '2',
-      clientId: '1',
-      title: 'Post 2',
-      status: 'ACTIVE',
-      rating: 4.5,
-      content: 'Lorem ipsum dolor sit amet',
+      payload: JSON.stringify({
+        id: '1',
+        title: 'Post 2',
+        status: 'ACTIVE',
+        rating: 4.5,
+        content: 'Lorem ipsum dolor sit amet',
+      }),
     }]);
 
     const dispatch = jest.fn();
@@ -112,13 +118,15 @@ describe('useSynchronizer', () => {
     const deleteMsg = {
       opType: 'DELETE',
       element: {
-        clientId: '1',
         id: '2',
-        title: 'Post 2',
-        content: 'Lorem ipsum dolor sit amet',
-        rating: 4.5,
-        status: 'ACTIVE',
-        author: 'John Doe',
+        payload: JSON.stringify({
+          id: '1',
+          title: 'Post 2',
+          content: 'Lorem ipsum dolor sit amet',
+          rating: 4.5,
+          status: 'ACTIVE',
+          author: 'John Doe',  
+        }),
         createdAt: '2022-01-01',
         updatedAt: '2022-01-02',
       },
@@ -164,13 +172,15 @@ describe('useSynchronizer', () => {
     const deleteMsg = {
       opType: 'INSERT',
       element: {
-        clientId: '1',
         id: '2',
-        title: 'Post 2',
-        content: 'Lorem ipsum dolor sit amet',
-        rating: 4.5,
-        status: 'ACTIVE',
-        author: 'John Doe',
+        payload: JSON.stringify({
+          id: '1',
+          title: 'Post 2',
+          content: 'Lorem ipsum dolor sit amet',
+          rating: 4.5,
+          status: 'ACTIVE',
+          author: 'John Doe',
+        }),
         createdAt: '2022-01-01',
         updatedAt: '2022-01-02',
       },
@@ -216,13 +226,15 @@ describe('useSynchronizer', () => {
     const deleteMsg = {
       opType: 'UPDATE',
       element: {
-        clientId: '1',
         id: '2',
-        title: 'Post 2',
-        content: 'Lorem ipsum dolor sit amet',
-        rating: 4.5,
-        status: 'ACTIVE',
-        author: 'John Doe',
+        payload: JSON.stringify({
+          id: '1',
+          title: 'Post 2',
+          content: 'Lorem ipsum dolor sit amet',
+          rating: 4.5,
+          status: 'ACTIVE',
+          author: 'John Doe',
+        }),
         createdAt: '2022-01-01',
         updatedAt: '2022-01-02',
       },

@@ -5,15 +5,15 @@ jest.mock('@aws-amplify/datastore', () => ({
     query: jest.fn(),
     delete: jest.fn(),
   },
-  initSchema: jest.fn().mockReturnValue({ PostData: jest.fn().mockImplementation((initValues) => initValues) }),
+  initSchema: jest.fn().mockReturnValue({ DataItem: jest.fn().mockImplementation((initValues) => initValues) }),
 }));
-import { deletePostData } from './deletePostData';
-import { PostData } from '../models';
+import { deleteDataItem } from './deleteDataItem';
+import { DataItem } from '../models';
 import { DataStore } from '@aws-amplify/datastore';
 import { Post, PostStatus } from '@my-solution/shared';
 
 
-describe('deletePostData', () => {
+describe('deleteDataItem', () => {
   afterEach(() => {
     jest.clearAllMocks();
   });
@@ -31,24 +31,17 @@ describe('deletePostData', () => {
       updatedAt: '2022-01-02',
     };
 
-    const postData: PostData = {
+    const dataItem: DataItem = {
       id: '123',
-      clientId: '1',
-      title: 'Post 1',
-      status: PostStatus.ACTIVE,
-      rating: 4.5,
-      content: 'Lorem ipsum dolor sit amet',
-      author: 'John Doe',
-      createdAt: '2022-01-01',
-      updatedAt: '2022-01-02',
+      payload: JSON.stringify(post),
     };
 
-    (DataStore.query as jest.Mock).mockResolvedValue(postData);
+    (DataStore.query as jest.Mock).mockResolvedValue(dataItem);
 
-    await deletePostData(post);
+    await deleteDataItem(post);
 
-    expect(DataStore.query).toHaveBeenCalledWith(PostData, '123');
-    expect(DataStore.delete).toHaveBeenCalledWith(postData);
+    expect(DataStore.query).toHaveBeenCalledWith(DataItem, '123');
+    expect(DataStore.delete).toHaveBeenCalledWith(dataItem);
   });
 
   it('should not delete post data when serverId is undefined', async () => {
@@ -64,7 +57,7 @@ describe('deletePostData', () => {
       updatedAt: '2022-01-02',
     };
 
-    await deletePostData(post);
+    await deleteDataItem(post);
 
     expect(DataStore.query).not.toHaveBeenCalled();
     expect(DataStore.delete).not.toHaveBeenCalled();
@@ -84,9 +77,9 @@ describe('deletePostData', () => {
 
     (DataStore.query as jest.Mock).mockResolvedValue(undefined);
 
-    await deletePostData(post);
+    await deleteDataItem(post);
 
-    expect(DataStore.query).toHaveBeenCalledWith(PostData, '123');
+    expect(DataStore.query).toHaveBeenCalledWith(DataItem, '123');
     expect(DataStore.delete).not.toHaveBeenCalled();
   });
 });
