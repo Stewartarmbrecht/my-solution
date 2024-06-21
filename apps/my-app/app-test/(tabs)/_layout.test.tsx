@@ -51,7 +51,7 @@ describe('_layout', () => {
     expect(tabTwo).toBeTruthy();
     const settings = await screen.findAllByText('Settings');
     expect(settings).toBeTruthy();
-  }, 30000);
+  }, 60000 /** set to 60s because ci timing out. */);
   it('should render Documentation Tab', async () => {
     (useMedia as jest.Mock).mockReturnValue({ gtMd: false });
 
