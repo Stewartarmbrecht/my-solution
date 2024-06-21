@@ -5,7 +5,7 @@ backend:
       commands:
         - nvm use 20
         - npm ci
-        - FORCE_COLORS=false npx nx test-coverage backend --no-colors
+        - FORCE_COLOR=false npx nx test-coverage backend --no-colors
     build:
       commands:
         - cd libs/backend

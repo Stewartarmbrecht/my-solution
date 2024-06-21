@@ -61,6 +61,23 @@
       "options": {
         "cwd": "apps/my-app"
       }
+    },
+    "export-web": {
+      "executor": "@nx/expo:export",
+      "dependsOn": [
+        "sync-deps"
+      ],
+      "options": {
+        "platform": "web",
+        "bundler": "metro",
+        "outputDir": "dist/apps/my-app"
+      }
+    },
+    "update-preview-ci": {
+      "command": "eas update --branch preview --platform all --auto --non-interactive",
+      "options": {
+        "cwd": "apps/my-app"
+      }
     }
   },
   "tags": []
