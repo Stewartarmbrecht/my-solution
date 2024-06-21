@@ -22,3 +22,8 @@ type DataItem @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   payload: String!
 }
+
+type GlobalDataItem @model @auth(rules: [{ allow: private, operations: [read] }, { allow: groups, groups: ["Admin"] }]) {
+  id: ID!
+  payload: String!
+} 
