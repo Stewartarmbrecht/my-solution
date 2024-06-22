@@ -6,12 +6,14 @@ export async function signOut() {
   try {
     // logCall('Backend.handleSignOut.DataStore.start');
     // await DataStore.start();
-    logCall('signOut.DataStore.clear');
-    await DataStore.clear();
     // logCall('signOut.DataStore.stop');
     // await DataStore.stop();
     logCall('signOut.authSignOut');
     await authSignOut();
+
+    logCall('signOut.DataStore.clearing');
+    await DataStore.clear();
+    logCall('signOut.DataStore.cleared');
   } catch (error) {
     /* istanbul ignore next */
     if (error instanceof Error) {

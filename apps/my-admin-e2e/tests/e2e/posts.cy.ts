@@ -2,7 +2,7 @@
 
 describe('posts', () => {
   beforeEach(() => {
-    cy.login('stewbbb', 'QcI814u2');
+    cy.login(process.env.USERNAME, process.env.PASSWORD);
     cy.visit('http://localhost:19001/')
   })
 

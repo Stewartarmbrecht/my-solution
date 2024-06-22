@@ -1,7 +1,6 @@
 // istanbul ignore file
 export { PostList } from './components/PostList';
-export { Banner } from './components/Banner';
-export { SiteBanner } from './components/Banner';
+export { Banner, SiteBanner, AdminBanner } from './components/Banner';
 export { ExternalLink } from './components/ExternalLink';
 export { TabBarIcon } from './components/TabBarIcon';
 

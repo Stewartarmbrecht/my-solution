@@ -2,7 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { postsReducer } from "../posts/postsSlice";
 import { userLoggedIn, userLoggedOut } from "@my-solution/shared";
 import { AppStore } from "../store";
-import { authReducer, syncReducer } from "@my-solution/backend";
+import { syncReducer } from "@my-solution/backend";
 import { userReducer } from "./userSlice";
 
 describe('userSlice', () => {
@@ -14,27 +14,28 @@ describe('userSlice', () => {
         posts: postsReducer,
         sync: syncReducer,
         user: userReducer,
-        auth: authReducer,
       },
     });
   });
 
   it('should update the user when userLoggedIn action is dispatched.', () => {
-    store.dispatch(userLoggedIn({ userName: 'user', userEmail: 'userEmail' }));
+    store.dispatch(userLoggedIn({ userName: 'user', userEmail: 'userEmail', groups: ['Admin'] }));
 
     const state = store.getState().user;
 
     expect(state.userName).toBe('user');
     expect(state.userEmail).toBe('userEmail');
+    expect(state.groups).toEqual(['Admin']);
   });
 
   it('should clear the user when userLoggedOut action is dispatched.', () => {
-    store.dispatch(userLoggedIn({ userName: 'user', userEmail: 'userEmail' }));
+    store.dispatch(userLoggedIn({ userName: 'user', userEmail: 'userEmail', groups: ['Admin']}));
 
     const state = store.getState().user;
 
     expect(state.userName).toBe('user');
     expect(state.userEmail).toBe('userEmail');
+    expect(state.groups).toEqual(['Admin']);
 
     store.dispatch(userLoggedOut());
 
@@ -42,5 +43,6 @@ describe('userSlice', () => {
 
     expect(clearedState.userName).toBeUndefined();
     expect(clearedState.userEmail).toBeUndefined();
+    expect(clearedState.groups).toBeUndefined();
   });
 });
