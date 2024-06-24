@@ -38,7 +38,7 @@ export default function TabLayout() {
           <Drawer.Screen
             name="index"
             options={{
-              title: 'Posts',
+              title: 'Features',
               headerRight: () => (
                 <Link href="/modal" asChild>
                   <Button unstyled p="$0" m="$4">
@@ -79,7 +79,7 @@ export default function TabLayout() {
         <Tabs.Screen
           name="index"
           options={{
-            title: 'Posts',
+            title: 'Features',
             tabBarIcon: ({ color }) => <MessageCircle color={color} />,
             headerRight: () => (
               <Link href="/modal" asChild>

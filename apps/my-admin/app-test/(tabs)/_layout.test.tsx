@@ -40,7 +40,7 @@ describe('_layout', () => {
     renderRouter('./apps/my-admin/app', {
       initialUrl: '/',
     });
-    const tabOne = await screen.findAllByText('Posts');
+    const tabOne = await screen.findAllByText('Features');
     expect(tabOne).toBeTruthy();
     const tabTwo = await screen.findAllByText('Documentation');
     expect(tabTwo).toBeTruthy();
@@ -85,7 +85,7 @@ describe('_layout', () => {
     renderRouter('./apps/my-admin/app', {
       initialUrl: '/',
     });
-    const tabOne = await screen.findAllByText('Posts');
+    const tabOne = await screen.findAllByText('Features');
     expect(tabOne).toBeTruthy();
     const tabTwo = await screen.findAllByText('Documentation');
     expect(tabTwo).toBeTruthy();

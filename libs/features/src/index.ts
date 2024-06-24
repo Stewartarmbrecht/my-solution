@@ -7,6 +7,7 @@ export { TabBarIcon } from './components/TabBarIcon';
 export { AccessDenied } from './components/AccessDenied';
 
 export { PostsScreen } from './posts/PostsScreen';
+export { FeaturesScreen } from './features/FeaturesScreen';
 export { EditScreenInfo } from './editInfo/EditInfoScreen';
 export { WebSplashScreen } from './splash/WebSplashScreen';
 export { Settings } from './settings/Settings';

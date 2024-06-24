@@ -13,4 +13,5 @@ export const AdminBanner    = jest.fn().mockReturnValue(<View testID="AdminBanne
 export const ExternalLink   = jest.fn().mockReturnValue(<View testID="ExternalLink" />);
 export const TabBarIcon     = jest.fn().mockReturnValue(<View testID="TabBarIcon" />);
 export const PostsScreen    = jest.fn().mockReturnValue(<View testID="PostsScreen" />);
+export const FeaturesScreen    = jest.fn().mockReturnValue(<View testID="FeaturesScreen" />);
 export const WebSplashScreen = jest.fn().mockReturnValue(<View testID="WebSplashScreen" />);
