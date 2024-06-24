@@ -24,8 +24,10 @@ export {
 };
 
 export { Post } from './types/Post';
-export { User } from './types/User';
 export { PostStatus } from './types/PostStatus';
+export { Feature } from './types/Feature'
+export { FeatureStatus } from './types/FeatureStatus';
+export { User } from './types/User';
 export { compareStringArrays } from './utils/compareStringArrays';
 export { 
   postAdded,
@@ -33,6 +35,11 @@ export {
   postDeletedViaSync, 
   postAddedOrUpdatedViaSync, 
   postsLoadedViaSync,
+  featureAdded,
+  featureDeleted,
+  featureDeletedViaSync, 
+  featureAddedOrUpdatedViaSync, 
+  featuresLoadedViaSync,
   userLoggedIn,
   userLoggedOut
 } from './actions';

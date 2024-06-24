@@ -22,8 +22,8 @@ describe('MyApp', () => {
     await expect(element(by.text('Sign In'))).toBeVisible();
   })
   it('successfully logs in the user', async () => {
-    await element(by.id('authenticator__text-field__input-username')).typeText(process.env.USERNAME);
-    await element(by.id('authenticator__text-field__input-password')).typeText(process.env.PASSWORD);
+    await element(by.id('authenticator__text-field__input-username')).typeText(Cypress.env('USERNAME'));
+    await element(by.id('authenticator__text-field__input-password')).typeText(Cypress.env('PASSWORD'));
     await element(by.text('Sign in')).tap();
     await expect(element(by.id('post-list'))).toBeVisible();
   })

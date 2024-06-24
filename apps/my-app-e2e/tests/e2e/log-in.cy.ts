@@ -19,8 +19,8 @@ describe('log-in', () => {
     cy.get('Button').contains('Sign in').should('exist');
   })
   it('successfully logs in the user', () => {
-    cy.get('[data-testid="authenticator__text-field__input-username"]').type(process.env.USERNAME);
-    cy.get('[data-testid="authenticator__text-field__input-password"]').type(process.env.PASSWORD);
+    cy.get('[data-testid="authenticator__text-field__input-username"]').type(Cypress.env('USERNAME'));
+    cy.get('[data-testid="authenticator__text-field__input-password"]').type(Cypress.env('PASSWORD'));
     cy.get('Button').contains('Sign in').click();
     //cy.wait(5000);
     cy.get('h1').contains('Posts').should('exist');

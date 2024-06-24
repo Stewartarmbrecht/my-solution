@@ -6,7 +6,10 @@ jest.mock('@aws-amplify/datastore', () => ({
     }),
     query: jest.fn(),
   },
-  initSchema: jest.fn().mockReturnValue({ PostData: jest.fn().mockImplementation((initValues) => initValues) }),
+  initSchema: jest.fn().mockReturnValue({ 
+    PostData: jest.fn().mockImplementation((initValues) => initValues), 
+    FeatureData: jest.fn().mockImplementation((initValues) => initValues) 
+  }),
 }));
 jest.mock('react-redux', () => ({
   useDispatch: jest.fn(),
@@ -20,12 +23,16 @@ import { renderHook, act, waitFor } from '@testing-library/react-native';
 jest.useFakeTimers();
 
 describe('useSynchronizer', () => {
-  it('should dispatch postsLoadedViaSync when data is loaded from the server', async () => {
+  it('should dispatch postsLoadedViaSync and featuresLoadedViaSync when data is loaded from the server', async () => {
     const subscribeMock = jest.fn();
-    subscribeMock.mockReturnValueOnce({ unsubscribe: jest.fn() });
+    subscribeMock
+      .mockReturnValueOnce({ unsubscribe: jest.fn() })
+      .mockReturnValueOnce({ unsubscribe: jest.fn() });
 
     const observeMock = DataStore.observe as jest.Mock;
-    observeMock.mockReturnValueOnce({ subscribe: subscribeMock });
+    observeMock
+      .mockReturnValueOnce({ subscribe: subscribeMock })
+      .mockReturnValueOnce({ subscribe: subscribeMock });
 
     const queryMock = DataStore.query as jest.Mock;
     queryMock.mockResolvedValueOnce([{
@@ -50,6 +57,29 @@ describe('useSynchronizer', () => {
         content: 'Lorem ipsum dolor sit amet 2',
         author: 'tester 2'
       }),
+    }])
+    .mockResolvedValueOnce([{
+      id: '1',
+      createdAt: '2022-01-01',
+      payload: JSON.stringify({
+        id: '1',
+        title: 'Feature 1',
+        status: 'ACTIVE',
+        rating: 4.5,
+        content: 'Lorem ipsum dolor sit amet',
+        author: 'tester'
+      }),
+    },{
+      id: '2',
+      createdAt: '2022-01-03',
+      payload: JSON.stringify({
+        id: '2',
+        title: 'Feature 2',
+        status: 'ACTIVE',
+        rating: 4.2,
+        content: 'Lorem ipsum dolor sit amet 2',
+        author: 'tester 2'
+      }),
     }]);
 
     const dispatch = jest.fn();
@@ -61,7 +91,7 @@ describe('useSynchronizer', () => {
     // Fast-forward until all timers have been executed
     jest.runAllTimers();
     
-    await waitFor(() => expect(dispatch).toHaveBeenCalledWith({
+    await waitFor(() => expect(dispatch).toHaveBeenNthCalledWith(1, {
         type: 'posts/postsLoadedViaSync',
         payload: [{
           id: '2',
@@ -86,6 +116,31 @@ describe('useSynchronizer', () => {
         }]
       })
     );
+    await waitFor(() => expect(dispatch).toHaveBeenNthCalledWith(2, {
+      type: 'features/featuresLoadedViaSync',
+      payload: [{
+        id: '2',
+        serverId: '2',
+        title: 'Feature 2',
+        status: 'ACTIVE',
+        rating: 4.2,
+        content: 'Lorem ipsum dolor sit amet 2',
+        createdAt: '2022-01-03',
+        updatedAt: undefined,
+        author: 'tester 2'
+      },{
+        id: '1',
+        serverId: '1',
+        title: 'Feature 1',
+        content: 'Lorem ipsum dolor sit amet',
+        rating: 4.5,
+        status: 'ACTIVE',
+        createdAt: '2022-01-01',
+        updatedAt: undefined,
+        author: 'tester'
+      }]
+    })
+  );
 
     expect(subscribeMock).toHaveBeenCalled();
   });
@@ -93,8 +148,10 @@ describe('useSynchronizer', () => {
   it('should dispatch postDeletedViaSync when DELETE operation is received', () => {
     const subscribeMock = jest.fn();
     subscribeMock.mockReturnValueOnce({ unsubscribe: jest.fn() });
+    subscribeMock.mockReturnValueOnce({ unsubscribe: jest.fn() });
 
     const observeMock = DataStore.observe as jest.Mock;
+    observeMock.mockReturnValueOnce({ subscribe: subscribeMock });
     observeMock.mockReturnValueOnce({ subscribe: subscribeMock });
 
     const queryMock = DataStore.query as jest.Mock;
@@ -103,6 +160,16 @@ describe('useSynchronizer', () => {
       payload: JSON.stringify({
         id: '1',
         title: 'Post 2',
+        status: 'ACTIVE',
+        rating: 4.5,
+        content: 'Lorem ipsum dolor sit amet',
+      }),
+    }]);
+    queryMock.mockResolvedValueOnce([{
+      id: '2',
+      payload: JSON.stringify({
+        id: '1',
+        title: 'Feature 2',
         status: 'ACTIVE',
         rating: 4.5,
         content: 'Lorem ipsum dolor sit amet',
@@ -137,12 +204,34 @@ describe('useSynchronizer', () => {
       subscription(deleteMsg);
     });
 
-    expect(dispatch).toHaveBeenCalledWith({
-      type: 'posts/postDeletedViaSync',
+    const globalDeleteMsg = {
+      opType: 'DELETE',
+      element: {
+        id: '2',
+        payload: JSON.stringify({
+          id: '1',
+          title: 'Feature 2',
+          content: 'Lorem ipsum dolor sit amet',
+          rating: 4.5,
+          status: 'ACTIVE',
+          author: 'John Doe',  
+        }),
+        createdAt: '2022-01-01',
+        updatedAt: '2022-01-02',
+      },
+    };
+
+    const globalSubscription = subscribeMock.mock.calls[1][0];
+    act(() => {
+      globalSubscription(globalDeleteMsg);
+    });
+
+    expect(dispatch).toHaveBeenNthCalledWith(2, {
+      type: 'features/featureDeletedViaSync',
       payload: {
         id: '1',
         serverId: '2',
-        title: 'Post 2',
+        title: 'Feature 2',
         content: 'Lorem ipsum dolor sit amet',
         rating: 4.5,
         status: 'ACTIVE',
@@ -153,14 +242,17 @@ describe('useSynchronizer', () => {
     });
   });
 
-  it('should dispatch postAddedOrUpdatedViaSync when INSERT operation is received', () => {
+  it('should dispatch AddedOrUpdatedViaSync event when INSERT operation is received', () => {
     const subscribeMock = jest.fn();
+    subscribeMock.mockReturnValueOnce({ unsubscribe: jest.fn() });
     subscribeMock.mockReturnValueOnce({ unsubscribe: jest.fn() });
 
     const observeMock = DataStore.observe as jest.Mock;
     observeMock.mockReturnValueOnce({ subscribe: subscribeMock });
+    observeMock.mockReturnValueOnce({ subscribe: subscribeMock });
 
     const queryMock = DataStore.query as jest.Mock;
+    queryMock.mockResolvedValueOnce([]);
     queryMock.mockResolvedValueOnce([]);
 
     const dispatch = jest.fn();
@@ -191,7 +283,7 @@ describe('useSynchronizer', () => {
       subscription(deleteMsg);
     });
 
-    expect(dispatch).toHaveBeenCalledWith({
+    expect(dispatch).toHaveBeenNthCalledWith(1, {
       type: 'posts/postAddedOrUpdatedViaSync',
       payload: {
         id: '1',
@@ -205,16 +297,56 @@ describe('useSynchronizer', () => {
         updatedAt: '2022-01-02',
       },
     });
+
+    const globalDeleteMsg = {
+      opType: 'INSERT',
+      element: {
+        id: '2',
+        payload: JSON.stringify({
+          id: '1',
+          title: 'Feature 2',
+          content: 'Lorem ipsum dolor sit amet',
+          rating: 4.5,
+          status: 'ACTIVE',
+          author: 'John Doe',
+        }),
+        createdAt: '2022-01-01',
+        updatedAt: '2022-01-02',
+      },
+    };
+
+    const globalSubscription = subscribeMock.mock.calls[1][0];
+    act(() => {
+      globalSubscription(globalDeleteMsg);
+    });
+
+    expect(dispatch).toHaveBeenNthCalledWith(2, {
+      type: 'features/featureAddedOrUpdatedViaSync',
+      payload: {
+        id: '1',
+        serverId: '2',
+        title: 'Feature 2',
+        content: 'Lorem ipsum dolor sit amet',
+        rating: 4.5,
+        status: 'ACTIVE',
+        author: 'John Doe',
+        createdAt: '2022-01-01',
+        updatedAt: '2022-01-02',
+      },
+    });
   });
 
-  it('should dispatch postAddedOrUpdatedViaSync when UPDATE operation is received', () => {
+  it('should dispatch AddedOrUpdatedViaSync events when UPDATE operation is received', () => {
     const subscribeMock = jest.fn();
+    subscribeMock.mockReturnValueOnce({ unsubscribe: jest.fn() });
     subscribeMock.mockReturnValueOnce({ unsubscribe: jest.fn() });
 
     const observeMock = DataStore.observe as jest.Mock;
     observeMock.mockReturnValueOnce({ subscribe: subscribeMock });
+    observeMock.mockReturnValueOnce({ subscribe: subscribeMock });
 
     const queryMock = DataStore.query as jest.Mock;
+    queryMock.mockResolvedValueOnce([]);
     queryMock.mockResolvedValueOnce([]);
 
     const dispatch = jest.fn();
@@ -245,12 +377,49 @@ describe('useSynchronizer', () => {
       subscription(deleteMsg);
     });
 
-    expect(dispatch).toHaveBeenCalledWith({
+    expect(dispatch).toHaveBeenNthCalledWith(1, {
       type: 'posts/postAddedOrUpdatedViaSync',
       payload: {
         id: '1',
         serverId: '2',
         title: 'Post 2',
+        content: 'Lorem ipsum dolor sit amet',
+        rating: 4.5,
+        status: 'ACTIVE',
+        author: 'John Doe',
+        createdAt: '2022-01-01',
+        updatedAt: '2022-01-02',
+      },
+    });
+
+    const globalDeleteMsg = {
+      opType: 'UPDATE',
+      element: {
+        id: '2',
+        payload: JSON.stringify({
+          id: '1',
+          title: 'Feature 2',
+          content: 'Lorem ipsum dolor sit amet',
+          rating: 4.5,
+          status: 'ACTIVE',
+          author: 'John Doe',
+        }),
+        createdAt: '2022-01-01',
+        updatedAt: '2022-01-02',
+      },
+    };
+
+    const globalSubscription = subscribeMock.mock.calls[1][0];
+    act(() => {
+      globalSubscription(globalDeleteMsg);
+    });
+
+    expect(dispatch).toHaveBeenNthCalledWith(2, {
+      type: 'features/featureAddedOrUpdatedViaSync',
+      payload: {
+        id: '1',
+        serverId: '2',
+        title: 'Feature 2',
         content: 'Lorem ipsum dolor sit amet',
         rating: 4.5,
         status: 'ACTIVE',

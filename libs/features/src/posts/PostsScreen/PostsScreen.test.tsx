@@ -1,16 +1,16 @@
 import React from 'react';
-import { Main } from './Main';
-import { PostList } from '../../components/PostList';
+import { PostsScreen } from './PostsScreen';
+import { PostList } from '../PostList';
 import { renderWithTamagui } from '../../renderWithTamagui.test-util';
 
 // Mock My Posts
-jest.mock('../../components/PostList', () => ({
+jest.mock('../PostList', () => ({
   PostList: jest.fn().mockImplementation(() => null),
 }));
 
-describe('Main', () => {
+describe('PostsScreen', () => {
   it('should render PostList', async () => {
-    renderWithTamagui(<Main />);
+    renderWithTamagui(<PostsScreen />);
     expect(PostList as jest.Mock).toHaveBeenCalled();
   });
 });

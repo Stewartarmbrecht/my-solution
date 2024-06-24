@@ -18,11 +18,18 @@ describe('log-in', () => {
   it('includes a button to sign in', () => {
     cy.get('Button').contains('Sign in').should('exist');
   })
-  it('successfully logs in the user', () => {
-    cy.get('[data-testid="authenticator__text-field__input-username"]').type(process.env.USERNAME);
-    cy.get('[data-testid="authenticator__text-field__input-password"]').type(process.env.PASSWORD);
+  it('shows access denied for non-Admin users', () => {
+    cy.get('[data-testid="authenticator__text-field__input-username"]').type(Cypress.env('USERNAME'));
+    cy.get('[data-testid="authenticator__text-field__input-password"]').type(Cypress.env('PASSWORD'));
     cy.get('Button').contains('Sign in').click();
-    //cy.wait(5000);
-    cy.get('h1').contains('Posts').should('exist');
+    cy.wait(5000);
+    cy.get('h1').contains('Access Denied').should('exist');
+  })
+  it('successfully logs in admin the user', () => {
+    cy.get('[data-testid="authenticator__text-field__input-username"]').type(Cypress.env('ADMIN_USERNAME'));
+    cy.get('[data-testid="authenticator__text-field__input-password"]').type(Cypress.env('ADMIN_PASSWORD'));
+    cy.get('Button').contains('Sign in').click();
+    cy.wait(5000);
+    cy.get('h1').contains('Features').should('exist');
   })
 })

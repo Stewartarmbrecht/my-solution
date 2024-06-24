@@ -14,11 +14,11 @@ import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 
-import { MyState } from '@my-solution/state';
+import { MyState, selectUser, useAppSelector } from '@my-solution/state';
 import { Backend } from '@my-solution/backend';
 import { Platform } from 'react-native';
 import { useColorScheme } from '@my-solution/ui';
-import { WebSplashScreen } from '@my-solution/features';
+import { AccessDenied, WebSplashScreen } from '@my-solution/features';
 import { logCall, logRaw, logSetup } from '@my-solution/shared';
 
 export {
@@ -76,7 +76,6 @@ function RootLayoutNav() {
   DarkTheme.colors.primary = colors.blueDark.blue8;
   //DefaultTheme.colors.background = colorScheme === 'dark' ? '#000000' : '#b8dff6';
   
-
   return (
     <TamaguiProvider config={tamaguiConfig} defaultTheme={/*istanbul ignore next*/colorScheme === 'dark' ? 'dark_blue' : 'light_blue'}>
       <ThemeProvider value={/*istanbul ignore next*/colorScheme === 'dark' ? DarkTheme : DefaultTheme}>

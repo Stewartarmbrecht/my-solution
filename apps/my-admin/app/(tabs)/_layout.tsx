@@ -3,11 +3,10 @@ import { Link, Tabs } from 'expo-router';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Drawer } from 'expo-router/drawer';
 
-import { AdminBanner } from '@my-solution/features';
-import { BookOpen, Button, Info, MessageCircle, Settings, Text, View, YStack, useMedia, useTheme } from '@my-solution/ui';
+import { AccessDenied, AdminBanner } from '@my-solution/features';
+import { BookOpen, Button, Info, MessageCircle, Settings, YStack, useMedia, useTheme } from '@my-solution/ui';
 import { selectUser, useAppSelector } from '@my-solution/state';
 import { logRaw } from '@my-solution/shared';
-import { signOut } from '@my-solution/backend';
 
 // You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
 export default function TabLayout() {
@@ -15,15 +14,13 @@ export default function TabLayout() {
   const accentColor = theme.accentColor.get();
   const backgroundColor = theme.backgroundColor?.get();
   const media = useMedia();
+
   const user = useAppSelector(selectUser);
   if (!user.groups || !user.groups.includes('Admin')) {
     logRaw('User is not an admin, redirecting to /', user.groups);
-    return (
-    <View>
-      <Text>You do not have access.</Text>
-      <Button onPress={signOut}>Sign Out</Button>
-    </View>)
+    return (<AccessDenied />);
   }
+
   if (media.gtMd) {
     // Use a basic custom layout on web.
     return (

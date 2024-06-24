@@ -11,7 +11,7 @@ import awsExports from './aws-exports';
 import { render, waitFor } from '@testing-library/react-native';
 import { useDispatch } from 'react-redux';
 import { DataStore } from '@aws-amplify/datastore';
-import { getCurrentUser } from 'aws-amplify/auth';
+import { fetchAuthSession, getCurrentUser } from 'aws-amplify/auth';
 import { Hub } from 'aws-amplify/utils';
 import { useSynchronizer } from './sync/useSynchronizer';
 
@@ -27,6 +27,7 @@ jest.mock('aws-amplify', () => ({
 }));
 jest.mock('aws-amplify/auth', () => ({
   getCurrentUser: jest.fn(),
+  fetchAuthSession: jest.fn(),
 }));
 jest.mock('@aws-amplify/datastore', () => ({
   DataStore: {
@@ -77,8 +78,10 @@ describe('Backend', () => {
     const mockDispatch = jest.fn();
     (useDispatch as unknown as jest.Mock).mockReturnValue(mockDispatch);
     (getCurrentUser as jest.Mock).mockResolvedValue({ username: 'testuser' });
+    (fetchAuthSession as jest.Mock).mockResolvedValue({ session: { tokens: null } });
     render(<Backend {...defaultProps} />);
     await waitFor(() => expect(getCurrentUser).toHaveBeenCalled());
+    await waitFor(() => expect(fetchAuthSession).toHaveBeenCalled());
     await waitFor(() => expect(mockDispatch).toHaveBeenCalledWith({
       type: 'user/userLoggedIn',
       payload: {

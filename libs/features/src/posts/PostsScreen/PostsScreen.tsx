@@ -1,8 +1,8 @@
-import { PostList } from "../../components/PostList";
+import { PostList } from "../PostList";
 import { ScrollView } from "react-native";
 import { YStack } from "@my-solution/ui";
 
-export function Main() {
+export function PostsScreen() {
   return (
     <ScrollView
       contentInsetAdjustmentBehavior="automatic"

@@ -2,6 +2,9 @@ import { renderRouter, screen } from 'expo-router/testing-library';
 import { Platform } from 'react-native';
 import { useFonts,  } from 'expo-font';
 import { useColorScheme } from '@my-solution/ui';
+import TabLayout from '../app/(tabs)/_layout';
+import { useAppSelector } from '@my-solution/state';
+import { AccessDenied } from '@my-solution/features';
 
 jest.mock('expo-font', () => {
   const actual = jest.requireActual('expo-font');
@@ -16,13 +19,13 @@ jest.mock('expo-splash-screen', () => ({
   preventAutoHideAsync: jest.fn(),
 }));
 
-jest.mock('@my-solution/features', () => {
-  const actual = jest.requireActual('@my-solution/features');
-  return {
-    ...actual,
-    TabBarIcon: () => null,
-  }
-});
+// jest.mock('@my-solution/features', () => {
+//   const actual = jest.requireActual('@my-solution/features');
+//   return {
+//     ...actual,
+//     TabBarIcon: () => null,
+//   }
+// });
 
 // Mock react-native useColorScheme
 jest.mock('@my-solution/ui', () => {
@@ -33,31 +36,37 @@ jest.mock('@my-solution/ui', () => {
   }
 });
 
+// Mock TabLayout
+jest.mock('../app/(tabs)/_layout', () => ({
+  __esModule: true,
+  default: jest.fn(() => null),
+}));
+
 describe('_layout', () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
-  it('should render tab one for the root', async () => {
+  it('should render tabs layout for the root', async () => {
     (useFonts as jest.Mock).mockReturnValue([true, null]);
+    (useAppSelector as unknown as jest.Mock).mockReturnValue({ groups: ['Admin'] });
     renderRouter('./apps/my-admin/app', {
       initialUrl: '/',
     });
-    const tabOne = await screen.findAllByText('Posts');
-    expect(tabOne).toBeTruthy();
+    expect(TabLayout).toHaveBeenCalled();
   });
 
   it('should render the splash screen while the fonts are loading on web', () => {
     Platform.OS = 'web';
     (useFonts as jest.Mock).mockReturnValue([false, null]);
     renderRouter('./apps/my-admin/app');
-    expect(screen.queryByTestId('web-splash-screen')).not.toBeNull();
+    expect(screen.queryByTestId('WebSplashScreen')).not.toBeNull();
   });
   it('should return null while the fonts are loading on mobile', () => {
     Platform.OS = 'ios';
     (useFonts as jest.Mock).mockReturnValue([false, null]);
     renderRouter('./apps/my-admin/app');
-    expect(screen.queryByTestId('web-splash-screen')).toBeNull();
+    expect(screen.queryByTestId('WebSplashScreen')).toBeNull();
   });
   //it('should thrown an error if useFonts throws an error', () => {
     //TODO: Find a way to test this.  Looks to be untestable.  Currently removed code from test coverage.
@@ -69,11 +78,11 @@ describe('_layout', () => {
   it('should set the theme to dark if the color scheme is dark', async () => {
     (useColorScheme as jest.Mock).mockReturnValue('dark');
     (useFonts as jest.Mock).mockReturnValue([true, null]);
+    (useAppSelector as unknown as jest.Mock).mockReturnValue({ groups: ['Admin'] });
     renderRouter('./apps/my-admin/app', {
       initialUrl: '/',
     });
-    const tabOne = await screen.findAllByText('Posts');
-    expect(tabOne).toBeTruthy();
+    expect(TabLayout).toHaveBeenCalled();
 
     // TODO: Just triggering code coverage.  No idea on how to assert on this:
     // const sut = await screen.findByTestId('theme-provider');

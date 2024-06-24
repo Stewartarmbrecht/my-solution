@@ -1,7 +1,7 @@
 import { EditScreenInfo } from '@my-solution/features';
-import { H3, Separator, YStack } from '@my-solution/ui';
+import { YStack } from '@my-solution/ui';
 
-export default function TabTwoScreen() {
+export default function Docs() {
   return (
     <YStack>
       <EditScreenInfo path="app/(tabs)/docs.tsx" />

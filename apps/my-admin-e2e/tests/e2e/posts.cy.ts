@@ -2,7 +2,7 @@
 
 describe('posts', () => {
   beforeEach(() => {
-    cy.login(process.env.USERNAME, process.env.PASSWORD);
+    cy.login(Cypress.env('USERNAME'), Cypress.env('PASSWORD'));
     cy.visit('http://localhost:19001/')
   })
 
