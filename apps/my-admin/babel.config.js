@@ -10,7 +10,7 @@ module.exports = function (api) {
       "@tamagui/babel-plugin",
           {
               components: ["tamagui"],
-              config: "../../libs/ui/tamagui.config.ts",
+              config: process.env.JEST_WORKER_ID !== undefined ? "./libs/ui/tamagui.config.ts" : "../../libs/ui/tamagui.config.ts",
               logTimings: true,
               disableExtraction: process.env.NODE_ENV === 'development'
           },

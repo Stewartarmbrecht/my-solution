@@ -1,5 +1,5 @@
 export * from 'tamagui';
-export * from '../tamagui.config';
+export { tamaguiConfig } from '../tamagui.config';
 export { useColorScheme } from 'react-native';
 export { themes } from './themes';
 export { colors } from './colors';

@@ -1,11 +1,6 @@
 import 'react-native-url-polyfill/auto';
 import 'react-native-get-random-values';
 import 'core-js/full/symbol/async-iterator';
-// Added next 3 lines for tamagui.
-// Removing to get tests to pass.
-// import '../tamagui-web.css'
-import { TamaguiProvider, colors, tamaguiConfig } from '@my-solution/ui'
-// import { tamaguiConfig } from '../tamagui.config'
 
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
@@ -13,12 +8,12 @@ import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
-
-import { MyState, selectUser, useAppSelector } from '@my-solution/state';
-import { Backend } from '@my-solution/backend';
 import { Platform } from 'react-native';
-import { useColorScheme } from '@my-solution/ui';
-import { AccessDenied, WebSplashScreen } from '@my-solution/features';
+
+import { TamaguiProvider, colors, tamaguiConfig, useColorScheme } from '@my-solution/ui'
+import { MyState } from '@my-solution/state';
+import { Backend } from '@my-solution/backend';
+import { WebSplashScreen } from '@my-solution/features';
 import { logCall, logRaw, logSetup } from '@my-solution/shared';
 
 export {

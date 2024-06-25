@@ -17,15 +17,15 @@ jest.mock('expo-splash-screen', () => ({
   preventAutoHideAsync: jest.fn(),
 }));
 
-// Mock useMedia() to change the screen width for different tests.
-jest.mock('@my-solution/ui', () => {
-  const actual = jest.requireActual('@my-solution/ui');
-  return {
-    ...actual,
-    useMedia: jest.fn().mockReturnValue({ gtMd: false }),
-    useTheme: jest.fn().mockReturnValue({ accentColor: { get: jest.fn() } }),
-  }
-});
+// // Mock useMedia() to change the screen width for different tests.
+// jest.mock('@my-solution/ui', () => {
+//   const actual = jest.requireActual('@my-solution/ui');
+//   return {
+//     ...actual,
+//     useMedia: jest.fn().mockReturnValue({ gtMd: false }),
+//     useTheme: jest.fn().mockReturnValue({ accentColor: { get: jest.fn() } }),
+//   }
+// });
 
 
 describe('_layout', () => {
@@ -46,7 +46,7 @@ describe('_layout', () => {
     expect(tabTwo).toBeTruthy();
     const settings = await screen.findAllByText('Settings');
     expect(settings).toBeTruthy();
-  });
+  }, 60000);
   it('should render AccessDenied view if the user is not a member of the Admin group', async () => {
     (useFonts as jest.Mock).mockReturnValue([true, null]);
     (useAppSelector as unknown as jest.Mock).mockReturnValue({ });

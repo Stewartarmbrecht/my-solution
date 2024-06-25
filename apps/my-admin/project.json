@@ -44,7 +44,8 @@
         "{workspaceRoot}/coverage/{projectRoot}"
       ],
       "options": {
-        "jestConfig": "apps/my-admin/jest.config.ts"
+        "jestConfig": "apps/my-admin/jest.config.ts",
+        "cwd": "apps/my-admin"
       }
     },
     "test-coverage": {

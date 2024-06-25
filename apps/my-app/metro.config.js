@@ -25,7 +25,7 @@ const customConfig = {
 //Added for tamagui.
 const tamaguiConfig = withTamagui(defaultConfig, {
     components: ['tamagui'],
-    config: '../../libs/ui/tamagui.config.ts',
+    config: process.env.JEST_WORKER_ID !== undefined ? "./libs/ui/tamagui.config.ts" : "../../libs/ui/tamagui.config.ts",
     outputCSS: './tamagui-web.css',
 })
 

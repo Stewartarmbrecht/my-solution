@@ -15,24 +15,6 @@ jest.mock('expo-splash-screen', () => ({
   preventAutoHideAsync: jest.fn(),
 }));
 
-jest.mock('@my-solution/features', () => {
-  const actual = jest.requireActual('@my-solution/features');
-  return {
-    ...actual,
-    TabBarIcon: () => null,
-  }
-});
-
-// Mock useMedia() to change the screen width for different tests.
-jest.mock('@my-solution/ui', () => {
-  const actual = jest.requireActual('@my-solution/ui');
-  return {
-    ...actual,
-    useMedia: jest.fn().mockReturnValue({ gtMd: false }),
-    useTheme: jest.fn().mockReturnValue({ accentColor: { get: jest.fn() } }),
-  }
-});
-
 describe('_layout', () => {
   beforeEach(() => {
     jest.clearAllMocks();
@@ -61,7 +43,7 @@ describe('_layout', () => {
     });
     const tabTwo = await screen.findAllByText('Documentation');
     expect(tabTwo).toBeTruthy();
-  }, 30000);
+  });
 
   it('should render Settings Tab', async () => {
     (useMedia as jest.Mock).mockReturnValue({ gtMd: false });
@@ -72,7 +54,7 @@ describe('_layout', () => {
     });
     const settings = await screen.findAllByText('Settings');
     expect(settings).toBeTruthy();
-  }, 30000);
+  });
 
   it('should render drawers on screens larger than small', async () => {
     (useMedia as jest.Mock).mockReturnValue({ gtMd: true });
@@ -87,7 +69,7 @@ describe('_layout', () => {
     expect(tabTwo).toBeTruthy();
     const settings = await screen.findAllByText('Settings');
     expect(settings).toBeTruthy();
-  }, 30000);
+  });
   it('should render Documentation Drawer Tab on screens larger than small', async () => {
     (useMedia as jest.Mock).mockReturnValue({ gtMd: true });
 
@@ -97,7 +79,7 @@ describe('_layout', () => {
     });
     const tabTwo = await screen.findAllByText('Documentation');
     expect(tabTwo).toBeTruthy();
-  }, 30000);
+  });
   it('should render Settings Drawer Tab on screens larger than small', async () => {
     (useMedia as jest.Mock).mockReturnValue({ gtMd: true });
 
@@ -107,7 +89,7 @@ describe('_layout', () => {
     });
     const settings = await screen.findAllByText('Settings');
     expect(settings).toBeTruthy();
-  }, 30000);
+  });
 
   it('should render an info icon in for tab one', async () => {
     (useMedia as jest.Mock).mockReturnValue({ gtMd: false });

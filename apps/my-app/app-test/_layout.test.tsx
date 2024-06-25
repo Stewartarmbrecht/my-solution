@@ -16,15 +16,6 @@ jest.mock('expo-splash-screen', () => ({
   preventAutoHideAsync: jest.fn(),
 }));
 
-// Mock react-native useColorScheme
-jest.mock('@my-solution/ui', () => {
-  const actual = jest.requireActual('@my-solution/ui');
-  return {
-    ...actual,
-    useColorScheme: jest.fn().mockReturnValue('light'),
-  }
-});
-
 describe('_layout', () => {
   beforeEach(() => {
     jest.clearAllMocks();

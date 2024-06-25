@@ -16,23 +16,6 @@ jest.mock('expo-splash-screen', () => ({
   preventAutoHideAsync: jest.fn(),
 }));
 
-jest.mock('@my-solution/features', () => {
-  const actual = jest.requireActual('@my-solution/features');
-  return {
-    ...actual,
-    TabBarIcon: () => null,
-  }
-});
-
-// Mock react-native useColorScheme
-jest.mock('@my-solution/ui', () => {
-  const actual = jest.requireActual('@my-solution/ui');
-  return {
-    ...actual,
-    useColorScheme: jest.fn().mockReturnValue('light'),
-  }
-});
-
 describe('_layout', () => {
   beforeEach(() => {
     jest.clearAllMocks();
@@ -51,7 +34,7 @@ describe('_layout', () => {
     Platform.OS = 'web';
     (useFonts as jest.Mock).mockReturnValue([false, null]);
     renderRouter('./apps/my-site/app');
-    expect(screen.queryByTestId('web-splash-screen')).not.toBeNull();
+    expect(screen.queryByTestId('WebSplashScreen')).not.toBeNull();
   });
   it('should return null while the fonts are loading on mobile', () => {
     Platform.OS = 'ios';

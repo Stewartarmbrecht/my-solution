@@ -4,7 +4,6 @@ import { useFonts,  } from 'expo-font';
 import { useColorScheme } from '@my-solution/ui';
 import TabLayout from '../app/(tabs)/_layout';
 import { useAppSelector } from '@my-solution/state';
-import { AccessDenied } from '@my-solution/features';
 
 jest.mock('expo-font', () => {
   const actual = jest.requireActual('expo-font');
@@ -18,23 +17,6 @@ jest.mock('expo-splash-screen', () => ({
   hideAsync: jest.fn(),
   preventAutoHideAsync: jest.fn(),
 }));
-
-// jest.mock('@my-solution/features', () => {
-//   const actual = jest.requireActual('@my-solution/features');
-//   return {
-//     ...actual,
-//     TabBarIcon: () => null,
-//   }
-// });
-
-// Mock react-native useColorScheme
-jest.mock('@my-solution/ui', () => {
-  const actual = jest.requireActual('@my-solution/ui');
-  return {
-    ...actual,
-    useColorScheme: jest.fn().mockReturnValue('light'),
-  }
-});
 
 // Mock TabLayout
 jest.mock('../app/(tabs)/_layout', () => ({

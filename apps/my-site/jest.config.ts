@@ -2,6 +2,7 @@ module.exports = {
   displayName: 'my-site',
   resolver: '@nx/jest/plugins/resolver',
   preset: 'jest-expo',
+  testTimeout: 30000,
   transformIgnorePatterns: [
     'node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|react-native-svg|react-redux)',
   ],
