@@ -119,6 +119,16 @@
 			"flags": [],
 			"problemMatcher": []
 		},
+		{
+			"label": "Start server to view unit test coverage",
+			"detail": "Starts http server to view unit test coverage results.",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"positional": "${input:project}:start-coverage-server",
+			"flags": [],
+			"problemMatcher": []
+		},
 
 		// DEVELOPMENT
 		{

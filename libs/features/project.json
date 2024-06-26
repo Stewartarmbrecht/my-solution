@@ -29,6 +29,16 @@
       "options": {
         "cwd": "libs/features"
       }
+    },
+    "start-coverage-server": {
+      "executor": "nx:run-commands",
+      "dependsOn": [
+        "sync-deps"
+      ],
+      "options": {
+        "command": "npx http-server coverage/lcov-report/",
+        "cwd": "libs/features"
+      }
     }
   }
 }

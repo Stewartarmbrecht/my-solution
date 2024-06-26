@@ -1,5 +1,5 @@
 import { signOut } from "@my-solution/backend";
-import { Button, Card, H1, Stack, Text, View, YStack } from "@my-solution/ui";
+import { Button, H1, Text, YStack } from "@my-solution/ui";
 
 export function AccessDenied() {
   return (

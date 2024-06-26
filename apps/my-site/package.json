@@ -77,10 +77,8 @@
   },
   "devDependencies": {
     "@babel/core": "*",
-    "@config-plugins/detox": "*",
     "@expo/metro-config": "*",
     "@expo/metro-runtime": "*",
-    "@nx/detox": "*",
     "@nx/eslint": "*",
     "@nx/eslint-plugin": "*",
     "@nx/expo": "*",
@@ -101,7 +99,6 @@
     "babel-jest": "*",
     "babel-preset-expo": "*",
     "cypress": "*",
-    "detox": "*",
     "esbuild": "*",
     "eslint": "*",
     "eslint-config-prettier": "*",

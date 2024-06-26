@@ -17,7 +17,7 @@ describe('compareFeatures', () => {
 
     const featureB: Feature = getDefaultFeature();
 
-    featureB.title = 'Feature 2';
+    featureB.key = 'Feature 2';
 
     const result = compareFeatures(featureA, featureB);
 
@@ -44,22 +44,17 @@ describe('compareFeatures', () => {
     expect(result).toBe(false);
 
     featureB = getDefaultFeature();
-    featureB.author = 'Jane Doe';
-    result = compareFeatures(featureA, featureB);
-    expect(result).toBe(false);
-
-    featureB = getDefaultFeature();
-    featureB.content = 'Changed';
-    result = compareFeatures(featureA, featureB);
-    expect(result).toBe(false);
-
-    featureB = getDefaultFeature();
     featureB.createdAt = 'Changed';
     result = compareFeatures(featureA, featureB);
     expect(result).toBe(false);
 
     featureB = getDefaultFeature();
-    featureB.rating = 99;
+    featureB.groups = ['Group 2'];
+    result = compareFeatures(featureA, featureB);
+    expect(result).toBe(false);
+
+    featureB = getDefaultFeature();
+    featureB.key = 'Feature 2';
     result = compareFeatures(featureA, featureB);
     expect(result).toBe(false);
 
@@ -70,11 +65,6 @@ describe('compareFeatures', () => {
 
     featureB = getDefaultFeature();
     featureB.status = FeatureStatus.INACTIVE;
-    result = compareFeatures(featureA, featureB);
-    expect(result).toBe(false);
-
-    featureB = getDefaultFeature();
-    featureB.title = 'Changed';
     result = compareFeatures(featureA, featureB);
     expect(result).toBe(false);
 
@@ -93,10 +83,8 @@ function getDefaultFeature(): Feature {
     id: '1',
     status: FeatureStatus.ACTIVE,
     serverId: '1',
-    title: 'Feature 1',
-    rating: 4.5,
-    content: 'Lorem ipsum dolor sit amet',
-    author: 'John Doe',
+    key: 'Feature 1',
+    groups: ['Group 1'],
     createdAt: '2022-01-01',
     updatedAt: '2022-01-02',
 }

@@ -3,22 +3,25 @@ import { useAppDispatch } from '@my-solution/state';
 import { nanoid } from '@reduxjs/toolkit';
 import { Feature, FeatureStatus, featureAdded } from '@my-solution/shared';
 import { logMessage } from '@my-solution/shared';
-import { Button, Input, Paragraph, XStack } from '@my-solution/ui';
+import { Adapt, Button, Input, Paragraph, Select, Sheet, Text, XStack } from '@my-solution/ui';
+import { Check, ChevronDown } from '@tamagui/lucide-icons';
 
 export function AddFeature() {
   const [newFeatureName, setNewFeatureName] = useState('');
+  const [newFeatureStatus, setNewFeatureStatus] = useState('INACTIVE');
   const dispatch = useAppDispatch();
-  const createFeature = async () => {
+  const createFeature = () => {
     const feature: Feature = {
       id: nanoid(),
-      title: newFeatureName,
-      rating: 5,
-      status: FeatureStatus.ACTIVE,
+      key: newFeatureName,
+      status: newFeatureStatus as FeatureStatus,
+      groups: [],
       createdAt: new Date().toISOString(),
     };
     dispatch(featureAdded(feature));
     logMessage('Feature saved successfully!', feature);
   }
+  const native = false;
   return (
     <XStack gap="$4" ai="center">
       <Paragraph>
@@ -27,12 +30,69 @@ export function AddFeature() {
       <Input
         onChangeText={text => setNewFeatureName(text)}
         value={newFeatureName}
-        placeholder='New Feature Name'
-        accessibilityLabel='New Feature Name'
-        flex={1}
-        testID='new-feature-name'
-        onSubmitEditing={createFeature}
+        placeholder='New Feature Key'
+        accessibilityLabel='New Feature Key'
+        flex={2}
+        testID='new-feature-key'
       />
+      <Select value={newFeatureStatus} onValueChange={(value) => setNewFeatureStatus(value)}>
+        <Select.Trigger width={220} iconAfter={ChevronDown}>
+          <Select.Value testID='select-status' placeholder={newFeatureStatus}  />
+        </Select.Trigger>
+
+        <Adapt when="sm" platform="touch">
+          <Sheet
+            native={!!native}
+            modal
+            dismissOnSnapToBottom
+            animationConfig={{
+              type: 'spring',
+              damping: 20,
+              mass: 1.2,
+              stiffness: 250,
+            }}
+          >
+            <Sheet.Frame>
+              <Sheet.ScrollView>
+                <Adapt.Contents />
+              </Sheet.ScrollView>
+            </Sheet.Frame>
+            <Sheet.Overlay
+              animation="lazy"
+              enterStyle={{ opacity: 0 }}
+              exitStyle={{ opacity: 0 }}
+            />
+          </Sheet>
+        </Adapt>
+
+        <Select.Content zIndex={200000}>
+          <Select.Viewport
+            // to do animations:
+            // animation="quick"
+            // animateOnly={['transform', 'opacity']}
+            // enterStyle={{ o: 0, y: -10 }}
+            // exitStyle={{ o: 0, y: 10 }}
+            minWidth={200}
+          >
+            {
+                [FeatureStatus.ACTIVE, FeatureStatus.INACTIVE].map((item, i) => {
+                  return (
+                    <Select.Item
+                      index={i}
+                      key={item}
+                      value={item}
+                    >
+                      <Select.ItemText testID={`select-status-${item}`}>{item}</Select.ItemText>
+                      <Select.ItemIndicator marginLeft="auto">
+                        <Check size={16} />
+                      </Select.ItemIndicator>
+                    </Select.Item>
+                  )
+                })
+            }
+          </Select.Viewport>
+        </Select.Content>
+      </Select>
       <Button 
         onPress={createFeature}
         testID="new-feature-submit"

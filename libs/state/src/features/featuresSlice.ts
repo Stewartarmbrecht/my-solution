@@ -10,7 +10,8 @@ import {
   featureAddedOrUpdatedViaSync, 
   featureDeleted, 
   featureDeletedViaSync, 
-  featuresLoadedViaSync 
+  featuresLoadedViaSync, 
+  FeatureStatus
 } from "@my-solution/shared";
 
 const featuresAdapter = createEntityAdapter<Feature>({
@@ -104,3 +105,8 @@ export const {
   selectById: selectFeatureById,
   selectIds: selectFeatureIds,
 } = featuresAdapter.getSelectors<RootState>((state) => state.features);
+
+export const selectFeatureByKey = (state: RootState, key: string): Feature | undefined => {
+  const features = selectAllFeatures(state);
+  return features.find((feature) => feature.key === key);
+};

@@ -5,6 +5,7 @@ export { Banner, SiteBanner, AdminBanner } from './components/Banner';
 export { ExternalLink } from './components/ExternalLink';
 export { TabBarIcon } from './components/TabBarIcon';
 export { AccessDenied } from './components/AccessDenied';
+export * from './components/Picker';
 
 export { PostsScreen } from './posts/PostsScreen';
 export { FeaturesScreen } from './features/FeaturesScreen';

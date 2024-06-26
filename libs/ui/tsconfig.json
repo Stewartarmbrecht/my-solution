@@ -14,8 +14,7 @@
     "noImplicitReturns": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "strict": true,
-    "target": "ESNext"
+    "strict": true
   },
   "files": [],
   "include": [],

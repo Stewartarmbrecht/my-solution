@@ -24,7 +24,7 @@ export function FeatureItem(props: FeatureProps) {
           pr="$0"
           $gtSm={{ flexDirection: "row", alignItems: "center" }} 
         >
-          <Text f={1} testID="feature-item.title">{props.feature.title}</Text>
+          <Text f={1} testID="feature-item.title">{props.feature.key}</Text>
           <Stack
             fd="row"
             mt="$4"
@@ -35,7 +35,7 @@ export function FeatureItem(props: FeatureProps) {
               // Fixes a layout bug on mobile.  if this is set to 1, the title compresses.
               $gtSm={{ flex: /*istanbul ignore next*/Platform.OS === 'web' ? undefined : -1 }}
               fontStyle="italic" 
-            >Stewart Armbrecht</Text>
+            >{props.feature.status}</Text>
             <Text
               $gtSm={{ alignSelf: "flex-end", paddingRight: "$4"}} 
               pl="$4"

@@ -1,6 +1,6 @@
 import { FeatureStatus } from "@my-solution/shared";
 import { RootState } from "../store";
-import { selectAllFeatures, selectFeatureById, selectFeatureIds } from "./featuresSlice";
+import { selectFeatureByKey, selectAllFeatures, selectFeatureById, selectFeatureIds } from "./featuresSlice";
 
 describe('featuresSlice selectors', () => {
   let state: RootState;
@@ -12,14 +12,14 @@ describe('featuresSlice selectors', () => {
         entities: {
           '1': {
             id: '1',
-            title: 'Feature 1',
-            content: 'Lorem ipsum dolor sit amet',
+            key: 'Feature 1',
+            groups: [],
             status: FeatureStatus.ACTIVE,
           },
           '2': {
             id: '2',
-            title: 'Feature 2',
-            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+            key: 'Feature 2',
+            groups: [],
             status: FeatureStatus.ACTIVE,
           },
         },
@@ -27,8 +27,13 @@ describe('featuresSlice selectors', () => {
         error: null,
       },
       sync: [],
-      auth: {},
       user: {},
+      posts: {
+        ids: [],
+        entities: {},
+        status: 'idle',
+        error: null,
+      },
     };
   });
 
@@ -53,5 +58,11 @@ describe('featuresSlice selectors', () => {
     expect(selectedFeatureIds.length).toBe(2);
     expect(selectedFeatureIds[0]).toBe('1');
     expect(selectedFeatureIds[1]).toBe('2');
+  });
+
+  it('should select feature by key', () => {
+    const selectedFeature = selectFeatureByKey(state, 'Feature 1');
+
+    expect(selectedFeature).toEqual(state.features.entities['1']);
   });
 })

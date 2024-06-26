@@ -1,4 +1,4 @@
-import { Feature } from "@my-solution/shared";
+import { Feature, compareStringArrays } from "@my-solution/shared";
 
 export function compareFeatures(a: Feature | undefined, b: Feature | undefined): boolean {
     let match = true;
@@ -12,19 +12,13 @@ export function compareFeatures(a: Feature | undefined, b: Feature | undefined):
     if (a.serverId !== b.serverId) {
         match = false;
     }
-    if (a.title !== b.title) {
+    if (a.key !== b.key) {
         match = false;
     }
     if (a.status !== b.status) {
         match = false;
     }
-    if (a.rating !== b.rating) {
-        match = false;
-    }
-    if (a.content !== b.content) {
-        match = false;
-    }
-    if (a.author !== b.author) {
+    if (!compareStringArrays(a.groups, b.groups)) {
         match = false;
     }
     if (a.createdAt !== b.createdAt) {

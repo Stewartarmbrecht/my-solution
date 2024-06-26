@@ -13,7 +13,8 @@ export {
 export { 
   selectAllFeatures,
   selectFeatureById,
-  selectFeatureIds 
+  selectFeatureIds,
+  selectFeatureByKey
 } from './features/featuresSlice';
 export {
   featureAdded,
