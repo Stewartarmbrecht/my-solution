@@ -2,7 +2,7 @@ import { selectFeatureByKey, useAppSelector } from "@my-solution/state";
 import { features } from "./Features";
 import { FeatureStatus } from "@my-solution/shared";
 
-export const useActiveFeature = (featureKey: string): boolean => {
+export const useActiveFeature = (featureKey: number): boolean => {
   const featureDetail = features[featureKey];
   const featureOverride = useAppSelector(/* istanbul ignore next */(state) => selectFeatureByKey(state, featureKey));
   const groups = featureOverride?.groups ?? (featureDetail.defaultGroups ?? []);

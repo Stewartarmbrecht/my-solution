@@ -50,12 +50,30 @@
 
 		// RUN
 		{
-			"label": "Build and run mobile",
+			"label": "Build and run mobile my-app",
 			"detail": "Builds and runs an Android version of the app on a connected Android device.  Be sure to run connect-mobile first.",
 			"type": "nx",
 			"project": "",
 			"command": "run",
-			"flags": ["${input:mobile-project}:run-mobile"],
+			"flags": ["my-app:run-mobile"],
+			"problemMatcher": []
+		},
+		{
+			"label": "Build and run mobile my-admin",
+			"detail": "Builds and runs an Android version of the app on a connected Android device.  Be sure to run connect-mobile first.",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"flags": ["my-admin:run-mobile"],
+			"problemMatcher": []
+		},
+		{
+			"label": "Build and run mobile my-site",
+			"detail": "Builds and runs an Android version of the app on a connected Android device.  Be sure to run connect-mobile first.",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"flags": ["my-site:run-mobile"],
 			"problemMatcher": []
 		},
 		{

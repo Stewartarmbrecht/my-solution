@@ -1,6 +1,6 @@
 import { FeatureStatus } from "@my-solution/shared";
 import { RootState } from "../store";
-import { selectFeatureByKey, selectAllFeatures, selectFeatureById, selectFeatureIds } from "./featuresSlice";
+import { selectAllFeatures, selectFeatureById, selectFeatureIds } from "./featuresSlice";
 
 describe('featuresSlice selectors', () => {
   let state: RootState;
@@ -12,13 +12,11 @@ describe('featuresSlice selectors', () => {
         entities: {
           '1': {
             id: '1',
-            key: 'Feature 1',
             groups: [],
             status: FeatureStatus.ACTIVE,
           },
           '2': {
             id: '2',
-            key: 'Feature 2',
             groups: [],
             status: FeatureStatus.ACTIVE,
           },
@@ -60,9 +58,4 @@ describe('featuresSlice selectors', () => {
     expect(selectedFeatureIds[1]).toBe('2');
   });
 
-  it('should select feature by key', () => {
-    const selectedFeature = selectFeatureByKey(state, 'Feature 1');
-
-    expect(selectedFeature).toEqual(state.features.entities['1']);
-  });
 })

@@ -26,6 +26,7 @@ export {
 export { Post } from './types/Post';
 export { PostStatus } from './types/PostStatus';
 export { Feature } from './types/Feature'
+export { StateObject } from './types/StateObject';
 export { FeatureStatus } from './types/FeatureStatus';
 export { User } from './types/User';
 export { compareStringArrays } from './utils/compareStringArrays';

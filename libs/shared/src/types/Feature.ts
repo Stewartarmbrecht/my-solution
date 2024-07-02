@@ -1,10 +1,9 @@
 /* istanbul ignore file */
 import { FeatureStatus } from "./FeatureStatus";
 
-export interface Feature {
+export interface Feature extends StateObject {
   id: string;
   serverId?: string;
-  key: string;
   status: FeatureStatus | keyof typeof FeatureStatus;
   groups: string[];
   createdAt?: string | null;

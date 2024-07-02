@@ -1,10 +1,10 @@
 /* istanbul ignore file */
-import { Feature } from "@my-solution/shared";
 import { SerializedError } from "@reduxjs/toolkit";
+import { StateObject } from "@my-solution/shared";
 
-export interface Features {
+export interface StateObjectCollection<T extends StateObject> {
   ids: string[];
-  entities: Record<string, Feature>;
+  entities: Record<string, T>;
   status: string;
   error: SerializedError | null;
 }

@@ -25,7 +25,6 @@ describe('featuresSlice', () => {
   it('should add a feature when featureAdded action is dispatched', () => {
     const feature: Feature = {
       id: '1',
-      key: 'New Feature',
       groups: [],
       status: FeatureStatus.ACTIVE,
     };
@@ -44,7 +43,6 @@ describe('featuresSlice', () => {
   it('should store features sorted by created date', () => {
     const feature1: Feature = {
       id: '1',
-      key: 'New Feature 1',
       groups: [],
       status: FeatureStatus.ACTIVE,
       createdAt: new Date('2021-01-01').toISOString(),
@@ -53,7 +51,6 @@ describe('featuresSlice', () => {
 
     const feature2: Feature = {
       id: '2',
-      key: 'New Feature 2',
       groups: [],
       status: FeatureStatus.ACTIVE,
       createdAt: new Date('2021-01-02').toISOString(),
@@ -76,14 +73,12 @@ describe('featuresSlice', () => {
   it('should store features sorted by created date without dates', async () => {
     const feature1: Feature = {
       id: '1',
-      key: 'New Feature 1',
       groups: [],
       status: FeatureStatus.ACTIVE,
     };
 
     const feature2: Feature = {
       id: '2',
-      key: 'New Feature 2',
       groups: [],
       status: FeatureStatus.ACTIVE,
     };
@@ -105,7 +100,6 @@ describe('featuresSlice', () => {
   it('should remove a feature when featureDeleted action is dispatched', () => {
     const feature: Feature = {
       id: '1',
-      key: 'New Feature 1',
       groups: [],
       status: FeatureStatus.ACTIVE,
     };
@@ -124,7 +118,6 @@ describe('featuresSlice', () => {
   it('should remove a feature when featureDeletedViaSync action is dispatched', () => {
     const feature: Feature = {
       id: '1',
-      key: 'New Feature',
       groups: [],
       status: FeatureStatus.ACTIVE,
     };
@@ -143,7 +136,6 @@ describe('featuresSlice', () => {
   it('should add or update a feature when featureAddedOrUpdatedViaSync action is dispatched', () => {
     const feature: Feature = {
       id: '1',
-      key: 'New Feature',
       groups: [],
       status: FeatureStatus.ACTIVE,
     };
@@ -152,7 +144,6 @@ describe('featuresSlice', () => {
 
     const updatedFeature: Feature = {
       id: '1',
-      key: 'New Feature Updated',
       groups: [],
       status: FeatureStatus.ACTIVE,
     };
@@ -177,7 +168,6 @@ describe('featuresSlice', () => {
   it('should not update a feature when featureAddedOrUpdatedViaSync action is dispatched and the feature in state is the same as the payload', () => {
     const feature: Feature = {
       id: '1',
-      key: 'New Feature',
       groups: [],
       status: FeatureStatus.ACTIVE,
       createdAt: new Date('2021-01-01').toISOString(),
@@ -187,7 +177,6 @@ describe('featuresSlice', () => {
 
     const updatedFeature: Feature = {
       id: '1',
-      key: 'New Feature',
       groups: [],
       status: FeatureStatus.ACTIVE,
       createdAt: new Date('2021-01-01').toISOString(),
@@ -208,13 +197,11 @@ describe('featuresSlice', () => {
     const features: Feature[] = [
       {
         id: '1',
-        key: 'New Feature 1',
         groups: [],
           status: FeatureStatus.ACTIVE,
       },
       {
         id: '2',
-        key: 'New Feature 2',
         groups: [],
           status: FeatureStatus.ACTIVE,
       },
@@ -234,7 +221,6 @@ describe('featuresSlice', () => {
   it('should delete a feature when featureLoadedViaSync action is dispatched and a feature in state is not in the payload', () => {
     const feature: Feature = {
       id: '1',
-      key: 'New Feature 1',
       groups: [],
       status: FeatureStatus.ACTIVE,
     };
@@ -244,7 +230,6 @@ describe('featuresSlice', () => {
     const features: Feature[] = [
       {
         id: '2',
-        key: 'New Feature 2',
         groups: [],
           status: FeatureStatus.ACTIVE,
       },
@@ -263,7 +248,6 @@ describe('featuresSlice', () => {
   it('should update an existing feature when featureLoadedViaSync action is dispatched and a feature in state is in the payload', () => {
     const feature: Feature = {
       id: '1',
-      key: 'New Feature',
       groups: [],
       status: FeatureStatus.ACTIVE,
     };
@@ -273,7 +257,6 @@ describe('featuresSlice', () => {
     const features: Feature[] = [
       {
         id: '1',
-        key: 'New Feature',
         groups: ['Group 1'],
         status: FeatureStatus.ACTIVE,
       },

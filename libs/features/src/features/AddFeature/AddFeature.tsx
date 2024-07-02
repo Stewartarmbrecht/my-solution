@@ -23,7 +23,7 @@ export function AddFeature() {
   }
   const native = false;
   return (
-    <XStack gap="$4" ai="center">
+    <XStack gap="$4" ai="center" flexWrap='wrap'>
       <Paragraph>
         New Feature:
       </Paragraph>
@@ -34,9 +34,10 @@ export function AddFeature() {
         accessibilityLabel='New Feature Key'
         flex={2}
         testID='new-feature-key'
+        minWidth={200}
       />
       <Select value={newFeatureStatus} onValueChange={(value) => setNewFeatureStatus(value)}>
-        <Select.Trigger width={220} iconAfter={ChevronDown}>
+        <Select.Trigger width={150} iconAfter={ChevronDown}>
           <Select.Value testID='select-status' placeholder={newFeatureStatus}  />
         </Select.Trigger>
 
