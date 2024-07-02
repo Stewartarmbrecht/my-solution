@@ -1,289 +1,285 @@
 {
 	"version": "2.0.0",
 	"tasks": [
+
+		// DEPENDENCY MANAGEMENT
 		{
-			"label": "test",
-			"type": "nx",
-			"project": "",
-			"command": "run-many",
-			"flags": ["-t test"],
-			"problemMatcher": [],
-			"detail": "Run all unit tests."
+      "label": "Install dependencies",
+			"detail": "Runs npm install to install all dependencies.",
+      "type": "shell",
+      "command": "npm install",
+      "problemMatcher": []
+    },
+		{
+      "label": "Check dependencies",
+			"detail": "Checks the npm dependency versions for updates.  Also checks the version match for expo modules for my-app and my-site.",
+      "type": "shell",
+      "command": "npx nx deps-check",
+      "problemMatcher": []
+    },
+		{
+      "label": "Install new dependencies",
+			"detail": "Installs one or more dependencies into a specific project.",
+      "type": "shell",
+      "command": "npx nx install ${input:project} ${input:dependencies}",
+      "problemMatcher": []
+    },
+		{
+      "label": "Migrate NX depencies",
+			"detail": "Upgrades nx to the latest version and all of it's modules.",
+      "type": "shell",
+      "command": "npx nx migrate latest --run-migrations",
+      "problemMatcher": []
+    },
+		{
+      "label": "Sort dependencies",
+			"detail": "Sorts dependencies in all package.json files.",
+      "type": "shell",
+      "command": "npx nx deps-sort",
+      "problemMatcher": []
+    },
+
+		// CONNECT
+		{
+			"label": "Connect mobile device",
+			"detail": "Connects to you android device over wifi using the IP you updated in the project and port 5555.",
+      "type": "shell",
+      "command": "npx nx connect-mobile",
+      "problemMatcher": []
 		},
+
+		// RUN
 		{
-			"label": "test-my-app",
+			"label": "Build and run mobile my-app",
+			"detail": "Builds and runs an Android version of the app on a connected Android device.  Be sure to run connect-mobile first.",
 			"type": "nx",
 			"project": "",
 			"command": "run",
-			"flags": ["my-app:test"],
-			"problemMatcher": [],
-			"detail": "Run all unit tests in the my-app project."
+			"flags": ["my-app:run-mobile"],
+			"problemMatcher": []
 		},
 		{
-			"label": "test-features",
+			"label": "Build and run mobile my-admin",
+			"detail": "Builds and runs an Android version of the app on a connected Android device.  Be sure to run connect-mobile first.",
 			"type": "nx",
 			"project": "",
 			"command": "run",
-			"flags": ["features:test"],
-			"problemMatcher": [],
-			"detail": "Run all unit tests in the features project."
+			"flags": ["my-admin:run-mobile"],
+			"problemMatcher": []
 		},
 		{
-			"label": "test-backend",
+			"label": "Build and run mobile my-site",
+			"detail": "Builds and runs an Android version of the app on a connected Android device.  Be sure to run connect-mobile first.",
 			"type": "nx",
 			"project": "",
 			"command": "run",
-			"flags": ["backend:test"],
-			"problemMatcher": [],
-			"detail": "Run all unit tests in the backend project."
+			"flags": ["my-site:run-mobile"],
+			"problemMatcher": []
 		},
 		{
-			"label": "test-shared",
+			"label": "Build and run mobile (preview)",
+			"detail": "Builds and runs an Android, release version of the app on a connected Android device.  Be sure to run connect-mobile first.",
 			"type": "nx",
 			"project": "",
 			"command": "run",
-			"flags": ["shared:test"],
-			"problemMatcher": [],
-			"detail": "Run all unit tests in the shared project."
+			"flags": ["${input:mobile-project}:run-mobile-preview"],
+			"problemMatcher": []
 		},
+
+		// START
 		{
-			"label": "test-state",
+			"label": "Start server for app (metro)",
+			"detail": "Starts the metro bundler for the app project.",
 			"type": "nx",
 			"project": "",
 			"command": "run",
-			"flags": ["state:test"],
-			"problemMatcher": [],
-			"detail": "Run all unit tests in the state project."
-		},
-		{
-			"label": "test-coverage",
-			"type": "nx",
-			"project": "",
-			"command": "run-many",
-			"flags": ["-t test-coverage"],
-			"problemMatcher": [],
-			"detail": "Run all unit tests with code coverage enforced."
-		},
-		{
-			"label": "test-coverage-features",
-			"type": "nx",
-			"project": "",
-			"command": "run",
-			"flags": ["features:test-coverage"],
-			"problemMatcher": [],
-			"detail": "Run all unit tests with code coverage enforced for the features project."
-		},
-		{
-			"label": "test-coverage-my-app",
-			"type": "nx",
-			"project": "",
-			"command": "run",
-			"flags": ["my-app:test-coverage"],
-			"problemMatcher": [],
-			"detail": "Run all unit tests with code coverage enforced for the my-app project."
-		},
-		{
-			"label": "test-coverage-shared",
-			"type": "nx",
-			"project": "",
-			"command": "run",
-			"flags": ["shared:test-coverage"],
-			"problemMatcher": [],
-			"detail": "Run all unit tests with code coverage enforced for the shared project."
-		},
-		{
-			"label": "test-coverage-backend",
-			"type": "nx",
-			"project": "",
-			"command": "run",
-			"flags": ["backend:test-coverage"],
-			"problemMatcher": [],
-			"detail": "Run all unit tests with code coverage enforced for the backend project."
-		},
-		{
-			"label": "test-coverage-state",
-			"type": "nx",
-			"project": "",
-			"command": "run",
-			"flags": ["state:test-coverage"],
-			"problemMatcher": [],
-			"detail": "Run all unit tests with code coverage enforced for the state project."
-		},
-		{
-			"label": "build-dev",
-			"type": "nx",
-			"project": "",
-			"command": "run",
-			"flags": ["my-app:eas-build-dev"],
-			"problemMatcher": [],
-			"detail": "Build the development version of the app in eas for both ios and android."
-		},
-		{
-			"label": "build-preview",
-			"type": "nx",
-			"project": "",
-			"command": "run",
-			"flags": ["my-app:eas-build-preview"],
-			"problemMatcher": [],
-			"detail": "Build the preview version of the app in eas for both ios and android."
-		},
-		{
-			"label": "local-build-dev-android",
-			"type": "nx",
-			"project": "",
-			"command": "run",
-			"positional": "my-app:local-build-dev-android",
-			"problemMatcher": [],
-			"detail": "Locally builds the android version of the app using eas.  Use this before running detox on dev instances."
-		},
-		{
-			"label": "run-android-geny",
-			"type": "nx",
-			"project": "",
-			"command": "run",
-			"flags": ["my-app:run-android-geny"],
-			"problemMatcher": [],
-			"detail": "Run a dev cloud instance of geny android emulator then start the metro bundler and deploy to it."
-		},
-		{
-			"label": "run",
-			"type": "nx",
-			"project": "",
-			"command": "run",
-			"positional": "my-app:start-ip",
+			"positional": "my-app:start",
 			"flags": [],
 			"problemMatcher": [],
-			"detail": "Run the metro bundler on the current host ip port 19001."
 		},
 		{
-			"label": "run-for-detox",
+			"label": "Start server for site (metro)",
+			"detail": "Starts the metro bundler for the site project.",
 			"type": "nx",
 			"project": "",
 			"command": "run",
-			"positional": "my-app:start-detox",
+			"positional": "my-site:start",
 			"flags": [],
-			"problemMatcher": [],
-			"detail": "Run the metro bundler on localhost ip port 19002."
+			"problemMatcher": []
 		},
 		{
-			"label": "test-e2e-web-open",
+			"label": "Start server for admin (metro)",
+			"detail": "Starts the metro bundler for the admin project.",
 			"type": "nx",
 			"project": "",
 			"command": "run",
-			"positional": "my-app-e2e:test-e2e-web-open",
+			"positional": "my-admin:start",
 			"flags": [],
-			"problemMatcher": [],
-			"detail": "Open the web test runner."
+			"problemMatcher": []
 		},
 		{
-			"label": "test-e2e-web-current-spec",
+			"label": "Start web test studio (Cypress)",
+			"detail": "Starts the Cypress web test studio for my-app (in my-app-e2e project).",
 			"type": "nx",
 			"project": "",
 			"command": "run",
-			"positional": "my-app-e2e:test-e2e-web",
-      "flags": ["--spec=${file}"],
-			"problemMatcher": [],
-			"detail": "Run the current spec file in the web test runner."
+			"positional": "${input:mobile-project}-e2e:start-web-test-studio",
+			"flags": [],
+			"problemMatcher": []
 		},
 		{
-			"label": "test-e2e-web",
+			"label": "Start mobile test studio (Maestro)",
+			"detail": "Starts the Maestro web test studio for my-app (in my-app-e2e project).",
 			"type": "nx",
 			"project": "",
 			"command": "run",
-			"positional": "my-app-e2e:test-e2e-web",
+			"positional": "${input:mobile-project}-e2e:start-mobile-test-studio",
+			"flags": [],
+			"problemMatcher": []
+		},
+		{
+			"label": "Start server to view unit test coverage",
+			"detail": "Starts http server to view unit test coverage results.",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"positional": "${input:project}:start-coverage-server",
+			"flags": [],
+			"problemMatcher": []
+		},
+
+		// DEVELOPMENT
+		{
+			"label": "Generate backend model",
+			"detail": "Generates types from the graphql.schema file.  Run this after changing the file.",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"positional": "backend:amplify-codegen-models",
       "flags": [],
-			"problemMatcher": [],
-			"detail": "Run all end to end web tests."
+			"problemMatcher": []
 		},
+
+
+		// TEST
 		{
-			"label": "build-dev-detox",
+			"label": "Run mobile tests in current file",
+			"detail": "Run the mobile test for the currently viewed file.",
 			"type": "nx",
 			"project": "",
 			"command": "run",
-			"positional": "my-app-e2e:build-android",
-      "flags": ["--configuration=genymotion"],
-			"problemMatcher": [],
-			"detail": "Build a dev version of the app ready for detox testing."
-		},
-		{
-			"label": "build-release-detox",
-			"type": "nx",
-			"project": "",
-			"command": "run",
-			"positional": "my-app-e2e:build-android",
-      "flags": ["--configuration=genymotion-release"],
-			"problemMatcher": [],
-			"detail": "Build a release version of the app ready for detox testing."
-		},
-		{
-			"label": "test-e2e-mobile-current-spec",
-			"type": "nx",
-			"project": "",
-			"command": "run",
-			"positional": "my-app-e2e:test-e2e-mobile",
-      "flags": ["${file}"],
-			"problemMatcher": [],
-			"detail": "Launch Genymotion emulator, install the app, and run the current test file in the mobile app test runner."
-		},
-		{
-			"label": "test-e2e-mobile-debug",
-			"detail": "Launch Genymotion emulator, install the app, and run all mobile app tests.",
-			"type": "nx",
-			"project": "",
-			"command": "run",
-			"positional": "my-app-e2e:test-e2e-mobile-debug",
-			"flags": [],
+			"positional": "test-mobile",
+      "flags": ["-e PASSWORD=${input.password}", "${file}"],
 			"problemMatcher": []
 		},
 		{
-			"label": "test-e2e-mobile-debug-reuse",
-			"detail": "Launch Genymotion emulator, install the app, and run all mobile app tests.",
+			"label": "Run unit tests for select project",
+			"detail": "Run unit tests for a single project.",
 			"type": "nx",
 			"project": "",
 			"command": "run",
-			"positional": "my-app-e2e:test-e2e-mobile-debug-reuse",
-			"flags": [],
+			"positional": "${input:project}:test",
 			"problemMatcher": []
 		},
 		{
-			"label": "test-e2e-mobile-release",
-			"detail": "Launch Genymotion emulator, install the app, and run all mobile app tests.",
+			"label": "Run unit tests for select project with coverage",
+			"detail": "Run unit tests for a single project with code coverage enforced.",
 			"type": "nx",
 			"project": "",
 			"command": "run",
-			"positional": "my-app-e2e:test-e2e-mobile-release",
-			"flags": [],
+			"positional": "${input:project}:test-coverage",
 			"problemMatcher": []
 		},
 		{
-      "label": "build-check-dependencies",
-			"detail": "Checks the npm dependency versions for updates.  Also checks the version match for expo.",
-      "type": "shell",
-      "command": "npx npm-check-updates && npx nx install my-app --check",
-      "problemMatcher": []
-    },
+			"label": "Run web tests for select project",
+			"detail": "Runs all web tests for a project you select.",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"positional": "${input:mobile-project}-e2e:test-web",
+			"problemMatcher": []
+		},
 		{
-      "label": "build-install-dependencies-my-app",
-			"detail": "Installs one or more dependencies into the my-app project.",
-      "type": "shell",
-      "command": "npx nx install my-app ${input:dependencies}",
-      "problemMatcher": []
-    },
-    {
-      "label": "login-genymotion",
-			"detail": "Sets auth token for accessing genymotion.",
-      "type": "shell",
-			"args": ["auth", "token", "${input:token}"],
-      "command": "gmsaas",
-      "problemMatcher": []
-    }
+			"label": "Run mobile tests for select project",
+			"detail": "Runs all mobile tests for a project you select.",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"positional": "${input:mobile-project}-e2e:test-mobile -e PASSWORD=${input:password}",
+			"problemMatcher": []
+		},
+		{
+			"label": "Run mobile tests for select project (release)",
+			"detail": "Runs all mobile tests for a project you select using the release version of the app.  Build and run mobile (release) first.",
+			"type": "nx",
+			"project": "",
+			"command": "run",
+			"positional": "${input:mobile-project}-e2e:test-mobile-release -e PASSWORD=${input:password}",
+			"problemMatcher": []
+		},
+		{
+			"label": "Run all unit tests",
+			"detail": "Run all unit tests for all projects.",
+			"type": "nx",
+			"project": "",
+			"command": "run-many",
+			"positional": "-t test",
+			"problemMatcher": []
+		},
+		{
+			"label": "Run all unit tests with coverage",
+			"detail": "Run all unit tests for all projects with coverage.",
+			"type": "nx",
+			"project": "",
+			"command": "run-many",
+			"positional": "-t test-coverage",
+			"problemMatcher": []
+		},
+		{
+			"label": "Run all mobile tests",
+			"detail": "Run ALL mobile tests for all projects.",
+			"type": "nx",
+			"project": "",
+			"command": "run-many",
+			"positional": "-t=test-mobile",
+			"problemMatcher": []
+		},
+		{
+			"label": "Run all web tests",
+			"detail": "Run web tests for a single project.",
+			"type": "nx",
+			"project": "",
+			"command": "run-many",
+			"positional": "-t=test-web",
+			"problemMatcher": []
+		}
 	],
   "inputs": [
     {
       "id": "dependencies",
       "type": "promptString",
-      "description": "Enter a space separate list of dependencies to install.",
+      "description": "Enter a comma separate list of dependencies to install.",
     },
+    {
+			"id": "project",
+			"type": "pickString",
+			"description": "Select a project",
+			"options": ["my-app", "my-app-e2e", "my-admin", "my-admin-e2e", "my-site", "my-site-e2e", "backend", "features", "shared", "state", "ui"],
+			"default": "my-app"
+    },
+    {
+			"id": "mobile-project",
+			"type": "pickString",
+			"description": "Select a project",
+			"options": ["my-app", "my-admin", "my-site"],
+			"default": "my-app"
+    },
+		{
+			"id": "password",
+			"type": "promptString",
+			"description": "Enter test account password.",
+			"default": ""
+		},
 		{
 			"id": "token",
 			"type": "promptString",

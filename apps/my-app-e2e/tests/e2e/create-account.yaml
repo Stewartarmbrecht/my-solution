@@ -1,0 +1,21 @@
+# flow.yaml
+
+appId: ${APP}
+---
+- launchApp:
+    clearState: true
+- tapOn: "Create Account"
+- assertVisible: "Create Account"
+- assertVisible:
+    id: "authenticator__text-field__input-username"
+- assertVisible: "Enter your Username"
+- assertVisible:
+    id: "authenticator__text-field__input-password"
+- assertVisible: "Enter your Password"
+- assertVisible:
+    id: "authenticator__text-field__input-confirm_password"
+- assertVisible: "Please confirm your Password"
+- assertVisible:
+    id: "authenticator__text-field__input-email"
+- assertVisible: "Enter your Email"
+- tapOn: "Sign In"

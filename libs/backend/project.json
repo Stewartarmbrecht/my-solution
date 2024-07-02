@@ -86,8 +86,25 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "libs/backend/jest.config.ts",
-        "coverage": true
+        "cwd": "libs/backend",
+        "codeCoverage": true,
+        "jestConfig": "libs/backend/jest.config.ts"
+      }
+    },
+    "test-coverage-ci": {
+      "command": "FORCE_COLOR=false npx jest test --no-colors --coverage",
+      "options": {
+        "cwd": "libs/backend"
+      }
+    },
+    "start-coverage-server": {
+      "executor": "nx:run-commands",
+      "dependsOn": [
+        "sync-deps"
+      ],
+      "options": {
+        "command": "npx http-server coverage/lcov-report/",
+        "cwd": "libs/backend"
       }
     }
   }

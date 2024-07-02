@@ -23,6 +23,22 @@
         "jestConfig": "libs/state/jest.config.ts",
         "coverage": true
       }
+    },
+    "test-coverage-ci": {
+      "command": "FORCE_COLOR=false npx jest test --no-colors --coverage",
+      "options": {
+        "cwd": "libs/state"
+      }
+    },
+    "start-coverage-server": {
+      "executor": "nx:run-commands",
+      "dependsOn": [
+        "sync-deps"
+      ],
+      "options": {
+        "command": "npx http-server coverage/lcov-report/",
+        "cwd": "libs/state"
+      }
     }
   }
 }

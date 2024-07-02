@@ -1,0 +1,186 @@
+{
+  "name": "my-admin-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/my-admin-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "start-web-test-studio": {
+      "command": "npx cypress open",
+      "options": {
+        "cwd": "apps/my-admin-e2e"
+      }
+    },
+    "start-mobile-test-studio": {
+      "command": "maestro studio",
+      "options": {
+        "cwd": "apps/my-admin-e2e"
+      }
+    },
+
+
+
+
+    "build-ios": {
+      "executor": "@nx/detox:build",
+      "options": {
+        "detoxConfiguration": "ios.sim.local"
+      },
+      "configurations": {
+        "bare": {
+          "detoxConfiguration": "ios.sim.debug"
+        },
+        "production": {
+          "detoxConfiguration": "ios.sim.release"
+        }
+      }
+    },
+    "test-ios": {
+      "executor": "@nx/detox:test",
+      "options": {
+        "detoxConfiguration": "ios.sim.local",
+        "buildTarget": "my-admin-e2e:build-ios"
+      },
+      "configurations": {
+        "bare": {
+          "detoxConfiguration": "ios.sim.debug",
+          "buildTarget": "my-admin-e2e:build-ios:bare"
+        },
+        "production": {
+          "detoxConfiguration": "ios.sim.release",
+          "buildTarget": "my-admin-e2e:build-ios:production"
+        }
+      }
+    },
+    "build-android": {
+      "executor": "@nx/detox:build",
+      "options": {
+        "detoxConfiguration": "android.emu.local"
+      },
+      "configurations": {
+        "bare": {
+          "detoxConfiguration": "android.emu.debug"
+        },
+        "production": {
+          "detoxConfiguration": "android.emu.release"
+        },
+        "attached-debug": {
+          "detoxConfiguration": "android.att.debug"
+        },
+        "genymotion": {
+          "detoxConfiguration": "android.genycloud.debug"
+        },
+        "genymotion-release": {
+          "detoxConfiguration": "android.genycloud.release"
+        }
+      }
+    },
+    "test-android": {
+      "executor": "@nx/detox:test",
+      "dependsOn": [
+      ],
+      "options": {
+        "detoxConfiguration": "debug-genycloud",
+        "buildTarget": "my-admin-e2e:build-android"
+      },
+      "configurations": {
+        "genymotion": {
+          "detoxConfiguration": "android.genycloud.debug"
+        },
+        "debug-att": {
+          "detoxConfiguration": "android.att.debug",
+          "reuse": true
+        },
+        "bare": {
+          "detoxConfiguration": "android.emu.debug",
+          "buildTarget": "my-admin-e2e:build-android:bare"
+        },
+        "production": {
+          "detoxConfiguration": "android.emu.release",
+          "buildTarget": "my-admin-e2e:build-android:production"
+        },
+        "production-att": {
+          "detoxConfiguration": "android.att.release",
+          "buildTarget": "my-admin-e2e:build-android:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    },
+    "test-e2e-web": {
+      "command": "npx cypress run",
+      "options": {
+        "cwd": "apps/my-admin-e2e",
+        "browser": "edge"
+      }
+    },
+    "install-web-test": {
+      "command": "npx cypress install",
+      "options": {
+        "cwd": "apps/my-admin-e2e"
+      }
+    },
+    "launch-genymotion": {
+      "executor": "nx:run-commands",
+      "dependsOn": [
+        "sync-deps"
+      ],
+      "options": {
+        "cwd": "apps/my-admin-e2e",
+        "command": "./detox/utils/startOrReuseGenymotion.sh"
+      }
+    },
+    "install-debug-geny": {
+      "executor": "nx:run-commands",
+      "dependsOn": [
+        "launch-genymotion"
+      ],
+      "options": {
+        "cwd": "apps/my-admin-e2e",
+        "command": "adb install ../my-admin/android/app/build/outputs/apk/debug/app-debug.apk"
+      }
+    },
+    "stop-genymotion": {
+      "executor": "nx:run-commands",
+      "dependsOn": [
+        "sync-deps"
+      ],
+      "options": {
+        "command": "gmsaas instances list -q | xargs -n1 gmsaas instances stop"
+      }
+    },
+    "test-e2e-mobile-debug": {
+      "executor": "nx:run-commands",
+      "dependsOn": [
+        "sync-deps"
+      ],
+      "options": {
+        "cwd": "apps/my-admin-e2e",
+        "command": "npx detox test --configuration android.att.debug"
+      }
+    },
+    "test-e2e-mobile-debug-reuse": {
+      "executor": "nx:run-commands",
+      "dependsOn": [
+        "sync-deps"
+      ],
+      "options": {
+        "cwd": "apps/my-admin-e2e",
+        "command": "npx detox test --configuration android.att.debug --reuse"
+      }
+    },
+    "test-e2e-mobile-release": {
+      "executor": "nx:run-commands",
+      "dependsOn": [
+        "sync-deps"
+      ],
+      "options": {
+        "cwd": "apps/my-admin-e2e",
+        "command": "npx detox test --configuration android.genycloud.release"
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["my-admin"]
+}

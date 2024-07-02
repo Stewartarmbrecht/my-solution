@@ -8,7 +8,7 @@ import amplifyconfig from './aws-exports';
 import { logCall, logError, logRaw, logSetup, userLoggedIn, userLoggedOut } from '@my-solution/shared';
 import { useSynchronizer } from './sync/useSynchronizer';
 import { useEffect, useState } from 'react';
-import { getCurrentUser } from 'aws-amplify/auth';
+import { getCurrentUser, fetchAuthSession } from 'aws-amplify/auth';
 import { useDispatch } from 'react-redux';
 import { useColorScheme } from '@my-solution/ui';
 import { colors } from '@my-solution/ui';
@@ -59,14 +59,14 @@ export function Backend(props: BackendProps) {
   useEffect(() => {
     logCall('Backend.useEffect');
     const hubListenerCancelToken = Hub.listen('auth', ({ payload }) => {
-      logRaw('auth event:', payload.event);
+      logCall('Backend.useEffect.Hub.listen', 'auth event:', payload.event);
       switch (payload.event) {
         case 'signedIn':
-          logRaw('user have been signedIn successfully.', payload.message, payload.data);
+          logCall('Backend.useEffect.Hub.listen.signedIn', 'user has been signedIn successfully.', payload.message, payload.data);
           setIsUserLoggedIn(true);
           break;
         case 'signedOut':
-          logRaw('user have been signedOut successfully.', payload.message);
+          logRaw('Backend.useEffect.Hub.listen.signedOut', 'user has been signedOut successfully.', payload.message);
           setIsUserLoggedIn(false);
           break;
       }
@@ -81,9 +81,17 @@ export function Backend(props: BackendProps) {
       logCall('Backend.loadUser');
       try {
         const user = await getCurrentUser();
+        const session = await fetchAuthSession();
+
+        // the array of groups that the user belongs to
+        const groups = session.tokens?.accessToken?.payload['cognito:groups'] as string[];
+
+        logRaw('session', session);
+                
         dispatch(userLoggedIn({
           userEmail: 'dontknowthat@yet.com',
           userName: user?.username,
+          groups: groups
         }));
         setIsUserLoggedIn(true);
       } catch (error) {

@@ -5,7 +5,8 @@ backend:
       commands:
         - nvm use 20
         - npm ci
-        - npx nx test-coverage backend
+        - ./node_modules/.bin/patch-package
+        - FORCE_COLOR=false npx nx test-coverage backend --no-colors
     build:
       commands:
         - cd libs/backend
@@ -19,7 +20,8 @@ frontend:
         - npm install --quiet --global expo-cli
         - npm install --quiet --global eas-cli
         - npm ci
-        - npx nx run-many -t test-coverage
+        - ./node_modules/.bin/patch-package
+        - FORCE_COLOR=false npx nx run-many -t test-coverage --no-colors
     build:
       commands:
         - npx nx export-web my-app

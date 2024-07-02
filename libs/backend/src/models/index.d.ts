@@ -11,6 +11,14 @@ type PostDataMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
 
+type DataItemMetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
+type GlobalDataItemMetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
 type EagerPostData = {
   readonly id: string;
   readonly clientId: string;
@@ -41,4 +49,44 @@ export declare type PostData = LazyLoading extends LazyLoadingDisabled ? EagerPo
 
 export declare const PostData: (new (init: ModelInit<PostData, PostDataMetaData>) => PostData) & {
   copyOf(source: PostData, mutator: (draft: MutableModel<PostData, PostDataMetaData>) => MutableModel<PostData, PostDataMetaData> | void): PostData;
+}
+
+type EagerDataItem = {
+  readonly id: string;
+  readonly payload: string;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+type LazyDataItem = {
+  readonly id: string;
+  readonly payload: string;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+export declare type DataItem = LazyLoading extends LazyLoadingDisabled ? EagerDataItem : LazyDataItem
+
+export declare const DataItem: (new (init: ModelInit<DataItem, DataItemMetaData>) => DataItem) & {
+  copyOf(source: DataItem, mutator: (draft: MutableModel<DataItem, DataItemMetaData>) => MutableModel<DataItem, DataItemMetaData> | void): DataItem;
+}
+
+type EagerGlobalDataItem = {
+  readonly id: string;
+  readonly payload: string;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+type LazyGlobalDataItem = {
+  readonly id: string;
+  readonly payload: string;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+export declare type GlobalDataItem = LazyLoading extends LazyLoadingDisabled ? EagerGlobalDataItem : LazyGlobalDataItem
+
+export declare const GlobalDataItem: (new (init: ModelInit<GlobalDataItem, GlobalDataItemMetaData>) => GlobalDataItem) & {
+  copyOf(source: GlobalDataItem, mutator: (draft: MutableModel<GlobalDataItem, GlobalDataItemMetaData>) => MutableModel<GlobalDataItem, GlobalDataItemMetaData> | void): GlobalDataItem;
 }

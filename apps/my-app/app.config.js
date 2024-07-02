@@ -50,13 +50,6 @@ export default {
         "initialOrientation": "DEFAULT"
       }
     ],
-    [
-      '@config-plugins/detox',
-      {
-        skipProguard: false,
-        subdomains: ['localhost', '10.24.1.57'],
-      },
-    ],
   ],
   experiments: {
     typedRoutes: true

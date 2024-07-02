@@ -1,0 +1,11 @@
+# flow.yaml
+
+appId: ${APP}
+---
+- tapOn: Enter your Username
+- inputText: stewbbb
+- tapOn: Enter your password
+- inputText: ${PASSWORD}
+- tapOn:
+    text: "Sign in"
+    index: 1

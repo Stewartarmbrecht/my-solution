@@ -6,10 +6,14 @@ import {
   logSetup, 
   postAddedOrUpdatedViaSync, 
   postDeletedViaSync, 
-  postsLoadedViaSync 
+  postsLoadedViaSync, 
+  Feature,
+  featureDeletedViaSync,
+  featureAddedOrUpdatedViaSync,
+  featuresLoadedViaSync
 } from '@my-solution/shared';
 import { DataStore } from '@aws-amplify/datastore';
-import { PostData } from '../models';
+import { DataItem, GlobalDataItem } from '../models';
 import { useDispatch } from 'react-redux';
 import { nanoid } from '@reduxjs/toolkit';
 
@@ -28,72 +32,44 @@ export function useSynchronizer(isUserLoggedIn: boolean) {
       return;
     }
     const subId = nanoid();
-    const subscription = DataStore.observe(PostData).subscribe(msg => {
-      logCall('useSynchronizer.useEffect.DataStore.observe', 'msg:', msg, 'sub:', subId);
+    const subscription = DataStore.observe(DataItem).subscribe(msg => {
+      logCall('useSynchronizer.useEffect.DataStore.DataItem.observe', 'msg:', msg, 'sub:', subId);
+      const payload = JSON.parse(msg.element.payload);
+      payload.serverId = msg.element.id;
+      payload.createdAt = msg.element.createdAt;
+      payload.updatedAt = msg.element.updatedAt;
+      const post: Post = payload as Post;
       switch (msg.opType) {
         case 'DELETE':
-          dispatch(postDeletedViaSync({
-            id: msg.element.clientId,
-            serverId: msg.element.id,
-            title: msg.element.title,
-            content: msg.element.content,
-            rating: msg.element.rating,
-            status: msg.element.status,
-            author: msg.element.author,
-            createdAt: msg.element.createdAt,
-            updatedAt: msg.element.updatedAt,
-          }));
+          dispatch(postDeletedViaSync(post));
           break;
         case 'INSERT':
-          dispatch(postAddedOrUpdatedViaSync({
-            id: msg.element.clientId,
-            serverId: msg.element.id,
-            title: msg.element.title,
-            content: msg.element.content,
-            rating: msg.element.rating,
-            status: msg.element.status,
-            author: msg.element.author,
-            createdAt: msg.element.createdAt,
-            updatedAt: msg.element.updatedAt,
-          }));
+          dispatch(postAddedOrUpdatedViaSync(post));
           break;
         case 'UPDATE':
-          dispatch(postAddedOrUpdatedViaSync({
-            id: msg.element.clientId,
-            serverId: msg.element.id,
-            title: msg.element.title,
-            content: msg.element.content,
-            rating: msg.element.rating,
-            status: msg.element.status,
-            author: msg.element.author,
-            createdAt: msg.element.createdAt,
-            updatedAt: msg.element.updatedAt,
-          }));
+          dispatch(postAddedOrUpdatedViaSync(post));
           break;
       }
     });
     const loadDataStorePosts = async () => {
       logCall('useSynchronizer.useEffect.loadDataStorePosts');
       try {
-        const postsData: PostData[] = await DataStore.query(PostData);
+        const dataItems: DataItem[] = await DataStore.query(DataItem);
         logCall('useSynchronizer.useEffect.loadDataStorePosts.DataStore.query');
-        const posts: Post[] = postsData.sort((a, b) => {
+        const posts: Post[] = dataItems.sort((a, b) => {
           /*istanbul ignore next*/
           const aCreatedAt = a.createdAt ?? '9999-12-31T23:59:59.999Z';
           /*istanbul ignore next*/
           const bCreatedAt = b.createdAt ?? '9999-12-31T23:59:59.999Z';
           return bCreatedAt.localeCompare(aCreatedAt);
-        }).map((postData) => ({
-            id: postData.clientId,
-            serverId: postData.id,
-            title: postData.title,
-            content: postData.content,
-            rating: postData.rating,
-            status: postData.status,
-            author: postData.author,
-            createdAt: postData.createdAt,
-            updatedAt: postData.updatedAt,
-        }));
+        }).map((dataItem) => {
+          const payload = JSON.parse(dataItem.payload);
+          payload.serverId = dataItem.id;
+          payload.createdAt = dataItem.createdAt;
+          payload.updatedAt = dataItem.updatedAt;
+          const post: Post = payload as Post;
+          return (post);
+        });
         logCall('useSynchronizer.useEffect.loadDataStorePosts.DataStore.query', 'count:', posts.length);
         dispatch(postsLoadedViaSync(posts));
       } /* istanbul ignore next */ catch (error) {
@@ -104,9 +80,61 @@ export function useSynchronizer(isUserLoggedIn: boolean) {
       }
     }    
     loadDataStorePosts();
+
+    const globalSubId = nanoid();
+    const globalSubscription = DataStore.observe(GlobalDataItem).subscribe(msg => {
+      logCall('useSynchronizer.useEffect.DataStore.GlobalDataItem.observe', 'msg:', msg, 'sub:', globalSubId);
+      const payload = JSON.parse(msg.element.payload);
+      payload.serverId = msg.element.id;
+      payload.createdAt = msg.element.createdAt;
+      payload.updatedAt = msg.element.updatedAt;
+      const feature: Feature = payload as Feature;
+      switch (msg.opType) {
+        case 'DELETE':
+          dispatch(featureDeletedViaSync(feature));
+          break;
+        case 'INSERT':
+          dispatch(featureAddedOrUpdatedViaSync(feature));
+          break;
+        case 'UPDATE':
+          dispatch(featureAddedOrUpdatedViaSync(feature));
+          break;
+      }
+    });
+    const loadDataStoreFeatures = async () => {
+      logCall('useSynchronizer.useEffect.loadDataStoreFeatures');
+      try {
+        const dataItems: GlobalDataItem[] = await DataStore.query(GlobalDataItem);
+        logCall('useSynchronizer.useEffect.loadDataStoreFeatures.DataStore.query');
+        const features: Feature[] = dataItems.sort((a, b) => {
+          /*istanbul ignore next*/
+          const aCreatedAt = a.createdAt ?? '9999-12-31T23:59:59.999Z';
+          /*istanbul ignore next*/
+          const bCreatedAt = b.createdAt ?? '9999-12-31T23:59:59.999Z';
+          return bCreatedAt.localeCompare(aCreatedAt);
+        }).map((dataItem) => {
+          const payload = JSON.parse(dataItem.payload);
+          payload.serverId = dataItem.id;
+          payload.createdAt = dataItem.createdAt;
+          payload.updatedAt = dataItem.updatedAt;
+          const feature: Feature = payload as Feature;
+          return (feature);
+        });
+        logCall('useSynchronizer.useEffect.loadDataStoreFeatures.DataStore.query', 'count:', features.length);
+        dispatch(featuresLoadedViaSync(features));
+      } /* istanbul ignore next */ catch (error) {
+         /* istanbul ignore next */
+        logRaw('useSynchronizer.useEffect.loadDataStoreFeatures.DataStore.query', 'error:', error);
+         /* istanbul ignore next */
+        throw error;
+      }
+    }    
+    loadDataStoreFeatures();
+
     return () => {
       logCall('useSynchronizer.useEffect.unsubscribe');
-      subscription.unsubscribe()
+      subscription.unsubscribe();
+      globalSubscription.unsubscribe();
     };
   }, [dispatch, isUserLoggedIn]); // Or [] if effect doesn't need props or state  
 }

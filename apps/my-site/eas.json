@@ -1,0 +1,58 @@
+{
+  // "test": {
+  //   "android": {
+  //     "gradleCommand": ":app:assembleRelease :app:assembleAndroidTest -DtestBuildType=release",
+  //     "withoutCredentials": true
+  //   },
+  //   "ios": {
+  //     "simulator": true
+  //   }
+  // },
+  // "test_debug": {
+  //   "android": {
+  //     "gradleCommand": ":app:assembleDebug :app:assembleAndroidTest -DtestBuildType=debug",
+  //     "withoutCredentials": true
+  //   },
+  //   "ios": {
+  //     "buildConfiguration": "Debug",
+  //     "simulator": true
+  //   },
+  //   "env": {
+  //     "EXPO_USE_UPDATES": "1"
+  //   },
+  //   "channel": "test_debug"
+  // },
+  "build": {
+    "production": {
+      "android": {
+        "buildType": "app-bundle"
+      },
+      "env": {
+        "APP_VARIANT": "prod"
+      },
+      "channel": "production"
+    },
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "env": {
+        "APP_VARIANT": "development"
+      },
+      "channel": "development"
+    },
+    "preview": {
+      "distribution": "internal",
+      "env": {
+        "APP_VARIANT": "preview"
+      },
+      "channel": "preview"
+    }
+  },
+  "submit": {
+    "production": {}
+  },
+  //"buildArtifactPaths": ["artifacts/**/*.png"],
+  "cli": {
+    "version": ">= 5.8.0"
+  }
+}

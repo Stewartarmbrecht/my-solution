@@ -17,11 +17,13 @@ const userSlice = createSlice({
       logCall('userSlice.userLoggedIn', action.payload);
       state.userName = action.payload.userName;
       state.userEmail = action.payload.userEmail;
+      state.groups = action.payload.groups;
     })
     .addCase(userLoggedOut, (state, action) => {
         logCall('userSlice.userLoggedOut', action.payload);
         state.userName = undefined;
         state.userEmail = undefined;
+        state.groups = undefined;
       });
   },
 });

@@ -1,0 +1,8 @@
+# flow.yaml
+
+appId: ${APP}
+---
+- runFlow: create-account.yaml
+- runFlow: log-in.yaml
+- runFlow: posts.yaml
+- runFlow: log-out.yaml
