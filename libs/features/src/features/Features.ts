@@ -7,18 +7,18 @@ export interface FeatureKey {
 }
 
 export interface FeatureDetail {
-  [key: number]: FeatureKey;
+  [key: string]: FeatureKey;
 }
 
 export class FeatureKeys {
   // Max: 7
-  public static readonly MyAppPosts = 1;
-  public static readonly MyAppPostsUnlimited = 2;
-  public static readonly MyAppFeatures = 3;
-  public static readonly MyAppSettings = 4;
-  public static readonly MyAppDocs = 5;
-  public static readonly MyAppAuth = 6;
-  public static readonly MyAdminFeatures = 7;
+  public static readonly MyAppPosts = 'MyAppPosts';
+  public static readonly MyAppPostsUnlimited = 'MyAppPostsUnlimited';
+  public static readonly MyAppFeatures = 'MyAppFeatures';
+  public static readonly MyAppSettings = 'MyAppSettings';
+  public static readonly MyAppDocs = 'MyAppDocs';
+  public static readonly MyAppAuth = 'MyAppAuth';
+  public static readonly MyAdminFeatures = 'MyAdminFeatures';
 }
 const features: FeatureDetail = {};
 features[FeatureKeys.MyAppPosts] =          { actions: { read: 1, refresh: 2, create: 3, update: 4, delete: 5 } };

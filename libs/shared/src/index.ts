@@ -1,5 +1,5 @@
 /* istanbul ignore file */
-import {
+export {
   logRaw,
   logCall,
   logHighFrequencyCall,
@@ -11,18 +11,7 @@ import {
   logMessage,
 } from './logger/logger';
 
-export { 
-  logRaw, 
-  logCall, 
-  logHighFrequencyCall, 
-  logHighFrequencyCheck, 
-  globalOptions, 
-  logId, 
-  logSetup,
-  logError,
-  logMessage,
-};
-
+//export { SyncDataItem } from './types/SyncDataItem';
 export { Post } from './types/Post';
 export { PostStatus } from './types/PostStatus';
 export { Feature } from './types/Feature'

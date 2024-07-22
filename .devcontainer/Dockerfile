@@ -38,7 +38,6 @@ RUN env "PATH=$PATH"
 RUN n lts
 RUN n prune
 RUN npm install -g npm@latest
-RUN npm install -g @aws-amplify/cli
 RUN npm install -g eas-cli
 
 RUN cd /usr/lib

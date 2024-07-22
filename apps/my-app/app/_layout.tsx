@@ -15,7 +15,6 @@ import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 
 import { MyState } from '@my-solution/state';
-import { Backend } from '@my-solution/backend';
 import { Platform } from 'react-native';
 import { useColorScheme } from '@my-solution/ui';
 import { WebSplashScreen } from '@my-solution/features';
@@ -81,12 +80,10 @@ function RootLayoutNav() {
     <TamaguiProvider config={tamaguiConfig} defaultTheme={/*istanbul ignore next*/colorScheme === 'dark' ? 'dark_blue' : 'light_blue'}>
       <ThemeProvider value={/*istanbul ignore next*/colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
         <MyState>
-          <Backend>
-            <Stack>
-              <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-              <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
-            </Stack>
-          </Backend>
+          <Stack>
+            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+            <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
+          </Stack>
         </MyState>
       </ThemeProvider>
     </TamaguiProvider>

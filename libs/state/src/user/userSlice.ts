@@ -3,8 +3,9 @@ import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 
 const initialState: User = {
-    userName: undefined,
-    userEmail: undefined,
+    userName: 'My Tester',
+    userEmail: 'my-tester@boundbybetter.com',
+    groups: [],
 };
 
 const userSlice = createSlice({

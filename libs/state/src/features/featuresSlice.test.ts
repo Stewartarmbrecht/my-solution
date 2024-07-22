@@ -2,7 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { featuresReducer, selectAllFeatures } from "./featuresSlice";
 import { featureAdded, featureDeleted, featureDeletedViaSync, featureAddedOrUpdatedViaSync, featuresLoadedViaSync, FeatureStatus, Feature } from "@my-solution/shared";
 import { AppStore } from "../store";
-import { syncReducer } from "@my-solution/backend";
+//import { syncReducer } from "@my-solution/backend";
 import { userReducer } from "../user/userSlice";
 import { postsReducer } from "../posts/postsSlice";
 
@@ -15,7 +15,7 @@ describe('featuresSlice', () => {
     store = configureStore({
       reducer: {
         features: featuresReducer,
-        sync: syncReducer,
+        //sync: syncReducer,
         user: userReducer,
         posts: postsReducer,
       },

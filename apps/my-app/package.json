@@ -11,10 +11,6 @@
     "ios": "expo run:ios"
   },
   "dependencies": {
-    "@aws-amplify/auth": "*",
-    "@aws-amplify/datastore": "*",
-    "@aws-amplify/react-native": "*",
-    "@aws-amplify/ui-react-native": "*",
     "@expo/config": "*",
     "@expo/vector-icons": "*",
     "@react-native-async-storage/async-storage": "*",
@@ -24,7 +20,6 @@
     "@react-navigation/native": "*",
     "@reduxjs/toolkit": "*",
     "@tamagui/lucide-icons": "*",
-    "aws-amplify": "*",
     "core-js": "*",
     "expo": "*",
     "expo-application": "*",

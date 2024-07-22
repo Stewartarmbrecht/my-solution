@@ -2,8 +2,9 @@ import { configureStore } from "@reduxjs/toolkit";
 import { postsReducer } from "../posts/postsSlice";
 import { userLoggedIn, userLoggedOut } from "@my-solution/shared";
 import { AppStore } from "../store";
-import { syncReducer } from "@my-solution/backend";
+//import { syncReducer } from "@my-solution/backend";
 import { userReducer } from "./userSlice";
+import { featuresReducer } from "../features/featuresSlice";
 
 describe('userSlice', () => {
   let store: AppStore;
@@ -12,8 +13,9 @@ describe('userSlice', () => {
     store = configureStore({
       reducer: {
         posts: postsReducer,
-        sync: syncReducer,
+        //sync: syncReducer,
         user: userReducer,
+        features: featuresReducer,
       },
     });
   });

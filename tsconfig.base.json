@@ -15,7 +15,7 @@
     "moduleResolution": "node",
     //"noEmit": true,
     "paths": {
-      "@my-solution/backend": ["libs/backend/src/index.ts"],
+      //"@my-solution/backend": ["libs/backend/src/index.ts"],
       "@my-solution/shared": ["libs/shared/src/index.ts"],
       "@my-solution/state": ["libs/state/src/index.ts"],
       "@my-solution/features": ["libs/features/src/index.ts"],

@@ -1,4 +1,4 @@
-import { signOut } from "@my-solution/backend";
+//import { signOut } from "@my-solution/backend";
 import { Button, H1, Text, YStack } from "@my-solution/ui";
 
 export function AccessDenied() {
@@ -8,7 +8,7 @@ export function AccessDenied() {
       <Text f={1} testID="access-denied.message">You do not have access.  Please click Sign Out and then sign in as a user that does.</Text>
       <Button 
         $gtSm={{ height: "100%" }} 
-        onPress={signOut}
+        //onPress={signOut}
         testID="access-denied.sign-out"
       >Sign Out</Button>
     </YStack>

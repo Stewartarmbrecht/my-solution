@@ -14,7 +14,7 @@ export {
   selectAllFeatures,
   selectFeatureById,
   selectFeatureIds,
-  selectFeatureByKey
+  //selectFeatureByKey
 } from './features/featuresSlice';
 export {
   featureAdded,

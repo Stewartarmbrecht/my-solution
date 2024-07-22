@@ -7,7 +7,6 @@
     "declaration": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "jsx": "react-native",
     "lib": ["dom", "esnext"],
     "moduleResolution": "node",
     "noFallthroughCasesInSwitch": true,

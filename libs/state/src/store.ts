@@ -1,6 +1,6 @@
 import { Action, ThunkAction, configureStore } from '@reduxjs/toolkit'
 import { postsReducer } from './posts/postsSlice'
-import { syncReducer } from '@my-solution/backend'
+//import { syncReducer } from '@my-solution/backend'
 import { userReducer } from './user/userSlice'
 import { featuresReducer } from './features/featuresSlice'
 // ...
@@ -9,7 +9,7 @@ export const store = configureStore({
   reducer: {
     posts: postsReducer,
     features: featuresReducer,
-    sync: syncReducer,
+    //sync: syncReducer,
     user: userReducer,
   },
 })
