@@ -2,6 +2,7 @@ import React from 'react';
 import { EditScreenInfo } from './EditScreenInfo';
 import { renderWithTamagui } from '../../renderWithTamagui.test-util';
 import { act } from '@testing-library/react-native';
+import { describe, expect, it } from '@jest/globals';
 
 describe('EditScreenInfo', () => {
   it('should render the correct path', async () => {

@@ -1,12 +1,15 @@
 {
-  "name": "features",
+  "name": "@my-solution/features",
   "version": "0.1.1",
-  "description": "Contains all features shared across all apps.",
-  "main": "build/index.js",
-  "scripts": {
-    "build": "tsc -p tsconfig.lib.json",
-    "test": "jest"
-  },
+  "description": "All features used across all apps.",
   "author": "Stewart Armbrecht",
-  "license": "ISC"
+  "license": "ISC",
+  "main": "src/index.ts",
+  "scripts": {
+    "lint": "eslint -c ../../.eslintrc.json && prettier --check ./src",
+    "build": "tsc -p tsconfig.json",
+    "test": "jest --config ./test/jest.config.ts",
+    "test-coverage": "jest --coverage --config ./test/jest.config.ts",
+    "view-coverage": "npx http-server ../../coverage/libs/shared/lcov-report/"
+  }
 }

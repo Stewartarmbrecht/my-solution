@@ -26,7 +26,7 @@ module.exports = {
   //   'node_modules/(?!((jest-)?react-native|react-redux|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|react-native-svg)',
   // ],
   transformIgnorePatterns: [
-    'node_modules/(?!react-redux|@react-native|expo(nent)?|react-native)',
+    'node_modules/(?!react-redux|@react-native|expo(nent)?|react-native|@react-navigation)',
   ],
   transform: {
     '^.+\\.[tj]sx?$': ['babel-jest', { configFile: path.resolve(__dirname, './babel.config.json') }],

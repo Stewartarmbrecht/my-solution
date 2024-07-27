@@ -4,7 +4,7 @@
   "description": "Contains all shared components across other libraries.",
   "author": "Stewart Armbrecht",
   "license": "ISC",
-  "main": "dist/index.js",
+  "main": "src/index.ts",
   "dependencies": {
     "tamagui": "*",
     "@tamagui/config": "*",
@@ -13,10 +13,7 @@
   },
   "scripts": {
     "lint": "eslint -c ../../.eslintrc.json && prettier --check ./src",
-    "build": "tsc -p tsconfig.json",
-    "test": "jest --config ./test/jest.config.ts",
-    "test-coverage": "jest --coverage --config ./test/jest.config.ts",
-    "view-coverage": "npx http-server ../../coverage/libs/shared/lcov-report/"
+    "build": "tsc -p tsconfig.json"
   },
   "devDependencies": {
     "@tamagui/build": "*"
