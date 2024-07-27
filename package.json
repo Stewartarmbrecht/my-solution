@@ -57,12 +57,12 @@
     "@expo/metro-config": "0.18.4",
     "@expo/metro-runtime": "3.2.1",
     "@expo/server": "^0.4.2",
-    "@nx/eslint": "19.2.0",
-    "@nx/eslint-plugin": "19.2.0",
-    "@nx/expo": "19.2.0",
-    "@nx/jest": "19.2.0",
-    "@nx/js": "19.2.0",
-    "@nx/workspace": "19.2.0",
+    "@nx/eslint": "19.4.2",
+    "@nx/eslint-plugin": "19.4.2",
+    "@nx/expo": "19.4.2",
+    "@nx/jest": "19.4.2",
+    "@nx/js": "19.4.2",
+    "@nx/workspace": "19.4.2",
     "@swc-node/register": "1.9.1",
     "@swc/core": "1.5.7",
     "@tamagui/babel-plugin": "^1.101.3",
@@ -92,7 +92,7 @@
     "jest-circus": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
     "jest-expo": "^51.0.2",
-    "nx": "19.2.0",
+    "nx": "19.4.2",
     "patch-package": "^8.0.0",
     "prettier": "^3.2.5",
     "react-devtools": "^5.2.0",
@@ -112,5 +112,11 @@
       ]
     }
   },
-  "nx": {}
+  "nx": {},
+  "workspaces": {
+    "packages": [
+      "libs/*",
+      "apps/*"
+    ]
+  }
 }

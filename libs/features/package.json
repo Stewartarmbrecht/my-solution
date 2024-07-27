@@ -1,0 +1,12 @@
+{
+  "name": "features",
+  "version": "0.1.1",
+  "description": "Contains all features shared across all apps.",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.lib.json",
+    "test": "jest"
+  },
+  "author": "Stewart Armbrecht",
+  "license": "ISC"
+}

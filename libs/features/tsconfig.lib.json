@@ -1,7 +1,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../dist/out-tsc",
+    "outDir": "./build",
 		"types": [
 			"node",
       // Added next 2 for tamagui.
@@ -10,16 +10,16 @@
 		]  
   },
   "exclude": [
-    "src/**/*.test.ts", 
-    "src/**/*.test.tsx", 
-    "src/**/*.test-util.ts", 
-    "src/**/*.test-util.tsx", 
-    "src/test-setup.ts"
+    "./src/**/*.test.ts", 
+    "./src/**/*.test.tsx", 
+    "./src/**/*.test-util.ts", 
+    "./src/**/*.test-util.tsx", 
+    "./src/test-setup.ts"
   ],
   "include": [
-    "src/**/*.js", 
-    "src/**/*.jsx", 
-    "src/**/*.ts", 
-    "src/**/*.tsx",
+    "./src/**/*.js", 
+    "./src/**/*.jsx", 
+    "./src/**/*.ts", 
+    "./src/**/*.tsx",
   ]
 }

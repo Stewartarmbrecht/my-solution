@@ -1,6 +1,11 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
+    "outDir": "./dist",
+    "tsBuildInfoFile": "./dist/tsconfig.lib.tsbuildinfo",
+    "types": ["node"],
+    "baseUrl": "./src",
+    "rootDir": "./src",
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "composite": true,
@@ -15,14 +20,12 @@
     "skipLibCheck": true,
     "strict": true
   },
-  "files": [],
-  "include": [],
-  "references": [
-    {
-      "path": "./tsconfig.lib.json"
-    },
-    {
-      "path": "./tsconfig.test.json"
-    }
+  "exclude": ["**/*.test.ts", "**/*.test.tsx", "test-setup.ts", "dist"],
+  "include": [
+    "./src/**/*.js", 
+    "./src/**/*.jsx", 
+    "./src/**/*.ts", 
+    "./src/**/*.tsx",
+    "./src/**/*.json"
   ]
 }

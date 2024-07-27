@@ -9,9 +9,6 @@ export function comparePosts(a: Post | undefined, b: Post | undefined): boolean 
     if (a.id !== b.id) {
         match = false;
     }
-    if (a.serverId !== b.serverId) {
-        match = false;
-    }
     if (a.title !== b.title) {
         match = false;
     }

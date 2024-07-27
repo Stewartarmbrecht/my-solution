@@ -2,7 +2,7 @@
   "compileOnSave": false,
   "compilerOptions": {
     "allowJs": true,
-    "baseUrl": ".",
+    //"baseUrl": ".",
     //"declaration": false,
     "emitDecoratorMetadata": true,
     "esModuleInterop": true,
@@ -16,17 +16,17 @@
     //"noEmit": true,
     "paths": {
       //"@my-solution/backend": ["libs/backend/src/index.ts"],
+      "@my-solution/ui": ["libs/ui/src/index.ts"],
       "@my-solution/shared": ["libs/shared/src/index.ts"],
       "@my-solution/state": ["libs/state/src/index.ts"],
       "@my-solution/features": ["libs/features/src/index.ts"],
-      "@my-solution/ui": ["libs/ui/src/index.ts"]
     },
     "resolveJsonModule": true,
-    "rootDir": ".",
+    //"rootDir": ".",
     "skipDefaultLibCheck": true,
     "skipLibCheck": true,
     "sourceMap": true,
-    "target": "es2015",
+    "target": "ESNext",
   },
   "exclude": ["node_modules", "tmp"]
 }

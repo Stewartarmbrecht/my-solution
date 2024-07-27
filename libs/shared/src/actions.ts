@@ -1,4 +1,4 @@
-/* instanbul ignore file */
+/* istanbul ignore file */
 import { createAction } from "@reduxjs/toolkit";
 import { Post } from "./types/Post";
 import { User } from "./types/User";

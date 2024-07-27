@@ -1,6 +1,6 @@
 // istanbul ignore file
 import { config } from '@tamagui/config/v3'
-import { themes } from './src/themes';
+import { themes } from './themes';
 import { createTamagui } from 'tamagui'
 
 config.themes = themes;

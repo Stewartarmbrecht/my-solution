@@ -64,11 +64,6 @@ describe('comparePosts', () => {
     expect(result).toBe(false);
 
     postB = getDefaultPost();
-    postB.serverId = '2';
-    result = comparePosts(postA, postB);
-    expect(result).toBe(false);
-
-    postB = getDefaultPost();
     postB.status = PostStatus.INACTIVE;
     result = comparePosts(postA, postB);
     expect(result).toBe(false);
@@ -92,7 +87,6 @@ function getDefaultPost(): Post {
   return {
     id: '1',
     status: PostStatus.ACTIVE,
-    serverId: '1',
     title: 'Post 1',
     rating: 4.5,
     content: 'Lorem ipsum dolor sit amet',
