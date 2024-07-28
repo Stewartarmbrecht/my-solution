@@ -1,9 +1,10 @@
 import { act, fireEvent, renderRouter, screen } from 'expo-router/testing-library';
 import { useFonts } from 'expo-font';
 import { useMedia } from '@my-solution/ui';
+import { describe, it, beforeEach, expect } from '@jest/globals';
 
 jest.mock('expo-font', () => {
-  const actual = jest.requireActual('expo-font');
+  const actual: any = jest.requireActual('expo-font');
   return {
     ...actual,
     useFonts: jest.fn().mockImplementation(actual.useFonts),
@@ -15,6 +16,10 @@ jest.mock('expo-splash-screen', () => ({
   preventAutoHideAsync: jest.fn(),
 }));
 
+// Get directory to app folder
+const path = require('path');
+const appDir = path.join(__dirname, '../../app');
+
 describe('_layout', () => {
   beforeEach(() => {
     jest.clearAllMocks();
@@ -24,7 +29,7 @@ describe('_layout', () => {
     (useMedia as jest.Mock).mockReturnValue({ gtMd: false });
 
     (useFonts as jest.Mock).mockReturnValue([true, null]);
-    renderRouter('./apps/my-app/app', {
+    renderRouter(appDir, {
       initialUrl: '/',
     });
     const tabOne = await screen.findAllByText('Posts');
@@ -33,12 +38,12 @@ describe('_layout', () => {
     expect(tabTwo).toBeTruthy();
     const settings = await screen.findAllByText('Settings');
     expect(settings).toBeTruthy();
-  }, 60000 /** set to 60s because ci timing out. */);
+  }, 60000);
   it('should render Documentation Tab', async () => {
     (useMedia as jest.Mock).mockReturnValue({ gtMd: false });
 
     (useFonts as jest.Mock).mockReturnValue([true, null]);
-    renderRouter('./apps/my-app/app', {
+    renderRouter(appDir, {
       initialUrl: '/docs',
     });
     const tabTwo = await screen.findAllByText('Documentation');
@@ -49,7 +54,7 @@ describe('_layout', () => {
     (useMedia as jest.Mock).mockReturnValue({ gtMd: false });
 
     (useFonts as jest.Mock).mockReturnValue([true, null]);
-    renderRouter('./apps/my-app/app', {
+    renderRouter(appDir, {
       initialUrl: '/settings',
     });
     const settings = await screen.findAllByText('Settings');
@@ -60,7 +65,7 @@ describe('_layout', () => {
     (useMedia as jest.Mock).mockReturnValue({ gtMd: true });
 
     (useFonts as jest.Mock).mockReturnValue([true, null]);
-    renderRouter('./apps/my-app/app', {
+    renderRouter(appDir, {
       initialUrl: '/',
     });
     const tabOne = await screen.findAllByText('Posts');
@@ -74,7 +79,7 @@ describe('_layout', () => {
     (useMedia as jest.Mock).mockReturnValue({ gtMd: true });
 
     (useFonts as jest.Mock).mockReturnValue([true, null]);
-    renderRouter('./apps/my-app/app', {
+    renderRouter(appDir, {
       initialUrl: '/docs',
     });
     const tabTwo = await screen.findAllByText('Documentation');
@@ -84,7 +89,7 @@ describe('_layout', () => {
     (useMedia as jest.Mock).mockReturnValue({ gtMd: true });
 
     (useFonts as jest.Mock).mockReturnValue([true, null]);
-    renderRouter('./apps/my-app/app', {
+    renderRouter(appDir, {
       initialUrl: '/settings',
     });
     const settings = await screen.findAllByText('Settings');
@@ -95,7 +100,7 @@ describe('_layout', () => {
     (useMedia as jest.Mock).mockReturnValue({ gtMd: false });
 
     (useFonts as jest.Mock).mockReturnValue([true, null]);
-    renderRouter('./apps/my-app/app', {
+    renderRouter(appDir, {
       initialUrl: '/',
     });
     const infoIcon = await screen.findAllByTestId('info-icon');
@@ -105,7 +110,7 @@ describe('_layout', () => {
     (useMedia as jest.Mock).mockReturnValue({ gtMd: false });
 
     (useFonts as jest.Mock).mockReturnValue([true, null]);
-    renderRouter('./apps/my-app/app', {
+    renderRouter(appDir, {
       initialUrl: '/',
     });
     const infoIcon = await screen.findAllByTestId('info-icon');

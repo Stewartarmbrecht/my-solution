@@ -1,3 +1,7 @@
+// Get directory to app folder
+const path = require('path');
+const appDir = path.join(__dirname, '../../../libs/ui/src');
+
 module.exports = function (api) {
   api.cache(true);
   process.env.EXPO_ROUTER_APP_ROOT = "../../apps/my-app/app";
@@ -7,10 +11,10 @@ module.exports = function (api) {
     // Added plugins as recommended by tamagui.
     plugins: [
       [
-      "@tamagui/babel-plugin",
+        "@tamagui/babel-plugin",
           {
               components: ["tamagui"],
-              config: process.env.JEST_WORKER_ID !== undefined ? "./libs/ui/tamagui.config.ts" : "../../libs/ui/tamagui.config.ts",
+              config: appDir + '/tamagui.config.ts',
               logTimings: true,
               disableExtraction: process.env.NODE_ENV === 'development'
           },

@@ -20,6 +20,7 @@
       "@my-solution/shared": ["libs/shared/src/index.ts"],
       "@my-solution/state": ["libs/state/src/index.ts"],
       "@my-solution/features": ["libs/features/src/index.ts"],
+      "@my-solution/my-app": ["apps/my-app/src/index.ts"]
     },
     "resolveJsonModule": true,
     //"rootDir": ".",

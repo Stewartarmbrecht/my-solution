@@ -115,8 +115,7 @@
   "nx": {},
   "workspaces": {
     "packages": [
-      "libs/*",
-      "apps/*"
+      "libs/*"
     ]
   }
 }

@@ -1,31 +1,33 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
+    "outDir": "./dist",
+    "tsBuildInfoFile": "./dist/tsconfig.lib.tsbuildinfo",
+    "types": ["node"],
+    "baseUrl": "./src",
+    "rootDir": "./src",
+    "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "composite": true,
     "declaration": true,
     "esModuleInterop": true,
-    "jsx": "react-native",
-    "lib": [
-      "dom",
-      "esnext"
-    ],
+    "forceConsistentCasingInFileNames": true,
+    "lib": ["dom", "esnext"],
     "moduleResolution": "node",
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true
   },
-  "files": [],
+  "exclude": ["**/*.test.ts", "**/*.test.tsx", "test/test-setup.tsx", "dist"],
   "include": [
-    ".expo/types/**/*.ts",
-    "expo-env.d.ts"
-  ],
-  "references": [
-    {
-      "path": "./tsconfig.app.json"
-    },
-    {
-      "path": "./tsconfig.test.json"
-    }
-  ]
+    "./src/**/*.js", 
+    "./src/**/*.jsx", 
+    "./src/**/*.ts", 
+    "./src/**/*.tsx",
+    "./src/**/*.json",
+    "./.expo/types/**/*.ts",
+    "./expo-env.d.ts"
+, "src/index.js"  ]
 }

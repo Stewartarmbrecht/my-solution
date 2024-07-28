@@ -1,10 +1,11 @@
-import { getJestProjectsAsync } from '@nx/jest';
+import { getJestProjects } from '@nx/jest';
 
-export default async () => ({
+export default {
   projects: [
-    ...(await getJestProjectsAsync()),
+    ...getJestProjects(),
     '<rootDir>/libs/features/test/jest.config.ts',
     '<rootDir>/libs/state/test/jest.config.ts',
     '<rootDir>/libs/shared/test/jest.config.ts',
+    '<rootDir>/apps/my-app/test/jest.config.ts',
   ],
-});
+};
