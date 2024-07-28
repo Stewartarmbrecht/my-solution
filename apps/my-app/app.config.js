@@ -7,11 +7,11 @@ export default {
   version: '0.0.7',
   runtimeVersion: '0.0.7',
   orientation: 'portrait',
-  icon: './assets/images/icon.png',
+  icon: './src/assets/images/icon.png',
   // Added for tamagui.
   userInterfaceStyle: 'automatic',
   splash: {
-    image: './assets/images/splash.png',
+    image: './src/assets/images/splash.png',
     resizeMode: 'contain',
     backgroundColor: '#ffffff',
   }, 
@@ -30,14 +30,14 @@ export default {
   android: {
     userInterfaceStyle: 'automatic',
     adaptiveIcon: {
-      foregroundImage: './assets/images/adaptive-icon.png',
+      foregroundImage: './src/assets/images/adaptive-icon.png',
       backgroundColor: '#FFFFFF',
     },
     package: IS_PROD ? 'com.stewartarmbrecht.myapp' : 
       (IS_PREVIEW ? 'com.stewartarmbrecht.myapp.preview' : 'com.stewartarmbrecht.myapp.dev'),
   },
   web: {
-    favicon: './assets/images/favicon.png',
+    favicon: './src/assets/images/favicon.png',
     bundler: 'metro',
   },
   plugins: [
