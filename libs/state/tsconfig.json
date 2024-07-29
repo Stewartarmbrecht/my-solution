@@ -1,5 +1,5 @@
 {
-  "extends": "../../tsconfig.base.json",
+  //"extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "outDir": "./dist",
     "tsBuildInfoFile": "./dist/tsconfig.lib.tsbuildinfo",
@@ -18,7 +18,8 @@
     "noImplicitReturns": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "strict": true
+    "strict": true,
+    "jsx": "react-native",
   },
   "exclude": ["**/*.test.ts", "**/*.test.tsx", "test-setup.ts", "dist"],
   "include": [

@@ -96,6 +96,7 @@
     "eslint-plugin-jsx-a11y": "*",
     "eslint-plugin-react": "*",
     "eslint-plugin-react-hooks": "*",
+    "expo-atlas": "^0.3.0",
     "fs-extra": "*",
     "jest": "*",
     "jest-circus": "*",
@@ -115,7 +116,6 @@
     "ts-node": "*",
     "tsconfig-paths": "*",
     "tslib": "*",
-    "typescript": "*",
-    "expo-atlas": "^0.3.0"
+    "typescript": "*"
   }
 }

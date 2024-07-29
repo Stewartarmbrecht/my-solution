@@ -6,10 +6,10 @@
   "license": "ISC",
   "main": "src/index.ts",
   "dependencies": {
-    "tamagui": "*",
-    "@tamagui/config": "*",
     "@tamagui/colors": "*",
-    "@tamagui/lucide-icons": "*"
+    "@tamagui/config": "*",
+    "@tamagui/lucide-icons": "*",
+    "tamagui": "*"
   },
   "scripts": {
     "lint": "eslint -c ../../.eslintrc.json && prettier --check ./src",

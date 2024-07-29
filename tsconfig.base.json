@@ -16,11 +16,11 @@
     //"noEmit": true,
     "paths": {
       //"@my-solution/backend": ["libs/backend/src/index.ts"],
-      "@my-solution/ui": ["libs/ui/src/index.ts"],
-      "@my-solution/shared": ["libs/shared/src/index.ts"],
-      "@my-solution/state": ["libs/state/src/index.ts"],
-      "@my-solution/features": ["libs/features/src/index.ts"],
-      "@my-solution/my-app": ["apps/my-app/src/index.ts"]
+      //"@my-solution/ui": ["libs/ui/src/index.ts"],
+      //"@my-solution/shared": ["libs/shared/src/index.ts"],
+      //"@my-solution/state": ["libs/state/src/index.ts"],
+      //"@my-solution/features": ["libs/features/src/index.ts"],
+      //"@my-solution/my-app": ["apps/my-app/src/index.ts"]
     },
     "resolveJsonModule": true,
     //"rootDir": ".",

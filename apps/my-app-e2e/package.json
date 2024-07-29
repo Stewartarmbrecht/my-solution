@@ -1,0 +1,24 @@
+{
+  "name": "@my-solution/my-app-e2e",
+  "version": "0.1.1",
+  "description": "All e2e tests of the my-app app.",
+  "author": "Stewart Armbrecht",
+  "license": "ISC",
+  "private": true,
+  "main": "./src/index.js",
+  "scripts": {
+    "test": "npm run test-web && npm run test-mobile",
+    "test-web": "npx cypress run",
+    "test-mobile": "maestro test -e APP=com.stewartarmbrecht.myapp.dev tests/e2e/",
+    "test-coverage": "jest --coverage --config ./test/jest.config.ts",
+    "view-coverage": "npx http-server ../../coverage/libs/shared/lcov-report/",
+    "web": "npx expo start --web",
+    "android": "expo run:android",
+    "eas-build-on-success": "../../tools/scripts/eas-build-on-success.sh",
+    "eas-build-post-install": "cd ../../ && node tools/scripts/eas-build-post-install.mjs . apps/my-app",
+    "eas-build-pre-install": "cd ../../ && node tools/scripts/eas-build-pre-install.mjs . apps/my-app && cp package-lock.json apps/my-app && tools/scripts/eas-build-pre-install.sh",
+    "ios": "expo run:ios",
+    "web-test-studio": "npx cypress open",
+    "mobile-test-studio": "maestro studio"
+  }
+}

@@ -66,3 +66,8 @@ commandlinetools-linux.zip
 
 **/*.apk
 **/*.aab
+
+expo-env.d.ts
+
+./cypress/screenshots
+.env
